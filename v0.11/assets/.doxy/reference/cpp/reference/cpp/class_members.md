@@ -69,10 +69,10 @@
 * **addObjective** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
 * **angle** ([**endstone::Vector**](classendstone_1_1Vector.md))
 * **addPage** ([**endstone::WritableBookMeta**](classendstone_1_1WritableBookMeta.md))
-* **ArrayTag** ([**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
-* **assign** ([**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
 * **aliases** ([**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md))
 * **authors** ([**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
+* **ArrayTag** ([**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
+* **assign** ([**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
 
 
 ## b
@@ -228,11 +228,11 @@
 * **default\_text\_** ([**endstone::TextInput**](classendstone_1_1TextInput.md))
 * **data** ([**endstone::UUID**](classendstone_1_1UUID.md), [**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
 * **dot** ([**endstone::Vector**](classendstone_1_1Vector.md))
-* **difference\_type** ([**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
 * **description** ([**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md), [**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md), [**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
 * **default\_** ([**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md))
 * **default\_permission** ([**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
 * **depend** ([**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
+* **difference\_type** ([**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
 
 
 ## e
@@ -1204,10 +1204,10 @@
 * **setPage** ([**endstone::WritableBookMeta**](classendstone_1_1WritableBookMeta.md))
 * **setPages** ([**endstone::WritableBookMeta**](classendstone_1_1WritableBookMeta.md))
 * **sep** ([**endstone::detail::JoinView**](structendstone_1_1detail_1_1JoinView.md))
+* **soft\_depend** ([**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
 * **storage\_type** ([**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
 * **Storage** ([**endstone::nbt::Tag**](classendstone_1_1nbt_1_1Tag.md))
 * **storage\_** ([**endstone::nbt::Tag**](classendstone_1_1nbt_1_1Tag.md))
-* **soft\_depend** ([**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
 
 
 ## t

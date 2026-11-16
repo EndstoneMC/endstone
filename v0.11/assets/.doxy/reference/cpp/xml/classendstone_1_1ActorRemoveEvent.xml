@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1ActorRemoveEvent" kind="class" language="C++" prot="public">
     <compoundname>endstone::ActorRemoveEvent</compoundname>
     <basecompoundref refid="classendstone_1_1ActorEvent" prot="public" virt="non-virtual">endstone::ActorEvent&lt; Actor &gt;</basecompoundref>
@@ -29,7 +29,7 @@
         <name>ActorEvent</name>
         <qualifiedname>endstone::ActorRemoveEvent::ActorEvent</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">ActorType</ref> &amp;</type>
+          <type>ActorType &amp;</type>
           <declname>actor</declname>
         </param>
         <briefdescription>
@@ -86,7 +86,7 @@
     <location file="include/endstone/event/actor/actor_remove_event.h" line="27" column="1" bodyfile="include/endstone/event/actor/actor_remove_event.h" bodystart="27" bodyend="33"/>
     <listofallmembers>
       <member refid="classendstone_1_1ActorRemoveEvent_1a07f53f59692095b4a31a6e3d95128015" prot="public" virt="non-virtual"><scope>endstone::ActorRemoveEvent</scope><name>ActorEvent</name></member>
-      <member refid="classendstone_1_1ActorEvent_1a07f53f59692095b4a31a6e3d95128015" prot="public" virt="non-virtual" ambiguityscope="ActorEvent&lt; Actor &gt;::"><scope>endstone::ActorRemoveEvent</scope><name>ActorEvent</name></member>
+      <member refid="classendstone_1_1ActorEvent_1a07f53f59692095b4a31a6e3d95128015" prot="public" virt="non-virtual" ambiguityscope="endstone::ActorEvent&lt; Actor &gt;::"><scope>endstone::ActorRemoveEvent</scope><name>ActorEvent</name></member>
       <member refid="classendstone_1_1ActorRemoveEvent_1a853848cbbafca10075888538955a29cb" prot="public" virt="non-virtual"><scope>endstone::ActorRemoveEvent</scope><name>ENDSTONE_EVENT</name></member>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::ActorRemoveEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::ActorRemoveEvent</scope><name>Event</name></member>

@@ -32,7 +32,7 @@ _Represents an attribute modifier._
 
 | Type | Name |
 | ---: | :--- |
-| enum  | [**Operation**](#enum-operation)  <br>_Operation to be applied._  |
+| enum  | [**Operation**](#enum-operation)  <br>[_**Operation**_](classendstone_1_1AttributeModifier.md#enum-operation) _to be applied._ |
 
 
 
@@ -57,9 +57,9 @@ _Represents an attribute modifier._
 
 | Type | Name |
 | ---: | :--- |
-|   | [**AttributeModifier**](#function-attributemodifier-12) (std::string name, [**float**](classendstone_1_1Identifier.md) amount, [**Operation**](classendstone_1_1AttributeModifier.md#enum-operation) operation) <br> |
-|   | [**AttributeModifier**](#function-attributemodifier-22) (std::string name, [**UUID**](classendstone_1_1UUID.md) uuid, [**float**](classendstone_1_1Identifier.md) amount, [**Operation**](classendstone_1_1AttributeModifier.md#enum-operation) operation) <br> |
-|  [**float**](classendstone_1_1Identifier.md) | [**getAmount**](#function-getamount) () const<br>_Get the amount by which this modifier will apply the operation._  |
+|   | [**AttributeModifier**](#function-attributemodifier-12) (std::string name, float amount, [**Operation**](classendstone_1_1AttributeModifier.md#enum-operation) operation) <br> |
+|   | [**AttributeModifier**](#function-attributemodifier-22) (std::string name, [**UUID**](classendstone_1_1UUID.md) uuid, float amount, [**Operation**](classendstone_1_1AttributeModifier.md#enum-operation) operation) <br> |
+|  float | [**getAmount**](#function-getamount) () const<br>_Get the amount by which this modifier will apply the operation._  |
 |  std::string | [**getName**](#function-getname) () const<br>_Get the name of this modifier._  |
 |  [**Operation**](classendstone_1_1AttributeModifier.md#enum-operation) | [**getOperation**](#function-getoperation) () const<br>_Get the operation this modifier will apply._  |
 |  [**UUID**](classendstone_1_1UUID.md) | [**getUniqueId**](#function-getuniqueid) () const<br>_Get the unique ID for this modifier._  |
@@ -98,7 +98,7 @@ _Represents an attribute modifier._
 
 ### enum Operation 
 
-_Operation to be applied._ 
+[_**Operation**_](classendstone_1_1AttributeModifier.md#enum-operation) _to be applied._
 ```C++
 enum endstone::AttributeModifier::Operation {
     Add,

@@ -78,6 +78,15 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
     * **class** [**endstone::Plugin**](classendstone_1_1Plugin.md) _Represents a_ [_**Plugin**_](classendstone_1_1Plugin.md) _._
 * **class** [**endstone::CommandMap**](classendstone_1_1CommandMap.md) _Represents a command map that manages all commands of the_ [_**Server**_](classendstone_1_1Server.md) _._
 * **struct** [**endstone::nbt::TagBase**](structendstone_1_1nbt_1_1TagBase.md)     
+    * **class** [**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md) 
+    * **class** [**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md) 
+    * **class** [**endstone::nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md) 
+    * **class** [**endstone::nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md) 
+    * **class** [**endstone::nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md) 
+    * **class** [**endstone::nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md) 
+    * **class** [**endstone::nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md) 
+    * **class** [**endstone::nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md) 
+    * **class** [**endstone::nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md) 
     * **class** [**endstone::CompoundTag**](classendstone_1_1CompoundTag.md) 
     * **class** [**endstone::ListTag**](classendstone_1_1ListTag.md) 
     * **class** [**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md) 
@@ -134,12 +143,12 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **class** [**endstone::TextInput**](classendstone_1_1TextInput.md) _Represents a text input field._ 
 * **class** [**endstone::Toggle**](classendstone_1_1Toggle.md) _Represents a toggle button with a label._ 
 * **class** [**endstone::Translatable**](classendstone_1_1Translatable.md) _Represents an object with a text representation that can be translated by the Minecraft client._ 
-* **class** [**endstone::UUID**](classendstone_1_1UUID.md) _Implementation of Universally Unique_ [_**Identifier**_](classendstone_1_1Identifier.md) _(_[_**UUID**_](classendstone_1_1UUID.md) _)_
+* **class** [**endstone::UUID**](classendstone_1_1UUID.md) _Implementation of Universally Unique_ [_**Identifier**_](classendstone_1_1Identifier.md) _(_[_**UUID**_](classendstone_1_1UUID.md) _)._
 * **class** [**endstone::Vector**](classendstone_1_1Vector.md) _Represents a 3-dimensional vector._ 
-* **class** [**endstone::nbt::Tag**](classendstone_1_1nbt_1_1Tag.md) 
-* **class** [**endstone::ItemStack::Impl**](classendstone_1_1ItemStack_1_1Impl.md) 
 * **class** [**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md) 
 * **class** [**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md) 
+* **class** [**endstone::nbt::Tag**](classendstone_1_1nbt_1_1Tag.md) 
+* **class** [**endstone::ItemStack::Impl**](classendstone_1_1ItemStack_1_1Impl.md) 
 * **struct** [**endstone::ColorFormat**](structendstone_1_1ColorFormat.md) _All supported color and format codes._ 
 * **struct** [**endstone::detail::JoinView**](structendstone_1_1detail_1_1JoinView.md) 
 * **struct** [**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md) 
@@ -195,7 +204,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
     * **class** [**endstone::Scoreboard**](classendstone_1_1Scoreboard.md) _Represents a scoreboard._ 
 * **class** **std::enable_shared_from_this< Service >**    
     * **class** [**endstone::Service**](classendstone_1_1Service.md) _Services represent a list of methods._ 
-* **class** **endstone::Func**    
+* **class** **Func...**    
     * **struct** [**endstone::overloaded**](structendstone_1_1overloaded.md) _Helper type for visitors._ 
 * **class** **std::formatter< std::string_view >**    
     * **struct** [**std::formatter&lt; T &gt;**](structstd_1_1formatter_3_01T_01_4.md) 

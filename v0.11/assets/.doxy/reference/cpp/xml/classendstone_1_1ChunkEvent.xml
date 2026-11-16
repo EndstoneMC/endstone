@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1ChunkEvent" kind="class" language="C++" prot="public">
     <compoundname>endstone::ChunkEvent</compoundname>
     <basecompoundref refid="classendstone_1_1DimensionEvent" prot="public" virt="non-virtual">endstone::DimensionEvent</basecompoundref>
@@ -41,7 +41,7 @@
         </inbodydescription>
         <location file="include/endstone/event/chunk/chunk_event.h" line="27" column="14" bodyfile="include/endstone/event/chunk/chunk_event.h" bodystart="27" bodyend="27"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ChunkEvent_1aa78f307af69ce820f4a75b74a4485f0c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1ChunkEvent_1aa78f307af69ce820f4a75b74a4485f0c" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Chunk" kindref="compound">Chunk</ref> &amp;</type>
         <definition>Chunk &amp; endstone::ChunkEvent::getChunk</definition>
         <argsstring>() const</argsstring>

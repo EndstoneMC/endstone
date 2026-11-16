@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1PlayerEmoteEvent" kind="class" language="C++" prot="public">
     <compoundname>endstone::PlayerEmoteEvent</compoundname>
     <basecompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; PlayerEvent &gt;</basecompoundref>
@@ -20,7 +20,7 @@
         <location file="include/endstone/event/player/player_emote_event.h" line="63" column="17" bodyfile="include/endstone/event/player/player_emote_event.h" bodystart="63" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PlayerEmoteEvent_1a21d26ae7e9b87b41ffe4defd24162dc6" prot="private" static="no" mutable="no">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::PlayerEmoteEvent::muted_</definition>
         <argsstring></argsstring>
         <name>muted_</name>
@@ -42,7 +42,7 @@
         <name>ENDSTONE_EVENT</name>
         <qualifiedname>endstone::PlayerEmoteEvent::ENDSTONE_EVENT</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1PlayerEmoteEvent" kindref="compound">PlayerEmoteEvent</ref></type>
+          <type>PlayerEmoteEvent</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -67,7 +67,7 @@
           <declname>emote_id</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <type>bool</type>
           <declname>muted</declname>
         </param>
         <briefdescription>
@@ -92,7 +92,7 @@
         </inbodydescription>
         <location file="include/endstone/event/player/player_emote_event.h" line="35" column="5"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PlayerEmoteEvent_1a3cdd5e160ee7f361ee4dd23cd94bf709" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PlayerEmoteEvent_1a3cdd5e160ee7f361ee4dd23cd94bf709" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
         <definition>std::string endstone::PlayerEmoteEvent::getEmoteId</definition>
         <argsstring>() const</argsstring>
@@ -110,8 +110,8 @@
         </inbodydescription>
         <location file="include/endstone/event/player/player_emote_event.h" line="42" column="18" bodyfile="include/endstone/event/player/player_emote_event.h" bodystart="42" bodyend="42"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PlayerEmoteEvent_1a44bd292db6e8d2326ac16126cadfcf1a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+      <memberdef kind="function" id="classendstone_1_1PlayerEmoteEvent_1a44bd292db6e8d2326ac16126cadfcf1a" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
         <definition>bool endstone::PlayerEmoteEvent::isMuted</definition>
         <argsstring>() const</argsstring>
         <name>isMuted</name>
@@ -130,13 +130,13 @@
         <location file="include/endstone/event/player/player_emote_event.h" line="51" column="11" bodyfile="include/endstone/event/player/player_emote_event.h" bodystart="51" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerEmoteEvent_1a8b3923ba2a6d0867d03ea8ec89ab299a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::PlayerEmoteEvent::setMuted</definition>
         <argsstring>(bool muted)</argsstring>
         <name>setMuted</name>
         <qualifiedname>endstone::PlayerEmoteEvent::setMuted</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <type>bool</type>
           <declname>muted</declname>
         </param>
         <briefdescription>

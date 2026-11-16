@@ -53,13 +53,13 @@ Inherited by the following classes: [endstone::ActorEvent](classendstone_1_1Acto
 
 | Type | Name |
 | ---: | :--- |
-|   | [**Event**](#function-event-13) ([**bool**](classendstone_1_1Identifier.md) async=[**false**](classendstone_1_1Identifier.md)) <br> |
-|   | [**Event**](#function-event-23) ([**const**](classendstone_1_1Identifier.md) [**Event**](classendstone_1_1Event.md) &) = delete<br> |
-|   | [**Event**](#function-event-33) ([**Event**](classendstone_1_1Event.md) &&) = default<br> |
+|   | [**Event**](#function-event-13) (bool async=false) <br> |
+|   | [**Event**](#function-event-23) (const Event &) = delete<br> |
+|   | [**Event**](#function-event-33) (Event &&) = default<br> |
 | virtual std::string | [**getEventName**](#function-geteventname) () const = 0<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**isAsynchronous**](#function-isasynchronous) () const<br> |
-|  [**Event**](classendstone_1_1Event.md) & | [**operator=**](#function-operator) ([**const**](classendstone_1_1Identifier.md) [**Event**](classendstone_1_1Event.md) &) = delete<br> |
-|  [**Event**](classendstone_1_1Event.md) & | [**operator=**](#function-operator_1) ([**Event**](classendstone_1_1Event.md) &&) = default<br> |
+|  bool | [**isAsynchronous**](#function-isasynchronous) () const<br> |
+|  Event & | [**operator=**](#function-operator) (const Event &) = delete<br> |
+|  Event & | [**operator=**](#function-operator_1) (Event &&) = default<br> |
 | virtual  | [**~Event**](#function-event) () = default<br> |
 
 
@@ -113,7 +113,7 @@ inline explicit endstone::Event::Event (
 
 ```C++
 endstone::Event::Event (
-    const  Event &
+    const Event &
 ) = delete
 ```
 
@@ -197,7 +197,7 @@ false by default, true if the event fires asynchronously
 
 ```C++
 Event & endstone::Event::operator= (
-    const  Event &
+    const Event &
 ) = delete
 ```
 

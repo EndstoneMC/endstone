@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../../assets/logo.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -2866,7 +2866,7 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#typedef-control"><strong>Control</strong></a>  <br></td>
 </tr>
 <tr>
-<td style="text-align: right;">typedef std::function&lt; <a href="../classendstone_1_1Identifier/"><strong>void</strong></a>(<a href="../classendstone_1_1Player/"><strong>Player</strong></a> *, <a href="../classendstone_1_1Identifier/"><strong>int</strong></a>)&gt;</td>
+<td style="text-align: right;">typedef std::function&lt; void(<a href="../classendstone_1_1Player/"><strong>Player</strong></a> *, int)&gt;</td>
 <td style="text-align: left;"><a href="#typedef-onsubmitcallback"><strong>OnSubmitCallback</strong></a>  <br></td>
 </tr>
 </tbody>
@@ -2882,7 +2882,7 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">typedef std::function&lt; <a href="../classendstone_1_1Identifier/"><strong>void</strong></a>(<a href="../classendstone_1_1Player/"><strong>Player</strong></a> *)&gt;</td>
+<td style="text-align: right;">typedef std::function&lt; void(<a href="../classendstone_1_1Player/"><strong>Player</strong></a> *)&gt;</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Form/#typedef-onclosecallback"><strong>OnCloseCallback</strong></a>  <br></td>
 </tr>
 </tbody>
@@ -2901,27 +2901,27 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-actionform"><strong>ActionForm</strong></a> () = default<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>ActionForm</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="#function-addbutton"><strong>addButton</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> Message &amp; text, <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::optional&lt; std::string &gt; &amp; icon=std::nullopt, Button::OnClickCallback on_click={}) <br><em>Adds a button to the form.</em></td>
+<td style="text-align: right;">ActionForm &amp;</td>
+<td style="text-align: left;"><a href="#function-addbutton"><strong>addButton</strong></a> (const Message &amp; text, const std::optional&lt; std::string &gt; &amp; icon=std::nullopt, Button::OnClickCallback on_click={}) <br><em>Adds a button to the form.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>ActionForm</strong></a> &amp;</td>
+<td style="text-align: right;">ActionForm &amp;</td>
 <td style="text-align: left;"><a href="#function-adddivider"><strong>addDivider</strong></a> () <br><em>Adds a divider to the form.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>ActionForm</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="#function-addheader"><strong>addHeader</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> Message &amp; text) <br><em>Adds a header to the form.</em></td>
+<td style="text-align: right;">ActionForm &amp;</td>
+<td style="text-align: left;"><a href="#function-addheader"><strong>addHeader</strong></a> (const Message &amp; text) <br><em>Adds a header to the form.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>ActionForm</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="#function-addlabel"><strong>addLabel</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> Message &amp; text) <br><em>Adds a label to the form.</em></td>
+<td style="text-align: right;">ActionForm &amp;</td>
+<td style="text-align: left;"><a href="#function-addlabel"><strong>addLabel</strong></a> (const Message &amp; text) <br><em>Adds a label to the form.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">Message</td>
 <td style="text-align: left;"><a href="#function-getcontent"><strong>getContent</strong></a> () const<br><em>Get the content of the form.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::vector&lt; Control &gt; &amp;</td>
+<td style="text-align: right;">const std::vector&lt; Control &gt; &amp;</td>
 <td style="text-align: left;"><a href="#function-getcontrols"><strong>getControls</strong></a> () const<br><em>Get the controls of the action form.</em></td>
 </tr>
 <tr>
@@ -2929,15 +2929,15 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-getonsubmit"><strong>getOnSubmit</strong></a> () const<br><em>Gets the on submit callback of the form.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>ActionForm</strong></a> &amp;</td>
+<td style="text-align: right;">ActionForm &amp;</td>
 <td style="text-align: left;"><a href="#function-setcontent"><strong>setContent</strong></a> (Message text) <br><em>Set the content of the form.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>ActionForm</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="#function-setcontrols"><strong>setControls</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::vector&lt; Control &gt; &amp; controls) <br><em>Set the controls of the action form.</em></td>
+<td style="text-align: right;">ActionForm &amp;</td>
+<td style="text-align: left;"><a href="#function-setcontrols"><strong>setControls</strong></a> (const std::vector&lt; Control &gt; &amp; controls) <br><em>Set the controls of the action form.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>ActionForm</strong></a> &amp;</td>
+<td style="text-align: right;">ActionForm &amp;</td>
 <td style="text-align: left;"><a href="#function-setonsubmit"><strong>setOnSubmit</strong></a> (OnSubmitCallback on_submit) <br><em>Sets the on submit callback of the form.</em></td>
 </tr>
 </tbody>
@@ -2965,11 +2965,11 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="../classendstone_1_1Form/#function-gettitle"><strong>getTitle</strong></a> () const<br><em>Gets the title of the form.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>T</strong></a> &amp;</td>
+<td style="text-align: right;">T &amp;</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Form/#function-setonclose"><strong>setOnClose</strong></a> (OnCloseCallback on_close) <br><em>Sets the on close callback of the form.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>T</strong></a> &amp;</td>
+<td style="text-align: right;">T &amp;</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Form/#function-settitle"><strong>setTitle</strong></a> (Message title) <br><em>Sets the title of the form.</em></td>
 </tr>
 </tbody>
@@ -3258,7 +3258,7 @@ For latest updates join the chat on
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "stable", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
     
   </body>

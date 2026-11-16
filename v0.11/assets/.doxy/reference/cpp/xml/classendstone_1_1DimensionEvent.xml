@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1DimensionEvent" kind="class" language="C++" prot="public">
     <compoundname>endstone::DimensionEvent</compoundname>
     <basecompoundref refid="classendstone_1_1LevelEvent" prot="public" virt="non-virtual">endstone::LevelEvent</basecompoundref>
@@ -40,7 +40,7 @@
         </inbodydescription>
         <location file="include/endstone/event/level/dimension_event.h" line="27" column="14" bodyfile="include/endstone/event/level/dimension_event.h" bodystart="27" bodyend="27"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1DimensionEvent_1ac6b765e364d4f1275335726bc8ba65f1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1DimensionEvent_1ac6b765e364d4f1275335726bc8ba65f1" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> &amp;</type>
         <definition>Dimension &amp; endstone::DimensionEvent::getDimension</definition>
         <argsstring>() const</argsstring>

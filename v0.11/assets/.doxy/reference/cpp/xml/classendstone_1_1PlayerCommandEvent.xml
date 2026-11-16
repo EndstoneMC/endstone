@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1PlayerCommandEvent" kind="class" language="C++" prot="public">
     <compoundname>endstone::PlayerCommandEvent</compoundname>
     <basecompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; PlayerEvent &gt;</basecompoundref>
@@ -28,7 +28,7 @@
         <name>ENDSTONE_EVENT</name>
         <qualifiedname>endstone::PlayerCommandEvent::ENDSTONE_EVENT</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1PlayerCommandEvent" kindref="compound">PlayerCommandEvent</ref></type>
+          <type>PlayerCommandEvent</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -74,7 +74,7 @@
         </inbodydescription>
         <location file="include/endstone/event/player/player_command_event.h" line="34" column="5"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PlayerCommandEvent_1a4096e979a5e327ddecdd9328f087d57b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PlayerCommandEvent_1a4096e979a5e327ddecdd9328f087d57b" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
         <definition>std::string endstone::PlayerCommandEvent::getCommand</definition>
         <argsstring>() const</argsstring>
@@ -93,7 +93,7 @@
         <location file="include/endstone/event/player/player_command_event.h" line="41" column="18" bodyfile="include/endstone/event/player/player_command_event.h" bodystart="41" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerCommandEvent_1a6d2c4a174ce786fc8a1cd6cd8f9ca7c5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::PlayerCommandEvent::setCommand</definition>
         <argsstring>(std::string command)</argsstring>
         <name>setCommand</name>

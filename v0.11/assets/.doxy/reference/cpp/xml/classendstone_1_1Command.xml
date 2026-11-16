@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1Command" kind="class" language="C++" prot="public">
     <compoundname>endstone::Command</compoundname>
     <derivedcompoundref refid="classendstone_1_1PluginCommand" prot="public" virt="non-virtual">endstone::PluginCommand</derivedcompoundref>
@@ -76,12 +76,12 @@
         <location file="include/endstone/command/command.h" line="252" column="17" bodyfile="include/endstone/command/command.h" bodystart="252" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Command_1a5a849b3fce28dcd10f8f0944e54c3580" prot="private" static="no" mutable="no">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> *</type>
+        <type>const <ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> *</type>
         <definition>const CommandMap* endstone::Command::command_map_</definition>
         <argsstring></argsstring>
         <name>command_map_</name>
         <qualifiedname>endstone::Command::command_map_</qualifiedname>
-        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">nullptr</ref></initializer>
+        <initializer>= nullptr</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -144,8 +144,8 @@
         </inbodydescription>
         <location file="include/endstone/command/command.h" line="44" column="13"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Command_1a983f63a4d9460dcc7a952eabd7c46737" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+      <memberdef kind="function" id="classendstone_1_1Command_1a983f63a4d9460dcc7a952eabd7c46737" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
         <definition>virtual bool endstone::Command::execute</definition>
         <argsstring>(CommandSender &amp;sender, const std::vector&lt; std::string &gt; &amp;args) const</argsstring>
         <name>execute</name>
@@ -156,7 +156,7 @@
           <declname>sender</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::vector&lt; std::string &gt; &amp;</type>
+          <type>const std::vector&lt; std::string &gt; &amp;</type>
           <declname>args</declname>
         </param>
         <briefdescription>
@@ -188,7 +188,7 @@
         </inbodydescription>
         <location file="include/endstone/command/command.h" line="53" column="19" bodyfile="include/endstone/command/command.h" bodystart="53" bodyend="56"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Command_1ae7306437f7a829db83548ca11288b298" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1Command_1ae7306437f7a829db83548ca11288b298" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
         <definition>std::string endstone::Command::getName</definition>
         <argsstring>() const</argsstring>
@@ -207,7 +207,7 @@
         <location file="include/endstone/command/command.h" line="63" column="18" bodyfile="include/endstone/command/command.h" bodystart="63" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Command_1a66160b5ff3d7efbc62e93e122d699776" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::Command::setName</definition>
         <argsstring>(std::string name)</argsstring>
         <name>setName</name>
@@ -236,7 +236,7 @@
         </inbodydescription>
         <location file="include/endstone/command/command.h" line="72" column="10" bodyfile="include/endstone/command/command.h" bodystart="72" bodyend="78"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Command_1a2f860b42aae19582ecc4a2d74ebc8cca" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1Command_1a2f860b42aae19582ecc4a2d74ebc8cca" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
         <definition>std::string endstone::Command::getDescription</definition>
         <argsstring>() const</argsstring>
@@ -255,7 +255,7 @@
         <location file="include/endstone/command/command.h" line="85" column="18" bodyfile="include/endstone/command/command.h" bodystart="85" bodyend="85"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Command_1a1dff1fa7383c76451f28d2c131d6c77c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::Command::setDescription</definition>
         <argsstring>(std::string description)</argsstring>
         <name>setDescription</name>
@@ -283,7 +283,7 @@
         </inbodydescription>
         <location file="include/endstone/command/command.h" line="92" column="10" bodyfile="include/endstone/command/command.h" bodystart="92" bodyend="97"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Command_1a15380c3310b2a8f58b1ce3e227ddcf6d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1Command_1a15380c3310b2a8f58b1ce3e227ddcf6d" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; std::string &gt;</type>
         <definition>std::vector&lt; std::string &gt; endstone::Command::getAliases</definition>
         <argsstring>() const</argsstring>
@@ -309,7 +309,7 @@
             <defname>Alias</defname>
           </param>
         </templateparamlist>
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::Command::setAliases</definition>
         <argsstring>(Alias... aliases)</argsstring>
         <name>setAliases</name>
@@ -337,7 +337,7 @@
         </inbodydescription>
         <location file="include/endstone/command/command.h" line="112" column="10" bodyfile="include/endstone/command/command.h" bodystart="112" bodyend="123"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Command_1a43b745e674aed0f0cfc152bb1a99c2b0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1Command_1a43b745e674aed0f0cfc152bb1a99c2b0" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; std::string &gt;</type>
         <definition>std::vector&lt; std::string &gt; endstone::Command::getUsages</definition>
         <argsstring>() const</argsstring>
@@ -363,7 +363,7 @@
             <defname>Usage</defname>
           </param>
         </templateparamlist>
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::Command::setUsages</definition>
         <argsstring>(Usage... usages)</argsstring>
         <name>setUsages</name>
@@ -391,7 +391,7 @@
         </inbodydescription>
         <location file="include/endstone/command/command.h" line="138" column="10" bodyfile="include/endstone/command/command.h" bodystart="138" bodyend="147"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Command_1a77de470be4805521e2f8887bbc873152" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1Command_1a77de470be4805521e2f8887bbc873152" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; std::string &gt;</type>
         <definition>std::vector&lt; std::string &gt; endstone::Command::getPermissions</definition>
         <argsstring>() const</argsstring>
@@ -417,7 +417,7 @@
             <defname>Permission</defname>
           </param>
         </templateparamlist>
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::Command::setPermissions</definition>
         <argsstring>(Permission... permissions)</argsstring>
         <name>setPermissions</name>
@@ -445,14 +445,14 @@
         </inbodydescription>
         <location file="include/endstone/command/command.h" line="162" column="10" bodyfile="include/endstone/command/command.h" bodystart="162" bodyend="165"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Command_1a3d6b00319efa8c4e8bc51227532577d6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+      <memberdef kind="function" id="classendstone_1_1Command_1a3d6b00319efa8c4e8bc51227532577d6" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
         <definition>bool endstone::Command::testPermission</definition>
         <argsstring>(const CommandSender &amp;target) const</argsstring>
         <name>testPermission</name>
         <qualifiedname>endstone::Command::testPermission</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> &amp;</type>
           <declname>target</declname>
         </param>
         <briefdescription>
@@ -476,14 +476,14 @@
         </inbodydescription>
         <location file="include/endstone/command/command.h" line="174" column="11" bodyfile="include/endstone/command/command.h" bodystart="174" bodyend="182"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Command_1a72a27372e25345d4efe9f421520fc44b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+      <memberdef kind="function" id="classendstone_1_1Command_1a72a27372e25345d4efe9f421520fc44b" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
         <definition>bool endstone::Command::testPermissionSilently</definition>
         <argsstring>(const CommandSender &amp;target) const</argsstring>
         <name>testPermissionSilently</name>
         <qualifiedname>endstone::Command::testPermissionSilently</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> &amp;</type>
           <declname>target</declname>
         </param>
         <briefdescription>
@@ -508,13 +508,13 @@
         <location file="include/endstone/command/command.h" line="191" column="11" bodyfile="include/endstone/command/command.h" bodystart="191" bodyend="199"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Command_1a694f2bdd19a6381000fad63fbc3d6ad0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::Command::registerTo</definition>
         <argsstring>(const CommandMap &amp;command_map)</argsstring>
         <name>registerTo</name>
         <qualifiedname>endstone::Command::registerTo</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> &amp;</type>
           <declname>command_map</declname>
         </param>
         <briefdescription>
@@ -539,13 +539,13 @@
         <location file="include/endstone/command/command.h" line="207" column="10" bodyfile="include/endstone/command/command.h" bodystart="207" bodyend="215"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Command_1af0220a368428afc83b15d638e40426fd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::Command::unregisterFrom</definition>
         <argsstring>(const CommandMap &amp;command_map)</argsstring>
         <name>unregisterFrom</name>
         <qualifiedname>endstone::Command::unregisterFrom</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> &amp;</type>
           <declname>command_map</declname>
         </param>
         <briefdescription>
@@ -569,8 +569,8 @@
         </inbodydescription>
         <location file="include/endstone/command/command.h" line="223" column="10" bodyfile="include/endstone/command/command.h" bodystart="223" bodyend="231"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Command_1a4b4bfe6350f3deae258fc5fd8e344fbf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+      <memberdef kind="function" id="classendstone_1_1Command_1a4b4bfe6350f3deae258fc5fd8e344fbf" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
         <definition>bool endstone::Command::isRegistered</definition>
         <argsstring>() const</argsstring>
         <name>isRegistered</name>
@@ -587,7 +587,7 @@
         </inbodydescription>
         <location file="include/endstone/command/command.h" line="238" column="11" bodyfile="include/endstone/command/command.h" bodystart="238" bodyend="238"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Command_1ae3f04d6fbd6fe48c29c1b2951f77a5c0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="classendstone_1_1Command_1ae3f04d6fbd6fe48c29c1b2951f77a5c0" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="classendstone_1_1PluginCommand" kindref="compound">PluginCommand</ref> *</type>
         <definition>virtual PluginCommand * endstone::Command::asPluginCommand</definition>
         <argsstring>() const</argsstring>
@@ -604,14 +604,14 @@
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-func">
-      <memberdef kind="function" id="classendstone_1_1Command_1adac361e9cc0668151e63edebe173a8af" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+      <memberdef kind="function" id="classendstone_1_1Command_1adac361e9cc0668151e63edebe173a8af" prot="private" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
         <definition>bool endstone::Command::allowChangesFrom</definition>
         <argsstring>(const CommandMap &amp;command_map) const</argsstring>
         <name>allowChangesFrom</name>
         <qualifiedname>endstone::Command::allowChangesFrom</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> &amp;</type>
           <declname>command_map</declname>
         </param>
         <briefdescription>

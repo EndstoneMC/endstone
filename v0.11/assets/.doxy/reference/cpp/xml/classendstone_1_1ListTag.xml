@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1ListTag" kind="class" language="C++" prot="public">
     <compoundname>endstone::ListTag</compoundname>
     <basecompoundref refid="structendstone_1_1nbt_1_1TagBase" prot="public" virt="non-virtual">endstone::nbt::TagBase</basecompoundref>
@@ -33,7 +33,7 @@
         <location file="include/endstone/nbt/list.h" line="34" column="5" bodyfile="include/endstone/nbt/list.h" bodystart="34" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="classendstone_1_1ListTag_1ad936cfccfe69362a70fc4f421d996940" prot="public" static="no">
-        <type>std::vector&lt; <ref refid="classendstone_1_1nbt_1_1Tag" kindref="compound">value_type</ref> &gt;</type>
+        <type>std::vector&lt; value_type &gt;</type>
         <definition>using endstone::ListTag::container_type =  std::vector&lt;value_type&gt;</definition>
         <argsstring></argsstring>
         <name>container_type</name>
@@ -124,7 +124,7 @@
       <memberdef kind="function" id="classendstone_1_1ListTag_1ab51afc0e58b806561975e6deb422d4b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type><ref refid="classendstone_1_1Identifier" kindref="compound">typename</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
+            <type>typename T</type>
           </param>
         </templateparamlist>
         <type></type>
@@ -133,10 +133,10 @@
         <name>ListTag</name>
         <qualifiedname>endstone::ListTag::ListTag</qualifiedname>
         <param>
-          <type>std::initializer_list&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> &gt;</type>
+          <type>std::initializer_list&lt; T &gt;</type>
           <declname>init</declname>
         </param>
-    <requiresclause>(!std::is_same_v&lt;std::remove_cvref_t&lt;T&gt;, nbt::Tag&gt;)    </requiresclause>
+    <requiresclause>(!std::is_same_v&lt;std::remove_cvref_t&lt;T&gt;, <ref refid="classendstone_1_1nbt_1_1Tag" kindref="compound">nbt::Tag</ref>&gt;)    </requiresclause>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -145,8 +145,8 @@
         </inbodydescription>
         <location file="include/endstone/nbt/list.h" line="43" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="291" bodyend="307"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ListTag_1a718549f74978bb7e5d9025d6043571c9" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+      <memberdef kind="function" id="classendstone_1_1ListTag_1a718549f74978bb7e5d9025d6043571c9" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
         <definition>bool endstone::ListTag::empty</definition>
         <argsstring>() const noexcept</argsstring>
         <name>empty</name>
@@ -159,7 +159,7 @@
         </inbodydescription>
         <location file="include/endstone/nbt/list.h" line="46" column="11" bodyfile="include/endstone/nbt/tag.h" bodystart="309" bodyend="312"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ListTag_1ad10dbe3b2cde91732e8b1f31e80bc943" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1ListTag_1ad10dbe3b2cde91732e8b1f31e80bc943" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>size_type</type>
         <definition>ListTag::size_type endstone::ListTag::size</definition>
         <argsstring>() const noexcept</argsstring>
@@ -173,7 +173,7 @@
         </inbodydescription>
         <location file="include/endstone/nbt/list.h" line="47" column="16" bodyfile="include/endstone/nbt/tag.h" bodystart="314" bodyend="317"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ListTag_1a172692170a553c3b948411136d95af93" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1ListTag_1a172692170a553c3b948411136d95af93" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>nbt::Type</type>
         <definition>nbt::Type endstone::ListTag::type</definition>
         <argsstring>() const noexcept</argsstring>
@@ -188,7 +188,7 @@
         <location file="include/endstone/nbt/list.h" line="50" column="16" bodyfile="include/endstone/nbt/tag.h" bodystart="319" bodyend="322"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ListTag_1a750393fbdd39bfe89f3c165dbf416d1f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1nbt_1_1Tag" kindref="compound">value_type</ref> &amp;</type>
+        <type>value_type &amp;</type>
         <definition>ListTag::value_type &amp; endstone::ListTag::at</definition>
         <argsstring>(size_type i)</argsstring>
         <name>at</name>
@@ -205,8 +205,8 @@
         </inbodydescription>
         <location file="include/endstone/nbt/list.h" line="53" column="16" bodyfile="include/endstone/nbt/tag.h" bodystart="324" bodyend="327"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ListTag_1a2973f22418924532f109235002c1e5ea" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1nbt_1_1Tag" kindref="compound">value_type</ref> &amp;</type>
+      <memberdef kind="function" id="classendstone_1_1ListTag_1a2973f22418924532f109235002c1e5ea" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const value_type &amp;</type>
         <definition>const ListTag::value_type &amp; endstone::ListTag::at</definition>
         <argsstring>(size_type i) const</argsstring>
         <name>at</name>
@@ -224,7 +224,7 @@
         <location file="include/endstone/nbt/list.h" line="54" column="23" bodyfile="include/endstone/nbt/tag.h" bodystart="329" bodyend="332"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ListTag_1abf565c486b9c39788e243eab4514a5af" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1nbt_1_1Tag" kindref="compound">value_type</ref> &amp;</type>
+        <type>value_type &amp;</type>
         <definition>ListTag::value_type &amp; endstone::ListTag::operator[]</definition>
         <argsstring>(size_type i)</argsstring>
         <name>operator[]</name>
@@ -242,7 +242,7 @@
         <location file="include/endstone/nbt/list.h" line="55" column="16" bodyfile="include/endstone/nbt/tag.h" bodystart="334" bodyend="337"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ListTag_1a239a79da08935a2fffcc20b2b17d740b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1nbt_1_1Tag" kindref="compound">value_type</ref> &amp;</type>
+        <type>const value_type &amp;</type>
         <definition>const ListTag::value_type &amp; endstone::ListTag::operator[]</definition>
         <argsstring>(size_type i) const</argsstring>
         <name>operator[]</name>
@@ -260,7 +260,7 @@
         <location file="include/endstone/nbt/list.h" line="56" column="22" bodyfile="include/endstone/nbt/tag.h" bodystart="339" bodyend="342"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ListTag_1a3dd24f1adff324f779b0aedb160b9db8" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::ListTag::clear</definition>
         <argsstring>() noexcept</argsstring>
         <name>clear</name>
@@ -274,13 +274,13 @@
         <location file="include/endstone/nbt/list.h" line="59" column="10" bodyfile="include/endstone/nbt/tag.h" bodystart="344" bodyend="348"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ListTag_1a19776e479a624c6d534cf964ff2e3911" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::ListTag::push_back</definition>
         <argsstring>(const value_type &amp;v)</argsstring>
         <name>push_back</name>
         <qualifiedname>endstone::ListTag::push_back</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1nbt_1_1Tag" kindref="compound">value_type</ref> &amp;</type>
+          <type>const value_type &amp;</type>
           <declname>v</declname>
         </param>
         <briefdescription>
@@ -292,13 +292,13 @@
         <location file="include/endstone/nbt/list.h" line="60" column="10"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ListTag_1a11c4efdada91ac1ebbca5bbbb7f7e369" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::ListTag::push_back</definition>
         <argsstring>(value_type &amp;&amp;v)</argsstring>
         <name>push_back</name>
         <qualifiedname>endstone::ListTag::push_back</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1nbt_1_1Tag" kindref="compound">value_type</ref> &amp;&amp;</type>
+          <type>value_type &amp;&amp;</type>
           <declname>v</declname>
         </param>
         <briefdescription>
@@ -317,13 +317,13 @@
             <defname>Args</defname>
           </param>
         </templateparamlist>
-        <type><ref refid="classendstone_1_1nbt_1_1Tag" kindref="compound">value_type</ref> &amp;</type>
+        <type>value_type &amp;</type>
         <definition>ListTag::value_type &amp; endstone::ListTag::emplace_back</definition>
         <argsstring>(Args &amp;&amp;...args)</argsstring>
         <name>emplace_back</name>
         <qualifiedname>endstone::ListTag::emplace_back</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">Args</ref> &amp;&amp;...</type>
+          <type>Args &amp;&amp;...</type>
           <declname>args</declname>
         </param>
         <briefdescription>
@@ -402,7 +402,7 @@
         </inbodydescription>
         <location file="include/endstone/nbt/list.h" line="70" column="14" bodyfile="include/endstone/nbt/tag.h" bodystart="383" bodyend="386"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ListTag_1af0e73a8940ff09517d9c38293d0514ea" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1ListTag_1af0e73a8940ff09517d9c38293d0514ea" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>const_iterator</type>
         <definition>ListTag::const_iterator endstone::ListTag::begin</definition>
         <argsstring>() const noexcept</argsstring>
@@ -416,7 +416,7 @@
         </inbodydescription>
         <location file="include/endstone/nbt/list.h" line="71" column="21" bodyfile="include/endstone/nbt/tag.h" bodystart="388" bodyend="391"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ListTag_1a9cfe741a58abf0da27a5e0a53678bae6" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1ListTag_1a9cfe741a58abf0da27a5e0a53678bae6" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>const_iterator</type>
         <definition>ListTag::const_iterator endstone::ListTag::end</definition>
         <argsstring>() const noexcept</argsstring>
@@ -430,7 +430,7 @@
         </inbodydescription>
         <location file="include/endstone/nbt/list.h" line="72" column="21" bodyfile="include/endstone/nbt/tag.h" bodystart="393" bodyend="396"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ListTag_1a3fc5e5990361b7f0a50643eb347d828b" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1ListTag_1a3fc5e5990361b7f0a50643eb347d828b" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>const_iterator</type>
         <definition>ListTag::const_iterator endstone::ListTag::cbegin</definition>
         <argsstring>() const noexcept</argsstring>
@@ -444,7 +444,7 @@
         </inbodydescription>
         <location file="include/endstone/nbt/list.h" line="73" column="21" bodyfile="include/endstone/nbt/tag.h" bodystart="398" bodyend="401"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ListTag_1aad8be59fbf04a12cc7248dbfdb390add" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1ListTag_1aad8be59fbf04a12cc7248dbfdb390add" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>const_iterator</type>
         <definition>ListTag::const_iterator endstone::ListTag::cend</definition>
         <argsstring>() const noexcept</argsstring>
@@ -460,18 +460,18 @@
       </memberdef>
     </sectiondef>
     <sectiondef kind="friend">
-      <memberdef kind="friend" id="classendstone_1_1ListTag_1a38aa073ef00c121ca8152ff472e1cf01" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+      <memberdef kind="friend" id="classendstone_1_1ListTag_1a2e2b2758b0d495037da77a4b2a036f05" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
         <definition>bool operator==</definition>
-        <argsstring>(const ListTag &amp;a, const ListTag &amp;b) noexcept</argsstring>
+        <argsstring>(const ListTag &amp;a, const ListTag &amp;b)</argsstring>
         <name>operator==</name>
         <qualifiedname>endstone::ListTag::operator==</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1ListTag" kindref="compound">ListTag</ref> &amp;</type>
+          <type>const ListTag &amp;</type>
           <declname>a</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1ListTag" kindref="compound">ListTag</ref> &amp;</type>
+          <type>const ListTag &amp;</type>
           <declname>b</declname>
         </param>
         <briefdescription>
@@ -482,18 +482,18 @@
         </inbodydescription>
         <location file="include/endstone/nbt/list.h" line="77" column="17" bodyfile="include/endstone/nbt/tag.h" bodystart="408" bodyend="411"/>
       </memberdef>
-      <memberdef kind="friend" id="classendstone_1_1ListTag_1a2d8db30e5002fde2c145da8e81a1edaa" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+      <memberdef kind="friend" id="classendstone_1_1ListTag_1a1218651526e2c3820c23378ea2824990" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
         <definition>bool operator!=</definition>
-        <argsstring>(const ListTag &amp;a, const ListTag &amp;b) noexcept</argsstring>
+        <argsstring>(const ListTag &amp;a, const ListTag &amp;b)</argsstring>
         <name>operator!=</name>
         <qualifiedname>endstone::ListTag::operator!=</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1ListTag" kindref="compound">ListTag</ref> &amp;</type>
+          <type>const ListTag &amp;</type>
           <declname>a</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1ListTag" kindref="compound">ListTag</ref> &amp;</type>
+          <type>const ListTag &amp;</type>
           <declname>b</declname>
         </param>
         <briefdescription>
@@ -554,8 +554,8 @@
       <member refid="classendstone_1_1ListTag_1ac6a4b29aa6e058f369795e7ab22b10c6" prot="public" virt="non-virtual"><scope>endstone::ListTag</scope><name>iterator</name></member>
       <member refid="classendstone_1_1ListTag_1a867d1c77ca82dde7720473979323b542" prot="public" virt="non-virtual"><scope>endstone::ListTag</scope><name>ListTag</name></member>
       <member refid="classendstone_1_1ListTag_1ab51afc0e58b806561975e6deb422d4b3" prot="public" virt="non-virtual"><scope>endstone::ListTag</scope><name>ListTag</name></member>
-      <member refid="classendstone_1_1ListTag_1a2d8db30e5002fde2c145da8e81a1edaa" prot="public" virt="non-virtual"><scope>endstone::ListTag</scope><name>operator!=</name></member>
-      <member refid="classendstone_1_1ListTag_1a38aa073ef00c121ca8152ff472e1cf01" prot="public" virt="non-virtual"><scope>endstone::ListTag</scope><name>operator==</name></member>
+      <member refid="classendstone_1_1ListTag_1a1218651526e2c3820c23378ea2824990" prot="public" virt="non-virtual"><scope>endstone::ListTag</scope><name>operator!=</name></member>
+      <member refid="classendstone_1_1ListTag_1a2e2b2758b0d495037da77a4b2a036f05" prot="public" virt="non-virtual"><scope>endstone::ListTag</scope><name>operator==</name></member>
       <member refid="classendstone_1_1ListTag_1abf565c486b9c39788e243eab4514a5af" prot="public" virt="non-virtual"><scope>endstone::ListTag</scope><name>operator[]</name></member>
       <member refid="classendstone_1_1ListTag_1a239a79da08935a2fffcc20b2b17d740b" prot="public" virt="non-virtual"><scope>endstone::ListTag</scope><name>operator[]</name></member>
       <member refid="classendstone_1_1ListTag_1a19776e479a624c6d534cf964ff2e3911" prot="public" virt="non-virtual"><scope>endstone::ListTag</scope><name>push_back</name></member>

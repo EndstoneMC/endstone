@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1PlayerBedEnterEvent" kind="class" language="C++" prot="public">
     <compoundname>endstone::PlayerBedEnterEvent</compoundname>
     <basecompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; PlayerEvent &gt;</basecompoundref>
@@ -43,16 +43,57 @@
         </inbodydescription>
         <location file="include/endstone/event/player/player_bed_enter_event.h" line="30" column="14" bodyfile="include/endstone/event/player/player_bed_enter_event.h" bodystart="30" bodyend="30"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PlayerBedEnterEvent_1a5e4bf0d94da73a970c346f33e9cae394" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PlayerBedEnterEvent_1a5e4bf0d94da73a970c346f33e9cae394" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &amp;</type>
         <definition>Block &amp; endstone::PlayerBedEnterEvent::getBed</definition>
         <argsstring>() const</argsstring>
         <name>getBed</name>
         <qualifiedname>endstone::PlayerBedEnterEvent::getBed</qualifiedname>
         <briefdescription>
-<para>Returns the bed block involved in this event. </para>
+<para>Represents the default possible outcomes of this event. </para>
         </briefdescription>
         <detaileddescription>
+<para>The player will enter the bed. The dimension doesn&apos;t allow sleeping or saving the spawn point (eg,Nether, The End). Entering the bed is prevented due to it not being night nor thundering currently. Entering the bed is prevented due to the player being too far away. Entering the bed is prevented due to there being monsters nearby. Entering the bed is prevented due to there being some other problem.</para>
+<para>This describes the default outcome of this event.</para>
+<para><simplesect kind="return"><para>The bed enter result representing the default outcome of this event</para>
+</simplesect>
+This controls the action to take with the bed that was clicked on.</para>
+<para><simplesect kind="return"><para>the action to take with the interacted bed</para>
+</simplesect>
+Sets the action to take with the interacted bed.</para>
+<para><itemizedlist>
+<listitem><para>Result::Allow will result in the player sleeping, regardless of the default outcome described by getBedEnterResult().</para>
+</listitem><listitem><para>Result::Deny will prevent the player from sleeping. This has the same effect as canceling the event</para>
+</listitem><listitem><para>Result::Default will result in the outcome described by getBedEnterResult().</para>
+</listitem></itemizedlist>
+</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>use_bed</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the action to take with the interacted bed</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Gets the cancellation state of this event. Set to true if you want to prevent the player from sleeping.</para>
+<para><simplesect kind="note"><para>Canceling the event has the same effect as setting useBed() to Result::Deny.</para>
+</simplesect>
+<simplesect kind="return"><para>boolean cancellation state <verbatim>      @brief Sets the cancellation state of this event. A canceled event will not be executed in the server, but
+</verbatim> will still pass to other plugins.</para>
+</simplesect>
+<simplesect kind="note"><para>Canceling this event will prevent use of the bed.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cancel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>true if you wish to cancel this event</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Returns the bed block involved in this event.</para>
 <para><simplesect kind="return"><para>The bed block involved in this event. </para>
 </simplesect>
 </para>

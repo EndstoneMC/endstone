@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../../assets/logo.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -2685,7 +2685,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Block/"><strong>Block</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="#function-getbed"><strong>getBed</strong></a> () const<br><em>Returns the bed block involved in this event.</em></td>
+<td style="text-align: left;"><a href="#function-getbed"><strong>getBed</strong></a> () const<br><em>Represents the default possible outcomes of this event.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2700,16 +2700,16 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
+<td style="text-align: right;">virtual void</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-cancel"><strong>cancel</strong></a> () <br><em>Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: right;">virtual bool</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-iscancelled"><strong>isCancelled</strong></a> () override const<br><em>Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-setcancelled"><strong>setCancelled</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> cancel) override<br><em>Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.</em></td>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-setcancelled"><strong>setCancelled</strong></a> (bool cancel) override<br><em>Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2724,16 +2724,16 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
+<td style="text-align: right;">virtual void</td>
 <td style="text-align: left;"><a href="../classendstone_1_1ICancellable/#function-cancel"><strong>cancel</strong></a> () = 0<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: right;">virtual bool</td>
 <td style="text-align: left;"><a href="../classendstone_1_1ICancellable/#function-iscancelled"><strong>isCancelled</strong></a> () const = 0<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1ICancellable/#function-setcancelled"><strong>setCancelled</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> cancel) = 0<br></td>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="../classendstone_1_1ICancellable/#function-setcancelled"><strong>setCancelled</strong></a> (bool cancel) = 0<br></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual</td>
@@ -2751,9 +2751,38 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-getbed">function getBed<a class="headerlink" href="#function-getbed" title="Permanent link">&para;</a></h3>
-<p><em>Returns the bed block involved in this event.</em> 
+<p><em>Represents the default possible outcomes of this event.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Block</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerBedEnterEvent</span><span class="o">::</span><span class="n">getBed</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
+<p>The player will enter the bed. The dimension doesn't allow sleeping or saving the spawn point (eg,Nether, The End). Entering the bed is prevented due to it not being night nor thundering currently. Entering the bed is prevented due to the player being too far away. Entering the bed is prevented due to there being monsters nearby. Entering the bed is prevented due to there being some other problem.</p>
+<p>This describes the default outcome of this event.</p>
+<p><strong>Returns:</strong></p>
+<p>The bed enter result representing the default outcome of this event</p>
+<p>This controls the action to take with the bed that was clicked on.</p>
+<p><strong>Returns:</strong></p>
+<p>the action to take with the interacted bed</p>
+<p>Sets the action to take with the interacted bed.</p>
+<ul>
+<li>Result::Allow will result in the player sleeping, regardless of the default outcome described by getBedEnterResult().</li>
+<li>Result::Deny will prevent the player from sleeping. This has the same effect as canceling the event</li>
+<li>Result::Default will result in the outcome described by getBedEnterResult().</li>
+</ul>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>use_bed</code> the action to take with the interacted bed</li>
+</ul>
+<p>Gets the cancellation state of this event. Set to true if you want to prevent the player from sleeping.</p>
+<p><strong>Note:</strong></p>
+<p>Canceling the event has the same effect as setting useBed() to Result::Deny.</p>
+<p><strong>Returns:</strong></p>
+<p>boolean cancellation state  will still pass to other plugins.</p>
+<p><strong>Note:</strong></p>
+<p>Canceling this event will prevent use of the bed.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>cancel</code> true if you wish to cancel this event</li>
+</ul>
+<p>Returns the bed block involved in this event.</p>
 <p><strong>Returns:</strong></p>
 <p>The bed block involved in this event. </p>
 <hr>
@@ -2886,7 +2915,7 @@ For latest updates join the chat on
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "stable", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
     
   </body>

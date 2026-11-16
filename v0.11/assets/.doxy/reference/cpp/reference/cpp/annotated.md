@@ -120,7 +120,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**PlayerDropItemEvent**](classendstone_1_1PlayerDropItemEvent.md) _Called when a player drops an item from their inventory._     
     * **class** [**PlayerEmoteEvent**](classendstone_1_1PlayerEmoteEvent.md) _Called when a player uses an emote._     
     * **class** [**PlayerEvent**](classendstone_1_1PlayerEvent.md) _Represents a player related event._     
-    * **class** [**PlayerGameModeChangeEvent**](classendstone_1_1PlayerGameModeChangeEvent.md) _Called when the GameMode of the player is changed._     
+    * **class** [**PlayerGameModeChangeEvent**](classendstone_1_1PlayerGameModeChangeEvent.md) _Called when the_ [_**GameMode**_](namespaceendstone.md#enum-gamemode) _of the player is changed._    
     * **class** [**PlayerInteractActorEvent**](classendstone_1_1PlayerInteractActorEvent.md) _Represents an event that is called when a player right-clicks an actor._     
     * **class** [**PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md) _Represents an event that is called when a player interacts with an object or air._     
     * **class** [**PlayerInventory**](classendstone_1_1PlayerInventory.md) _Interface to the inventory of a_ [_**Player**_](classendstone_1_1Player.md) _, including the four armor slots and any extra slots._    
@@ -169,25 +169,25 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md) _Called when the thunder state in a world is changing._     
     * **class** [**Toggle**](classendstone_1_1Toggle.md) _Represents a toggle button with a label._     
     * **class** [**Translatable**](classendstone_1_1Translatable.md) _Represents an object with a text representation that can be translated by the Minecraft client._     
-    * **class** [**UUID**](classendstone_1_1UUID.md) _Implementation of Universally Unique_ [_**Identifier**_](classendstone_1_1Identifier.md) _(_[_**UUID**_](classendstone_1_1UUID.md) _)_    
+    * **class** [**UUID**](classendstone_1_1UUID.md) _Implementation of Universally Unique_ [_**Identifier**_](classendstone_1_1Identifier.md) _(_[_**UUID**_](classendstone_1_1UUID.md) _)._    
     * **class** [**Vector**](classendstone_1_1Vector.md) _Represents a 3-dimensional vector._     
     * **class** [**WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md) _Called when the weather (rain) state in a world is changing._     
     * **class** [**WeatherEvent**](classendstone_1_1WeatherEvent.md) _Represents a Weather-related event._     
     * **class** [**WritableBookMeta**](classendstone_1_1WritableBookMeta.md) _Represents the meta for a writable book that can have pages._     
     * **namespace** [**core**](namespaceendstone_1_1core.md) 
     * **namespace** [**detail**](namespaceendstone_1_1detail.md)     
+        * **class** [**CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md)     
         * **struct** [**JoinView**](structendstone_1_1detail_1_1JoinView.md)     
+        * **class** [**PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md)     
+        * **struct** [**PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md)     
     * **namespace** [**nbt**](namespaceendstone_1_1nbt.md)     
         * **class** [**ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md)     
         * **class** [**Tag**](classendstone_1_1nbt_1_1Tag.md)     
         * **struct** [**TagBase**](structendstone_1_1nbt_1_1TagBase.md) 
         * **class** [**ValueTag**](classendstone_1_1nbt_1_1ValueTag.md)     
+        * **struct** [**escape\_view**](structendstone_1_1nbt_1_1escape__view.md)     
     * **struct** [**overloaded**](structendstone_1_1overloaded.md) _Helper type for visitors._ 
 * **class** [**Impl**](classendstone_1_1ItemStack_1_1Impl.md)     
-* **class** [**CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md)     
-* **class** [**PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md)     
-* **struct** [**PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md)     
-* **struct** [**escape\_view**](structendstone_1_1nbt_1_1escape__view.md)     
 * **namespace** [**std**](namespacestd.md)     
     * **struct** [**formatter&lt; T &gt;**](structstd_1_1formatter_3_01T_01_4.md)     
     * **struct** [**formatter&lt; endstone::Actor &gt;**](structstd_1_1formatter_3_01endstone_1_1Actor_01_4.md)     

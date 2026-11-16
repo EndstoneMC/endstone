@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1PluginDescription" kind="class" language="C++" prot="public">
     <compoundname>endstone::PluginDescription</compoundname>
     <includes refid="plugin__description_8h" local="no">endstone/plugin/plugin_description.h</includes>
@@ -333,7 +333,7 @@
         </inbodydescription>
         <location file="include/endstone/plugin/plugin_description.h" line="35" column="5" bodyfile="include/endstone/plugin/plugin_description.h" bodystart="35" bodyend="53"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PluginDescription_1a5a2f39ff668525dfa077122be1596328" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PluginDescription_1a5a2f39ff668525dfa077122be1596328" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
         <definition>std::string endstone::PluginDescription::getName</definition>
         <argsstring>() const</argsstring>
@@ -351,7 +351,7 @@
         </inbodydescription>
         <location file="include/endstone/plugin/plugin_description.h" line="60" column="18" bodyfile="include/endstone/plugin/plugin_description.h" bodystart="60" bodyend="60"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PluginDescription_1ad18d8a055c2490eab5ed52a098fea461" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PluginDescription_1ad18d8a055c2490eab5ed52a098fea461" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
         <definition>std::string endstone::PluginDescription::getVersion</definition>
         <argsstring>() const</argsstring>
@@ -369,7 +369,7 @@
         </inbodydescription>
         <location file="include/endstone/plugin/plugin_description.h" line="67" column="18" bodyfile="include/endstone/plugin/plugin_description.h" bodystart="67" bodyend="67"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PluginDescription_1a311c84d8ffa82c26c06e9cbcb5c3ccf9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PluginDescription_1a311c84d8ffa82c26c06e9cbcb5c3ccf9" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
         <definition>std::string endstone::PluginDescription::getFullName</definition>
         <argsstring>() const</argsstring>
@@ -387,7 +387,7 @@
         </inbodydescription>
         <location file="include/endstone/plugin/plugin_description.h" line="74" column="18" bodyfile="include/endstone/plugin/plugin_description.h" bodystart="74" bodyend="74"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PluginDescription_1ae194d349c1f8229882beaf0eb03e8a55" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PluginDescription_1ae194d349c1f8229882beaf0eb03e8a55" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
         <definition>std::string endstone::PluginDescription::getAPIVersion</definition>
         <argsstring>() const</argsstring>
@@ -405,7 +405,7 @@
         </inbodydescription>
         <location file="include/endstone/plugin/plugin_description.h" line="81" column="18" bodyfile="include/endstone/plugin/plugin_description.h" bodystart="81" bodyend="81"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PluginDescription_1a5eefb00d2ebb98e02b00f27751bbcf85" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PluginDescription_1a5eefb00d2ebb98e02b00f27751bbcf85" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
         <definition>std::string endstone::PluginDescription::getDescription</definition>
         <argsstring>() const</argsstring>
@@ -422,7 +422,7 @@
         </inbodydescription>
         <location file="include/endstone/plugin/plugin_description.h" line="87" column="18" bodyfile="include/endstone/plugin/plugin_description.h" bodystart="87" bodyend="87"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PluginDescription_1a5667754725d4b2426fa9759bf5028f46" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PluginDescription_1a5667754725d4b2426fa9759bf5028f46" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="namespaceendstone_1acbd28364660dc397ef62ea1902defe6b" kindref="member">PluginLoadOrder</ref></type>
         <definition>PluginLoadOrder endstone::PluginDescription::getLoad</definition>
         <argsstring>() const</argsstring>
@@ -440,7 +440,7 @@
         </inbodydescription>
         <location file="include/endstone/plugin/plugin_description.h" line="94" column="22" bodyfile="include/endstone/plugin/plugin_description.h" bodystart="94" bodyend="94"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PluginDescription_1a062c8f7df7c7a8fe77ab8bf715dac4bb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PluginDescription_1a062c8f7df7c7a8fe77ab8bf715dac4bb" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; std::string &gt;</type>
         <definition>std::vector&lt; std::string &gt; endstone::PluginDescription::getAuthors</definition>
         <argsstring>() const</argsstring>
@@ -458,7 +458,7 @@
         </inbodydescription>
         <location file="include/endstone/plugin/plugin_description.h" line="101" column="18" bodyfile="include/endstone/plugin/plugin_description.h" bodystart="101" bodyend="101"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PluginDescription_1a87ec948d2370eff096635249fe050014" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PluginDescription_1a87ec948d2370eff096635249fe050014" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; std::string &gt;</type>
         <definition>std::vector&lt; std::string &gt; endstone::PluginDescription::getContributors</definition>
         <argsstring>() const</argsstring>
@@ -476,7 +476,7 @@
         </inbodydescription>
         <location file="include/endstone/plugin/plugin_description.h" line="108" column="18" bodyfile="include/endstone/plugin/plugin_description.h" bodystart="108" bodyend="108"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PluginDescription_1a2c0839588d2d69aeeb5963294b75fe02" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PluginDescription_1a2c0839588d2d69aeeb5963294b75fe02" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
         <definition>std::string endstone::PluginDescription::getWebsite</definition>
         <argsstring>() const</argsstring>
@@ -494,7 +494,7 @@
         </inbodydescription>
         <location file="include/endstone/plugin/plugin_description.h" line="115" column="18" bodyfile="include/endstone/plugin/plugin_description.h" bodystart="115" bodyend="115"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PluginDescription_1a576a777680f917842d66c21f100e8226" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PluginDescription_1a576a777680f917842d66c21f100e8226" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
         <definition>std::string endstone::PluginDescription::getPrefix</definition>
         <argsstring>() const</argsstring>
@@ -512,7 +512,7 @@
         </inbodydescription>
         <location file="include/endstone/plugin/plugin_description.h" line="122" column="18" bodyfile="include/endstone/plugin/plugin_description.h" bodystart="122" bodyend="122"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PluginDescription_1aa7ad7d7e5a635e93f7f9f314d7467beb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PluginDescription_1aa7ad7d7e5a635e93f7f9f314d7467beb" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; std::string &gt;</type>
         <definition>std::vector&lt; std::string &gt; endstone::PluginDescription::getProvides</definition>
         <argsstring>() const</argsstring>
@@ -530,7 +530,7 @@
         </inbodydescription>
         <location file="include/endstone/plugin/plugin_description.h" line="129" column="18" bodyfile="include/endstone/plugin/plugin_description.h" bodystart="129" bodyend="129"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PluginDescription_1a9755156d552f3a3914b7303ed733b734" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PluginDescription_1a9755156d552f3a3914b7303ed733b734" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; std::string &gt;</type>
         <definition>std::vector&lt; std::string &gt; endstone::PluginDescription::getDepend</definition>
         <argsstring>() const</argsstring>
@@ -548,7 +548,7 @@
         </inbodydescription>
         <location file="include/endstone/plugin/plugin_description.h" line="136" column="18" bodyfile="include/endstone/plugin/plugin_description.h" bodystart="136" bodyend="136"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PluginDescription_1ab5b522df1a05b0608ba57a7c8e4598d1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PluginDescription_1ab5b522df1a05b0608ba57a7c8e4598d1" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; std::string &gt;</type>
         <definition>std::vector&lt; std::string &gt; endstone::PluginDescription::getSoftDepend</definition>
         <argsstring>() const</argsstring>
@@ -566,7 +566,7 @@
         </inbodydescription>
         <location file="include/endstone/plugin/plugin_description.h" line="143" column="18" bodyfile="include/endstone/plugin/plugin_description.h" bodystart="143" bodyend="143"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PluginDescription_1a27acab42935c249ba12836f510ca9a2f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PluginDescription_1a27acab42935c249ba12836f510ca9a2f" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; std::string &gt;</type>
         <definition>std::vector&lt; std::string &gt; endstone::PluginDescription::getLoadBefore</definition>
         <argsstring>() const</argsstring>
@@ -584,7 +584,7 @@
         </inbodydescription>
         <location file="include/endstone/plugin/plugin_description.h" line="150" column="18" bodyfile="include/endstone/plugin/plugin_description.h" bodystart="150" bodyend="150"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PluginDescription_1ab55182911b0a4b0c0fe4060d61549be4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PluginDescription_1ab55182911b0a4b0c0fe4060d61549be4" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="namespaceendstone_1a2d8e7efa02701e05bf89e43b98227481" kindref="member">PermissionDefault</ref></type>
         <definition>PermissionDefault endstone::PluginDescription::getDefaultPermission</definition>
         <argsstring>() const</argsstring>
@@ -602,7 +602,7 @@
         </inbodydescription>
         <location file="include/endstone/plugin/plugin_description.h" line="157" column="24" bodyfile="include/endstone/plugin/plugin_description.h" bodystart="157" bodyend="157"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PluginDescription_1ab72bcaae19692e3adc527205d91fcc53" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PluginDescription_1ab72bcaae19692e3adc527205d91fcc53" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; <ref refid="classendstone_1_1Command" kindref="compound">Command</ref> &gt;</type>
         <definition>std::vector&lt; Command &gt; endstone::PluginDescription::getCommands</definition>
         <argsstring>() const</argsstring>
@@ -620,7 +620,7 @@
         </inbodydescription>
         <location file="include/endstone/plugin/plugin_description.h" line="164" column="18" bodyfile="include/endstone/plugin/plugin_description.h" bodystart="164" bodyend="164"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PluginDescription_1aa26b0f59f99a7e56627213a8b001a4c8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PluginDescription_1aa26b0f59f99a7e56627213a8b001a4c8" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; <ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref> &gt;</type>
         <definition>std::vector&lt; Permission &gt; endstone::PluginDescription::getPermissions</definition>
         <argsstring>() const</argsstring>

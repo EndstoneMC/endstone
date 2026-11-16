@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="plugin__load__order_8h" kind="file" language="C++">
     <compoundname>plugin_load_order.h</compoundname>
     <includedby refid="plugin__description_8h" local="yes">include/endstone/plugin/plugin_description.h</includedby>
@@ -98,8 +98,8 @@
 <codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceendstone" kindref="compound">endstone</ref><sp/>{</highlight></codeline>
 <codeline lineno="18"><highlight class="normal"></highlight></codeline>
 <codeline lineno="22" refid="namespaceendstone_1acbd28364660dc397ef62ea1902defe6b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="namespaceendstone_1acbd28364660dc397ef62ea1902defe6b" kindref="member">PluginLoadOrder</ref><sp/>{</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceendstone_1acbd28364660dc397ef62ea1902defe6ba13e685964c2548aa748f7ea263bad4e5" kindref="member">Startup</ref>,</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceendstone_1acbd28364660dc397ef62ea1902defe6baabb0b493a9cbcc1b98b45c7e69f41a52" kindref="member">PostWorld</ref>,</highlight></codeline>
+<codeline lineno="26" refid="namespaceendstone_1acbd28364660dc397ef62ea1902defe6ba13e685964c2548aa748f7ea263bad4e5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceendstone_1acbd28364660dc397ef62ea1902defe6ba13e685964c2548aa748f7ea263bad4e5" kindref="member">Startup</ref>,</highlight></codeline>
+<codeline lineno="31" refid="namespaceendstone_1acbd28364660dc397ef62ea1902defe6baabb0b493a9cbcc1b98b45c7e69f41a52" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceendstone_1acbd28364660dc397ef62ea1902defe6baabb0b493a9cbcc1b98b45c7e69f41a52" kindref="member">PostWorld</ref>,</highlight></codeline>
 <codeline lineno="32"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="33"><highlight class="normal"></highlight></codeline>
 <codeline lineno="34"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>

@@ -54,7 +54,7 @@ public:
         return *this;
     }
 
-    [[nodiscard]] std::vector<Control> getControls() const { return controls_; }
+    [[nodiscard]] const std::vector<Control> &getControls() const { return controls_; }
 
     ModalForm &setControls(std::vector<Control> controls)
     {

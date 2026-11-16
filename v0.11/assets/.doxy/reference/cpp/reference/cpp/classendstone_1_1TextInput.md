@@ -57,9 +57,9 @@ _Represents a text input field._
 |  std::optional&lt; std::string &gt; | [**getDefaultValue**](#function-getdefaultvalue) () const<br>_Gets the default text of the text input field._  |
 |  Message | [**getLabel**](#function-getlabel) () const<br>_Gets the label of the text input field._  |
 |  Message | [**getPlaceholder**](#function-getplaceholder) () const<br>_Gets the placeholder of the text input field._  |
-|  [**TextInput**](classendstone_1_1TextInput.md) & | [**setDefaultValue**](#function-setdefaultvalue) (std::optional&lt; std::string &gt; text) <br>_Sets the default text of the text input field._  |
-|  [**TextInput**](classendstone_1_1TextInput.md) & | [**setLabel**](#function-setlabel) (Message label) <br>_Sets the label of the text input field._  |
-|  [**TextInput**](classendstone_1_1TextInput.md) & | [**setPlaceholder**](#function-setplaceholder) (Message placeholder) <br>_Sets the placeholder of the text input field._  |
+|  TextInput & | [**setDefaultValue**](#function-setdefaultvalue) (std::optional&lt; std::string &gt; text) <br>_Sets the default text of the text input field._  |
+|  TextInput & | [**setLabel**](#function-setlabel) (Message label) <br>_Sets the label of the text input field._  |
+|  TextInput & | [**setPlaceholder**](#function-setplaceholder) (Message placeholder) <br>_Sets the placeholder of the text input field._  |
 
 
 

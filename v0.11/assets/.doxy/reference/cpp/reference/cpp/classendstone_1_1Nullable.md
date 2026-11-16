@@ -2,7 +2,7 @@
 
 # Class endstone::Nullable
 
-**template &lt;[**class**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;**
+**template &lt;class T&gt;**
 
 
 
@@ -53,18 +53,18 @@
 
 | Type | Name |
 | ---: | :--- |
-|  [**constexpr**](classendstone_1_1Identifier.md) | [**Nullable**](#function-nullable-14) () noexcept<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) | [**Nullable**](#function-nullable-24) (std::nullptr\_t) noexcept<br> |
-|   | [**Nullable**](#function-nullable-34) (std::shared\_ptr&lt; [**T**](classendstone_1_1Identifier.md) &gt; ptr) <br> |
-|   | [**Nullable**](#function-nullable-44) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; & other) <br> |
-|  [**const**](classendstone_1_1Identifier.md) std::shared\_ptr&lt; [**T**](classendstone_1_1Identifier.md) &gt; & | [**get**](#function-get) () noexcept const<br> |
+|  constexpr | [**Nullable**](#function-nullable-14) () noexcept<br> |
+|  constexpr | [**Nullable**](#function-nullable-24) (std::nullptr\_t) noexcept<br> |
+|   | [**Nullable**](#function-nullable-34) (std::shared\_ptr&lt; T &gt; ptr) <br> |
+|   | [**Nullable**](#function-nullable-44) (const [**NotNull**](classendstone_1_1NotNull.md)&lt; T &gt; & other) <br> |
+|  const std::shared\_ptr&lt; T &gt; & | [**get**](#function-get) () noexcept const<br> |
 |   | [**operator bool**](#function-operator-bool) () noexcept const<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**operator!=**](#function-operator) ([**const**](classendstone_1_1Identifier.md) [**Nullable**](classendstone_1_1Nullable.md) &) const<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**operator!=**](#function-operator_1) (std::nullptr\_t) noexcept const<br> |
-|  [**T**](classendstone_1_1Identifier.md) & | [**operator\***](#function-operator_2) () noexcept const<br> |
-|  [**T**](classendstone_1_1Identifier.md) \* | [**operator-&gt;**](#function-operator-) () noexcept const<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**operator==**](#function-operator_3) ([**const**](classendstone_1_1Identifier.md) [**Nullable**](classendstone_1_1Nullable.md) &) const<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**operator==**](#function-operator_4) (std::nullptr\_t) noexcept const<br> |
+|  bool | [**operator!=**](#function-operator) (const Nullable &) const<br> |
+|  bool | [**operator!=**](#function-operator_1) (std::nullptr\_t) noexcept const<br> |
+|  T & | [**operator\***](#function-operator_2) () noexcept const<br> |
+|  T \* | [**operator-&gt;**](#function-operator-) () noexcept const<br> |
+|  bool | [**operator==**](#function-operator_3) (const Nullable &) const<br> |
+|  bool | [**operator==**](#function-operator_4) (std::nullptr\_t) noexcept const<br> |
 
 
 
@@ -145,7 +145,7 @@ inline endstone::Nullable::Nullable (
 
 ```C++
 inline endstone::Nullable::Nullable (
-    const  NotNull < T > & other
+    const NotNull < T > & other
 ) 
 ```
 
@@ -186,7 +186,7 @@ inline explicit endstone::Nullable::operator bool () noexcept const
 
 ```C++
 bool endstone::Nullable::operator!= (
-    const  Nullable &
+    const Nullable &
 ) const
 ```
 
@@ -242,7 +242,7 @@ inline T * endstone::Nullable::operator-> () noexcept const
 
 ```C++
 bool endstone::Nullable::operator== (
-    const  Nullable &
+    const Nullable &
 ) const
 ```
 

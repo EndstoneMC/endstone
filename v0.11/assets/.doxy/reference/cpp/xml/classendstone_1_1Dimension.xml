@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1Dimension" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::Dimension</compoundname>
     <includes refid="dimension_8h" local="no">endstone/level/dimension.h</includes>
@@ -65,7 +65,7 @@
         </inbodydescription>
         <location file="include/endstone/level/dimension.h" line="44" column="13"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Dimension_1a3cd59f6145706ead47d173255a10a39d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Dimension_1a3cd59f6145706ead47d173255a10a39d" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
         <definition>virtual std::string endstone::Dimension::getName</definition>
         <argsstring>() const =0</argsstring>
@@ -83,7 +83,7 @@
         </inbodydescription>
         <location file="include/endstone/level/dimension.h" line="51" column="26"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Dimension_1a9d9baf77525291924f80c682cc3d012c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Dimension_1a9d9baf77525291924f80c682cc3d012c" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Dimension_1a5dbe2e9365112e8c0f883978fae1356b" kindref="member">Type</ref></type>
         <definition>virtual Type endstone::Dimension::getType</definition>
         <argsstring>() const =0</argsstring>
@@ -93,7 +93,7 @@
 <para>Gets the type of this dimension. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>Type of this dimension </para>
+<para><simplesect kind="return"><para><ref refid="classendstone_1_1Dimension_1a5dbe2e9365112e8c0f883978fae1356b" kindref="member">Type</ref> of this dimension </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -101,7 +101,7 @@
         </inbodydescription>
         <location file="include/endstone/level/dimension.h" line="58" column="19"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Dimension_1a541fd7f166a3d746dde92b57e4843f6a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Dimension_1a541fd7f166a3d746dde92b57e4843f6a" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Level" kindref="compound">Level</ref> &amp;</type>
         <definition>virtual Level &amp; endstone::Dimension::getLevel</definition>
         <argsstring>() const =0</argsstring>
@@ -119,22 +119,22 @@
         </inbodydescription>
         <location file="include/endstone/level/dimension.h" line="65" column="20"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Dimension_1a3dee0a686f00cf7c2c861a798ccf2346" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Dimension_1a3dee0a686f00cf7c2c861a798ccf2346" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::unique_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt;</type>
         <definition>virtual std::unique_ptr&lt; Block &gt; endstone::Dimension::getBlockAt</definition>
         <argsstring>(int x, int y, int z) const =0</argsstring>
         <name>getBlockAt</name>
         <qualifiedname>endstone::Dimension::getBlockAt</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>x</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>y</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>z</declname>
         </param>
         <briefdescription>
@@ -174,7 +174,7 @@
         </inbodydescription>
         <location file="include/endstone/level/dimension.h" line="75" column="30"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Dimension_1afd372293472494681775452163da7aed" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Dimension_1afd372293472494681775452163da7aed" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::unique_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt;</type>
         <definition>virtual std::unique_ptr&lt; Block &gt; endstone::Dimension::getBlockAt</definition>
         <argsstring>(Location location) const =0</argsstring>
@@ -205,18 +205,18 @@
         </inbodydescription>
         <location file="include/endstone/level/dimension.h" line="83" column="30"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Dimension_1a444efcebbf833e779384449f781a10c6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+      <memberdef kind="function" id="classendstone_1_1Dimension_1a444efcebbf833e779384449f781a10c6" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>int</type>
         <definition>virtual int endstone::Dimension::getHighestBlockYAt</definition>
         <argsstring>(int x, int z) const =0</argsstring>
         <name>getHighestBlockYAt</name>
         <qualifiedname>endstone::Dimension::getHighestBlockYAt</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>x</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>z</declname>
         </param>
         <briefdescription>
@@ -248,18 +248,18 @@
         </inbodydescription>
         <location file="include/endstone/level/dimension.h" line="92" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Dimension_1a59ce26e75b00ffc1b6a3dff6ab35331c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Dimension_1a59ce26e75b00ffc1b6a3dff6ab35331c" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::unique_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt;</type>
         <definition>virtual std::unique_ptr&lt; Block &gt; endstone::Dimension::getHighestBlockAt</definition>
         <argsstring>(int x, int z) const =0</argsstring>
         <name>getHighestBlockAt</name>
         <qualifiedname>endstone::Dimension::getHighestBlockAt</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>x</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>z</declname>
         </param>
         <briefdescription>
@@ -291,7 +291,7 @@
         </inbodydescription>
         <location file="include/endstone/level/dimension.h" line="101" column="30"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Dimension_1aaf801dc0b5f2d696178b5770d7466d79" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Dimension_1aaf801dc0b5f2d696178b5770d7466d79" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::unique_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt;</type>
         <definition>virtual std::unique_ptr&lt; Block &gt; endstone::Dimension::getHighestBlockAt</definition>
         <argsstring>(Location location) const =0</argsstring>
@@ -322,7 +322,7 @@
         </inbodydescription>
         <location file="include/endstone/level/dimension.h" line="109" column="30"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Dimension_1a065a2b1242a809b89dd1502b2ad828b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Dimension_1a065a2b1242a809b89dd1502b2ad828b6" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; std::unique_ptr&lt; <ref refid="classendstone_1_1Chunk" kindref="compound">Chunk</ref> &gt; &gt;</type>
         <definition>virtual std::vector&lt; std::unique_ptr&lt; Chunk &gt; &gt; endstone::Dimension::getLoadedChunks</definition>
         <argsstring>()=0</argsstring>
@@ -340,7 +340,7 @@
         </inbodydescription>
         <location file="include/endstone/level/dimension.h" line="116" column="26"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Dimension_1af0bd0493f3c931570be2c063b12576b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Dimension_1af0bd0493f3c931570be2c063b12576b9" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Item" kindref="compound">Item</ref> &amp;</type>
         <definition>virtual Item &amp; endstone::Dimension::dropItem</definition>
         <argsstring>(Location location, const ItemStack &amp;item)=0</argsstring>
@@ -351,7 +351,7 @@
           <declname>location</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;</type>
           <declname>item</declname>
         </param>
         <briefdescription>
@@ -383,7 +383,7 @@
         </inbodydescription>
         <location file="include/endstone/level/dimension.h" line="126" column="19"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Dimension_1a04d2c983f8a2311339d6b3b716fa66a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Dimension_1a04d2c983f8a2311339d6b3b716fa66a0" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> *</type>
         <definition>virtual Actor * endstone::Dimension::spawnActor</definition>
         <argsstring>(Location location, std::string type)=0</argsstring>
@@ -426,7 +426,7 @@
         </inbodydescription>
         <location file="include/endstone/level/dimension.h" line="135" column="20"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Dimension_1aabf69434e780cefd4856459196439fe1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Dimension_1aabf69434e780cefd4856459196439fe1" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> * &gt;</type>
         <definition>virtual std::vector&lt; Actor * &gt; endstone::Dimension::getActors</definition>
         <argsstring>() const =0</argsstring>

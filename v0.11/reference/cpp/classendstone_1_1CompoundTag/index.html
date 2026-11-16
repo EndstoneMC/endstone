@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../../assets/logo.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -3114,7 +3114,7 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#typedef-key_type"><strong>key_type</strong></a>  <br></td>
 </tr>
 <tr>
-<td style="text-align: right;">typedef std::map&lt; key_type, <a href="../classendstone_1_1nbt_1_1Tag/"><strong>value_type</strong></a> &gt;</td>
+<td style="text-align: right;">typedef std::map&lt; key_type, value_type &gt;</td>
 <td style="text-align: left;"><a href="#typedef-map_type"><strong>map_type</strong></a>  <br></td>
 </tr>
 <tr>
@@ -3142,14 +3142,14 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-compoundtag-22"><strong>CompoundTag</strong></a> (std::initializer_list&lt; std::pair&lt; key_type, <a href="../classendstone_1_1nbt_1_1Tag/"><strong>value_type</strong></a> &gt; &gt; init) <br></td>
+<td style="text-align: left;"><a href="#function-compoundtag-22"><strong>CompoundTag</strong></a> (std::initializer_list&lt; std::pair&lt; key_type, value_type &gt; &gt; init) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1nbt_1_1Tag/"><strong>value_type</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="#function-at-12"><strong>at</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> key_type &amp; key) <br></td>
+<td style="text-align: right;">value_type &amp;</td>
+<td style="text-align: left;"><a href="#function-at-12"><strong>at</strong></a> (const key_type &amp; key) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1nbt_1_1Tag/"><strong>value_type</strong></a> &amp;</td>
+<td style="text-align: right;">const value_type &amp;</td>
 <td style="text-align: left;"><a href="#function-at-22"><strong>at</strong></a> (key_type key) const<br></td>
 </tr>
 <tr>
@@ -3169,19 +3169,19 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-cend"><strong>cend</strong></a> () noexcept const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
+<td style="text-align: right;">void</td>
 <td style="text-align: left;"><a href="#function-clear"><strong>clear</strong></a> () noexcept<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-contains"><strong>contains</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> key_type &amp; key) noexcept const<br></td>
+<td style="text-align: right;">bool</td>
+<td style="text-align: left;"><a href="#function-contains"><strong>contains</strong></a> (const key_type &amp; key) noexcept const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">std::pair&lt; iterator, <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-emplace"><strong>emplace</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>Args</strong></a> &amp;&amp;... args) <br></td>
+<td style="text-align: right;">std::pair&lt; iterator, bool &gt;</td>
+<td style="text-align: left;"><a href="#function-emplace"><strong>emplace</strong></a> (Args &amp;&amp;... args) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: right;">bool</td>
 <td style="text-align: left;"><a href="#function-empty"><strong>empty</strong></a> () noexcept const<br></td>
 </tr>
 <tr>
@@ -3198,43 +3198,43 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">size_type</td>
-<td style="text-align: left;"><a href="#function-erase-23"><strong>erase</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> key_type &amp; key) <br></td>
+<td style="text-align: left;"><a href="#function-erase-23"><strong>erase</strong></a> (const key_type &amp; key) <br></td>
 </tr>
 <tr>
 <td style="text-align: right;">iterator</td>
 <td style="text-align: left;"><a href="#function-erase-33"><strong>erase</strong></a> (const_iterator first, const_iterator last) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;">std::pair&lt; iterator, <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-insert"><strong>insert</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>P</strong></a> &amp;&amp; v) <br></td>
+<td style="text-align: right;">std::pair&lt; iterator, bool &gt;</td>
+<td style="text-align: left;"><a href="#function-insert"><strong>insert</strong></a> (P &amp;&amp; v) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;">std::pair&lt; iterator, <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-insert_or_assign"><strong>insert_or_assign</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> key_type &amp; key, <a href="../classendstone_1_1Identifier/"><strong>M</strong></a> &amp;&amp; obj) <br></td>
+<td style="text-align: right;">std::pair&lt; iterator, bool &gt;</td>
+<td style="text-align: left;"><a href="#function-insert_or_assign"><strong>insert_or_assign</strong></a> (const key_type &amp; key, M &amp;&amp; obj) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-merge-12"><strong>merge</strong></a> (<a href="./"><strong>CompoundTag</strong></a> &amp; source) <br></td>
+<td style="text-align: right;">void</td>
+<td style="text-align: left;"><a href="#function-merge-12"><strong>merge</strong></a> (CompoundTag &amp; source) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-merge-22"><strong>merge</strong></a> (<a href="./"><strong>CompoundTag</strong></a> &amp;&amp; source) <br></td>
+<td style="text-align: right;">void</td>
+<td style="text-align: left;"><a href="#function-merge-22"><strong>merge</strong></a> (CompoundTag &amp;&amp; source) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1nbt_1_1Tag/"><strong>value_type</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="#function-operator"><strong>operator[]</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> key_type &amp; key) <br></td>
+<td style="text-align: right;">value_type &amp;</td>
+<td style="text-align: left;"><a href="#function-operator"><strong>operator[]</strong></a> (const key_type &amp; key) <br></td>
 </tr>
 <tr>
 <td style="text-align: right;">size_type</td>
 <td style="text-align: left;"><a href="#function-size"><strong>size</strong></a> () noexcept const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-swap"><strong>swap</strong></a> (<a href="./"><strong>CompoundTag</strong></a> &amp; other) noexcept<br></td>
+<td style="text-align: right;">void</td>
+<td style="text-align: left;"><a href="#function-swap"><strong>swap</strong></a> (CompoundTag &amp; other) noexcept<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">std::pair&lt; iterator, <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-try_emplace"><strong>try_emplace</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> key_type &amp; key, <a href="../classendstone_1_1Identifier/"><strong>Args</strong></a> &amp;&amp;... args) <br></td>
+<td style="text-align: right;">std::pair&lt; iterator, bool &gt;</td>
+<td style="text-align: left;"><a href="#function-try_emplace"><strong>try_emplace</strong></a> (const key_type &amp; key, Args &amp;&amp;... args) <br></td>
 </tr>
 </tbody>
 </table>
@@ -3289,7 +3289,7 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-at-22">function at [2/2]<a class="headerlink" href="#function-at-22" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="n">value_type</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CompoundTag</span><span class="o">::</span><span class="n">at</span><span class="w"> </span><span class="p">(</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">value_type</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CompoundTag</span><span class="o">::</span><span class="n">at</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="n">key_type</span><span class="w"> </span><span class="n">key</span>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div>
@@ -3373,7 +3373,7 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-insert">function insert<a class="headerlink" href="#function-insert" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w">  </span><span class="nc">P</span><span class="o">&gt;</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">P</span><span class="o">&gt;</span>
 </span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="w"> </span><span class="n">iterator</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CompoundTag</span><span class="o">::</span><span class="n">insert</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="w">    </span><span class="n">P</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">v</span>
 </span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="p">)</span><span class="w"> </span>
@@ -3381,7 +3381,7 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-insert_or_assign">function insert_or_assign<a class="headerlink" href="#function-insert_or_assign" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w">  </span><span class="nc">M</span><span class="o">&gt;</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">M</span><span class="o">&gt;</span>
 </span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="w"> </span><span class="n">iterator</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CompoundTag</span><span class="o">::</span><span class="n">insert_or_assign</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">key_type</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">key</span><span class="p">,</span>
 </span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="w">    </span><span class="n">M</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">obj</span>
@@ -3433,17 +3433,17 @@ For latest updates join the chat on
 <h2 id="friends-documentation">Friends Documentation<a class="headerlink" href="#friends-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="friend-operator">friend operator!=<a class="headerlink" href="#friend-operator" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CompoundTag</span><span class="o">::</span><span class="k">operator</span><span class="o">!=</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">CompoundTag</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
-</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">CompoundTag</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span>
-</span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">CompoundTag</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">CompoundTag</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span>
+</span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="friend-operator_1">friend operator==<a class="headerlink" href="#friend-operator_1" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CompoundTag</span><span class="o">::</span><span class="k">operator</span><span class="o">==</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">CompoundTag</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
-</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">CompoundTag</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span>
-</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">CompoundTag</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
+</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">CompoundTag</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span>
+</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
 
@@ -3575,7 +3575,7 @@ For latest updates join the chat on
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "stable", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
     
   </body>

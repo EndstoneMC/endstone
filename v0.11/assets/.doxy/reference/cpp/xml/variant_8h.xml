@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="variant_8h" kind="file" language="C++">
     <compoundname>variant.h</compoundname>
     <includedby refid="block__data_8h" local="yes">include/endstone/block/block_data.h</includedby>
@@ -363,7 +363,7 @@
 <codeline lineno="25"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"></highlight></codeline>
 <codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Func&gt;</highlight></codeline>
-<codeline lineno="32" refid="namespaceendstone_1a653e5211ad2fdddf9d08c7353381631d" refkind="member"><highlight class="normal"><ref refid="structendstone_1_1overloaded" kindref="compound">overloaded</ref>(Func...)<sp/>-&gt;<sp/><ref refid="structendstone_1_1overloaded" kindref="compound">overloaded</ref>&lt;Func...&gt;;</highlight></codeline>
+<codeline lineno="32" refid="namespaceendstone_1a653e5211ad2fdddf9d08c7353381631d" refkind="member"><highlight class="normal"><ref refid="namespaceendstone_1a653e5211ad2fdddf9d08c7353381631d" kindref="member">overloaded</ref>(Func...)<sp/>-&gt;<sp/><ref refid="structendstone_1_1overloaded" kindref="compound">overloaded</ref>&lt;Func...&gt;;</highlight></codeline>
 <codeline lineno="33"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/variant.h"/>

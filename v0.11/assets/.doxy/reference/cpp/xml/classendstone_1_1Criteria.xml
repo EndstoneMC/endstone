@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1Criteria" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::Criteria</compoundname>
     <includes refid="criteria_8h" local="no">endstone/scoreboard/criteria.h</includes>
@@ -40,7 +40,7 @@
         </inbodydescription>
         <location file="include/endstone/scoreboard/criteria.h" line="35" column="13"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Criteria_1a0b64daff057e51e6c0ad4ca8ff404d21" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Criteria_1a0b64daff057e51e6c0ad4ca8ff404d21" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
         <definition>virtual std::string endstone::Criteria::getName</definition>
         <argsstring>() const =0</argsstring>
@@ -58,8 +58,8 @@
         </inbodydescription>
         <location file="include/endstone/scoreboard/criteria.h" line="42" column="26"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Criteria_1a41b262cc7d4029a58773d1fa1e5c0eab" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+      <memberdef kind="function" id="classendstone_1_1Criteria_1a41b262cc7d4029a58773d1fa1e5c0eab" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
         <definition>virtual bool endstone::Criteria::isReadOnly</definition>
         <argsstring>() const =0</argsstring>
         <name>isReadOnly</name>
@@ -76,7 +76,7 @@
         </inbodydescription>
         <location file="include/endstone/scoreboard/criteria.h" line="50" column="19"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Criteria_1a62d2a81d1b34cb0c271bdf470b0064de" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Criteria_1a62d2a81d1b34cb0c271bdf470b0064de" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="namespaceendstone_1ae444241ed516d06f778078ee798db9e9" kindref="member">RenderType</ref></type>
         <definition>virtual RenderType endstone::Criteria::getDefaultRenderType</definition>
         <argsstring>() const =0</argsstring>
@@ -85,7 +85,7 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Get the RenderType used by default for this criteria.</para>
+<para>Get the <ref refid="namespaceendstone_1ae444241ed516d06f778078ee798db9e9" kindref="member">RenderType</ref> used by default for this criteria.</para>
 <para><simplesect kind="return"><para>the default render type </para>
 </simplesect>
 </para>

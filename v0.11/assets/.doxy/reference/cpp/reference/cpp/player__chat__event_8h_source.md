@@ -52,6 +52,7 @@ public:
 
     [[nodiscard]] std::string getFormat() const { return format_; }
 
+
     void setFormat(std::string format) { format_ = std::move(format); }
 
     [[nodiscard]] std::vector<Player *> getRecipients() const

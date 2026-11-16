@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1PluginLoader" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::PluginLoader</compoundname>
     <includes refid="plugin__loader_8h" local="no">endstone/plugin/plugin_loader.h</includes>
@@ -45,7 +45,7 @@
         <name>PluginLoader</name>
         <qualifiedname>endstone::PluginLoader::PluginLoader</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1PluginLoader" kindref="compound">PluginLoader</ref> &amp;</type>
+          <type>const PluginLoader &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -56,13 +56,13 @@
         <location file="include/endstone/plugin/plugin_loader.h" line="36" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PluginLoader_1ab20454a8e41b03d4e7f36f2bf3447c17" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classendstone_1_1PluginLoader" kindref="compound">PluginLoader</ref> &amp;</type>
+        <type>PluginLoader &amp;</type>
         <definition>PluginLoader &amp; endstone::PluginLoader::operator=</definition>
         <argsstring>(const PluginLoader &amp;)=delete</argsstring>
         <name>operator=</name>
         <qualifiedname>endstone::PluginLoader::operator=</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1PluginLoader" kindref="compound">PluginLoader</ref> &amp;</type>
+          <type>const PluginLoader &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -86,7 +86,7 @@
         </inbodydescription>
         <location file="include/endstone/plugin/plugin_loader.h" line="39" column="13"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PluginLoader_1a61ca476663966bfe408dcc52b6188782" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1PluginLoader_1a61ca476663966bfe408dcc52b6188782" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> *</type>
         <definition>virtual Plugin * endstone::PluginLoader::loadPlugin</definition>
         <argsstring>(std::string file)=0</argsstring>
@@ -117,7 +117,7 @@
         </inbodydescription>
         <location file="include/endstone/plugin/plugin_loader.h" line="47" column="21"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PluginLoader_1a1e0bb1627f8164603a94bada09dfe71f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="classendstone_1_1PluginLoader_1a1e0bb1627f8164603a94bada09dfe71f" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="yes" virt="virtual">
         <type>std::vector&lt; <ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> * &gt;</type>
         <definition>virtual std::vector&lt; Plugin * &gt; endstone::PluginLoader::loadPlugins</definition>
         <argsstring>(std::string directory)</argsstring>
@@ -148,7 +148,7 @@
         </inbodydescription>
         <location file="include/endstone/plugin/plugin_loader.h" line="55" column="26" bodyfile="include/endstone/plugin/plugin_loader.h" bodystart="55" bodyend="90"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PluginLoader_1ae0c1d16853a74eef8f285436494adc78" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1PluginLoader_1ae0c1d16853a74eef8f285436494adc78" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; std::string &gt;</type>
         <definition>virtual std::vector&lt; std::string &gt; endstone::PluginLoader::getPluginFileFilters</definition>
         <argsstring>() const =0</argsstring>
@@ -167,7 +167,7 @@
         <location file="include/endstone/plugin/plugin_loader.h" line="97" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PluginLoader_1aa14e843ba2f369aae119f8284fd4ce77" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::PluginLoader::enablePlugin</definition>
         <argsstring>(Plugin &amp;plugin) const</argsstring>
         <name>enablePlugin</name>
@@ -196,7 +196,7 @@
         <location file="include/endstone/plugin/plugin_loader.h" line="105" column="18" bodyfile="include/endstone/plugin/plugin_loader.h" bodystart="105" bodyend="120"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PluginLoader_1ae3223c941eb3c61add708b064811310a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::PluginLoader::disablePlugin</definition>
         <argsstring>(Plugin &amp;plugin) const</argsstring>
         <name>disablePlugin</name>
@@ -224,7 +224,7 @@
         </inbodydescription>
         <location file="include/endstone/plugin/plugin_loader.h" line="128" column="18" bodyfile="include/endstone/plugin/plugin_loader.h" bodystart="128" bodyend="143"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PluginLoader_1ac6cee4e3db53a6dfe6a453e854f325e7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PluginLoader_1ac6cee4e3db53a6dfe6a453e854f325e7" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Server" kindref="compound">Server</ref> &amp;</type>
         <definition>Server &amp; endstone::PluginLoader::getServer</definition>
         <argsstring>() const</argsstring>

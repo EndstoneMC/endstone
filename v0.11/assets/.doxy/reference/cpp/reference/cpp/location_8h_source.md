@@ -127,13 +127,7 @@ public:
 
     [[nodiscard]] float distanceSquared(const Location &other) const;
 
-    Location &operator+=(const Location &other)
-    {
-        x_ += other.x_;
-        y_ += other.y_;
-        z_ += other.z_;
-        return *this;
-    }
+    Location &operator+=(const Location &other);
 
     Location &operator+=(const Vector &other)
     {
@@ -143,13 +137,7 @@ public:
         return *this;
     }
 
-    Location &operator-=(const Location &other)
-    {
-        x_ -= other.x_;
-        y_ -= other.y_;
-        z_ -= other.z_;
-        return *this;
-    }
+    Location &operator-=(const Location &other);
 
     Location &operator-=(const Vector &other)
     {

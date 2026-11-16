@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1PlayerChatEvent" kind="class" language="C++" prot="public" final="yes">
     <compoundname>endstone::PlayerChatEvent</compoundname>
     <basecompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; PlayerEvent &gt;</basecompoundref>
@@ -56,7 +56,7 @@
         <name>ENDSTONE_EVENT</name>
         <qualifiedname>endstone::PlayerChatEvent::ENDSTONE_EVENT</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1PlayerChatEvent" kindref="compound">PlayerChatEvent</ref></type>
+          <type>PlayerChatEvent</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -97,7 +97,7 @@
         </inbodydescription>
         <location file="include/endstone/event/player/player_chat_event.h" line="33" column="14" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="33" bodyend="38"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PlayerChatEvent_1a6aaa932d6bf8d004a1aa67f9332587e3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PlayerChatEvent_1a6aaa932d6bf8d004a1aa67f9332587e3" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
         <definition>std::string endstone::PlayerChatEvent::getMessage</definition>
         <argsstring>() const</argsstring>
@@ -116,7 +116,7 @@
         <location file="include/endstone/event/player/player_chat_event.h" line="45" column="18" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="45" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerChatEvent_1a6911b50e5f63878d746bdda07d8fcd58" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::PlayerChatEvent::setMessage</definition>
         <argsstring>(std::string message)</argsstring>
         <name>setMessage</name>
@@ -145,7 +145,7 @@
         <location file="include/endstone/event/player/player_chat_event.h" line="52" column="10" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="52" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerChatEvent_1a13300f0afa05d3b3643bf60c9f8f2778" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::PlayerChatEvent::setPlayer</definition>
         <argsstring>(Player &amp;player)</argsstring>
         <name>setPlayer</name>
@@ -173,7 +173,7 @@
         </inbodydescription>
         <location file="include/endstone/event/player/player_chat_event.h" line="59" column="10" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="59" bodyend="59"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PlayerChatEvent_1a4ca2281553851adb20356f1d15fff91e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PlayerChatEvent_1a4ca2281553851adb20356f1d15fff91e" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
         <definition>std::string endstone::PlayerChatEvent::getFormat</definition>
         <argsstring>() const</argsstring>
@@ -193,7 +193,7 @@
         <location file="include/endstone/event/player/player_chat_event.h" line="68" column="18" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="68" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerChatEvent_1a16bf30f1143a3b116ce865bbc8dedc62" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::PlayerChatEvent::setFormat</definition>
         <argsstring>(std::string format)</argsstring>
         <name>setFormat</name>
@@ -221,7 +221,7 @@
         </inbodydescription>
         <location file="include/endstone/event/player/player_chat_event.h" line="76" column="10" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="76" bodyend="76"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PlayerChatEvent_1ae72e5e69a2f537ecac4c33d065e1fdc2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PlayerChatEvent_1ae72e5e69a2f537ecac4c33d065e1fdc2" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> * &gt;</type>
         <definition>std::vector&lt; Player * &gt; endstone::PlayerChatEvent::getRecipients</definition>
         <argsstring>() const</argsstring>

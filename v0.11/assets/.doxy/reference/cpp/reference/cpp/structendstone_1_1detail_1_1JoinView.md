@@ -2,7 +2,7 @@
 
 # Struct endstone::detail::JoinView
 
-**template &lt;[**typename**](classendstone_1_1Identifier.md) [**It**](classendstone_1_1Identifier.md), [**typename**](classendstone_1_1Identifier.md) [**Sentinel**](classendstone_1_1Identifier.md)&gt;**
+**template &lt;typename It, typename Sentinel&gt;**
 
 
 
@@ -38,8 +38,8 @@
 
 | Type | Name |
 | ---: | :--- |
-|  [**It**](classendstone_1_1Identifier.md) | [**begin**](#variable-begin)  <br> |
-|  [**Sentinel**](classendstone_1_1Identifier.md) | [**end**](#variable-end)  <br> |
+|  It | [**begin**](#variable-begin)  <br> |
+|  Sentinel | [**end**](#variable-end)  <br> |
 |  std::string\_view | [**sep**](#variable-sep)  <br> |
 
 

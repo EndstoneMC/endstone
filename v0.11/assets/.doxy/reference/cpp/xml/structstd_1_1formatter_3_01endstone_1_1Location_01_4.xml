@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="structstd_1_1formatter_3_01endstone_1_1Location_01_4" kind="struct" language="C++" prot="public">
     <compoundname>std::formatter&lt; endstone::Location &gt;</compoundname>
     <basecompoundref prot="public" virt="non-virtual">std::formatter&lt; std::string_view &gt;</basecompoundref>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="385" column="10" bodyfile="include/endstone/level/location.h" bodystart="385" bodyend="389"/>
+        <location file="include/endstone/level/location.h" line="373" column="10" bodyfile="include/endstone/level/location.h" bodystart="373" bodyend="377"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -60,7 +60,7 @@
         <label>std::formatter&lt; std::string_view &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/level/location.h" line="383" column="1" bodyfile="include/endstone/level/location.h" bodystart="383" bodyend="390"/>
+    <location file="include/endstone/level/location.h" line="371" column="1" bodyfile="include/endstone/level/location.h" bodystart="371" bodyend="378"/>
     <listofallmembers>
       <member refid="structstd_1_1formatter_3_01endstone_1_1Location_01_4_1a29e0a3a14bf0f698ba45af3edbcf2fd9" prot="public" virt="non-virtual"><scope>std::formatter&lt; endstone::Location &gt;</scope><name>format</name></member>
     </listofallmembers>

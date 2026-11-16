@@ -62,8 +62,9 @@ public:
     };
 
     MapCursor(std::int8_t x, std::int8_t y, std::int8_t direction, Type type, bool visible, std::string caption = "")
-        : x_(x), y_(y), direction_(direction), visible_(visible), caption_(std::move(caption)), type_(type)
+        : x_(x), y_(y), visible_(visible), caption_(std::move(caption)), type_(type)
     {
+        setDirection(direction);
     }
 
     [[nodiscard]] std::int8_t getX() const { return x_; }
@@ -90,6 +91,7 @@ public:
     void setType(Type type) { type_ = type; }
 
     void setVisible(bool visible) { visible_ = visible; }
+
 
     [[nodiscard]] std::string getCaption() const { return caption_; }
 

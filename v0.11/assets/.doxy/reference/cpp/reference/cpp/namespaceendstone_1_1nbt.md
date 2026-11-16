@@ -29,10 +29,11 @@
 
 | Type | Name |
 | ---: | :--- |
-| class | [**ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md) &lt;[**typename**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;<br> |
+| class | [**ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md) &lt;typename T&gt;<br> |
 | class | [**Tag**](classendstone_1_1nbt_1_1Tag.md) <br> |
 | struct | [**TagBase**](structendstone_1_1nbt_1_1TagBase.md) <br> |
-| class | [**ValueTag**](classendstone_1_1nbt_1_1ValueTag.md) &lt;[**typename**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;<br> |
+| class | [**ValueTag**](classendstone_1_1nbt_1_1ValueTag.md) &lt;typename T&gt;<br> |
+| struct | [**escape\_view**](structendstone_1_1nbt_1_1escape__view.md) <br> |
 
 
 ## Public Types
@@ -60,6 +61,11 @@
 
 
 
+## Public Functions
+
+| Type | Name |
+| ---: | :--- |
+|  [**escape\_view**](structendstone_1_1nbt_1_1escape__view.md) | [**escaped**](#function-escaped) (std::string\_view value) <br> |
 
 
 
@@ -110,6 +116,23 @@ enum endstone::nbt::Type {
     Compound = 10,
     IntArray = 11
 };
+```
+
+
+
+
+<hr>
+## Public Functions Documentation
+
+
+
+
+### function escaped 
+
+```C++
+inline escape_view endstone::nbt::escaped (
+    std::string_view value
+) 
 ```
 
 

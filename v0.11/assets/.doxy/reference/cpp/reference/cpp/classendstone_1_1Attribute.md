@@ -38,22 +38,22 @@ _All attribute types._
 
 | Type | Name |
 | ---: | :--- |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Absorption**](#variable-absorption)   = `AttributeId::minecraft("absorption")`<br>_Absorption of an entity._  |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**AttackDamage**](#variable-attackdamage)   = `AttributeId::minecraft("attack\_damage")`<br>_Attack damage of an entity._  |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**FollowRange**](#variable-followrange)   = `AttributeId::minecraft("follow\_range")`<br>_Range at which an entity will follow others._  |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Health**](#variable-health)   = `AttributeId::minecraft("health")`<br>_Health of an entity._  |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**JumpStrength**](#variable-jumpstrength)   = `AttributeId::minecraft("jump\_strength")`<br>_Strength with which an entity will jump._  |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**KnockbackResistance**](#variable-knockbackresistance)   = `AttributeId::minecraft("knockback\_resistance")`<br>_Resistance of an entity to knockback._  |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**LavaMovementSpeed**](#variable-lavamovementspeed)   = `AttributeId::minecraft("lava\_movement")`<br>_Movement speed of an entity in lava._  |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Luck**](#variable-luck)   = `AttributeId::minecraft("luck")`<br>_Luck bonus of an entity._  |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**MovementSpeed**](#variable-movementspeed)   = `AttributeId::minecraft("movement")`<br>_Movement speed of an entity._  |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**PlayerExhaustion**](#variable-playerexhaustion)   = `AttributeId::minecraft("player.exhaustion")`<br>_Exhaustion level of a player._  |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**PlayerExperience**](#variable-playerexperience)   = `AttributeId::minecraft("player.experience")`<br>_Progress toward the next experience level of a player._  |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**PlayerHunger**](#variable-playerhunger)   = `AttributeId::minecraft("player.hunger")`<br>_Hunger level of a player._  |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**PlayerLevel**](#variable-playerlevel)   = `AttributeId::minecraft("player.level")`<br>_Experience level of a player._  |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**PlayerSaturation**](#variable-playersaturation)   = `AttributeId::minecraft("player.saturation")`<br>_Saturation level of a player._  |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**UnderwaterMovementSpeed**](#variable-underwatermovementspeed)   = `AttributeId::minecraft("underwater\_movement")`<br>_Movement speed of an entity underwater._  |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**ZombieSpawnReinforcements**](#variable-zombiespawnreinforcements)   = `AttributeId::minecraft("zombie.spawn\_reinforcements")`<br>_Chance of a zombie to spawn reinforcements._  |
+|  auto | [**Absorption**](#variable-absorption)   = `AttributeId::minecraft("absorption")`<br>_Absorption of an entity._  |
+|  auto | [**AttackDamage**](#variable-attackdamage)   = `AttributeId::minecraft("attack\_damage")`<br>_Attack damage of an entity._  |
+|  auto | [**FollowRange**](#variable-followrange)   = `AttributeId::minecraft("follow\_range")`<br>_Range at which an entity will follow others._  |
+|  auto | [**Health**](#variable-health)   = `AttributeId::minecraft("health")`<br>_Health of an entity._  |
+|  auto | [**JumpStrength**](#variable-jumpstrength)   = `AttributeId::minecraft("jump\_strength")`<br>_Strength with which an entity will jump._  |
+|  auto | [**KnockbackResistance**](#variable-knockbackresistance)   = `AttributeId::minecraft("knockback\_resistance")`<br>_Resistance of an entity to knockback._  |
+|  auto | [**LavaMovementSpeed**](#variable-lavamovementspeed)   = `AttributeId::minecraft("lava\_movement")`<br>_Movement speed of an entity in lava._  |
+|  auto | [**Luck**](#variable-luck)   = `AttributeId::minecraft("luck")`<br>_Luck bonus of an entity._  |
+|  auto | [**MovementSpeed**](#variable-movementspeed)   = `AttributeId::minecraft("movement")`<br>_Movement speed of an entity._  |
+|  auto | [**PlayerExhaustion**](#variable-playerexhaustion)   = `AttributeId::minecraft("player.exhaustion")`<br>_Exhaustion level of a player._  |
+|  auto | [**PlayerExperience**](#variable-playerexperience)   = `AttributeId::minecraft("player.experience")`<br>_Progress toward the next experience level of a player._  |
+|  auto | [**PlayerHunger**](#variable-playerhunger)   = `AttributeId::minecraft("player.hunger")`<br>_Hunger level of a player._  |
+|  auto | [**PlayerLevel**](#variable-playerlevel)   = `AttributeId::minecraft("player.level")`<br>_Experience level of a player._  |
+|  auto | [**PlayerSaturation**](#variable-playersaturation)   = `AttributeId::minecraft("player.saturation")`<br>_Saturation level of a player._  |
+|  auto | [**UnderwaterMovementSpeed**](#variable-underwatermovementspeed)   = `AttributeId::minecraft("underwater\_movement")`<br>_Movement speed of an entity underwater._  |
+|  auto | [**ZombieSpawnReinforcements**](#variable-zombiespawnreinforcements)   = `AttributeId::minecraft("zombie.spawn\_reinforcements")`<br>_Chance of a zombie to spawn reinforcements._  |
 
 
 
@@ -105,7 +105,7 @@ _All attribute types._
 
 _Absorption of an entity._ 
 ```C++
-constexpr auto endstone::Attribute::Absorption;
+auto endstone::Attribute::Absorption;
 ```
 
 
@@ -119,7 +119,7 @@ constexpr auto endstone::Attribute::Absorption;
 
 _Attack damage of an entity._ 
 ```C++
-constexpr auto endstone::Attribute::AttackDamage;
+auto endstone::Attribute::AttackDamage;
 ```
 
 
@@ -133,7 +133,7 @@ constexpr auto endstone::Attribute::AttackDamage;
 
 _Range at which an entity will follow others._ 
 ```C++
-constexpr auto endstone::Attribute::FollowRange;
+auto endstone::Attribute::FollowRange;
 ```
 
 
@@ -147,7 +147,7 @@ constexpr auto endstone::Attribute::FollowRange;
 
 _Health of an entity._ 
 ```C++
-constexpr auto endstone::Attribute::Health;
+auto endstone::Attribute::Health;
 ```
 
 
@@ -161,7 +161,7 @@ constexpr auto endstone::Attribute::Health;
 
 _Strength with which an entity will jump._ 
 ```C++
-constexpr auto endstone::Attribute::JumpStrength;
+auto endstone::Attribute::JumpStrength;
 ```
 
 
@@ -175,7 +175,7 @@ constexpr auto endstone::Attribute::JumpStrength;
 
 _Resistance of an entity to knockback._ 
 ```C++
-constexpr auto endstone::Attribute::KnockbackResistance;
+auto endstone::Attribute::KnockbackResistance;
 ```
 
 
@@ -189,7 +189,7 @@ constexpr auto endstone::Attribute::KnockbackResistance;
 
 _Movement speed of an entity in lava._ 
 ```C++
-constexpr auto endstone::Attribute::LavaMovementSpeed;
+auto endstone::Attribute::LavaMovementSpeed;
 ```
 
 
@@ -203,7 +203,7 @@ constexpr auto endstone::Attribute::LavaMovementSpeed;
 
 _Luck bonus of an entity._ 
 ```C++
-constexpr auto endstone::Attribute::Luck;
+auto endstone::Attribute::Luck;
 ```
 
 
@@ -217,7 +217,7 @@ constexpr auto endstone::Attribute::Luck;
 
 _Movement speed of an entity._ 
 ```C++
-constexpr auto endstone::Attribute::MovementSpeed;
+auto endstone::Attribute::MovementSpeed;
 ```
 
 
@@ -231,7 +231,7 @@ constexpr auto endstone::Attribute::MovementSpeed;
 
 _Exhaustion level of a player._ 
 ```C++
-constexpr auto endstone::Attribute::PlayerExhaustion;
+auto endstone::Attribute::PlayerExhaustion;
 ```
 
 
@@ -245,7 +245,7 @@ constexpr auto endstone::Attribute::PlayerExhaustion;
 
 _Progress toward the next experience level of a player._ 
 ```C++
-constexpr auto endstone::Attribute::PlayerExperience;
+auto endstone::Attribute::PlayerExperience;
 ```
 
 
@@ -259,7 +259,7 @@ constexpr auto endstone::Attribute::PlayerExperience;
 
 _Hunger level of a player._ 
 ```C++
-constexpr auto endstone::Attribute::PlayerHunger;
+auto endstone::Attribute::PlayerHunger;
 ```
 
 
@@ -273,7 +273,7 @@ constexpr auto endstone::Attribute::PlayerHunger;
 
 _Experience level of a player._ 
 ```C++
-constexpr auto endstone::Attribute::PlayerLevel;
+auto endstone::Attribute::PlayerLevel;
 ```
 
 
@@ -287,7 +287,7 @@ constexpr auto endstone::Attribute::PlayerLevel;
 
 _Saturation level of a player._ 
 ```C++
-constexpr auto endstone::Attribute::PlayerSaturation;
+auto endstone::Attribute::PlayerSaturation;
 ```
 
 
@@ -301,7 +301,7 @@ constexpr auto endstone::Attribute::PlayerSaturation;
 
 _Movement speed of an entity underwater._ 
 ```C++
-constexpr auto endstone::Attribute::UnderwaterMovementSpeed;
+auto endstone::Attribute::UnderwaterMovementSpeed;
 ```
 
 
@@ -315,7 +315,7 @@ constexpr auto endstone::Attribute::UnderwaterMovementSpeed;
 
 _Chance of a zombie to spawn reinforcements._ 
 ```C++
-constexpr auto endstone::Attribute::ZombieSpawnReinforcements;
+auto endstone::Attribute::ZombieSpawnReinforcements;
 ```
 
 

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1Recipe" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::Recipe</compoundname>
     <includes refid="recipe_8h" local="no">endstone/inventory/recipe.h</includes>
@@ -18,7 +18,7 @@
         </inbodydescription>
         <location file="include/endstone/inventory/recipe.h" line="25" column="13"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Recipe_1a4e20782db3c7f6ea868059af8f2b1cc1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Recipe_1a4e20782db3c7f6ea868059af8f2b1cc1" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref></type>
         <definition>virtual ItemStack endstone::Recipe::getResult</definition>
         <argsstring>() const =0</argsstring>

@@ -54,7 +54,7 @@ Inherits the following classes: std::formatter< std::string_view >
 
 | Type | Name |
 | ---: | :--- |
-|  auto | [**format**](#function-format) (const endstone::nbt::escape\_view & v, FormatContext & ctx) const<br> |
+|  auto | [**format**](#function-format) (const [**endstone::nbt::escape\_view**](structendstone_1_1nbt_1_1escape__view.md) & v, FormatContext & ctx) const<br> |
 
 
 

@@ -2,7 +2,7 @@
 
 # Class endstone::NotNull
 
-**template &lt;[**class**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;**
+**template &lt;class T&gt;**
 
 
 
@@ -33,7 +33,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| typedef std::shared\_ptr&lt; [**T**](classendstone_1_1Identifier.md) &gt; | [**pointer\_type**](#typedef-pointer_type)  <br> |
+| typedef std::shared\_ptr&lt; T &gt; | [**pointer\_type**](#typedef-pointer_type)  <br> |
 
 
 
@@ -59,22 +59,22 @@
 | Type | Name |
 | ---: | :--- |
 |   | [**NotNull**](#function-notnull-14) () = delete<br> |
-|   | [**NotNull**](#function-notnull-24) (std::shared\_ptr&lt; [**T**](classendstone_1_1Identifier.md) &gt; ptr) <br> |
-|   | [**NotNull**](#function-notnull-34) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md) & other) = default<br> |
+|   | [**NotNull**](#function-notnull-24) (std::shared\_ptr&lt; T &gt; ptr) <br> |
+|   | [**NotNull**](#function-notnull-34) (const NotNull & other) = default<br> |
 |   | [**NotNull**](#function-notnull-44) (std::nullptr\_t) = delete<br> |
-|  [**const**](classendstone_1_1Identifier.md) pointer\_type & | [**get**](#function-get) () noexcept const<br> |
-|  [**T**](classendstone_1_1Identifier.md) & | [**operator\***](#function-operator) () noexcept const<br> |
-|  [**NotNull**](classendstone_1_1NotNull.md) & | [**operator++**](#function-operator_1) () = delete<br> |
-|  [**NotNull**](classendstone_1_1NotNull.md) | [**operator++**](#function-operator_2) ([**int**](classendstone_1_1Identifier.md)) = delete<br> |
-|  [**NotNull**](classendstone_1_1NotNull.md) & | [**operator+=**](#function-operator_3) (std::ptrdiff\_t) = delete<br> |
-|  [**NotNull**](classendstone_1_1NotNull.md) & | [**operator--**](#function-operator-) () = delete<br> |
-|  [**NotNull**](classendstone_1_1NotNull.md) | [**operator--**](#function-operator-_1) ([**int**](classendstone_1_1Identifier.md)) = delete<br> |
-|  [**NotNull**](classendstone_1_1NotNull.md) & | [**operator-=**](#function-operator-) (std::ptrdiff\_t) = delete<br> |
-|  [**T**](classendstone_1_1Identifier.md) \* | [**operator-&gt;**](#function-operator-_1) () noexcept const<br> |
-|  [**NotNull**](classendstone_1_1NotNull.md) & | [**operator=**](#function-operator_4) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md) & other) = default<br> |
-|  [**NotNull**](classendstone_1_1NotNull.md) & | [**operator=**](#function-operator_5) (std::nullptr\_t) = delete<br> |
-|  [**void**](classendstone_1_1Identifier.md) | [**operator[]**](#function-operator_6) (std::ptrdiff\_t) const<br> |
-|  [**void**](classendstone_1_1Identifier.md) | [**swap**](#function-swap) ([**NotNull**](classendstone_1_1NotNull.md) & other) noexcept<br> |
+|  const pointer\_type & | [**get**](#function-get) () noexcept const<br> |
+|  T & | [**operator\***](#function-operator) () noexcept const<br> |
+|  NotNull & | [**operator++**](#function-operator_1) () = delete<br> |
+|  NotNull | [**operator++**](#function-operator_2) (int) = delete<br> |
+|  NotNull & | [**operator+=**](#function-operator_3) (std::ptrdiff\_t) = delete<br> |
+|  NotNull & | [**operator--**](#function-operator-) () = delete<br> |
+|  NotNull | [**operator--**](#function-operator-_1) (int) = delete<br> |
+|  NotNull & | [**operator-=**](#function-operator-) (std::ptrdiff\_t) = delete<br> |
+|  T \* | [**operator-&gt;**](#function-operator-_1) () noexcept const<br> |
+|  NotNull & | [**operator=**](#function-operator_4) (const NotNull & other) = default<br> |
+|  NotNull & | [**operator=**](#function-operator_5) (std::nullptr\_t) = delete<br> |
+|  void | [**operator[]**](#function-operator_6) (std::ptrdiff\_t) const<br> |
+|  void | [**swap**](#function-swap) (NotNull & other) noexcept<br> |
 
 
 
@@ -155,7 +155,7 @@ inline endstone::NotNull::NotNull (
 
 ```C++
 endstone::NotNull::NotNull (
-    const  NotNull & other
+    const NotNull & other
 ) = default
 ```
 
@@ -310,7 +310,7 @@ inline T * endstone::NotNull::operator-> () noexcept const
 
 ```C++
 NotNull & endstone::NotNull::operator= (
-    const  NotNull & other
+    const NotNull & other
 ) = default
 ```
 

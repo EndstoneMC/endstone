@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1Item" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::Item</compoundname>
     <basecompoundref refid="classendstone_1_1Actor" prot="public" virt="non-virtual">endstone::Actor</basecompoundref>
     <includes refid="item_8h" local="no">endstone/actor/item.h</includes>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="classendstone_1_1Item_1aecc6e7de84c65dbe99809fc47c1284e6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Item_1aecc6e7de84c65dbe99809fc47c1284e6" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref></type>
         <definition>virtual ItemStack endstone::Item::getItemStack</definition>
         <argsstring>() const =0</argsstring>
@@ -24,13 +24,13 @@
         <location file="include/endstone/actor/item.h" line="34" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Item_1af161f37341629c74503408f7ebfeb0e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Item::setItemStack</definition>
         <argsstring>(const ItemStack &amp;stack)=0</argsstring>
         <name>setItemStack</name>
         <qualifiedname>endstone::Item::setItemStack</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;</type>
           <declname>stack</declname>
         </param>
         <briefdescription>
@@ -52,8 +52,8 @@
         </inbodydescription>
         <location file="include/endstone/actor/item.h" line="41" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Item_1a3256b7b25cc3a2e8a59a18ea471c386d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+      <memberdef kind="function" id="classendstone_1_1Item_1a3256b7b25cc3a2e8a59a18ea471c386d" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>int</type>
         <definition>virtual int endstone::Item::getPickupDelay</definition>
         <argsstring>() const =0</argsstring>
         <name>getPickupDelay</name>
@@ -71,13 +71,13 @@
         <location file="include/endstone/actor/item.h" line="48" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Item_1a9ecb3d011f118920d313d406b0e1f7cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Item::setPickupDelay</definition>
         <argsstring>(int delay)=0</argsstring>
         <name>setPickupDelay</name>
         <qualifiedname>endstone::Item::setPickupDelay</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>delay</declname>
         </param>
         <briefdescription>
@@ -100,13 +100,13 @@
         <location file="include/endstone/actor/item.h" line="55" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Item_1aa75743e9275be2335852f72f8e77a879" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Item::setUnlimitedLifetime</definition>
         <argsstring>(bool unlimited)=0</argsstring>
         <name>setUnlimitedLifetime</name>
         <qualifiedname>endstone::Item::setUnlimitedLifetime</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <type>bool</type>
           <declname>unlimited</declname>
         </param>
         <briefdescription>
@@ -128,8 +128,8 @@
         </inbodydescription>
         <location file="include/endstone/actor/item.h" line="62" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Item_1ae9d1acdd426e2abdaa9a7d0772e013a9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+      <memberdef kind="function" id="classendstone_1_1Item_1ae9d1acdd426e2abdaa9a7d0772e013a9" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
         <definition>virtual bool endstone::Item::isUnlimitedLifetime</definition>
         <argsstring>() const =0</argsstring>
         <name>isUnlimitedLifetime</name>
@@ -147,7 +147,7 @@
         <location file="include/endstone/actor/item.h" line="69" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Item_1a76a67449432660c8c549c9e578fbf549" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Item::setThrower</definition>
         <argsstring>(std::optional&lt; std::int64_t &gt; thrower)=0</argsstring>
         <name>setThrower</name>
@@ -177,7 +177,7 @@
         </inbodydescription>
         <location file="include/endstone/actor/item.h" line="78" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Item_1ab8e408c96b5ddb96277d89bdebf186ae" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Item_1ab8e408c96b5ddb96277d89bdebf186ae" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::optional&lt; std::int64_t &gt;</type>
         <definition>virtual std::optional&lt; std::int64_t &gt; endstone::Item::getThrower</definition>
         <argsstring>() const =0</argsstring>

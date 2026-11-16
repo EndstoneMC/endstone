@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1BroadcastMessageEvent" kind="class" language="C++" prot="public">
     <compoundname>endstone::BroadcastMessageEvent</compoundname>
     <basecompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; ServerEvent &gt;</basecompoundref>
@@ -20,7 +20,7 @@
         <location file="include/endstone/event/server/broadcast_message_event.h" line="62" column="13" bodyfile="include/endstone/event/server/broadcast_message_event.h" bodystart="62" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1BroadcastMessageEvent_1a53004e13a08c5694d14b948528bf91a9" prot="private" static="no" mutable="no">
-        <type>std::unordered_set&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> * &gt;</type>
+        <type>std::unordered_set&lt; const <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> * &gt;</type>
         <definition>std::unordered_set&lt;const CommandSender *&gt; endstone::BroadcastMessageEvent::recipients_</definition>
         <argsstring></argsstring>
         <name>recipients_</name>
@@ -42,7 +42,7 @@
         <name>ENDSTONE_EVENT</name>
         <qualifiedname>endstone::BroadcastMessageEvent::ENDSTONE_EVENT</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1BroadcastMessageEvent" kindref="compound">BroadcastMessageEvent</ref></type>
+          <type>BroadcastMessageEvent</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -59,7 +59,7 @@
         <name>BroadcastMessageEvent</name>
         <qualifiedname>endstone::BroadcastMessageEvent::BroadcastMessageEvent</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <type>bool</type>
           <declname>async</declname>
         </param>
         <param>
@@ -67,7 +67,7 @@
           <declname>message</declname>
         </param>
         <param>
-          <type>std::unordered_set&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> * &gt;</type>
+          <type>std::unordered_set&lt; const <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> * &gt;</type>
           <declname>recipients</declname>
         </param>
         <briefdescription>
@@ -78,8 +78,8 @@
         </inbodydescription>
         <location file="include/endstone/event/server/broadcast_message_event.h" line="35" column="5" bodyfile="include/endstone/event/server/broadcast_message_event.h" bodystart="35" bodyend="38"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BroadcastMessageEvent_1abded73e5b43b74bb3e0698691e4e34e6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> Message &amp;</type>
+      <memberdef kind="function" id="classendstone_1_1BroadcastMessageEvent_1abded73e5b43b74bb3e0698691e4e34e6" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const Message &amp;</type>
         <definition>const Message &amp; endstone::BroadcastMessageEvent::getMessage</definition>
         <argsstring>() const</argsstring>
         <name>getMessage</name>
@@ -97,7 +97,7 @@
         <location file="include/endstone/event/server/broadcast_message_event.h" line="45" column="20" bodyfile="include/endstone/event/server/broadcast_message_event.h" bodystart="45" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BroadcastMessageEvent_1a38fe78c4c7758c30f1e08d930417c276" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::BroadcastMessageEvent::setMessage</definition>
         <argsstring>(Message message)</argsstring>
         <name>setMessage</name>
@@ -125,8 +125,8 @@
         </inbodydescription>
         <location file="include/endstone/event/server/broadcast_message_event.h" line="52" column="10" bodyfile="include/endstone/event/server/broadcast_message_event.h" bodystart="52" bodyend="52"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BroadcastMessageEvent_1a32bd00d3d3836b81cef9852f7ace5a36" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::unordered_set&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> * &gt; &amp;</type>
+      <memberdef kind="function" id="classendstone_1_1BroadcastMessageEvent_1a32bd00d3d3836b81cef9852f7ace5a36" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::unordered_set&lt; const <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> * &gt; &amp;</type>
         <definition>const std::unordered_set&lt; const CommandSender * &gt; &amp; endstone::BroadcastMessageEvent::getRecipients</definition>
         <argsstring>() const</argsstring>
         <name>getRecipients</name>
@@ -151,18 +151,18 @@
 <para>This event should be async if fired from an async thread. </para>
     </detaileddescription>
     <inheritancegraph>
+      <node id="1">
+        <label>endstone::BroadcastMessageEvent</label>
+        <link refid="classendstone_1_1BroadcastMessageEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
       <node id="2">
         <label>endstone::Cancellable&lt; ServerEvent &gt;</label>
         <link refid="classendstone_1_1Cancellable"/>
         <childnode refid="3" relation="public-inheritance">
         </childnode>
         <childnode refid="5" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="1">
-        <label>endstone::BroadcastMessageEvent</label>
-        <link refid="classendstone_1_1BroadcastMessageEvent"/>
-        <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
       <node id="4">
@@ -181,18 +181,18 @@
       </node>
     </inheritancegraph>
     <collaborationgraph>
+      <node id="1">
+        <label>endstone::BroadcastMessageEvent</label>
+        <link refid="classendstone_1_1BroadcastMessageEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
       <node id="2">
         <label>endstone::Cancellable&lt; ServerEvent &gt;</label>
         <link refid="classendstone_1_1Cancellable"/>
         <childnode refid="3" relation="public-inheritance">
         </childnode>
         <childnode refid="5" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="1">
-        <label>endstone::BroadcastMessageEvent</label>
-        <link refid="classendstone_1_1BroadcastMessageEvent"/>
-        <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
       <node id="4">

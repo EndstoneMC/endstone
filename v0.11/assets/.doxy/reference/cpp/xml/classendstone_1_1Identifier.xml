@@ -1,17 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1Identifier" kind="class" language="C++" prot="public">
     <compoundname>endstone::Identifier</compoundname>
     <includes refid="identifier_8h" local="no">endstone/identifier.h</includes>
     <templateparamlist>
       <param>
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">typename</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
+        <type>typename T</type>
       </param>
     </templateparamlist>
     <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1Identifier_1a1d08ebf05277cab89f84c39867903da5" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> std::string_view</type>
-        <definition>constexpr std::string_view endstone::Identifier&lt; T &gt;::Minecraft</definition>
+        <type>std::string_view</type>
+        <definition>std::string_view endstone::Identifier&lt; T &gt;::Minecraft</definition>
         <argsstring></argsstring>
         <name>Minecraft</name>
         <qualifiedname>endstone::Identifier::Minecraft</qualifiedname>
@@ -58,13 +58,13 @@
     </sectiondef>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1Identifier_1a8fb79d1d92931c86800559f3cb1dc442" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref></type>
-        <definition>constexpr endstone::Identifier&lt; T &gt;::Identifier</definition>
+        <type>constexpr</type>
+        <definition>endstone::Identifier&lt; T &gt;::Identifier</definition>
         <argsstring>(const char *s) noexcept</argsstring>
         <name>Identifier</name>
         <qualifiedname>endstone::Identifier::Identifier</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">char</ref> *</type>
+          <type>const char *</type>
           <declname>s</declname>
         </param>
         <briefdescription>
@@ -76,13 +76,13 @@
         <location file="include/endstone/identifier.h" line="34" column="15" bodyfile="include/endstone/identifier.h" bodystart="34" bodyend="34"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Identifier_1a188a3d0cc50fa80ea6176183740fe007" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref></type>
-        <definition>constexpr endstone::Identifier&lt; T &gt;::Identifier</definition>
+        <type>constexpr</type>
+        <definition>endstone::Identifier&lt; T &gt;::Identifier</definition>
         <argsstring>(const std::string &amp;s) noexcept</argsstring>
         <name>Identifier</name>
         <qualifiedname>endstone::Identifier::Identifier</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string &amp;</type>
+          <type>const std::string &amp;</type>
           <declname>s</declname>
         </param>
         <briefdescription>
@@ -94,13 +94,13 @@
         <location file="include/endstone/identifier.h" line="36" column="15" bodyfile="include/endstone/identifier.h" bodystart="36" bodyend="36"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Identifier_1a1433ff65a2a925be18f2537224160137" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref></type>
-        <definition>constexpr endstone::Identifier&lt; T &gt;::Identifier</definition>
+        <type>constexpr</type>
+        <definition>endstone::Identifier&lt; T &gt;::Identifier</definition>
         <argsstring>(const std::string_view &amp;identifier) noexcept</argsstring>
         <name>Identifier</name>
         <qualifiedname>endstone::Identifier::Identifier</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string_view &amp;</type>
+          <type>const std::string_view &amp;</type>
           <declname>identifier</declname>
         </param>
         <briefdescription>
@@ -112,17 +112,17 @@
         <location file="include/endstone/identifier.h" line="38" column="15" bodyfile="include/endstone/identifier.h" bodystart="38" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Identifier_1ad7a0a327a55eed2cae97237160b022a4" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref></type>
-        <definition>constexpr endstone::Identifier&lt; T &gt;::Identifier</definition>
+        <type>constexpr</type>
+        <definition>endstone::Identifier&lt; T &gt;::Identifier</definition>
         <argsstring>(const std::string_view &amp;namespace_, const std::string_view &amp;key) noexcept</argsstring>
         <name>Identifier</name>
         <qualifiedname>endstone::Identifier::Identifier</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string_view &amp;</type>
+          <type>const std::string_view &amp;</type>
           <declname>namespace_</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string_view &amp;</type>
+          <type>const std::string_view &amp;</type>
           <declname>key</declname>
         </param>
         <briefdescription>
@@ -133,9 +133,9 @@
         </inbodydescription>
         <location file="include/endstone/identifier.h" line="51" column="15" bodyfile="include/endstone/identifier.h" bodystart="51" bodyend="54"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Identifier_1af3574ba3a17f608f124f2d0315c3f21b" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> std::string_view</type>
-        <definition>constexpr std::string_view endstone::Identifier&lt; T &gt;::getNamespace</definition>
+      <memberdef kind="function" id="classendstone_1_1Identifier_1af3574ba3a17f608f124f2d0315c3f21b" prot="public" static="no" nodiscard="yes" constexpr="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>std::string_view</type>
+        <definition>std::string_view endstone::Identifier&lt; T &gt;::getNamespace</definition>
         <argsstring>() const noexcept</argsstring>
         <name>getNamespace</name>
         <qualifiedname>endstone::Identifier::getNamespace</qualifiedname>
@@ -147,9 +147,9 @@
         </inbodydescription>
         <location file="include/endstone/identifier.h" line="56" column="33" bodyfile="include/endstone/identifier.h" bodystart="56" bodyend="56"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Identifier_1a43556ba00f67a5ff4e92555e86eda788" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> std::string_view</type>
-        <definition>constexpr std::string_view endstone::Identifier&lt; T &gt;::getKey</definition>
+      <memberdef kind="function" id="classendstone_1_1Identifier_1a43556ba00f67a5ff4e92555e86eda788" prot="public" static="no" nodiscard="yes" constexpr="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>std::string_view</type>
+        <definition>std::string_view endstone::Identifier&lt; T &gt;::getKey</definition>
         <argsstring>() const noexcept</argsstring>
         <name>getKey</name>
         <qualifiedname>endstone::Identifier::getKey</qualifiedname>
@@ -162,13 +162,13 @@
         <location file="include/endstone/identifier.h" line="58" column="33" bodyfile="include/endstone/identifier.h" bodystart="58" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Identifier_1abf2ac66c2abfc0dcfcedd8fe17fefcca" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
-        <definition>constexpr bool endstone::Identifier&lt; T &gt;::operator==</definition>
+        <type>bool</type>
+        <definition>bool endstone::Identifier&lt; T &gt;::operator==</definition>
         <argsstring>(const Identifier &amp;other) const noexcept</argsstring>
         <name>operator==</name>
         <qualifiedname>endstone::Identifier::operator==</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref> &amp;</type>
+          <type>const Identifier &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -180,13 +180,13 @@
         <location file="include/endstone/identifier.h" line="60" column="20" bodyfile="include/endstone/identifier.h" bodystart="60" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Identifier_1ae5dbb768ecac7d06848cde156e55f304" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
-        <definition>constexpr bool endstone::Identifier&lt; T &gt;::operator!=</definition>
+        <type>bool</type>
+        <definition>bool endstone::Identifier&lt; T &gt;::operator!=</definition>
         <argsstring>(const Identifier &amp;other) const noexcept</argsstring>
         <name>operator!=</name>
         <qualifiedname>endstone::Identifier::operator!=</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref> &amp;</type>
+          <type>const Identifier &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -214,13 +214,13 @@
     </sectiondef>
     <sectiondef kind="public-static-func">
       <memberdef kind="function" id="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref></type>
+        <type>Identifier</type>
         <definition>static constexpr Identifier endstone::Identifier&lt; T &gt;::minecraft</definition>
         <argsstring>(const std::string_view key) noexcept</argsstring>
         <name>minecraft</name>
         <qualifiedname>endstone::Identifier::minecraft</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string_view</type>
+          <type>const std::string_view</type>
           <declname>key</declname>
         </param>
         <briefdescription>

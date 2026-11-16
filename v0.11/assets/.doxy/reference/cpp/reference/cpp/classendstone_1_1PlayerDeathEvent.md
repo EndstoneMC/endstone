@@ -113,11 +113,11 @@ Inherits the following classes: [endstone::ActorDeathEvent](classendstone_1_1Act
 
 | Type | Name |
 | ---: | :--- |
-|   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerDeathEvent**](classendstone_1_1PlayerDeathEvent.md)) <br> |
+|   | [**ENDSTONE\_EVENT**](#function-endstone_event) (PlayerDeathEvent) <br> |
 |   | [**PlayerDeathEvent**](#function-playerdeathevent) ([**Player**](classendstone_1_1Player.md) & player, std::unique\_ptr&lt; [**DamageSource**](classendstone_1_1DamageSource.md) &gt; damage\_source, std::optional&lt; Message &gt; death\_message) <br> |
 |  std::optional&lt; Message &gt; | [**getDeathMessage**](#function-getdeathmessage) () const<br>_Get the death message that will appear to everyone on the server._  |
 |  [**Player**](classendstone_1_1Player.md) & | [**getPlayer**](#function-getplayer) () const<br>_Returns the_ [_**Player**_](classendstone_1_1Player.md) _involved in this event._ |
-|  [**void**](classendstone_1_1Identifier.md) | [**setDeathMessage**](#function-setdeathmessage) (std::optional&lt; Message &gt; death\_message) <br>_Set the death message that will appear to everyone on the server._  |
+|  void | [**setDeathMessage**](#function-setdeathmessage) (std::optional&lt; Message &gt; death\_message) <br>_Set the death message that will appear to everyone on the server._  |
 
 
 ## Public Functions inherited from endstone::ActorDeathEvent
@@ -127,7 +127,7 @@ See [endstone::ActorDeathEvent](classendstone_1_1ActorDeathEvent.md)
 | Type | Name |
 | ---: | :--- |
 |   | [**ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md#function-actordeathevent) ([**Mob**](classendstone_1_1Mob.md) & actor, std::unique\_ptr&lt; [**DamageSource**](classendstone_1_1DamageSource.md) &gt; damage\_source) <br> |
-|   | [**ENDSTONE\_EVENT**](classendstone_1_1ActorDeathEvent.md#function-endstone_event) ([**ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md)) <br> |
+|   | [**ENDSTONE\_EVENT**](classendstone_1_1ActorDeathEvent.md#function-endstone_event) (ActorDeathEvent) <br> |
 |  [**DamageSource**](classendstone_1_1DamageSource.md) & | [**getDamageSource**](classendstone_1_1ActorDeathEvent.md#function-getdamagesource) () const<br>_Gets the source of damage which caused the death._  |
 
 
@@ -137,8 +137,8 @@ See [endstone::ActorEvent](classendstone_1_1ActorEvent.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**ActorEvent**](classendstone_1_1ActorEvent.md#function-actorevent) ([**ActorType**](classendstone_1_1Identifier.md) & actor) <br> |
-|  [**ActorType**](classendstone_1_1Identifier.md) & | [**getActor**](classendstone_1_1ActorEvent.md#function-getactor) () const<br>_Returns the_ [_**Actor**_](classendstone_1_1Actor.md) _involved in this event._ |
+|   | [**ActorEvent**](classendstone_1_1ActorEvent.md#function-actorevent) (ActorType & actor) <br> |
+|  ActorType & | [**getActor**](classendstone_1_1ActorEvent.md#function-getactor) () const<br>_Returns the_ [_**Actor**_](classendstone_1_1Actor.md) _involved in this event._ |
 |   | [**~ActorEvent**](classendstone_1_1ActorEvent.md#function-actorevent) () override<br> |
 
 
@@ -148,13 +148,13 @@ See [endstone::Event](classendstone_1_1Event.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**Event**](classendstone_1_1Event.md#function-event-13) ([**bool**](classendstone_1_1Identifier.md) async=[**false**](classendstone_1_1Identifier.md)) <br> |
-|   | [**Event**](classendstone_1_1Event.md#function-event-23) ([**const**](classendstone_1_1Identifier.md) [**Event**](classendstone_1_1Event.md) &) = delete<br> |
-|   | [**Event**](classendstone_1_1Event.md#function-event-33) ([**Event**](classendstone_1_1Event.md) &&) = default<br> |
+|   | [**Event**](classendstone_1_1Event.md#function-event-13) (bool async=false) <br> |
+|   | [**Event**](classendstone_1_1Event.md#function-event-23) (const Event &) = delete<br> |
+|   | [**Event**](classendstone_1_1Event.md#function-event-33) (Event &&) = default<br> |
 | virtual std::string | [**getEventName**](classendstone_1_1Event.md#function-geteventname) () const = 0<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**isAsynchronous**](classendstone_1_1Event.md#function-isasynchronous) () const<br> |
-|  [**Event**](classendstone_1_1Event.md) & | [**operator=**](classendstone_1_1Event.md#function-operator) ([**const**](classendstone_1_1Identifier.md) [**Event**](classendstone_1_1Event.md) &) = delete<br> |
-|  [**Event**](classendstone_1_1Event.md) & | [**operator=**](classendstone_1_1Event.md#function-operator_1) ([**Event**](classendstone_1_1Event.md) &&) = default<br> |
+|  bool | [**isAsynchronous**](classendstone_1_1Event.md#function-isasynchronous) () const<br> |
+|  Event & | [**operator=**](classendstone_1_1Event.md#function-operator) (const Event &) = delete<br> |
+|  Event & | [**operator=**](classendstone_1_1Event.md#function-operator_1) (Event &&) = default<br> |
 | virtual  | [**~Event**](classendstone_1_1Event.md#function-event) () = default<br> |
 
 

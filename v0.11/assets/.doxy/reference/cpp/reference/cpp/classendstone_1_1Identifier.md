@@ -2,7 +2,7 @@
 
 # Class endstone::Identifier
 
-**template &lt;[**typename**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;**
+**template &lt;typename T&gt;**
 
 
 
@@ -40,7 +40,7 @@ _Represents a identifier consisting of two components: a namespace and a key._
 
 | Type | Name |
 | ---: | :--- |
-|  [**constexpr**](classendstone_1_1Identifier.md) std::string\_view | [**Minecraft**](#variable-minecraft)   = `"minecraft"`<br>_The namespace representing all inbuilt keys._  |
+|  std::string\_view | [**Minecraft**](#variable-minecraft)   = `"minecraft"`<br>_The namespace representing all inbuilt keys._  |
 
 
 
@@ -59,22 +59,22 @@ _Represents a identifier consisting of two components: a namespace and a key._
 
 | Type | Name |
 | ---: | :--- |
-|  [**constexpr**](classendstone_1_1Identifier.md) | [**Identifier**](#function-identifier-14) ([**const**](classendstone_1_1Identifier.md) [**char**](classendstone_1_1Identifier.md) \* s) noexcept<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) | [**Identifier**](#function-identifier-24) ([**const**](classendstone_1_1Identifier.md) std::string & s) noexcept<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) | [**Identifier**](#function-identifier-34) ([**const**](classendstone_1_1Identifier.md) std::string\_view & identifier) noexcept<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) | [**Identifier**](#function-identifier-44) ([**const**](classendstone_1_1Identifier.md) std::string\_view & namespace\_, [**const**](classendstone_1_1Identifier.md) std::string\_view & key) noexcept<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) std::string\_view | [**getKey**](#function-getkey) () noexcept const<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) std::string\_view | [**getNamespace**](#function-getnamespace) () noexcept const<br> |
+|  constexpr | [**Identifier**](#function-identifier-14) (const char \* s) noexcept<br> |
+|  constexpr | [**Identifier**](#function-identifier-24) (const std::string & s) noexcept<br> |
+|  constexpr | [**Identifier**](#function-identifier-34) (const std::string\_view & identifier) noexcept<br> |
+|  constexpr | [**Identifier**](#function-identifier-44) (const std::string\_view & namespace\_, const std::string\_view & key) noexcept<br> |
+|  std::string\_view | [**getKey**](#function-getkey) () noexcept const<br> |
+|  std::string\_view | [**getNamespace**](#function-getnamespace) () noexcept const<br> |
 |   | [**string**](#function-string) () const<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**bool**](classendstone_1_1Identifier.md) | [**operator!=**](#function-operator) ([**const**](classendstone_1_1Identifier.md) [**Identifier**](classendstone_1_1Identifier.md) & other) noexcept const<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**bool**](classendstone_1_1Identifier.md) | [**operator==**](#function-operator_1) ([**const**](classendstone_1_1Identifier.md) [**Identifier**](classendstone_1_1Identifier.md) & other) noexcept const<br> |
+|  bool | [**operator!=**](#function-operator) (const Identifier & other) noexcept const<br> |
+|  bool | [**operator==**](#function-operator_1) (const Identifier & other) noexcept const<br> |
 
 
 ## Public Static Functions
 
 | Type | Name |
 | ---: | :--- |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**Identifier**](classendstone_1_1Identifier.md) | [**minecraft**](#function-minecraft) ([**const**](classendstone_1_1Identifier.md) std::string\_view key) noexcept<br> |
+|  Identifier | [**minecraft**](#function-minecraft) (const std::string\_view key) noexcept<br> |
 
 
 
@@ -110,7 +110,7 @@ _Represents a identifier consisting of two components: a namespace and a key._
 
 _The namespace representing all inbuilt keys._ 
 ```C++
-constexpr std::string_view endstone::Identifier< T >::Minecraft;
+std::string_view endstone::Identifier< T >::Minecraft;
 ```
 
 
@@ -126,7 +126,7 @@ constexpr std::string_view endstone::Identifier< T >::Minecraft;
 
 ```C++
 inline constexpr endstone::Identifier::Identifier (
-    const  char * s
+    const char * s
 ) noexcept
 ```
 
@@ -186,7 +186,7 @@ inline constexpr endstone::Identifier::Identifier (
 ### function getKey 
 
 ```C++
-inline constexpr std::string_view endstone::Identifier::getKey () noexcept const
+inline std::string_view endstone::Identifier::getKey () noexcept const
 ```
 
 
@@ -199,7 +199,7 @@ inline constexpr std::string_view endstone::Identifier::getKey () noexcept const
 ### function getNamespace 
 
 ```C++
-inline constexpr std::string_view endstone::Identifier::getNamespace () noexcept const
+inline std::string_view endstone::Identifier::getNamespace () noexcept const
 ```
 
 
@@ -225,8 +225,8 @@ inline endstone::Identifier::string () const
 ### function operator!= 
 
 ```C++
-inline constexpr  bool endstone::Identifier::operator!= (
-    const  Identifier & other
+inline bool endstone::Identifier::operator!= (
+    const Identifier & other
 ) noexcept const
 ```
 
@@ -240,8 +240,8 @@ inline constexpr  bool endstone::Identifier::operator!= (
 ### function operator== 
 
 ```C++
-inline constexpr  bool endstone::Identifier::operator== (
-    const  Identifier & other
+inline bool endstone::Identifier::operator== (
+    const Identifier & other
 ) noexcept const
 ```
 
@@ -257,7 +257,7 @@ inline constexpr  bool endstone::Identifier::operator== (
 ### function minecraft 
 
 ```C++
-static inline constexpr  Identifier endstone::Identifier::minecraft (
+static inline Identifier endstone::Identifier::minecraft (
     const std::string_view key
 ) noexcept
 ```

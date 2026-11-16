@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1Language" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::Language</compoundname>
     <includes refid="language_8h" local="no">endstone/lang/language.h</includes>
@@ -18,7 +18,7 @@
         </inbodydescription>
         <location file="include/endstone/lang/language.h" line="29" column="13"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Language_1a0bc2d7dd2a9b9b43aeb57f5278a4cb7e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Language_1a0bc2d7dd2a9b9b43aeb57f5278a4cb7e" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
         <definition>virtual std::string endstone::Language::translate</definition>
         <argsstring>(std::string text) const =0</argsstring>
@@ -49,7 +49,7 @@
         </inbodydescription>
         <location file="include/endstone/lang/language.h" line="37" column="26"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Language_1aed24e5f934caf4816cb8471818ee2335" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Language_1aed24e5f934caf4816cb8471818ee2335" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
         <definition>virtual std::string endstone::Language::translate</definition>
         <argsstring>(std::string text, std::string locale) const =0</argsstring>
@@ -92,7 +92,7 @@
         </inbodydescription>
         <location file="include/endstone/lang/language.h" line="46" column="26"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Language_1acbd599919da84faee5aa55eaf8440d6c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Language_1acbd599919da84faee5aa55eaf8440d6c" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
         <definition>virtual std::string endstone::Language::translate</definition>
         <argsstring>(std::string text, std::vector&lt; std::string &gt; params) const =0</argsstring>
@@ -135,7 +135,7 @@
         </inbodydescription>
         <location file="include/endstone/lang/language.h" line="55" column="26"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Language_1a8a6cde954fdb3b2b623f68346c2906e1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Language_1a8a6cde954fdb3b2b623f68346c2906e1" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
         <definition>virtual std::string endstone::Language::translate</definition>
         <argsstring>(std::string text, std::vector&lt; std::string &gt; params, std::string locale) const =0</argsstring>
@@ -190,7 +190,7 @@
         </inbodydescription>
         <location file="include/endstone/lang/language.h" line="65" column="26"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Language_1a633b4bcff201523d59123b7da61ab324" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Language_1a633b4bcff201523d59123b7da61ab324" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
         <definition>virtual std::string endstone::Language::translate</definition>
         <argsstring>(Translatable translatable) const =0</argsstring>
@@ -221,7 +221,7 @@
         </inbodydescription>
         <location file="include/endstone/lang/language.h" line="74" column="26"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Language_1a41d81b4bfb0d53c5aae61c7312b8a11c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Language_1a41d81b4bfb0d53c5aae61c7312b8a11c" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
         <definition>virtual std::string endstone::Language::translate</definition>
         <argsstring>(Translatable translatable, std::string locale) const =0</argsstring>
@@ -264,7 +264,7 @@
         </inbodydescription>
         <location file="include/endstone/lang/language.h" line="83" column="26"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Language_1a4a6fdc89482f25a189791fda12b083e6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Language_1a4a6fdc89482f25a189791fda12b083e6" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
         <definition>virtual std::string endstone::Language::getLocale</definition>
         <argsstring>() const =0</argsstring>

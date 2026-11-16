@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1PlayerJoinEvent" kind="class" language="C++" prot="public">
     <compoundname>endstone::PlayerJoinEvent</compoundname>
     <basecompoundref refid="classendstone_1_1PlayerEvent" prot="public" virt="non-virtual">endstone::PlayerEvent</basecompoundref>
@@ -28,7 +28,7 @@
         <name>ENDSTONE_EVENT</name>
         <qualifiedname>endstone::PlayerJoinEvent::ENDSTONE_EVENT</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1PlayerJoinEvent" kindref="compound">PlayerJoinEvent</ref></type>
+          <type>PlayerJoinEvent</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -60,7 +60,7 @@
         </inbodydescription>
         <location file="include/endstone/event/player/player_join_event.h" line="31" column="14" bodyfile="include/endstone/event/player/player_join_event.h" bodystart="31" bodyend="34"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PlayerJoinEvent_1af6a9da33988a5734a055434ba384faeb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PlayerJoinEvent_1af6a9da33988a5734a055434ba384faeb" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; Message &gt;</type>
         <definition>std::optional&lt; Message &gt; endstone::PlayerJoinEvent::getJoinMessage</definition>
         <argsstring>() const</argsstring>
@@ -79,7 +79,7 @@
         <location file="include/endstone/event/player/player_join_event.h" line="41" column="20" bodyfile="include/endstone/event/player/player_join_event.h" bodystart="41" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerJoinEvent_1a63594b91d25a768fef8edcd5ca24bd93" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::PlayerJoinEvent::setJoinMessage</definition>
         <argsstring>(std::optional&lt; Message &gt; message)</argsstring>
         <name>setJoinMessage</name>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1Dropdown" kind="class" language="C++" prot="public">
     <compoundname>endstone::Dropdown</compoundname>
     <derivedcompoundref refid="classendstone_1_1StepSlider" prot="public" virt="non-virtual">endstone::StepSlider</derivedcompoundref>
@@ -34,7 +34,7 @@
         <location file="include/endstone/form/controls/dropdown.h" line="108" column="17" bodyfile="include/endstone/form/controls/dropdown.h" bodystart="108" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Dropdown_1a92741c2026b72e956d368414a076a6d0" prot="private" static="no" mutable="no">
-        <type>std::optional&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">int</ref> &gt;</type>
+        <type>std::optional&lt; int &gt;</type>
         <definition>std::optional&lt;int&gt; endstone::Dropdown::default_index_</definition>
         <argsstring></argsstring>
         <name>default_index_</name>
@@ -78,7 +78,7 @@
           <declname>options</declname>
         </param>
         <param>
-          <type>std::optional&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">int</ref> &gt;</type>
+          <type>std::optional&lt; int &gt;</type>
           <declname>default_index</declname>
           <defval>std::nullopt</defval>
         </param>
@@ -90,7 +90,7 @@
         </inbodydescription>
         <location file="include/endstone/form/controls/dropdown.h" line="32" column="14" bodyfile="include/endstone/form/controls/dropdown.h" bodystart="32" bodyend="35"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Dropdown_1a424095abea8be681ef3ebc756663b879" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1Dropdown_1a424095abea8be681ef3ebc756663b879" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>Message</type>
         <definition>Message endstone::Dropdown::getLabel</definition>
         <argsstring>() const</argsstring>
@@ -109,7 +109,7 @@
         <location file="include/endstone/form/controls/dropdown.h" line="42" column="14" bodyfile="include/endstone/form/controls/dropdown.h" bodystart="42" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Dropdown_1aaa0a076f154e39e44f50e958e8f78190" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Dropdown" kindref="compound">Dropdown</ref> &amp;</type>
+        <type>Dropdown &amp;</type>
         <definition>Dropdown &amp; endstone::Dropdown::setLabel</definition>
         <argsstring>(Message label)</argsstring>
         <name>setLabel</name>
@@ -140,13 +140,13 @@
         <location file="include/endstone/form/controls/dropdown.h" line="50" column="14" bodyfile="include/endstone/form/controls/dropdown.h" bodystart="50" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Dropdown_1a76a20ab311120e240b6d552ef2741061" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Dropdown" kindref="compound">Dropdown</ref> &amp;</type>
+        <type>Dropdown &amp;</type>
         <definition>Dropdown &amp; endstone::Dropdown::addOption</definition>
         <argsstring>(const std::string &amp;option)</argsstring>
         <name>addOption</name>
         <qualifiedname>endstone::Dropdown::addOption</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string &amp;</type>
+          <type>const std::string &amp;</type>
           <declname>option</declname>
         </param>
         <briefdescription>
@@ -170,7 +170,7 @@
         </inbodydescription>
         <location file="include/endstone/form/controls/dropdown.h" line="62" column="14" bodyfile="include/endstone/form/controls/dropdown.h" bodystart="62" bodyend="66"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Dropdown_1a3ff3209113ca1d2d2794290e7da8a595" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1Dropdown_1a3ff3209113ca1d2d2794290e7da8a595" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; std::string &gt;</type>
         <definition>std::vector&lt; std::string &gt; endstone::Dropdown::getOptions</definition>
         <argsstring>() const</argsstring>
@@ -189,7 +189,7 @@
         <location file="include/endstone/form/controls/dropdown.h" line="73" column="18" bodyfile="include/endstone/form/controls/dropdown.h" bodystart="73" bodyend="73"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Dropdown_1a18413db278b9d46f4d56e3db0b11520c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Dropdown" kindref="compound">Dropdown</ref> &amp;</type>
+        <type>Dropdown &amp;</type>
         <definition>Dropdown &amp; endstone::Dropdown::setOptions</definition>
         <argsstring>(std::vector&lt; std::string &gt; options)</argsstring>
         <name>setOptions</name>
@@ -219,8 +219,8 @@
         </inbodydescription>
         <location file="include/endstone/form/controls/dropdown.h" line="81" column="14" bodyfile="include/endstone/form/controls/dropdown.h" bodystart="81" bodyend="85"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Dropdown_1a2783fb46d09ac9838ffbc1064c8b79e8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>std::optional&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">int</ref> &gt;</type>
+      <memberdef kind="function" id="classendstone_1_1Dropdown_1a2783fb46d09ac9838ffbc1064c8b79e8" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::optional&lt; int &gt;</type>
         <definition>std::optional&lt; int &gt; endstone::Dropdown::getDefaultIndex</definition>
         <argsstring>() const</argsstring>
         <name>getDefaultIndex</name>
@@ -238,13 +238,13 @@
         <location file="include/endstone/form/controls/dropdown.h" line="92" column="20" bodyfile="include/endstone/form/controls/dropdown.h" bodystart="92" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Dropdown_1a370ff769dafb86ac4ed83ddef6e3b4b4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Dropdown" kindref="compound">Dropdown</ref> &amp;</type>
+        <type>Dropdown &amp;</type>
         <definition>Dropdown &amp; endstone::Dropdown::setDefaultIndex</definition>
         <argsstring>(std::optional&lt; int &gt; default_index)</argsstring>
         <name>setDefaultIndex</name>
         <qualifiedname>endstone::Dropdown::setDefaultIndex</qualifiedname>
         <param>
-          <type>std::optional&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">int</ref> &gt;</type>
+          <type>std::optional&lt; int &gt;</type>
           <declname>default_index</declname>
         </param>
         <briefdescription>

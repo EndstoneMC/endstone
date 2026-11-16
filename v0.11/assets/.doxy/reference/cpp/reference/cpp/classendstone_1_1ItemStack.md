@@ -52,27 +52,27 @@ _Represents a stack of items._
 
 | Type | Name |
 | ---: | :--- |
-|   | [**ItemStack**](#function-itemstack-14) ([**ItemTypeId**](namespaceendstone.md#typedef-itemtypeid) type, [**int**](classendstone_1_1Identifier.md) amount=1, [**int**](classendstone_1_1Identifier.md) data=0) <br>_An item stack._  |
-|   | [**ItemStack**](#function-itemstack-24) ([**const**](classendstone_1_1Identifier.md) [**ItemStack**](classendstone_1_1ItemStack.md) & other) <br> |
-|   | [**ItemStack**](#function-itemstack-34) ([**ItemStack**](classendstone_1_1ItemStack.md) && other) noexcept<br> |
-|  [**int**](classendstone_1_1Identifier.md) | [**getAmount**](#function-getamount) () const<br>_Gets the amount of items in this stack._  |
-|  [**int**](classendstone_1_1Identifier.md) | [**getData**](#function-getdata) () const<br>_Gets the data for this stack of items._  |
+|   | [**ItemStack**](#function-itemstack-14) ([**ItemTypeId**](namespaceendstone.md#typedef-itemtypeid) type, int amount=1, int data=0) <br>_An item stack._  |
+|   | [**ItemStack**](#function-itemstack-24) (const ItemStack & other) <br> |
+|   | [**ItemStack**](#function-itemstack-34) (ItemStack && other) noexcept<br> |
+|  int | [**getAmount**](#function-getamount) () const<br>_Gets the amount of items in this stack._  |
+|  int | [**getData**](#function-getdata) () const<br>_Gets the data for this stack of items._  |
 |  std::unique\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**getItemMeta**](#function-getitemmeta) () const<br>_Gets a copy of this_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _'s_[_**ItemMeta**_](classendstone_1_1ItemMeta.md) _._ |
-|  [**int**](classendstone_1_1Identifier.md) | [**getMaxStackSize**](#function-getmaxstacksize) () const<br>_Get the maximum stack size for this item._  |
+|  int | [**getMaxStackSize**](#function-getmaxstacksize) () const<br>_Get the maximum stack size for this item._  |
 |  [**CompoundTag**](classendstone_1_1CompoundTag.md) | [**getNbt**](#function-getnbt) () const<br>_Gets the NBT compound tag of this item stack._  |
 |  std::string | [**getTranslationKey**](#function-gettranslationkey) () const<br>_Get the translation key, suitable for use in a translation component._  |
-|  [**const**](classendstone_1_1Identifier.md) [**ItemType**](classendstone_1_1ItemType.md) & | [**getType**](#function-gettype) () const<br>_Gets the type of this item._  |
-|  [**bool**](classendstone_1_1Identifier.md) | [**hasItemMeta**](#function-hasitemmeta) () const<br>_Checks to see if any metadata has been defined._  |
-|  [**bool**](classendstone_1_1Identifier.md) | [**isSimilar**](#function-issimilar) ([**const**](classendstone_1_1Identifier.md) [**ItemStack**](classendstone_1_1ItemStack.md) & other) const<br>_Checks if the two stacks are equal, but does not consider stack size (amount)._  |
-|  [**bool**](classendstone_1_1Identifier.md) | [**operator!=**](#function-operator) ([**const**](classendstone_1_1Identifier.md) [**ItemStack**](classendstone_1_1ItemStack.md) & other) const<br> |
-|  [**ItemStack**](classendstone_1_1ItemStack.md) & | [**operator=**](#function-operator_1) ([**const**](classendstone_1_1Identifier.md) [**ItemStack**](classendstone_1_1ItemStack.md) & other) <br> |
-|  [**ItemStack**](classendstone_1_1ItemStack.md) & | [**operator=**](#function-operator_2) ([**ItemStack**](classendstone_1_1ItemStack.md) && other) noexcept<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**operator==**](#function-operator_3) ([**const**](classendstone_1_1Identifier.md) [**ItemStack**](classendstone_1_1ItemStack.md) & other) const<br> |
-|  [**void**](classendstone_1_1Identifier.md) | [**setAmount**](#function-setamount) ([**int**](classendstone_1_1Identifier.md) amount) <br>_Sets the amount of items in this stack._  |
-|  [**void**](classendstone_1_1Identifier.md) | [**setData**](#function-setdata) ([**int**](classendstone_1_1Identifier.md) data) <br>_Sets the data for this stack of items._  |
-|  [**bool**](classendstone_1_1Identifier.md) | [**setItemMeta**](#function-setitemmeta) ([**ItemMeta**](classendstone_1_1ItemMeta.md) \* meta) <br>_Set the_ [_**ItemMeta**_](classendstone_1_1ItemMeta.md) _of this_[_**ItemStack**_](classendstone_1_1ItemStack.md) _._ |
-|  [**void**](classendstone_1_1Identifier.md) | [**setNbt**](#function-setnbt) ([**const**](classendstone_1_1Identifier.md) [**CompoundTag**](classendstone_1_1CompoundTag.md) & nbt) <br>_Sets the NBT compound tag of this item stack._  |
-|  [**void**](classendstone_1_1Identifier.md) | [**setType**](#function-settype) ([**ItemTypeId**](namespaceendstone.md#typedef-itemtypeid) type) <br>_Sets the type of this item._  |
+|  const [**ItemType**](classendstone_1_1ItemType.md) & | [**getType**](#function-gettype) () const<br>_Gets the type of this item._  |
+|  bool | [**hasItemMeta**](#function-hasitemmeta) () const<br>_Checks to see if any metadata has been defined._  |
+|  bool | [**isSimilar**](#function-issimilar) (const [**ItemStack**](classendstone_1_1ItemStack.md#function-itemstack-14) & other) const<br>_Checks if the two stacks are equal, but does not consider stack size (amount)._  |
+|  bool | [**operator!=**](#function-operator) (const [**ItemStack**](classendstone_1_1ItemStack.md#function-itemstack-14) & other) const<br> |
+|  [**ItemStack**](classendstone_1_1ItemStack.md#function-itemstack-14) & | [**operator=**](#function-operator_1) (const [**ItemStack**](classendstone_1_1ItemStack.md#function-itemstack-14) & other) <br> |
+|  [**ItemStack**](classendstone_1_1ItemStack.md#function-itemstack-14) & | [**operator=**](#function-operator_2) ([**ItemStack**](classendstone_1_1ItemStack.md#function-itemstack-14) && other) noexcept<br> |
+|  bool | [**operator==**](#function-operator_3) (const [**ItemStack**](classendstone_1_1ItemStack.md#function-itemstack-14) & other) const<br> |
+|  void | [**setAmount**](#function-setamount) (int amount) <br>_Sets the amount of items in this stack._  |
+|  void | [**setData**](#function-setdata) (int data) <br>_Sets the data for this stack of items._  |
+|  bool | [**setItemMeta**](#function-setitemmeta) ([**ItemMeta**](classendstone_1_1ItemMeta.md) \* meta) <br>_Set the_ [_**ItemMeta**_](classendstone_1_1ItemMeta.md) _of this_[_**ItemStack**_](classendstone_1_1ItemStack.md) _._ |
+|  void | [**setNbt**](#function-setnbt) (const [**CompoundTag**](classendstone_1_1CompoundTag.md) & nbt) <br>_Sets the NBT compound tag of this item stack._  |
+|  void | [**setType**](#function-settype) ([**ItemTypeId**](namespaceendstone.md#typedef-itemtypeid) type) <br>_Sets the type of this item._  |
 |   | [**~ItemStack**](#function-itemstack) () = default<br> |
 
 
@@ -142,7 +142,7 @@ inline explicit endstone::ItemStack::ItemStack (
 
 ```C++
 inline endstone::ItemStack::ItemStack (
-    const  ItemStack & other
+    const ItemStack & other
 ) 
 ```
 
@@ -322,7 +322,7 @@ the translation key
 
 _Gets the type of this item._ 
 ```C++
-inline const  ItemType & endstone::ItemStack::getType () const
+inline const ItemType & endstone::ItemStack::getType () const
 ```
 
 
@@ -373,7 +373,7 @@ Returns true if some metadata has been set for this item
 _Checks if the two stacks are equal, but does not consider stack size (amount)._ 
 ```C++
 inline bool endstone::ItemStack::isSimilar (
-    const  ItemStack & other
+    const ItemStack & other
 ) const
 ```
 
@@ -406,7 +406,7 @@ true if the two stacks are equal, ignoring the amount
 
 ```C++
 inline bool endstone::ItemStack::operator!= (
-    const  ItemStack & other
+    const ItemStack & other
 ) const
 ```
 
@@ -421,7 +421,7 @@ inline bool endstone::ItemStack::operator!= (
 
 ```C++
 inline ItemStack & endstone::ItemStack::operator= (
-    const  ItemStack & other
+    const ItemStack & other
 ) 
 ```
 
@@ -451,7 +451,7 @@ ItemStack & endstone::ItemStack::operator= (
 
 ```C++
 inline bool endstone::ItemStack::operator== (
-    const  ItemStack & other
+    const ItemStack & other
 ) const
 ```
 
@@ -555,7 +555,7 @@ True if successfully applied [**ItemMeta**](classendstone_1_1ItemMeta.md)
 _Sets the NBT compound tag of this item stack._ 
 ```C++
 inline void endstone::ItemStack::setNbt (
-    const  CompoundTag & nbt
+    const CompoundTag & nbt
 ) 
 ```
 

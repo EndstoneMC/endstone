@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="game__mode_8h" kind="file" language="C++">
     <compoundname>game_mode.h</compoundname>
     <includedby refid="player__game__mode__change__event_8h" local="yes">include/endstone/event/player/player_game_mode_change_event.h</includedby>
@@ -398,13 +398,13 @@
 <codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceendstone" kindref="compound">endstone</ref><sp/>{</highlight></codeline>
 <codeline lineno="18"><highlight class="normal"></highlight></codeline>
 <codeline lineno="22" refid="namespaceendstone_1a3185831693a75ff4595095c0fe568c2a" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="namespaceendstone_1a3185831693a75ff4595095c0fe568c2a" kindref="member">GameMode</ref><sp/>{</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceendstone_1a3185831693a75ff4595095c0fe568c2aa521100d075c1284b944841394e157744" kindref="member">Survival</ref><sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="26" refid="namespaceendstone_1a3185831693a75ff4595095c0fe568c2aa521100d075c1284b944841394e157744" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceendstone_1a3185831693a75ff4595095c0fe568c2aa521100d075c1284b944841394e157744" kindref="member">Survival</ref><sp/>=<sp/>0,</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceendstone_1a3185831693a75ff4595095c0fe568c2aa047c6bd032387e5c84e1e718f58f7e5a" kindref="member">Creative</ref><sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="31" refid="namespaceendstone_1a3185831693a75ff4595095c0fe568c2aa047c6bd032387e5c84e1e718f58f7e5a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceendstone_1a3185831693a75ff4595095c0fe568c2aa047c6bd032387e5c84e1e718f58f7e5a" kindref="member">Creative</ref><sp/>=<sp/>1,</highlight></codeline>
 <codeline lineno="32"><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceendstone_1a3185831693a75ff4595095c0fe568c2aadc1d2a4d591857f0a0dd38b4ebcf5a72" kindref="member">Adventure</ref><sp/>=<sp/>2,</highlight></codeline>
+<codeline lineno="36" refid="namespaceendstone_1a3185831693a75ff4595095c0fe568c2aadc1d2a4d591857f0a0dd38b4ebcf5a72" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceendstone_1a3185831693a75ff4595095c0fe568c2aadc1d2a4d591857f0a0dd38b4ebcf5a72" kindref="member">Adventure</ref><sp/>=<sp/>2,</highlight></codeline>
 <codeline lineno="37"><highlight class="normal"></highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceendstone_1a3185831693a75ff4595095c0fe568c2aa38721bd8d7c0aa7e0e6999ae0c2cc98d" kindref="member">Spectator</ref><sp/>=<sp/>3,</highlight></codeline>
+<codeline lineno="42" refid="namespaceendstone_1a3185831693a75ff4595095c0fe568c2aa38721bd8d7c0aa7e0e6999ae0c2cc98d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceendstone_1a3185831693a75ff4595095c0fe568c2aa38721bd8d7c0aa7e0e6999ae0c2cc98d" kindref="member">Spectator</ref><sp/>=<sp/>3,</highlight></codeline>
 <codeline lineno="43"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="44"><highlight class="normal"></highlight></codeline>
 <codeline lineno="45"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>

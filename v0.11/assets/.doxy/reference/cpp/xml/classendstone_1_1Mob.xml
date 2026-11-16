@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1Mob" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::Mob</compoundname>
     <basecompoundref refid="classendstone_1_1Actor" prot="public" virt="non-virtual">endstone::Actor</basecompoundref>
     <derivedcompoundref refid="classendstone_1_1Player" prot="public" virt="non-virtual">endstone::Player</derivedcompoundref>
     <includes refid="mob_8h" local="no">endstone/actor/mob.h</includes>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="classendstone_1_1Mob_1a7903900a62a82e920230c7fc75ff5ac6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+      <memberdef kind="function" id="classendstone_1_1Mob_1a7903900a62a82e920230c7fc75ff5ac6" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
         <definition>virtual bool endstone::Mob::isGliding</definition>
         <argsstring>() const =0</argsstring>
         <name>isGliding</name>
@@ -24,8 +24,8 @@
         </inbodydescription>
         <location file="include/endstone/actor/mob.h" line="29" column="19"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Mob_1a082c0e3f266fc07386b6892b8af08b5f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+      <memberdef kind="function" id="classendstone_1_1Mob_1a082c0e3f266fc07386b6892b8af08b5f" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>int</type>
         <definition>virtual int endstone::Mob::getHealth</definition>
         <argsstring>() const =0</argsstring>
         <name>getHealth</name>
@@ -43,13 +43,13 @@
         <location file="include/endstone/actor/mob.h" line="36" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Mob_1addd7c205b763c7a9a6b1bf8ec1c811fd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Mob::setHealth</definition>
         <argsstring>(int health) const =0</argsstring>
         <name>setHealth</name>
         <qualifiedname>endstone::Mob::setHealth</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>health</declname>
         </param>
         <briefdescription>
@@ -71,8 +71,8 @@
         </inbodydescription>
         <location file="include/endstone/actor/mob.h" line="43" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Mob_1a4efbe682a6adc265c113e1ef77b752fb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+      <memberdef kind="function" id="classendstone_1_1Mob_1a4efbe682a6adc265c113e1ef77b752fb" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>int</type>
         <definition>virtual int endstone::Mob::getMaxHealth</definition>
         <argsstring>() const =0</argsstring>
         <name>getMaxHealth</name>
@@ -90,13 +90,13 @@
         <location file="include/endstone/actor/mob.h" line="50" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Mob_1ae54b4e6eb8b5509bec9c330dfc5b46be" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Mob::setMaxHealth</definition>
         <argsstring>(int health) const =0</argsstring>
         <name>setMaxHealth</name>
         <qualifiedname>endstone::Mob::setMaxHealth</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>health</declname>
         </param>
         <briefdescription>

@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1BlockExplodeEvent" kind="class" language="C++" prot="public">
     <compoundname>endstone::BlockExplodeEvent</compoundname>
     <basecompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; BlockEvent &gt;</basecompoundref>
     <includes refid="block__explode__event_8h" local="no">endstone/event/block/block_explode_event.h</includes>
     <sectiondef kind="private-type">
-      <memberdef kind="typedef" id="classendstone_1_1BlockExplodeEvent_1a409a121d4e1d653b794a153ca749aede" prot="private" static="no">
+      <memberdef kind="typedef" id="classendstone_1_1BlockExplodeEvent_1ab10ad88640ec82b1f295beec2b46b1b4" prot="private" static="no">
         <type>std::vector&lt; std::unique_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt; &gt;</type>
-        <definition>using endstone::BlockExplodeEvent::BlockList =  std::vector&lt;std::unique_ptr&lt;Block&gt; &gt;</definition>
+        <definition>using endstone::BlockExplodeEvent::BlockList =  std::vector&lt;std::unique_ptr&lt;Block&gt;&gt;</definition>
         <argsstring></argsstring>
         <name>BlockList</name>
         <qualifiedname>endstone::BlockExplodeEvent::BlockList</qualifiedname>
@@ -44,7 +44,7 @@
         <name>ENDSTONE_EVENT</name>
         <qualifiedname>endstone::BlockExplodeEvent::ENDSTONE_EVENT</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1BlockExplodeEvent" kindref="compound">BlockExplodeEvent</ref></type>
+          <type>BlockExplodeEvent</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -90,8 +90,8 @@
         </inbodydescription>
         <location file="include/endstone/event/block/block_explode_event.h" line="42" column="5"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BlockExplodeEvent_1aae52a2584c34eb63b03e3bd29e4797e0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> BlockList &amp;</type>
+      <memberdef kind="function" id="classendstone_1_1BlockExplodeEvent_1aae52a2584c34eb63b03e3bd29e4797e0" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const BlockList &amp;</type>
         <definition>const BlockList &amp; endstone::BlockExplodeEvent::getBlockList</definition>
         <argsstring>() const</argsstring>
         <name>getBlockList</name>
@@ -108,7 +108,7 @@
         </inbodydescription>
         <location file="include/endstone/event/block/block_explode_event.h" line="49" column="22" bodyfile="include/endstone/event/block/block_explode_event.h" bodystart="49" bodyend="49"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BlockExplodeEvent_1a8490b081947c453e975399089d792957" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1BlockExplodeEvent_1a8490b081947c453e975399089d792957" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>BlockList &amp;</type>
         <definition>BlockList &amp; endstone::BlockExplodeEvent::getBlockList</definition>
         <argsstring>()</argsstring>
@@ -134,14 +134,6 @@
 <para>If a <ref refid="classendstone_1_1BlockExplodeEvent" kindref="compound">BlockExplodeEvent</ref> is cancelled, the explosion will not occur. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2">
-        <label>endstone::Cancellable&lt; BlockEvent &gt;</label>
-        <link refid="classendstone_1_1Cancellable"/>
-        <childnode refid="3" relation="public-inheritance">
-        </childnode>
-        <childnode refid="5" relation="public-inheritance">
-        </childnode>
-      </node>
       <node id="3">
         <label>endstone::BlockEvent</label>
         <link refid="classendstone_1_1BlockEvent"/>
@@ -152,6 +144,14 @@
         <label>endstone::BlockExplodeEvent</label>
         <link refid="classendstone_1_1BlockExplodeEvent"/>
         <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::Cancellable&lt; BlockEvent &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
         </childnode>
       </node>
       <node id="4">
@@ -164,14 +164,6 @@
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2">
-        <label>endstone::Cancellable&lt; BlockEvent &gt;</label>
-        <link refid="classendstone_1_1Cancellable"/>
-        <childnode refid="3" relation="public-inheritance">
-        </childnode>
-        <childnode refid="5" relation="public-inheritance">
-        </childnode>
-      </node>
       <node id="3">
         <label>endstone::BlockEvent</label>
         <link refid="classendstone_1_1BlockEvent"/>
@@ -182,6 +174,14 @@
         <label>endstone::BlockExplodeEvent</label>
         <link refid="classendstone_1_1BlockExplodeEvent"/>
         <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::Cancellable&lt; BlockEvent &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
         </childnode>
       </node>
       <node id="4">
@@ -198,7 +198,7 @@
       <member refid="classendstone_1_1BlockEvent_1a8495800ade942e17e6832ba40530e4d9" prot="protected" virt="non-virtual"><scope>endstone::BlockExplodeEvent</scope><name>block_</name></member>
       <member refid="classendstone_1_1BlockEvent_1a784685838d2b051b0846ceb821e6a9b5" prot="public" virt="non-virtual"><scope>endstone::BlockExplodeEvent</scope><name>BlockEvent</name></member>
       <member refid="classendstone_1_1BlockExplodeEvent_1a43d2aab21024a9c38ebea70d106c20ee" prot="public" virt="non-virtual"><scope>endstone::BlockExplodeEvent</scope><name>BlockExplodeEvent</name></member>
-      <member refid="classendstone_1_1BlockExplodeEvent_1a409a121d4e1d653b794a153ca749aede" prot="private" virt="non-virtual"><scope>endstone::BlockExplodeEvent</scope><name>BlockList</name></member>
+      <member refid="classendstone_1_1BlockExplodeEvent_1ab10ad88640ec82b1f295beec2b46b1b4" prot="private" virt="non-virtual"><scope>endstone::BlockExplodeEvent</scope><name>BlockList</name></member>
       <member refid="classendstone_1_1BlockExplodeEvent_1a234ce28e539f2369a835b96c64744b88" prot="private" virt="non-virtual"><scope>endstone::BlockExplodeEvent</scope><name>blocks_</name></member>
       <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::BlockExplodeEvent</scope><name>cancel</name></member>
       <member refid="classendstone_1_1BlockExplodeEvent_1a50a7570acc341450293b04dfe970b7d4" prot="public" virt="non-virtual"><scope>endstone::BlockExplodeEvent</scope><name>ENDSTONE_EVENT</name></member>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1AttributeInstance" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::AttributeInstance</compoundname>
     <includes refid="attribute__instance_8h" local="no">endstone/attribute/attribute_instance.h</includes>
@@ -18,8 +18,8 @@
         </inbodydescription>
         <location file="include/endstone/attribute/attribute_instance.h" line="27" column="13"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1AttributeInstance_1aa711627cc0ae50ca8e77c79c5acaf90d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">AttributeId</ref></type>
+      <memberdef kind="function" id="classendstone_1_1AttributeInstance_1aa711627cc0ae50ca8e77c79c5acaf90d" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>AttributeId</type>
         <definition>virtual AttributeId endstone::AttributeInstance::getType</definition>
         <argsstring>() const =0</argsstring>
         <name>getType</name>
@@ -36,8 +36,8 @@
         </inbodydescription>
         <location file="include/endstone/attribute/attribute_instance.h" line="34" column="26"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1AttributeInstance_1aec4bae985b1028f0267083cffb79d5a7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
+      <memberdef kind="function" id="classendstone_1_1AttributeInstance_1aec4bae985b1028f0267083cffb79d5a7" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>float</type>
         <definition>virtual float endstone::AttributeInstance::getBaseValue</definition>
         <argsstring>() const =0</argsstring>
         <name>getBaseValue</name>
@@ -55,13 +55,13 @@
         <location file="include/endstone/attribute/attribute_instance.h" line="41" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1AttributeInstance_1acd02e0d33c2bbe142d65550de035f3a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::AttributeInstance::setBaseValue</definition>
         <argsstring>(float value)=0</argsstring>
         <name>setBaseValue</name>
         <qualifiedname>endstone::AttributeInstance::setBaseValue</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
+          <type>float</type>
           <declname>value</declname>
         </param>
         <briefdescription>
@@ -83,8 +83,8 @@
         </inbodydescription>
         <location file="include/endstone/attribute/attribute_instance.h" line="48" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1AttributeInstance_1aa8337efa45ce9c7c5ce034fb9b22b52c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
+      <memberdef kind="function" id="classendstone_1_1AttributeInstance_1aa8337efa45ce9c7c5ce034fb9b22b52c" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>float</type>
         <definition>virtual float endstone::AttributeInstance::getValue</definition>
         <argsstring>() const =0</argsstring>
         <name>getValue</name>
@@ -101,7 +101,7 @@
         </inbodydescription>
         <location file="include/endstone/attribute/attribute_instance.h" line="55" column="20"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1AttributeInstance_1ae4e8c5dbda550816b24c08fd0a216edf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1AttributeInstance_1ae4e8c5dbda550816b24c08fd0a216edf" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; <ref refid="classendstone_1_1AttributeModifier" kindref="compound">AttributeModifier</ref> &gt;</type>
         <definition>virtual std::vector&lt; AttributeModifier &gt; endstone::AttributeInstance::getModifiers</definition>
         <argsstring>() const =0</argsstring>
@@ -120,13 +120,13 @@
         <location file="include/endstone/attribute/attribute_instance.h" line="62" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1AttributeInstance_1aa1ede5a54c73d13f0b7c5b564cc037bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::AttributeInstance::addModifier</definition>
         <argsstring>(const AttributeModifier &amp;modifier)=0</argsstring>
         <name>addModifier</name>
         <qualifiedname>endstone::AttributeInstance::addModifier</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1AttributeModifier" kindref="compound">AttributeModifier</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1AttributeModifier" kindref="compound">AttributeModifier</ref> &amp;</type>
           <declname>modifier</declname>
         </param>
         <briefdescription>
@@ -149,13 +149,13 @@
         <location file="include/endstone/attribute/attribute_instance.h" line="69" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1AttributeInstance_1a7dfee14fcbe2ecc529574f9b6176c4a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::AttributeInstance::removeModifier</definition>
         <argsstring>(const AttributeModifier &amp;modifier)=0</argsstring>
         <name>removeModifier</name>
         <qualifiedname>endstone::AttributeInstance::removeModifier</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1AttributeModifier" kindref="compound">AttributeModifier</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1AttributeModifier" kindref="compound">AttributeModifier</ref> &amp;</type>
           <declname>modifier</declname>
         </param>
         <briefdescription>

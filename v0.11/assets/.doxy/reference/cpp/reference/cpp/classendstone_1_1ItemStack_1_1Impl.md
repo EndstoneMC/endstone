@@ -52,20 +52,20 @@
 | Type | Name |
 | ---: | :--- |
 | virtual std::unique\_ptr&lt; Impl &gt; | [**clone**](#function-clone) () const = 0<br> |
-| virtual [**int**](classendstone_1_1Identifier.md) | [**getAmount**](#function-getamount) () const = 0<br> |
-| virtual [**int**](classendstone_1_1Identifier.md) | [**getData**](#function-getdata) () const = 0<br> |
+| virtual int | [**getAmount**](#function-getamount) () const = 0<br> |
+| virtual int | [**getData**](#function-getdata) () const = 0<br> |
 | virtual std::unique\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**getItemMeta**](#function-getitemmeta) () const = 0<br> |
-| virtual [**int**](classendstone_1_1Identifier.md) | [**getMaxStackSize**](#function-getmaxstacksize) () const = 0<br> |
+| virtual int | [**getMaxStackSize**](#function-getmaxstacksize) () const = 0<br> |
 | virtual [**CompoundTag**](classendstone_1_1CompoundTag.md) | [**getNbt**](#function-getnbt) () const = 0<br> |
 | virtual std::string | [**getTranslationKey**](#function-gettranslationkey) () const = 0<br> |
-| virtual [**const**](classendstone_1_1Identifier.md) [**ItemType**](classendstone_1_1ItemType.md) & | [**getType**](#function-gettype) () const = 0<br> |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**hasItemMeta**](#function-hasitemmeta) () const = 0<br> |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**isSimilar**](#function-issimilar) ([**const**](classendstone_1_1Identifier.md) Impl & other) const = 0<br> |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setAmount**](#function-setamount) ([**int**](classendstone_1_1Identifier.md) amount) = 0<br> |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setData**](#function-setdata) ([**int**](classendstone_1_1Identifier.md) data) = 0<br> |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**setItemMeta**](#function-setitemmeta) ([**const**](classendstone_1_1Identifier.md) [**ItemMeta**](classendstone_1_1ItemMeta.md) \* meta) = 0<br> |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setNbt**](#function-setnbt) ([**const**](classendstone_1_1Identifier.md) [**CompoundTag**](classendstone_1_1CompoundTag.md) & nbt) = 0<br> |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setType**](#function-settype) ([**ItemTypeId**](namespaceendstone.md#typedef-itemtypeid) type) = 0<br> |
+| virtual const [**ItemType**](classendstone_1_1ItemType.md) & | [**getType**](#function-gettype) () const = 0<br> |
+| virtual bool | [**hasItemMeta**](#function-hasitemmeta) () const = 0<br> |
+| virtual bool | [**isSimilar**](#function-issimilar) (const Impl & other) const = 0<br> |
+| virtual void | [**setAmount**](#function-setamount) (int amount) = 0<br> |
+| virtual void | [**setData**](#function-setdata) (int data) = 0<br> |
+| virtual bool | [**setItemMeta**](#function-setitemmeta) (const [**ItemMeta**](classendstone_1_1ItemMeta.md) \* meta) = 0<br> |
+| virtual void | [**setNbt**](#function-setnbt) (const [**CompoundTag**](classendstone_1_1CompoundTag.md) & nbt) = 0<br> |
+| virtual void | [**setType**](#function-settype) ([**ItemTypeId**](namespaceendstone.md#typedef-itemtypeid) type) = 0<br> |
 | virtual  | [**~Impl**](#function-impl) () = default<br> |
 
 
@@ -194,7 +194,7 @@ virtual std::string Impl::getTranslationKey () const = 0
 ### function getType 
 
 ```C++
-virtual const  ItemType & Impl::getType () const = 0
+virtual const ItemType & Impl::getType () const = 0
 ```
 
 
@@ -266,7 +266,7 @@ virtual void Impl::setData (
 
 ```C++
 virtual bool Impl::setItemMeta (
-    const  ItemMeta * meta
+    const ItemMeta * meta
 ) = 0
 ```
 
@@ -281,7 +281,7 @@ virtual bool Impl::setItemMeta (
 
 ```C++
 virtual void Impl::setNbt (
-    const  CompoundTag & nbt
+    const CompoundTag & nbt
 ) = 0
 ```
 

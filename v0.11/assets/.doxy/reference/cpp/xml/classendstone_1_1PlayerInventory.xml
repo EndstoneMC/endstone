@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1PlayerInventory" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::PlayerInventory</compoundname>
     <basecompoundref refid="classendstone_1_1Inventory" prot="public" virt="non-virtual">endstone::Inventory</basecompoundref>
     <includes refid="player__inventory_8h" local="no">endstone/inventory/player_inventory.h</includes>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="classendstone_1_1PlayerInventory_1a40008a8adfa966a38901a280cda0aabd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1PlayerInventory_1a40008a8adfa966a38901a280cda0aabd" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::optional&lt; <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &gt;</type>
         <definition>virtual std::optional&lt; ItemStack &gt; endstone::PlayerInventory::getHelmet</definition>
         <argsstring>() const =0</argsstring>
@@ -23,7 +23,7 @@
         </inbodydescription>
         <location file="include/endstone/inventory/player_inventory.h" line="33" column="28"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PlayerInventory_1a129b0376044bfd03922cf313ce5062e4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1PlayerInventory_1a129b0376044bfd03922cf313ce5062e4" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::optional&lt; <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &gt;</type>
         <definition>virtual std::optional&lt; ItemStack &gt; endstone::PlayerInventory::getChestplate</definition>
         <argsstring>() const =0</argsstring>
@@ -41,7 +41,7 @@
         </inbodydescription>
         <location file="include/endstone/inventory/player_inventory.h" line="40" column="28"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PlayerInventory_1a5ecc57bdd88ee18e11331454edef8400" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1PlayerInventory_1a5ecc57bdd88ee18e11331454edef8400" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::optional&lt; <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &gt;</type>
         <definition>virtual std::optional&lt; ItemStack &gt; endstone::PlayerInventory::getLeggings</definition>
         <argsstring>() const =0</argsstring>
@@ -59,7 +59,7 @@
         </inbodydescription>
         <location file="include/endstone/inventory/player_inventory.h" line="47" column="28"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PlayerInventory_1a418e2375abc6113b097d278d3b00687d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1PlayerInventory_1a418e2375abc6113b097d278d3b00687d" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::optional&lt; <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &gt;</type>
         <definition>virtual std::optional&lt; ItemStack &gt; endstone::PlayerInventory::getBoots</definition>
         <argsstring>() const =0</argsstring>
@@ -78,7 +78,7 @@
         <location file="include/endstone/inventory/player_inventory.h" line="54" column="28"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerInventory_1a2e6bdf731fd2cba0f8a2e696a4241904" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::PlayerInventory::setHelmet</definition>
         <argsstring>(std::optional&lt; ItemStack &gt; helmet)=0</argsstring>
         <name>setHelmet</name>
@@ -108,7 +108,7 @@
         <location file="include/endstone/inventory/player_inventory.h" line="63" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerInventory_1a9c78de5bc17f49d878297e832ee3ad8a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::PlayerInventory::setChestplate</definition>
         <argsstring>(std::optional&lt; ItemStack &gt; chestplate)=0</argsstring>
         <name>setChestplate</name>
@@ -138,7 +138,7 @@
         <location file="include/endstone/inventory/player_inventory.h" line="72" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerInventory_1ad761e52cde352de4b2ba0675294f53dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::PlayerInventory::setLeggings</definition>
         <argsstring>(std::optional&lt; ItemStack &gt; leggings)=0</argsstring>
         <name>setLeggings</name>
@@ -168,7 +168,7 @@
         <location file="include/endstone/inventory/player_inventory.h" line="81" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerInventory_1afb8ac77897c7215b15c64c868035df51" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::PlayerInventory::setBoots</definition>
         <argsstring>(std::optional&lt; ItemStack &gt; boots)=0</argsstring>
         <name>setBoots</name>
@@ -197,7 +197,7 @@
         </inbodydescription>
         <location file="include/endstone/inventory/player_inventory.h" line="90" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PlayerInventory_1a20dd4b1438437038976da281334baa80" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1PlayerInventory_1a20dd4b1438437038976da281334baa80" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::optional&lt; <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &gt;</type>
         <definition>virtual std::optional&lt; ItemStack &gt; endstone::PlayerInventory::getItemInMainHand</definition>
         <argsstring>() const =0</argsstring>
@@ -216,7 +216,7 @@
         <location file="include/endstone/inventory/player_inventory.h" line="97" column="28"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerInventory_1ae97e5cd9553262f56a6ea3cef23c101a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::PlayerInventory::setItemInMainHand</definition>
         <argsstring>(std::optional&lt; ItemStack &gt; item)=0</argsstring>
         <name>setItemInMainHand</name>
@@ -244,7 +244,7 @@
         </inbodydescription>
         <location file="include/endstone/inventory/player_inventory.h" line="104" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PlayerInventory_1ae1b89470e274870d03a5fe35caf13e9d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1PlayerInventory_1ae1b89470e274870d03a5fe35caf13e9d" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::optional&lt; <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &gt;</type>
         <definition>virtual std::optional&lt; ItemStack &gt; endstone::PlayerInventory::getItemInOffHand</definition>
         <argsstring>() const =0</argsstring>
@@ -263,7 +263,7 @@
         <location file="include/endstone/inventory/player_inventory.h" line="111" column="28"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerInventory_1ac232b93d8250f2274981d832a612b7c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::PlayerInventory::setItemInOffHand</definition>
         <argsstring>(std::optional&lt; ItemStack &gt; item)=0</argsstring>
         <name>setItemInOffHand</name>
@@ -291,8 +291,8 @@
         </inbodydescription>
         <location file="include/endstone/inventory/player_inventory.h" line="118" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PlayerInventory_1a6e1e5493b9a488e34b9cd16ff3767841" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+      <memberdef kind="function" id="classendstone_1_1PlayerInventory_1a6e1e5493b9a488e34b9cd16ff3767841" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>int</type>
         <definition>virtual int endstone::PlayerInventory::getHeldItemSlot</definition>
         <argsstring>() const =0</argsstring>
         <name>getHeldItemSlot</name>
@@ -310,13 +310,13 @@
         <location file="include/endstone/inventory/player_inventory.h" line="125" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerInventory_1a852f77697de27d57e4d5393c4179bf0c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::PlayerInventory::setHeldItemSlot</definition>
         <argsstring>(int slot)=0</argsstring>
         <name>setHeldItemSlot</name>
         <qualifiedname>endstone::PlayerInventory::setHeldItemSlot</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>slot</declname>
         </param>
         <briefdescription>

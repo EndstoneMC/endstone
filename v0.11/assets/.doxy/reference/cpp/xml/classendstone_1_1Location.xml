@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1Location" kind="class" language="C++" prot="public">
     <compoundname>endstone::Location</compoundname>
     <includes refid="location_8h" local="no">endstone/level/location.h</includes>
@@ -16,10 +16,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="373" column="15" bodyfile="include/endstone/level/location.h" bodystart="373" bodyend="-1"/>
+        <location file="include/endstone/level/location.h" line="361" column="15" bodyfile="include/endstone/level/location.h" bodystart="361" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Location_1addf87fd8f00d5d8d78932106625bd10d" prot="private" static="no" mutable="no">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
+        <type>float</type>
         <definition>float endstone::Location::x_</definition>
         <argsstring></argsstring>
         <name>x_</name>
@@ -30,10 +30,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="374" column="11" bodyfile="include/endstone/level/location.h" bodystart="374" bodyend="-1"/>
+        <location file="include/endstone/level/location.h" line="362" column="11" bodyfile="include/endstone/level/location.h" bodystart="362" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Location_1a8512a96a57f3199098960a66b853ce8f" prot="private" static="no" mutable="no">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
+        <type>float</type>
         <definition>float endstone::Location::y_</definition>
         <argsstring></argsstring>
         <name>y_</name>
@@ -44,10 +44,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="375" column="11" bodyfile="include/endstone/level/location.h" bodystart="375" bodyend="-1"/>
+        <location file="include/endstone/level/location.h" line="363" column="11" bodyfile="include/endstone/level/location.h" bodystart="363" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Location_1aaa5166e515957652d91610715bbcccde" prot="private" static="no" mutable="no">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
+        <type>float</type>
         <definition>float endstone::Location::z_</definition>
         <argsstring></argsstring>
         <name>z_</name>
@@ -58,10 +58,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="376" column="11" bodyfile="include/endstone/level/location.h" bodystart="376" bodyend="-1"/>
+        <location file="include/endstone/level/location.h" line="364" column="11" bodyfile="include/endstone/level/location.h" bodystart="364" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Location_1a37ad0c40bff7253e01685337daab888d" prot="private" static="no" mutable="no">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
+        <type>float</type>
         <definition>float endstone::Location::pitch_</definition>
         <argsstring></argsstring>
         <name>pitch_</name>
@@ -72,10 +72,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="377" column="11" bodyfile="include/endstone/level/location.h" bodystart="377" bodyend="-1"/>
+        <location file="include/endstone/level/location.h" line="365" column="11" bodyfile="include/endstone/level/location.h" bodystart="365" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Location_1ab03975ca7b7bd6374bb8c461d753682c" prot="private" static="no" mutable="no">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
+        <type>float</type>
         <definition>float endstone::Location::yaw_</definition>
         <argsstring></argsstring>
         <name>yaw_</name>
@@ -86,14 +86,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="378" column="11" bodyfile="include/endstone/level/location.h" bodystart="378" bodyend="-1"/>
+        <location file="include/endstone/level/location.h" line="366" column="11" bodyfile="include/endstone/level/location.h" bodystart="366" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1Location_1afe169382a1f41e8d5a84b6da63a4e72a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type>std::convertible_to&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref> &gt;</type>
+            <type>std::convertible_to&lt; float &gt;</type>
             <declname>T</declname>
             <defname>T</defname>
           </param>
@@ -108,24 +108,24 @@
           <declname>dimension</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
+          <type>T</type>
           <declname>x</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
+          <type>T</type>
           <declname>y</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
+          <type>T</type>
           <declname>z</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
+          <type>const float</type>
           <declname>pitch</declname>
           <defval>0.0</defval>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
+          <type>const float</type>
           <declname>yaw</declname>
           <defval>0.0</defval>
         </param>
@@ -138,7 +138,7 @@
         <location file="include/endstone/level/location.h" line="36" column="5" bodyfile="include/endstone/level/location.h" bodystart="36" bodyend="40"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Location_1a086a7eaea1e45d5753f844ec422c6206" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::Location::setDimension</definition>
         <argsstring>(Dimension &amp;dimension)</argsstring>
         <name>setDimension</name>
@@ -166,7 +166,7 @@
         </inbodydescription>
         <location file="include/endstone/level/location.h" line="47" column="10" bodyfile="include/endstone/level/location.h" bodystart="47" bodyend="47"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Location_1ad3f236e56d9680feab68e25e7ae67e8a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1Location_1ad3f236e56d9680feab68e25e7ae67e8a" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> &amp;</type>
         <definition>Dimension &amp; endstone::Location::getDimension</definition>
         <argsstring>() const</argsstring>
@@ -184,7 +184,7 @@
         </inbodydescription>
         <location file="include/endstone/level/location.h" line="54" column="16" bodyfile="include/endstone/level/location.h" bodystart="54" bodyend="54"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Location_1a8854bf92ad004cab6557d0249547c2d1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1Location_1a8854bf92ad004cab6557d0249547c2d1" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::unique_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt;</type>
         <definition>std::unique_ptr&lt; Block &gt; endstone::Location::getBlock</definition>
         <argsstring>() const</argsstring>
@@ -205,18 +205,18 @@
       <memberdef kind="function" id="classendstone_1_1Location_1a5ba25937640328506266b859ef860a64" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type>std::convertible_to&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref> &gt;</type>
+            <type>std::convertible_to&lt; float &gt;</type>
             <declname>T</declname>
             <defname>T</defname>
           </param>
         </templateparamlist>
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
-        <definition>constexpr void endstone::Location::setX</definition>
+        <type>void</type>
+        <definition>void endstone::Location::setX</definition>
         <argsstring>(T x)</argsstring>
         <name>setX</name>
         <qualifiedname>endstone::Location::setX</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
+          <type>T</type>
           <declname>x</declname>
         </param>
         <briefdescription>
@@ -238,9 +238,9 @@
         </inbodydescription>
         <location file="include/endstone/level/location.h" line="69" column="20" bodyfile="include/endstone/level/location.h" bodystart="69" bodyend="72"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Location_1a27bde48c3a633d40874d32745834a69f" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
-        <definition>constexpr float endstone::Location::getX</definition>
+      <memberdef kind="function" id="classendstone_1_1Location_1a27bde48c3a633d40874d32745834a69f" prot="public" static="no" nodiscard="yes" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float endstone::Location::getX</definition>
         <argsstring>() const</argsstring>
         <name>getX</name>
         <qualifiedname>endstone::Location::getX</qualifiedname>
@@ -256,8 +256,8 @@
         </inbodydescription>
         <location file="include/endstone/level/location.h" line="79" column="22" bodyfile="include/endstone/level/location.h" bodystart="79" bodyend="79"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Location_1ac6300ab01c9a429cbfa0f146b92e53c7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+      <memberdef kind="function" id="classendstone_1_1Location_1ac6300ab01c9a429cbfa0f146b92e53c7" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
         <definition>int endstone::Location::getBlockX</definition>
         <argsstring>() const</argsstring>
         <name>getBlockX</name>
@@ -277,18 +277,18 @@
       <memberdef kind="function" id="classendstone_1_1Location_1a6b1988da236839ea271850027a7399a1" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type>std::convertible_to&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref> &gt;</type>
+            <type>std::convertible_to&lt; float &gt;</type>
             <declname>T</declname>
             <defname>T</defname>
           </param>
         </templateparamlist>
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
-        <definition>constexpr void endstone::Location::setY</definition>
+        <type>void</type>
+        <definition>void endstone::Location::setY</definition>
         <argsstring>(T y)</argsstring>
         <name>setY</name>
         <qualifiedname>endstone::Location::setY</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
+          <type>T</type>
           <declname>y</declname>
         </param>
         <briefdescription>
@@ -310,9 +310,9 @@
         </inbodydescription>
         <location file="include/endstone/level/location.h" line="94" column="20" bodyfile="include/endstone/level/location.h" bodystart="94" bodyend="97"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Location_1a67733c12ebcdd942494d7b7aa6b1266b" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
-        <definition>constexpr float endstone::Location::getY</definition>
+      <memberdef kind="function" id="classendstone_1_1Location_1a67733c12ebcdd942494d7b7aa6b1266b" prot="public" static="no" nodiscard="yes" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float endstone::Location::getY</definition>
         <argsstring>() const</argsstring>
         <name>getY</name>
         <qualifiedname>endstone::Location::getY</qualifiedname>
@@ -328,8 +328,8 @@
         </inbodydescription>
         <location file="include/endstone/level/location.h" line="104" column="22" bodyfile="include/endstone/level/location.h" bodystart="104" bodyend="104"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Location_1a9c1dc513631382f76879a53726d67353" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+      <memberdef kind="function" id="classendstone_1_1Location_1a9c1dc513631382f76879a53726d67353" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
         <definition>int endstone::Location::getBlockY</definition>
         <argsstring>() const</argsstring>
         <name>getBlockY</name>
@@ -349,18 +349,18 @@
       <memberdef kind="function" id="classendstone_1_1Location_1af15ab5d534c9131a96e9fe29d7b310c7" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type>std::convertible_to&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref> &gt;</type>
+            <type>std::convertible_to&lt; float &gt;</type>
             <declname>T</declname>
             <defname>T</defname>
           </param>
         </templateparamlist>
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
-        <definition>constexpr void endstone::Location::setZ</definition>
+        <type>void</type>
+        <definition>void endstone::Location::setZ</definition>
         <argsstring>(T z)</argsstring>
         <name>setZ</name>
         <qualifiedname>endstone::Location::setZ</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
+          <type>T</type>
           <declname>z</declname>
         </param>
         <briefdescription>
@@ -382,9 +382,9 @@
         </inbodydescription>
         <location file="include/endstone/level/location.h" line="119" column="20" bodyfile="include/endstone/level/location.h" bodystart="119" bodyend="122"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Location_1af01e4dc1a35192d28d1f676db8e6fd9a" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
-        <definition>constexpr float endstone::Location::getZ</definition>
+      <memberdef kind="function" id="classendstone_1_1Location_1af01e4dc1a35192d28d1f676db8e6fd9a" prot="public" static="no" nodiscard="yes" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float endstone::Location::getZ</definition>
         <argsstring>() const</argsstring>
         <name>getZ</name>
         <qualifiedname>endstone::Location::getZ</qualifiedname>
@@ -400,8 +400,8 @@
         </inbodydescription>
         <location file="include/endstone/level/location.h" line="129" column="22" bodyfile="include/endstone/level/location.h" bodystart="129" bodyend="129"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Location_1a63c3292662cc08cdfb01cfa3d4f104dc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+      <memberdef kind="function" id="classendstone_1_1Location_1a63c3292662cc08cdfb01cfa3d4f104dc" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
         <definition>int endstone::Location::getBlockZ</definition>
         <argsstring>() const</argsstring>
         <name>getBlockZ</name>
@@ -418,8 +418,8 @@
         </inbodydescription>
         <location file="include/endstone/level/location.h" line="136" column="10" bodyfile="include/endstone/level/location.h" bodystart="136" bodyend="136"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Location_1a8d5d7508809220f179abd3aab4432272" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
+      <memberdef kind="function" id="classendstone_1_1Location_1a8d5d7508809220f179abd3aab4432272" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
         <definition>float endstone::Location::getPitch</definition>
         <argsstring>() const</argsstring>
         <name>getPitch</name>
@@ -437,13 +437,13 @@
         <location file="include/endstone/level/location.h" line="143" column="12" bodyfile="include/endstone/level/location.h" bodystart="143" bodyend="143"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Location_1a27175a2731840cf6a10438adb80e8ad1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::Location::setPitch</definition>
         <argsstring>(float pitch)</argsstring>
         <name>setPitch</name>
         <qualifiedname>endstone::Location::setPitch</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
+          <type>float</type>
           <declname>pitch</declname>
         </param>
         <briefdescription>
@@ -472,8 +472,8 @@
         </inbodydescription>
         <location file="include/endstone/level/location.h" line="157" column="10" bodyfile="include/endstone/level/location.h" bodystart="157" bodyend="157"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Location_1a15b337fd56d6e8e4cb24ba1b6b745a41" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
+      <memberdef kind="function" id="classendstone_1_1Location_1a15b337fd56d6e8e4cb24ba1b6b745a41" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
         <definition>float endstone::Location::getYaw</definition>
         <argsstring>() const</argsstring>
         <name>getYaw</name>
@@ -491,13 +491,13 @@
         <location file="include/endstone/level/location.h" line="164" column="12" bodyfile="include/endstone/level/location.h" bodystart="164" bodyend="164"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Location_1adc5ba432e8d7e277ad1a004f51fe5e5d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::Location::setYaw</definition>
         <argsstring>(float yaw)</argsstring>
         <name>setYaw</name>
         <qualifiedname>endstone::Location::setYaw</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
+          <type>float</type>
           <declname>yaw</declname>
         </param>
         <briefdescription>
@@ -527,7 +527,7 @@
         </inbodydescription>
         <location file="include/endstone/level/location.h" line="180" column="10" bodyfile="include/endstone/level/location.h" bodystart="180" bodyend="180"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Location_1ac7bbf98fefeb8b94ed69c98382fec84e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1Location_1ac7bbf98fefeb8b94ed69c98382fec84e" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref></type>
         <definition>Vector endstone::Location::getDirection</definition>
         <argsstring>() const</argsstring>
@@ -546,13 +546,13 @@
         <location file="include/endstone/level/location.h" line="187" column="13" bodyfile="include/endstone/level/location.h" bodystart="187" bodyend="197"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Location_1a7ae3ac63d486b07f24ca094e1b51b622" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
+        <type>Location &amp;</type>
         <definition>Location &amp; endstone::Location::setDirection</definition>
         <argsstring>(const Vector &amp;vector)</argsstring>
         <name>setDirection</name>
         <qualifiedname>endstone::Location::setDirection</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
           <declname>vector</declname>
         </param>
         <briefdescription>
@@ -576,8 +576,8 @@
         </inbodydescription>
         <location file="include/endstone/level/location.h" line="205" column="14" bodyfile="include/endstone/level/location.h" bodystart="205" bodyend="220"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Location_1ae87fd6d4f6c1ca8a44970992c03fb2d3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
+      <memberdef kind="function" id="classendstone_1_1Location_1ae87fd6d4f6c1ca8a44970992c03fb2d3" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
         <definition>float endstone::Location::length</definition>
         <argsstring>() const</argsstring>
         <name>length</name>
@@ -595,9 +595,9 @@
         </inbodydescription>
         <location file="include/endstone/level/location.h" line="229" column="12" bodyfile="include/endstone/level/location.h" bodystart="229" bodyend="229"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Location_1a2355a07bc4bf1a638e39da9384e5feab" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
-        <definition>constexpr float endstone::Location::lengthSquared</definition>
+      <memberdef kind="function" id="classendstone_1_1Location_1a2355a07bc4bf1a638e39da9384e5feab" prot="public" static="no" nodiscard="yes" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float endstone::Location::lengthSquared</definition>
         <argsstring>() const</argsstring>
         <name>lengthSquared</name>
         <qualifiedname>endstone::Location::lengthSquared</qualifiedname>
@@ -614,14 +614,14 @@
         </inbodydescription>
         <location file="include/endstone/level/location.h" line="238" column="22" bodyfile="include/endstone/level/location.h" bodystart="238" bodyend="238"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Location_1a0f4172520ab11dc9b41158334e81fedc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
+      <memberdef kind="function" id="classendstone_1_1Location_1a0f4172520ab11dc9b41158334e81fedc" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
         <definition>float endstone::Location::distance</definition>
         <argsstring>(const Location &amp;other) const</argsstring>
         <name>distance</name>
         <qualifiedname>endstone::Location::distance</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
+          <type>const Location &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -645,14 +645,14 @@
         </inbodydescription>
         <location file="include/endstone/level/location.h" line="246" column="12" bodyfile="include/endstone/level/location.h" bodystart="246" bodyend="246"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Location_1a08de7b2db144638050d41198588210e8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
+      <memberdef kind="function" id="classendstone_1_1Location_1a08de7b2db144638050d41198588210e8" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
         <definition>float endstone::Location::distanceSquared</definition>
         <argsstring>(const Location &amp;other) const</argsstring>
         <name>distanceSquared</name>
         <qualifiedname>endstone::Location::distanceSquared</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
+          <type>const Location &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -677,13 +677,13 @@
         <location file="include/endstone/level/location.h" line="254" column="12" bodyfile="include/endstone/level/dimension.h" bodystart="150" bodyend="156"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Location_1a253139f4781dfc8a8ee7c1363d7745a0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
+        <type>Location &amp;</type>
         <definition>Location &amp; endstone::Location::operator+=</definition>
         <argsstring>(const Location &amp;other)</argsstring>
         <name>operator+=</name>
         <qualifiedname>endstone::Location::operator+=</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
+          <type>const Location &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -692,16 +692,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="256" column="14" bodyfile="include/endstone/level/location.h" bodystart="256" bodyend="262"/>
+        <location file="include/endstone/level/location.h" line="256" column="14" bodyfile="include/endstone/level/dimension.h" bodystart="158" bodyend="166"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Location_1a1c5847e442cdbfcdef7cde89d3a36c89" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
+        <type>Location &amp;</type>
         <definition>Location &amp; endstone::Location::operator+=</definition>
         <argsstring>(const Vector &amp;other)</argsstring>
         <name>operator+=</name>
         <qualifiedname>endstone::Location::operator+=</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -710,16 +710,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="264" column="14" bodyfile="include/endstone/level/location.h" bodystart="264" bodyend="270"/>
+        <location file="include/endstone/level/location.h" line="258" column="14" bodyfile="include/endstone/level/location.h" bodystart="258" bodyend="264"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Location_1acf93a3cfc2a2405ab87b4015b987be6b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
+        <type>Location &amp;</type>
         <definition>Location &amp; endstone::Location::operator-=</definition>
         <argsstring>(const Location &amp;other)</argsstring>
         <name>operator-=</name>
         <qualifiedname>endstone::Location::operator-=</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
+          <type>const Location &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -728,16 +728,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="272" column="14" bodyfile="include/endstone/level/location.h" bodystart="272" bodyend="278"/>
+        <location file="include/endstone/level/location.h" line="266" column="14" bodyfile="include/endstone/level/dimension.h" bodystart="168" bodyend="176"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Location_1aa25ef6378594a6a4565558d7859328ed" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
+        <type>Location &amp;</type>
         <definition>Location &amp; endstone::Location::operator-=</definition>
         <argsstring>(const Vector &amp;other)</argsstring>
         <name>operator-=</name>
         <qualifiedname>endstone::Location::operator-=</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -746,23 +746,23 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="280" column="14" bodyfile="include/endstone/level/location.h" bodystart="280" bodyend="286"/>
+        <location file="include/endstone/level/location.h" line="268" column="14" bodyfile="include/endstone/level/location.h" bodystart="268" bodyend="274"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Location_1a7543fa80da847863af13f91aa989df7a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type>std::convertible_to&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref> &gt;</type>
+            <type>std::convertible_to&lt; float &gt;</type>
             <declname>T</declname>
             <defname>T</defname>
           </param>
         </templateparamlist>
-        <type><ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
+        <type>Location &amp;</type>
         <definition>Location &amp; endstone::Location::operator*=</definition>
         <argsstring>(T scalar)</argsstring>
         <name>operator*=</name>
         <qualifiedname>endstone::Location::operator*=</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
+          <type>T</type>
           <declname>scalar</declname>
         </param>
         <briefdescription>
@@ -771,16 +771,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="289" column="14" bodyfile="include/endstone/level/location.h" bodystart="289" bodyend="296"/>
+        <location file="include/endstone/level/location.h" line="277" column="14" bodyfile="include/endstone/level/location.h" bodystart="277" bodyend="284"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Location_1a91fc078353797b2d9cd18979b7df9882" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Location" kindref="compound">Location</ref></type>
+        <type>Location</type>
         <definition>Location endstone::Location::operator+</definition>
         <argsstring>(const Location &amp;other) const</argsstring>
         <name>operator+</name>
         <qualifiedname>endstone::Location::operator+</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
+          <type>const Location &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -789,16 +789,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="298" column="14" bodyfile="include/endstone/level/location.h" bodystart="298" bodyend="298"/>
+        <location file="include/endstone/level/location.h" line="286" column="14" bodyfile="include/endstone/level/location.h" bodystart="286" bodyend="286"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Location_1aa35361f1989a181f7db59b6bbf9cfd32" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Location" kindref="compound">Location</ref></type>
+        <type>Location</type>
         <definition>Location endstone::Location::operator+</definition>
         <argsstring>(const Vector &amp;other) const</argsstring>
         <name>operator+</name>
         <qualifiedname>endstone::Location::operator+</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -807,16 +807,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="300" column="14" bodyfile="include/endstone/level/location.h" bodystart="300" bodyend="300"/>
+        <location file="include/endstone/level/location.h" line="288" column="14" bodyfile="include/endstone/level/location.h" bodystart="288" bodyend="288"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Location_1a771b2861ee81216e524d42259b9dba03" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Location" kindref="compound">Location</ref></type>
+        <type>Location</type>
         <definition>Location endstone::Location::operator-</definition>
         <argsstring>(const Location &amp;other) const</argsstring>
         <name>operator-</name>
         <qualifiedname>endstone::Location::operator-</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
+          <type>const Location &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -825,16 +825,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="302" column="14" bodyfile="include/endstone/level/location.h" bodystart="302" bodyend="302"/>
+        <location file="include/endstone/level/location.h" line="290" column="14" bodyfile="include/endstone/level/location.h" bodystart="290" bodyend="290"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Location_1a0fbb8d0142a70c845a2ad2ffe56827bd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Location" kindref="compound">Location</ref></type>
+        <type>Location</type>
         <definition>Location endstone::Location::operator-</definition>
         <argsstring>(const Vector &amp;other) const</argsstring>
         <name>operator-</name>
         <qualifiedname>endstone::Location::operator-</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -843,23 +843,23 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="304" column="14" bodyfile="include/endstone/level/location.h" bodystart="304" bodyend="304"/>
+        <location file="include/endstone/level/location.h" line="292" column="14" bodyfile="include/endstone/level/location.h" bodystart="292" bodyend="292"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Location_1ae593d1a61d0e3ddf7340f57aee30c835" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type>std::convertible_to&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref> &gt;</type>
+            <type>std::convertible_to&lt; float &gt;</type>
             <declname>T</declname>
             <defname>T</defname>
           </param>
         </templateparamlist>
-        <type><ref refid="classendstone_1_1Location" kindref="compound">Location</ref></type>
+        <type>Location</type>
         <definition>Location endstone::Location::operator*</definition>
         <argsstring>(T scalar) const</argsstring>
         <name>operator*</name>
         <qualifiedname>endstone::Location::operator*</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
+          <type>T</type>
           <declname>scalar</declname>
         </param>
         <briefdescription>
@@ -868,11 +868,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="307" column="14" bodyfile="include/endstone/level/location.h" bodystart="307" bodyend="310"/>
+        <location file="include/endstone/level/location.h" line="295" column="14" bodyfile="include/endstone/level/location.h" bodystart="295" bodyend="298"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Location_1a9943a7572a508035305b055a7b84a17e" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
-        <definition>constexpr Location &amp; endstone::Location::zero</definition>
+        <type>Location &amp;</type>
+        <definition>Location &amp; endstone::Location::zero</definition>
         <argsstring>()</argsstring>
         <name>zero</name>
         <qualifiedname>endstone::Location::zero</qualifiedname>
@@ -886,16 +886,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="317" column="24" bodyfile="include/endstone/level/location.h" bodystart="317" bodyend="323"/>
+        <location file="include/endstone/level/location.h" line="305" column="24" bodyfile="include/endstone/level/location.h" bodystart="305" bodyend="311"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Location_1aa911c0cc822480da2d074e742d48bfa6" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::Location::operator==</definition>
         <argsstring>(const Location &amp;other) const noexcept</argsstring>
         <name>operator==</name>
         <qualifiedname>endstone::Location::operator==</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
+          <type>const Location &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -904,16 +904,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="325" column="10" bodyfile="include/endstone/level/location.h" bodystart="325" bodyend="331"/>
+        <location file="include/endstone/level/location.h" line="313" column="10" bodyfile="include/endstone/level/location.h" bodystart="313" bodyend="319"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Location_1adc3f8a174082b40975e739d42af6dcc0" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::Location::operator!=</definition>
         <argsstring>(const Location &amp;other) const noexcept</argsstring>
         <name>operator!=</name>
         <qualifiedname>endstone::Location::operator!=</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
+          <type>const Location &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -922,7 +922,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="333" column="10" bodyfile="include/endstone/level/location.h" bodystart="333" bodyend="333"/>
+        <location file="include/endstone/level/location.h" line="321" column="10" bodyfile="include/endstone/level/location.h" bodystart="321" bodyend="321"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Location_1a2305ecedae47fc00c3e91a287a287aee" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -936,18 +936,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="335" column="5" bodyfile="include/endstone/level/location.h" bodystart="335" bodyend="335"/>
+        <location file="include/endstone/level/location.h" line="323" column="5" bodyfile="include/endstone/level/location.h" bodystart="323" bodyend="323"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-static-func">
       <memberdef kind="function" id="classendstone_1_1Location_1a34678b50303d3b04db76ed4d1b0c684b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
+        <type>float</type>
         <definition>static float endstone::Location::normalizeYaw</definition>
         <argsstring>(float yaw)</argsstring>
         <name>normalizeYaw</name>
         <qualifiedname>endstone::Location::normalizeYaw</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
+          <type>float</type>
           <declname>yaw</declname>
         </param>
         <briefdescription>
@@ -969,16 +969,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="343" column="18" bodyfile="include/endstone/level/location.h" bodystart="343" bodyend="353"/>
+        <location file="include/endstone/level/location.h" line="331" column="18" bodyfile="include/endstone/level/location.h" bodystart="331" bodyend="341"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Location_1a665a0371b05e4e41b01f2ca4f805238f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
+        <type>float</type>
         <definition>static float endstone::Location::normalizePitch</definition>
         <argsstring>(float pitch)</argsstring>
         <name>normalizePitch</name>
         <qualifiedname>endstone::Location::normalizePitch</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
+          <type>float</type>
           <declname>pitch</declname>
         </param>
         <briefdescription>
@@ -1000,7 +1000,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="361" column="18" bodyfile="include/endstone/level/location.h" bodystart="361" bodyend="370"/>
+        <location file="include/endstone/level/location.h" line="349" column="18" bodyfile="include/endstone/level/location.h" bodystart="349" bodyend="358"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -1008,7 +1008,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/level/location.h" line="33" column="1" bodyfile="include/endstone/level/location.h" bodystart="33" bodyend="379"/>
+    <location file="include/endstone/level/location.h" line="33" column="1" bodyfile="include/endstone/level/location.h" bodystart="33" bodyend="367"/>
     <listofallmembers>
       <member refid="classendstone_1_1Location_1acaf254c9147c8657abe7df69d946456f" prot="private" virt="non-virtual"><scope>endstone::Location</scope><name>dimension_</name></member>
       <member refid="classendstone_1_1Location_1a0f4172520ab11dc9b41158334e81fedc" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>distance</name></member>

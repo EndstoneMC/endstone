@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1OfflinePlayer" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::OfflinePlayer</compoundname>
     <derivedcompoundref refid="classendstone_1_1Player" prot="public" virt="non-virtual">endstone::Player</derivedcompoundref>
@@ -19,7 +19,7 @@
         </inbodydescription>
         <location file="include/endstone/offline_player.h" line="29" column="13"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1OfflinePlayer_1a0135bdd81bed1caddebbab8deb91a32f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1OfflinePlayer_1a0135bdd81bed1caddebbab8deb91a32f" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
         <definition>virtual std::string endstone::OfflinePlayer::getName</definition>
         <argsstring>() const =0</argsstring>
@@ -38,7 +38,7 @@
         </inbodydescription>
         <location file="include/endstone/offline_player.h" line="36" column="26"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1OfflinePlayer_1aa1c48a8a74d2fcb7eefc8892f032ab99" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1OfflinePlayer_1aa1c48a8a74d2fcb7eefc8892f032ab99" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref></type>
         <definition>virtual UUID endstone::OfflinePlayer::getUniqueId</definition>
         <argsstring>() const =0</argsstring>

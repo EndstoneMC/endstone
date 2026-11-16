@@ -33,7 +33,7 @@ Inherited by the following classes: [endstone::BlockType](classendstone_1_1Block
 
 | Type | Name |
 | ---: | :--- |
-| typedef [**Identifier**](classendstone_1_1Identifier.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; | [**Id**](#typedef-id)  <br> |
+| typedef [**Identifier**](classendstone_1_1Identifier.md)&lt; T &gt; | [**Id**](#typedef-id)  <br> |
 
 
 
@@ -58,13 +58,13 @@ Inherited by the following classes: [endstone::BlockType](classendstone_1_1Block
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**Id**](classendstone_1_1Identifier.md) | [**getId**](#function-getid) () const = 0<br>_Return the identifier of this object._  |
+| virtual Id | [**getId**](#function-getid) () const = 0<br>_Return the identifier of this object._  |
 | virtual std::string | [**getTranslationKey**](#function-gettranslationkey) () const = 0<br>_Get the translation key, suitable for use in a translation component._  |
 |   | [**operator Id**](#function-operator-id) () const<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**operator!=**](#function-operator) ([**const**](classendstone_1_1Identifier.md) [**Id**](classendstone_1_1Identifier.md) & other) const<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**operator!=**](#function-operator_1) ([**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) & other) const<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**operator==**](#function-operator_2) ([**const**](classendstone_1_1Identifier.md) [**Id**](classendstone_1_1Identifier.md) & other) const<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**operator==**](#function-operator_3) ([**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) & other) const<br> |
+|  bool | [**operator!=**](#function-operator) (const Id & other) const<br> |
+|  bool | [**operator!=**](#function-operator_1) (const T & other) const<br> |
+|  bool | [**operator==**](#function-operator_2) (const Id & other) const<br> |
+|  bool | [**operator==**](#function-operator_3) (const T & other) const<br> |
 | virtual  | [**~Type**](#function-type) () = default<br> |
 
 
@@ -72,7 +72,7 @@ Inherited by the following classes: [endstone::BlockType](classendstone_1_1Block
 
 | Type | Name |
 | ---: | :--- |
-|  [**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) \* | [**get**](#function-get) ([**Id**](classendstone_1_1Identifier.md) id) <br>_Look up a registry entry by identifier._  |
+|  const T \* | [**get**](#function-get) (Id id) <br>_Look up a registry entry by identifier._  |
 
 
 
@@ -193,7 +193,7 @@ inline endstone::Registry::Type::operator Id () const
 
 ```C++
 inline bool endstone::Registry::Type::operator!= (
-    const  Id & other
+    const Id & other
 ) const
 ```
 
@@ -208,7 +208,7 @@ inline bool endstone::Registry::Type::operator!= (
 
 ```C++
 inline bool endstone::Registry::Type::operator!= (
-    const  T & other
+    const T & other
 ) const
 ```
 
@@ -223,7 +223,7 @@ inline bool endstone::Registry::Type::operator!= (
 
 ```C++
 inline bool endstone::Registry::Type::operator== (
-    const  Id & other
+    const Id & other
 ) const
 ```
 
@@ -238,7 +238,7 @@ inline bool endstone::Registry::Type::operator== (
 
 ```C++
 inline bool endstone::Registry::Type::operator== (
-    const  T & other
+    const T & other
 ) const
 ```
 
@@ -268,7 +268,7 @@ virtual endstone::Registry::Type::~Type () = default
 
 _Look up a registry entry by identifier._ 
 ```C++
-static inline const  T * endstone::Registry::Type::get (
+static inline const T * endstone::Registry::Type::get (
     Id id
 ) 
 ```

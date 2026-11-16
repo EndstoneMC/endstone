@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="namespaceendstone_1_1detail" kind="namespace" language="C++">
     <compoundname>endstone::detail</compoundname>
-    <innerclass refid="classendstone_1_1detail_1_1CommandBuilder" prot="private">endstone::detail::CommandBuilder</innerclass>
+    <innerclass refid="classendstone_1_1detail_1_1CommandBuilder" prot="public">endstone::detail::CommandBuilder</innerclass>
+    <innerclass refid="classendstone_1_1detail_1_1PermissionBuilder" prot="public">endstone::detail::PermissionBuilder</innerclass>
+    <innerclass refid="structendstone_1_1detail_1_1PluginDescriptionBuilder" prot="public">endstone::detail::PluginDescriptionBuilder</innerclass>
     <innerclass refid="structendstone_1_1detail_1_1JoinView" prot="public">endstone::detail::JoinView</innerclass>
-    <innerclass refid="classendstone_1_1detail_1_1PermissionBuilder" prot="private">endstone::detail::PermissionBuilder</innerclass>
-    <innerclass refid="structendstone_1_1detail_1_1PluginDescriptionBuilder" prot="private">endstone::detail::PluginDescriptionBuilder</innerclass>
     <sectiondef kind="var">
       <memberdef kind="variable" id="detail_8h_1aaafbe643bff247c7b278b6b70eb12953" prot="public" static="no" mutable="no">
         <templateparamlist>
@@ -18,7 +18,7 @@
             <defname>Arg</defname>
           </param>
         </templateparamlist>
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">Return</ref>(*)(Arg...)</type>
+        <type>Return(*)(Arg...)</type>
         <definition>Return(*)(Arg...) endstone::detail::fp_cast(Return(*fp)(Arg...), void *func)</definition>
         <argsstring>(Return(*fp)(Arg...), void *func)</argsstring>
         <name>fp_cast</name>
@@ -44,13 +44,13 @@
             <defname>Args</defname>
           </param>
         </templateparamlist>
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref> *</type>
+        <type>void *</type>
         <definition>void * endstone::detail::fp_cast</definition>
         <argsstring>(Return(*fp)(Args...))</argsstring>
         <name>fp_cast</name>
         <qualifiedname>endstone::detail::fp_cast</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">Return</ref>(*)(Args...)</type>
+          <type>Return(*)(Args...)</type>
           <declname>fp</declname>
         </param>
         <briefdescription>
@@ -105,13 +105,13 @@
             <defname>Args</defname>
           </param>
         </templateparamlist>
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref> *</type>
+        <type>void *</type>
         <definition>void * endstone::detail::fp_cast</definition>
         <argsstring>(Return(Class::*fp)(Args...))</argsstring>
         <name>fp_cast</name>
         <qualifiedname>endstone::detail::fp_cast</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">Return</ref>(Class::*)(Args...)</type>
+          <type>Return(Class::*)(Args...)</type>
           <declname>fp</declname>
         </param>
         <briefdescription>
@@ -211,20 +211,20 @@
             <defname>Arg</defname>
           </param>
         </templateparamlist>
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <type>auto</type>
         <definition>auto endstone::detail::fp_cast</definition>
         <argsstring>(Return(Class::*)(Arg...) const, void *address)</argsstring>
         <name>fp_cast</name>
         <qualifiedname>endstone::detail::fp_cast</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">Return</ref>(Class::*)(Arg...)</type>
+          <type>Return(Class::*)(Arg...)</type>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref> *</type>
+          <type>void *</type>
           <declname>address</declname>
         </param>
         <briefdescription>
-<para>Gets the original member function pointer from a detour member function pointer (const, no ref-qualifier) </para>
+<para>Gets the original member function pointer from a detour member function pointer (const, no ref-qualifier). </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
@@ -279,17 +279,17 @@
             <type>typename Sentinel</type>
           </param>
         </templateparamlist>
-        <type><ref refid="structendstone_1_1detail_1_1JoinView" kindref="compound">JoinView</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">It</ref>, <ref refid="classendstone_1_1Identifier" kindref="compound">Sentinel</ref> &gt;</type>
+        <type><ref refid="structendstone_1_1detail_1_1JoinView" kindref="compound">JoinView</ref>&lt; It, Sentinel &gt;</type>
         <definition>JoinView&lt; It, Sentinel &gt; endstone::detail::join</definition>
         <argsstring>(It begin, Sentinel end, std::string_view sep)</argsstring>
         <name>join</name>
         <qualifiedname>endstone::detail::join</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">It</ref></type>
+          <type>It</type>
           <declname>begin</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">Sentinel</ref></type>
+          <type>Sentinel</type>
           <declname>end</declname>
         </param>
         <param>
@@ -310,13 +310,13 @@
             <type>typename Range</type>
           </param>
         </templateparamlist>
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <type>auto</type>
         <definition>auto endstone::detail::join</definition>
         <argsstring>(const Range &amp;range, std::string_view sep)</argsstring>
         <name>join</name>
         <qualifiedname>endstone::detail::join</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">Range</ref> &amp;</type>
+          <type>const Range &amp;</type>
           <declname>range</declname>
         </param>
         <param>

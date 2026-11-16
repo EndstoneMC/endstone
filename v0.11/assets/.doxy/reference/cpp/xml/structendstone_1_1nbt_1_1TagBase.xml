@@ -1,7 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="structendstone_1_1nbt_1_1TagBase" kind="struct" language="C++" prot="public">
     <compoundname>endstone::nbt::TagBase</compoundname>
+    <derivedcompoundref refid="classendstone_1_1nbt_1_1ArrayTag" prot="public" virt="non-virtual">endstone::nbt::ArrayTag&lt; std::uint8_t &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1nbt_1_1ArrayTag" prot="public" virt="non-virtual">endstone::nbt::ArrayTag&lt; std::int32_t &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1nbt_1_1ValueTag" prot="public" virt="non-virtual">endstone::nbt::ValueTag&lt; std::uint8_t &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1nbt_1_1ValueTag" prot="public" virt="non-virtual">endstone::nbt::ValueTag&lt; std::int16_t &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1nbt_1_1ValueTag" prot="public" virt="non-virtual">endstone::nbt::ValueTag&lt; std::int32_t &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1nbt_1_1ValueTag" prot="public" virt="non-virtual">endstone::nbt::ValueTag&lt; std::int64_t &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1nbt_1_1ValueTag" prot="public" virt="non-virtual">endstone::nbt::ValueTag&lt; float &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1nbt_1_1ValueTag" prot="public" virt="non-virtual">endstone::nbt::ValueTag&lt; double &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1nbt_1_1ValueTag" prot="public" virt="non-virtual">endstone::nbt::ValueTag&lt; std::string &gt;</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1CompoundTag" prot="public" virt="non-virtual">endstone::CompoundTag</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1ListTag" prot="public" virt="non-virtual">endstone::ListTag</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1nbt_1_1ArrayTag" prot="public" virt="non-virtual">endstone::nbt::ArrayTag&lt; T &gt;</derivedcompoundref>
@@ -11,20 +20,32 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2">
+      <node id="11">
         <label>endstone::CompoundTag</label>
         <link refid="classendstone_1_1CompoundTag"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3">
+      <node id="12">
         <label>endstone::ListTag</label>
         <link refid="classendstone_1_1ListTag"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4">
+      <node id="13">
         <label>endstone::nbt::ArrayTag&lt; T &gt;</label>
+        <link refid="classendstone_1_1nbt_1_1ArrayTag"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::nbt::ArrayTag&lt; std::int32_t &gt;</label>
+        <link refid="classendstone_1_1nbt_1_1ArrayTag"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::nbt::ArrayTag&lt; std::uint8_t &gt;</label>
         <link refid="classendstone_1_1nbt_1_1ArrayTag"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
@@ -33,8 +54,50 @@
         <label>endstone::nbt::TagBase</label>
         <link refid="structendstone_1_1nbt_1_1TagBase"/>
       </node>
-      <node id="5">
+      <node id="14">
         <label>endstone::nbt::ValueTag&lt; T &gt;</label>
+        <link refid="classendstone_1_1nbt_1_1ValueTag"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>endstone::nbt::ValueTag&lt; double &gt;</label>
+        <link refid="classendstone_1_1nbt_1_1ValueTag"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>endstone::nbt::ValueTag&lt; float &gt;</label>
+        <link refid="classendstone_1_1nbt_1_1ValueTag"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>endstone::nbt::ValueTag&lt; std::int16_t &gt;</label>
+        <link refid="classendstone_1_1nbt_1_1ValueTag"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>endstone::nbt::ValueTag&lt; std::int32_t &gt;</label>
+        <link refid="classendstone_1_1nbt_1_1ValueTag"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>endstone::nbt::ValueTag&lt; std::int64_t &gt;</label>
+        <link refid="classendstone_1_1nbt_1_1ValueTag"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>endstone::nbt::ValueTag&lt; std::string &gt;</label>
+        <link refid="classendstone_1_1nbt_1_1ValueTag"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::nbt::ValueTag&lt; std::uint8_t &gt;</label>
         <link refid="classendstone_1_1nbt_1_1ValueTag"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>

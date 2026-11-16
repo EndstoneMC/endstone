@@ -32,7 +32,7 @@ _Represents a button with text and an optional icon._
 
 | Type | Name |
 | ---: | :--- |
-| typedef std::function&lt; [**void**](classendstone_1_1Identifier.md)([**Player**](classendstone_1_1Player.md) \*)&gt; | [**OnClickCallback**](#typedef-onclickcallback)  <br> |
+| typedef std::function&lt; void([**Player**](classendstone_1_1Player.md) \*)&gt; | [**OnClickCallback**](#typedef-onclickcallback)  <br> |
 
 
 
@@ -62,9 +62,9 @@ _Represents a button with text and an optional icon._
 |  std::optional&lt; std::string &gt; | [**getIcon**](#function-geticon) () const<br>_Get the icon of the button._  |
 |  OnClickCallback | [**getOnClick**](#function-getonclick) () const<br>_Gets the on click callback of the button._  |
 |  Message | [**getText**](#function-gettext) () const<br>_Gets the text of the button._  |
-|  [**Button**](classendstone_1_1Button.md) & | [**setIcon**](#function-seticon) (std::string icon) <br>_Sets the icon for the button._  |
-|  [**Button**](classendstone_1_1Button.md) & | [**setOnClick**](#function-setonclick) (OnClickCallback on\_click) <br>_Sets the on click callback of the button._  |
-|  [**Button**](classendstone_1_1Button.md) & | [**setText**](#function-settext) (Message text) <br>_Sets the text of the button._  |
+|  Button & | [**setIcon**](#function-seticon) (std::optional&lt; std::string &gt; icon) <br>_Sets the icon for the button._  |
+|  Button & | [**setOnClick**](#function-setonclick) (OnClickCallback on\_click) <br>_Sets the on click callback of the button._  |
+|  Button & | [**setText**](#function-settext) (Message text) <br>_Sets the text of the button._  |
 
 
 
@@ -223,7 +223,7 @@ The text.
 _Sets the icon for the button._ 
 ```C++
 inline Button & endstone::Button::setIcon (
-    std::string icon
+    std::optional< std::string > icon
 ) 
 ```
 

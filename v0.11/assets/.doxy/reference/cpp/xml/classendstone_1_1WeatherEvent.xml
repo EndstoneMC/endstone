@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1WeatherEvent" kind="class" language="C++" prot="public">
     <compoundname>endstone::WeatherEvent</compoundname>
     <basecompoundref refid="classendstone_1_1Event" prot="public" virt="non-virtual">endstone::Event</basecompoundref>
@@ -54,7 +54,7 @@
         </inbodydescription>
         <location file="include/endstone/event/weather/weather_event.h" line="28" column="5"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1WeatherEvent_1a41c387efbe3a36881832bddf69b90691" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1WeatherEvent_1a41c387efbe3a36881832bddf69b90691" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Level" kindref="compound">Level</ref> &amp;</type>
         <definition>Level &amp; endstone::WeatherEvent::getLevel</definition>
         <argsstring>() const</argsstring>

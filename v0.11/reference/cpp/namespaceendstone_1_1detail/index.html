@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../../assets/logo.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -2770,8 +2770,20 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
+<td style="text-align: right;">class</td>
+<td style="text-align: left;"><a href="../classendstone_1_1detail_1_1CommandBuilder/"><strong>CommandBuilder</strong></a> <br></td>
+</tr>
+<tr>
 <td style="text-align: right;">struct</td>
-<td style="text-align: left;"><a href="../structendstone_1_1detail_1_1JoinView/"><strong>JoinView</strong></a> &lt;<a href="../classendstone_1_1Identifier/"><strong>typename</strong></a> <a href="../classendstone_1_1Identifier/"><strong>It</strong></a>, <a href="../classendstone_1_1Identifier/"><strong>typename</strong></a> <a href="../classendstone_1_1Identifier/"><strong>Sentinel</strong></a>&gt;<br></td>
+<td style="text-align: left;"><a href="../structendstone_1_1detail_1_1JoinView/"><strong>JoinView</strong></a> &lt;typename It, typename Sentinel&gt;<br></td>
+</tr>
+<tr>
+<td style="text-align: right;">class</td>
+<td style="text-align: left;"><a href="../classendstone_1_1detail_1_1PermissionBuilder/"><strong>PermissionBuilder</strong></a> <br></td>
+</tr>
+<tr>
+<td style="text-align: right;">struct</td>
+<td style="text-align: left;"><a href="../structendstone_1_1detail_1_1PluginDescriptionBuilder/"><strong>PluginDescriptionBuilder</strong></a> <br></td>
 </tr>
 </tbody>
 </table>
@@ -2785,7 +2797,7 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>Return</strong></a>(*)(Arg...)</td>
+<td style="text-align: right;">Return(*)(Arg...)</td>
 <td style="text-align: left;"><a href="#variable-fp_cast"><strong>fp_cast</strong></a>  <br></td>
 </tr>
 </tbody>
@@ -2800,28 +2812,28 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a> *</td>
-<td style="text-align: left;"><a href="#function-fp_cast"><strong>fp_cast</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>Return</strong></a>(*)(Args...) fp) <br><em>Cast a function pointer to void pointer.</em></td>
+<td style="text-align: right;">void *</td>
+<td style="text-align: left;"><a href="#function-fp_cast"><strong>fp_cast</strong></a> (Return(*)(Args...) fp) <br><em>Cast a function pointer to void pointer.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a> *</td>
-<td style="text-align: left;"><a href="#function-fp_cast"><strong>fp_cast</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>Return</strong></a>(Class::*)(Args...) fp) <br><em>Cast a member function pointer to void pointer.</em></td>
+<td style="text-align: right;">void *</td>
+<td style="text-align: left;"><a href="#function-fp_cast"><strong>fp_cast</strong></a> (Return(Class::*)(Args...) fp) <br><em>Cast a member function pointer to void pointer.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#function-fp_cast"><strong>fp_cast</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>Return</strong></a>(Class::*)(Arg...), <a href="../classendstone_1_1Identifier/"><strong>void</strong></a> * address) <br><em>Gets the original member function pointer from a detour member function pointer (const, no ref-qualifier)</em></td>
+<td style="text-align: right;">auto</td>
+<td style="text-align: left;"><a href="#function-fp_cast"><strong>fp_cast</strong></a> (Return(Class::*)(Arg...), void * address) <br><em>Gets the original member function pointer from a detour member function pointer (const, no ref-qualifier).</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Server/"><strong>Server</strong></a> &amp;</td>
 <td style="text-align: left;"><a href="#function-getserver"><strong>getServer</strong></a> () <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../structendstone_1_1detail_1_1JoinView/"><strong>JoinView</strong></a>&lt; <a href="../classendstone_1_1Identifier/"><strong>It</strong></a>, <a href="../classendstone_1_1Identifier/"><strong>Sentinel</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-join"><strong>join</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>It</strong></a> begin, <a href="../classendstone_1_1Identifier/"><strong>Sentinel</strong></a> end, std::string_view sep) <br></td>
+<td style="text-align: right;"><a href="../structendstone_1_1detail_1_1JoinView/"><strong>JoinView</strong></a>&lt; It, Sentinel &gt;</td>
+<td style="text-align: left;"><a href="#function-join"><strong>join</strong></a> (It begin, Sentinel end, std::string_view sep) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#function-join"><strong>join</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Identifier/"><strong>Range</strong></a> &amp; range, std::string_view sep) <br></td>
+<td style="text-align: right;">auto</td>
+<td style="text-align: left;"><a href="#function-join"><strong>join</strong></a> (const Range &amp; range, std::string_view sep) <br></td>
 </tr>
 <tr>
 <td style="text-align: right;">std::string</td>
@@ -2839,7 +2851,7 @@ For latest updates join the chat on
 <p><em>Cast a function pointer to void pointer.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">Return</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Args</span><span class="o">&gt;</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">detail</span><span class="o">::</span><span class="n">fp_cast</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">Return</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">)(</span><span class="n">Args</span><span class="p">...)</span><span class="w"> </span><span class="n">fp</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">Return</span><span class="p">(</span><span class="o">*</span><span class="p">)(</span><span class="n">Args</span><span class="p">...)</span><span class="w"> </span><span class="n">fp</span>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p><strong>Template parameters:</strong></p>
@@ -2859,7 +2871,7 @@ For latest updates join the chat on
 <p><em>Cast a member function pointer to void pointer.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">Return</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">Class</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Args</span><span class="o">&gt;</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">detail</span><span class="o">::</span><span class="n">fp_cast</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="n">Return</span><span class="w"> </span><span class="p">(</span><span class="n">Class</span><span class="o">::*</span><span class="p">)(</span><span class="n">Args</span><span class="p">...)</span><span class="w"> </span><span class="n">fp</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="n">Return</span><span class="p">(</span><span class="n">Class</span><span class="o">::*</span><span class="p">)(</span><span class="n">Args</span><span class="p">...)</span><span class="w"> </span><span class="n">fp</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p>Cast a constant member function pointer to void pointer.</p>
@@ -2890,10 +2902,10 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-fp_cast_2">function fp_cast<a class="headerlink" href="#function-fp_cast_2" title="Permanent link">&para;</a></h3>
-<p><em>Gets the original member function pointer from a detour member function pointer (const, no ref-qualifier)</em> 
+<p><em>Gets the original member function pointer from a detour member function pointer (const, no ref-qualifier).</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">Return</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">Class</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Arg</span><span class="o">&gt;</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">detail</span><span class="o">::</span><span class="n">fp_cast</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="n">Return</span><span class="w"> </span><span class="p">(</span><span class="n">Class</span><span class="o">::*</span><span class="p">)(</span><span class="n">Arg</span><span class="p">...),</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="n">Return</span><span class="p">(</span><span class="n">Class</span><span class="o">::*</span><span class="p">)(</span><span class="n">Arg</span><span class="p">...),</span>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">address</span>
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
@@ -2909,7 +2921,7 @@ For latest updates join the chat on
 
 <h3 id="function-join">function join<a class="headerlink" href="#function-join" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">It</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">Sentinel</span><span class="o">&gt;</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">JoinView</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">It</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">Sentinel</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">detail</span><span class="o">::</span><span class="n">join</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">JoinView</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">It</span><span class="p">,</span><span class="w"> </span><span class="n">Sentinel</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">detail</span><span class="o">::</span><span class="n">join</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="n">It</span><span class="w"> </span><span class="n">begin</span><span class="p">,</span>
 </span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="n">Sentinel</span><span class="w"> </span><span class="n">end</span><span class="p">,</span>
 </span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">sep</span>
@@ -2920,7 +2932,7 @@ For latest updates join the chat on
 <h3 id="function-join_1">function join<a class="headerlink" href="#function-join_1" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">Range</span><span class="o">&gt;</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">detail</span><span class="o">::</span><span class="n">join</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">Range</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">range</span><span class="p">,</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Range</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">range</span><span class="p">,</span>
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">sep</span>
 </span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
@@ -3063,7 +3075,7 @@ For latest updates join the chat on
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "stable", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
     
   </body>

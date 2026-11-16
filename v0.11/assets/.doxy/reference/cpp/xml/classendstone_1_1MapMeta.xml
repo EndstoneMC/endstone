@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1MapMeta" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::MapMeta</compoundname>
     <basecompoundref refid="classendstone_1_1ItemMeta" prot="public" virt="non-virtual">endstone::ItemMeta</basecompoundref>
@@ -21,8 +21,8 @@
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="classendstone_1_1MapMeta_1a428e86f59dd0a3ebd353c63f5420834e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+      <memberdef kind="function" id="classendstone_1_1MapMeta_1a428e86f59dd0a3ebd353c63f5420834e" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
         <definition>virtual bool endstone::MapMeta::hasMapId</definition>
         <argsstring>() const =0</argsstring>
         <name>hasMapId</name>
@@ -39,7 +39,7 @@
         </inbodydescription>
         <location file="include/endstone/inventory/meta/map_meta.h" line="36" column="19"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1MapMeta_1a7061bbab491883854847dba81ca9b858" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1MapMeta_1a7061bbab491883854847dba81ca9b858" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>MapId</type>
         <definition>virtual MapId endstone::MapMeta::getMapId</definition>
         <argsstring>() const =0</argsstring>
@@ -58,7 +58,7 @@
         <location file="include/endstone/inventory/meta/map_meta.h" line="43" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapMeta_1aef8d3210e296dfbfcab867466c16af9f" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::MapMeta::setMapId</definition>
         <argsstring>(MapId id)=0</argsstring>
         <name>setMapId</name>
@@ -86,8 +86,8 @@
         </inbodydescription>
         <location file="include/endstone/inventory/meta/map_meta.h" line="50" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1MapMeta_1aa57ad60c4a27d82e4a9ff4be97d803b9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+      <memberdef kind="function" id="classendstone_1_1MapMeta_1aa57ad60c4a27d82e4a9ff4be97d803b9" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
         <definition>virtual bool endstone::MapMeta::hasMapView</definition>
         <argsstring>() const =0</argsstring>
         <name>hasMapView</name>
@@ -104,7 +104,7 @@
         </inbodydescription>
         <location file="include/endstone/inventory/meta/map_meta.h" line="57" column="19"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1MapMeta_1a01254f080fe2baea5430b5cd1f6b083d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1MapMeta_1a01254f080fe2baea5430b5cd1f6b083d" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1MapView" kindref="compound">MapView</ref> *</type>
         <definition>virtual MapView * endstone::MapMeta::getMapView</definition>
         <argsstring>() const =0</argsstring>
@@ -125,13 +125,13 @@
         <location file="include/endstone/inventory/meta/map_meta.h" line="66" column="22"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapMeta_1af6a08274ff7dcecc69da6da904a250ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::MapMeta::setMapView</definition>
         <argsstring>(const MapView *map)=0</argsstring>
         <name>setMapView</name>
         <qualifiedname>endstone::MapMeta::setMapView</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1MapView" kindref="compound">MapView</ref> *</type>
+          <type>const <ref refid="classendstone_1_1MapView" kindref="compound">MapView</ref> *</type>
           <declname>map</declname>
         </param>
         <briefdescription>

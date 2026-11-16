@@ -2,7 +2,7 @@
 
 # Class endstone::Registry
 
-**template &lt;[**typename**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;**
+**template &lt;typename T&gt;**
 
 
 
@@ -80,11 +80,11 @@ Inherits the following classes: [endstone::IRegistry](classendstone_1_1IRegistry
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**forEach**](#function-foreach) (std::function&lt; [**bool**](classendstone_1_1Identifier.md)([**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) &)&gt; func) const = 0<br>_Apply a function to each stored element._  |
-| virtual [**T**](classendstone_1_1Identifier.md) \* | [**get**](#function-get-12) ([**Identifier**](classendstone_1_1Identifier.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; id) noexcept = 0<br>_Get the object by its identifier._  |
-| virtual [**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) \* | [**get**](#function-get-22) ([**Identifier**](classendstone_1_1Identifier.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; id) noexcept const = 0<br>_Get the object by its identifier._  |
-| virtual [**T**](classendstone_1_1Identifier.md) & | [**getOrThrow**](#function-getorthrow-12) ([**Identifier**](classendstone_1_1Identifier.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; id) <br>_Get the object by its identifier or throw if missing._  |
-| virtual [**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) & | [**getOrThrow**](#function-getorthrow-22) ([**Identifier**](classendstone_1_1Identifier.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; id) const<br>_Get the object by its identifier or throw if missing._  |
+| virtual void | [**forEach**](#function-foreach) (std::function&lt; bool(const T &)&gt; func) const = 0<br>_Apply a function to each stored element._  |
+| virtual T \* | [**get**](#function-get-12) ([**Identifier**](classendstone_1_1Identifier.md)&lt; T &gt; id) noexcept = 0<br>_Get the object by its identifier._  |
+| virtual const T \* | [**get**](#function-get-22) ([**Identifier**](classendstone_1_1Identifier.md)&lt; T &gt; id) noexcept const = 0<br>_Get the object by its identifier._  |
+| virtual T & | [**getOrThrow**](#function-getorthrow-12) ([**Identifier**](classendstone_1_1Identifier.md)&lt; T &gt; id) <br>_Get the object by its identifier or throw if missing._  |
+| virtual const T & | [**getOrThrow**](#function-getorthrow-22) ([**Identifier**](classendstone_1_1Identifier.md)&lt; T &gt; id) const<br>_Get the object by its identifier or throw if missing._  |
 
 
 ## Public Functions inherited from endstone::IRegistry
@@ -175,7 +175,7 @@ Provides lookup by identifier (nullable or exception-throwing) and iteration.
 _Apply a function to each stored element._ 
 ```C++
 virtual void endstone::Registry::forEach (
-    std::function< bool ( const  T &)> func
+    std::function< bool(const T &)> func
 ) const = 0
 ```
 
@@ -241,7 +241,7 @@ T\* Pointer to the object, or nullptr if it does not exist.
 
 _Get the object by its identifier._ 
 ```C++
-virtual const  T * endstone::Registry::get (
+virtual const T * endstone::Registry::get (
     Identifier < T > id
 ) noexcept const = 0
 ```
@@ -319,7 +319,7 @@ T& Reference to the object with the given identifier.
 
 _Get the object by its identifier or throw if missing._ 
 ```C++
-inline virtual const  T & endstone::Registry::getOrThrow (
+inline virtual const T & endstone::Registry::getOrThrow (
     Identifier < T > id
 ) const
 ```

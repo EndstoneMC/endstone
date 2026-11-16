@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1PlayerLoginEvent" kind="class" language="C++" prot="public">
     <compoundname>endstone::PlayerLoginEvent</compoundname>
     <basecompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; PlayerEvent &gt;</basecompoundref>
@@ -28,7 +28,7 @@
         <name>ENDSTONE_EVENT</name>
         <qualifiedname>endstone::PlayerLoginEvent::ENDSTONE_EVENT</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1PlayerLoginEvent" kindref="compound">PlayerLoginEvent</ref></type>
+          <type>PlayerLoginEvent</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -75,8 +75,8 @@
         </inbodydescription>
         <location file="include/endstone/event/player/player_login_event.h" line="35" column="5"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PlayerLoginEvent_1a25b7ba1f99219f7b07dc41a2aa36b840" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string &amp;</type>
+      <memberdef kind="function" id="classendstone_1_1PlayerLoginEvent_1a25b7ba1f99219f7b07dc41a2aa36b840" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::string &amp;</type>
         <definition>const std::string &amp; endstone::PlayerLoginEvent::getKickMessage</definition>
         <argsstring>() const</argsstring>
         <name>getKickMessage</name>
@@ -94,13 +94,13 @@
         <location file="include/endstone/event/player/player_login_event.h" line="42" column="24" bodyfile="include/endstone/event/player/player_login_event.h" bodystart="42" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerLoginEvent_1a8f5b97ba68ebdaf921e4d9a9e6f8219e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::PlayerLoginEvent::setKickMessage</definition>
         <argsstring>(const std::string &amp;message)</argsstring>
         <name>setKickMessage</name>
         <qualifiedname>endstone::PlayerLoginEvent::setKickMessage</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string &amp;</type>
+          <type>const std::string &amp;</type>
           <declname>message</declname>
         </param>
         <briefdescription>

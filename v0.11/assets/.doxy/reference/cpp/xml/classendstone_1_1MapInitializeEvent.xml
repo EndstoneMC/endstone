@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1MapInitializeEvent" kind="class" language="C++" prot="public">
     <compoundname>endstone::MapInitializeEvent</compoundname>
     <basecompoundref refid="classendstone_1_1ServerEvent" prot="public" virt="non-virtual">endstone::ServerEvent</basecompoundref>
@@ -39,7 +39,7 @@
         </inbodydescription>
         <location file="include/endstone/event/server/map_initialize_event.h" line="32" column="14" bodyfile="include/endstone/event/server/map_initialize_event.h" bodystart="32" bodyend="32"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1MapInitializeEvent_1ab82614a939a5a9a0ec1bd7ed24007994" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1MapInitializeEvent_1ab82614a939a5a9a0ec1bd7ed24007994" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1MapView" kindref="compound">MapView</ref> &amp;</type>
         <definition>MapView &amp; endstone::MapInitializeEvent::getMap</definition>
         <argsstring>() const</argsstring>

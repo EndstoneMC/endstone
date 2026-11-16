@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1SocketAddress" kind="class" language="C++" prot="public">
     <compoundname>endstone::SocketAddress</compoundname>
     <includes refid="socket__address_8h" local="no">endstone/util/socket_address.h</includes>
@@ -70,8 +70,8 @@
         </inbodydescription>
         <location file="include/endstone/util/socket_address.h" line="31" column="5" bodyfile="include/endstone/util/socket_address.h" bodystart="31" bodyend="31"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1SocketAddress_1ae29c126b04d9d5094323ae495c32f6dd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string &amp;</type>
+      <memberdef kind="function" id="classendstone_1_1SocketAddress_1ae29c126b04d9d5094323ae495c32f6dd" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::string &amp;</type>
         <definition>const std::string &amp; endstone::SocketAddress::getHostname</definition>
         <argsstring>() const</argsstring>
         <name>getHostname</name>
@@ -88,7 +88,7 @@
         </inbodydescription>
         <location file="include/endstone/util/socket_address.h" line="38" column="24" bodyfile="include/endstone/util/socket_address.h" bodystart="38" bodyend="38"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1SocketAddress_1aab52350c83757435fe655b07f9cb8496" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1SocketAddress_1aab52350c83757435fe655b07f9cb8496" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::uint32_t</type>
         <definition>std::uint32_t endstone::SocketAddress::getPort</definition>
         <argsstring>() const</argsstring>
@@ -107,13 +107,13 @@
         <location file="include/endstone/util/socket_address.h" line="45" column="20" bodyfile="include/endstone/util/socket_address.h" bodystart="45" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1SocketAddress_1a3377d3f8a9c97b60c58bbfed0ec6bb72" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::SocketAddress::operator==</definition>
         <argsstring>(const SocketAddress &amp;other) const =default</argsstring>
         <name>operator==</name>
         <qualifiedname>endstone::SocketAddress::operator==</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1SocketAddress" kindref="compound">SocketAddress</ref> &amp;</type>
+          <type>const SocketAddress &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>

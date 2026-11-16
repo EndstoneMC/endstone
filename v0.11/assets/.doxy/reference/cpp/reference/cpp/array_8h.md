@@ -41,7 +41,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| class | [**ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md) &lt;[**typename**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;<br> |
+| class | [**ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md) &lt;typename T&gt;<br> |
 
 
 

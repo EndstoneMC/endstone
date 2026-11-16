@@ -59,7 +59,7 @@ Inherits the following classes: std::formatter< std::string_view >
 
 | Type | Name |
 | ---: | :--- |
-|  auto | [**format**](#function-format) (const [**Type**](classendstone_1_1ItemStack.md) & val, FormatContext & ctx) const<br> |
+|  auto | [**format**](#function-format) (const Type & val, FormatContext & ctx) const<br> |
 
 
 

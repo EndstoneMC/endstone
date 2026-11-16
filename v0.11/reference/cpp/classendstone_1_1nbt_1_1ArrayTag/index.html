@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../../assets/logo.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -3116,7 +3116,7 @@ For latest updates join the chat on
 
 
 <h1 id="class-endstonenbtarraytag">Class endstone::nbt::ArrayTag<a class="headerlink" href="#class-endstonenbtarraytag" title="Permanent link">&para;</a></h1>
-<p><strong>template &lt;<a href="../classendstone_1_1Identifier/"><strong>typename</strong></a> <a href="../classendstone_1_1Identifier/"><strong>T</strong></a>&gt;</strong></p>
+<p><strong>template &lt;typename T&gt;</strong></p>
 <p><a href="../annotated/"><strong>ClassList</strong></a> <strong>&gt;</strong> <a href="../namespaceendstone/"><strong>endstone</strong></a> <strong>&gt;</strong> <a href="../namespaceendstone_1_1nbt/"><strong>nbt</strong></a> <strong>&gt;</strong> <a href="./"><strong>ArrayTag</strong></a></p>
 <p>Inherits the following classes: <a href="../structendstone_1_1nbt_1_1TagBase/">endstone::nbt::TagBase</a></p>
 <h2 id="public-types">Public Types<a class="headerlink" href="#public-types" title="Permanent link">&para;</a></h2>
@@ -3129,15 +3129,15 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">typedef <a href="../classendstone_1_1Identifier/"><strong>typename</strong></a> storage_type::const_iterator</td>
+<td style="text-align: right;">typedef typename storage_type::const_iterator</td>
 <td style="text-align: left;"><a href="#typedef-const_iterator"><strong>const_iterator</strong></a>  <br></td>
 </tr>
 <tr>
-<td style="text-align: right;">typedef <a href="../classendstone_1_1Identifier/"><strong>typename</strong></a> storage_type::difference_type</td>
+<td style="text-align: right;">typedef typename storage_type::difference_type</td>
 <td style="text-align: left;"><a href="#typedef-difference_type"><strong>difference_type</strong></a>  <br></td>
 </tr>
 <tr>
-<td style="text-align: right;">typedef <a href="../classendstone_1_1Identifier/"><strong>typename</strong></a> storage_type::iterator</td>
+<td style="text-align: right;">typedef typename storage_type::iterator</td>
 <td style="text-align: left;"><a href="#typedef-iterator"><strong>iterator</strong></a>  <br></td>
 </tr>
 <tr>
@@ -3145,11 +3145,11 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#typedef-size_type"><strong>size_type</strong></a>  <br></td>
 </tr>
 <tr>
-<td style="text-align: right;">typedef std::vector&lt; <a href="../classendstone_1_1Identifier/"><strong>value_type</strong></a> &gt;</td>
+<td style="text-align: right;">typedef std::vector&lt; value_type &gt;</td>
 <td style="text-align: left;"><a href="#typedef-storage_type"><strong>storage_type</strong></a>  <br></td>
 </tr>
 <tr>
-<td style="text-align: right;">typedef <a href="../classendstone_1_1Identifier/"><strong>T</strong></a></td>
+<td style="text-align: right;">typedef T</td>
 <td style="text-align: left;"><a href="#typedef-value_type"><strong>value_type</strong></a>  <br></td>
 </tr>
 </tbody>
@@ -3173,22 +3173,22 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-arraytag-34"><strong>ArrayTag</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>It</strong></a> first, <a href="../classendstone_1_1Identifier/"><strong>It</strong></a> last) <br></td>
+<td style="text-align: left;"><a href="#function-arraytag-34"><strong>ArrayTag</strong></a> (It first, It last) <br></td>
 </tr>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-arraytag-44"><strong>ArrayTag</strong></a> (std::initializer_list&lt; <a href="../classendstone_1_1Identifier/"><strong>value_type</strong></a> &gt; init) <br></td>
+<td style="text-align: left;"><a href="#function-arraytag-44"><strong>ArrayTag</strong></a> (std::initializer_list&lt; value_type &gt; init) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-assign"><strong>assign</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>It</strong></a> first, <a href="../classendstone_1_1Identifier/"><strong>It</strong></a> last) <br></td>
+<td style="text-align: right;">void</td>
+<td style="text-align: left;"><a href="#function-assign"><strong>assign</strong></a> (It first, It last) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>value_type</strong></a> &amp;</td>
+<td style="text-align: right;">value_type &amp;</td>
 <td style="text-align: left;"><a href="#function-at-12"><strong>at</strong></a> (size_type i) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Identifier/"><strong>value_type</strong></a> &amp;</td>
+<td style="text-align: right;">const value_type &amp;</td>
 <td style="text-align: left;"><a href="#function-at-22"><strong>at</strong></a> (size_type i) const<br></td>
 </tr>
 <tr>
@@ -3208,19 +3208,19 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-cend"><strong>cend</strong></a> () noexcept const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
+<td style="text-align: right;">void</td>
 <td style="text-align: left;"><a href="#function-clear"><strong>clear</strong></a> () noexcept<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>value_type</strong></a> *</td>
+<td style="text-align: right;">value_type *</td>
 <td style="text-align: left;"><a href="#function-data-12"><strong>data</strong></a> () noexcept<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Identifier/"><strong>value_type</strong></a> *</td>
+<td style="text-align: right;">const value_type *</td>
 <td style="text-align: left;"><a href="#function-data-22"><strong>data</strong></a> () noexcept const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: right;">bool</td>
 <td style="text-align: left;"><a href="#function-empty"><strong>empty</strong></a> () noexcept const<br></td>
 </tr>
 <tr>
@@ -3237,19 +3237,19 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">iterator</td>
-<td style="text-align: left;"><a href="#function-insert"><strong>insert</strong></a> (const_iterator pos, <a href="../classendstone_1_1Identifier/"><strong>value_type</strong></a> v) <br></td>
+<td style="text-align: left;"><a href="#function-insert"><strong>insert</strong></a> (const_iterator pos, value_type v) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>value_type</strong></a> &amp;</td>
+<td style="text-align: right;">value_type &amp;</td>
 <td style="text-align: left;"><a href="#function-operator"><strong>operator[]</strong></a> (size_type i) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Identifier/"><strong>value_type</strong></a> &amp;</td>
+<td style="text-align: right;">const value_type &amp;</td>
 <td style="text-align: left;"><a href="#function-operator_1"><strong>operator[]</strong></a> (size_type i) const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-push_back"><strong>push_back</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>value_type</strong></a> v) <br></td>
+<td style="text-align: right;">void</td>
+<td style="text-align: left;"><a href="#function-push_back"><strong>push_back</strong></a> (value_type v) <br></td>
 </tr>
 <tr>
 <td style="text-align: right;">size_type</td>
@@ -3301,7 +3301,7 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-arraytag-34">function ArrayTag [&frac34;]<a class="headerlink" href="#function-arraytag-34" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w">  </span><span class="nc">It</span><span class="o">&gt;</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">It</span><span class="o">&gt;</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="kr">inline</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">nbt</span><span class="o">::</span><span class="n">ArrayTag</span><span class="o">::</span><span class="n">ArrayTag</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="n">It</span><span class="w"> </span><span class="n">first</span><span class="p">,</span>
 </span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">    </span><span class="n">It</span><span class="w"> </span><span class="n">last</span>
@@ -3317,7 +3317,7 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-assign">function assign<a class="headerlink" href="#function-assign" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w">  </span><span class="nc">It</span><span class="o">&gt;</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">It</span><span class="o">&gt;</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">nbt</span><span class="o">::</span><span class="n">ArrayTag</span><span class="o">::</span><span class="n">assign</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="n">It</span><span class="w"> </span><span class="n">first</span><span class="p">,</span>
 </span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="n">It</span><span class="w"> </span><span class="n">last</span>
@@ -3333,7 +3333,7 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-at-22">function at [2/2]<a class="headerlink" href="#function-at-22" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="n">value_type</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">nbt</span><span class="o">::</span><span class="n">ArrayTag</span><span class="o">::</span><span class="n">at</span><span class="w"> </span><span class="p">(</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">value_type</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">nbt</span><span class="o">::</span><span class="n">ArrayTag</span><span class="o">::</span><span class="n">at</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="n">size_type</span><span class="w"> </span><span class="n">i</span>
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div>
@@ -3370,7 +3370,7 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-data-22">function data [2/2]<a class="headerlink" href="#function-data-22" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="n">value_type</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">nbt</span><span class="o">::</span><span class="n">ArrayTag</span><span class="o">::</span><span class="n">data</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">value_type</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">nbt</span><span class="o">::</span><span class="n">ArrayTag</span><span class="o">::</span><span class="n">data</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div>
 <hr>
 
@@ -3412,7 +3412,7 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-operator_1">function operator[]<a class="headerlink" href="#function-operator_1" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="n">value_type</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">nbt</span><span class="o">::</span><span class="n">ArrayTag</span><span class="o">::</span><span class="k">operator</span><span class="p">[]</span><span class="w"> </span><span class="p">(</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">value_type</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">nbt</span><span class="o">::</span><span class="n">ArrayTag</span><span class="o">::</span><span class="k">operator</span><span class="p">[]</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="w">    </span><span class="n">size_type</span><span class="w"> </span><span class="n">i</span>
 </span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div>
@@ -3432,15 +3432,15 @@ For latest updates join the chat on
 <h2 id="friends-documentation">Friends Documentation<a class="headerlink" href="#friends-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="friend-operator">friend operator!=<a class="headerlink" href="#friend-operator" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">nbt</span><span class="o">::</span><span class="n">ArrayTag</span><span class="o">::</span><span class="k">operator</span><span class="o">!=</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">ArrayTag</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
-</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">ArrayTag</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span>
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayTag</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayTag</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span>
 </span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="friend-operator_1">friend operator!=<a class="headerlink" href="#friend-operator_1" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">nbt</span><span class="o">::</span><span class="n">ArrayTag</span><span class="o">::</span><span class="k">operator</span><span class="o">!=</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">ArrayTag</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayTag</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
 </span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">storage_type</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span>
 </span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
 </span></code></pre></div>
@@ -3449,22 +3449,22 @@ For latest updates join the chat on
 <h3 id="friend-operator_2">friend operator!=<a class="headerlink" href="#friend-operator_2" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">nbt</span><span class="o">::</span><span class="n">ArrayTag</span><span class="o">::</span><span class="k">operator</span><span class="o">!=</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">storage_type</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
-</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">ArrayTag</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span>
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayTag</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span>
 </span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="friend-operator_3">friend operator==<a class="headerlink" href="#friend-operator_3" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">nbt</span><span class="o">::</span><span class="n">ArrayTag</span><span class="o">::</span><span class="k">operator</span><span class="o">==</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">ArrayTag</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
-</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">ArrayTag</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span>
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayTag</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
+</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayTag</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span>
 </span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="friend-operator_4">friend operator==<a class="headerlink" href="#friend-operator_4" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">nbt</span><span class="o">::</span><span class="n">ArrayTag</span><span class="o">::</span><span class="k">operator</span><span class="o">==</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">ArrayTag</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayTag</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
 </span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">storage_type</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span>
 </span><span id="__span-33-4"><a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
 </span></code></pre></div>
@@ -3473,7 +3473,7 @@ For latest updates join the chat on
 <h3 id="friend-operator_5">friend operator==<a class="headerlink" href="#friend-operator_5" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">nbt</span><span class="o">::</span><span class="n">ArrayTag</span><span class="o">::</span><span class="k">operator</span><span class="o">==</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">storage_type</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
-</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">ArrayTag</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span>
+</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayTag</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span>
 </span><span id="__span-34-4"><a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
 </span></code></pre></div>
 <hr>
@@ -3606,7 +3606,7 @@ For latest updates join the chat on
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "stable", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
     
   </body>

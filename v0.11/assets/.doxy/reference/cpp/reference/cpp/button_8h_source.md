@@ -55,7 +55,7 @@ public:
 
     [[nodiscard]] std::optional<std::string> getIcon() const { return icon_; }
 
-    Button &setIcon(std::string icon)
+    Button &setIcon(std::optional<std::string> icon)
     {
         icon_ = std::move(icon);
         return *this;

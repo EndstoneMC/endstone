@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1PlayerInteractActorEvent" kind="class" language="C++" prot="public">
     <compoundname>endstone::PlayerInteractActorEvent</compoundname>
     <basecompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; PlayerEvent &gt;</basecompoundref>
@@ -28,7 +28,7 @@
         <name>ENDSTONE_EVENT</name>
         <qualifiedname>endstone::PlayerInteractActorEvent::ENDSTONE_EVENT</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1PlayerInteractActorEvent" kindref="compound">PlayerInteractActorEvent</ref></type>
+          <type>PlayerInteractActorEvent</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -74,7 +74,7 @@
         </inbodydescription>
         <location file="include/endstone/event/player/player_interact_actor_event.h" line="29" column="5"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PlayerInteractActorEvent_1ac803fcee5b9b5980b8d1db566b1f3a29" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PlayerInteractActorEvent_1ac803fcee5b9b5980b8d1db566b1f3a29" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> &amp;</type>
         <definition>Actor &amp; endstone::PlayerInteractActorEvent::getActor</definition>
         <argsstring>() const</argsstring>

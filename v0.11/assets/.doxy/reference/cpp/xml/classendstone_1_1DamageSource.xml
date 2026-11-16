@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1DamageSource" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::DamageSource</compoundname>
     <includes refid="damage__source_8h" local="no">endstone/damage/damage_source.h</includes>
@@ -18,7 +18,7 @@
         </inbodydescription>
         <location file="include/endstone/damage/damage_source.h" line="30" column="13"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1DamageSource_1a545bb2e2d0cbf576bd70595194e88a74" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1DamageSource_1a545bb2e2d0cbf576bd70595194e88a74" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string_view</type>
         <definition>virtual std::string_view endstone::DamageSource::getType</definition>
         <argsstring>() const =0</argsstring>
@@ -36,7 +36,7 @@
         </inbodydescription>
         <location file="include/endstone/damage/damage_source.h" line="37" column="31"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1DamageSource_1aa918ccf5242cf6d8ed707457c227f9c5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1DamageSource_1aa918ccf5242cf6d8ed707457c227f9c5" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> *</type>
         <definition>virtual Actor * endstone::DamageSource::getActor</definition>
         <argsstring>() const =0</argsstring>
@@ -55,7 +55,7 @@
         </inbodydescription>
         <location file="include/endstone/damage/damage_source.h" line="48" column="20"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1DamageSource_1a022af0acc2aab4bd95e5ce916186a4ff" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1DamageSource_1a022af0acc2aab4bd95e5ce916186a4ff" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> *</type>
         <definition>virtual Actor * endstone::DamageSource::getDamagingActor</definition>
         <argsstring>() const =0</argsstring>
@@ -74,8 +74,8 @@
         </inbodydescription>
         <location file="include/endstone/damage/damage_source.h" line="58" column="20"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1DamageSource_1ab078db3a18d08b41dd6c73de066c2b02" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+      <memberdef kind="function" id="classendstone_1_1DamageSource_1ab078db3a18d08b41dd6c73de066c2b02" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
         <definition>virtual bool endstone::DamageSource::isIndirect</definition>
         <argsstring>() const =0</argsstring>
         <name>isIndirect</name>

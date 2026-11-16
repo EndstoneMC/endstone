@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1PlayerQuitEvent" kind="class" language="C++" prot="public">
     <compoundname>endstone::PlayerQuitEvent</compoundname>
     <basecompoundref refid="classendstone_1_1PlayerEvent" prot="public" virt="non-virtual">endstone::PlayerEvent</basecompoundref>
@@ -28,7 +28,7 @@
         <name>ENDSTONE_EVENT</name>
         <qualifiedname>endstone::PlayerQuitEvent::ENDSTONE_EVENT</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1PlayerQuitEvent" kindref="compound">PlayerQuitEvent</ref></type>
+          <type>PlayerQuitEvent</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -60,7 +60,7 @@
         </inbodydescription>
         <location file="include/endstone/event/player/player_quit_event.h" line="31" column="14" bodyfile="include/endstone/event/player/player_quit_event.h" bodystart="31" bodyend="34"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PlayerQuitEvent_1a1dc49d81c8a458e1a45d8d2c33f03f15" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PlayerQuitEvent_1a1dc49d81c8a458e1a45d8d2c33f03f15" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; Message &gt;</type>
         <definition>std::optional&lt; Message &gt; endstone::PlayerQuitEvent::getQuitMessage</definition>
         <argsstring>() const</argsstring>
@@ -79,7 +79,7 @@
         <location file="include/endstone/event/player/player_quit_event.h" line="41" column="20" bodyfile="include/endstone/event/player/player_quit_event.h" bodystart="41" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerQuitEvent_1a33ac4f643cbabfbaec170ba5ef88551a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::PlayerQuitEvent::setQuitMessage</definition>
         <argsstring>(std::optional&lt; Message &gt; message)</argsstring>
         <name>setQuitMessage</name>

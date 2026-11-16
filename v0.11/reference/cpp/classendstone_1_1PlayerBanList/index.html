@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../../assets/logo.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -2798,7 +2798,7 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">typedef <a href="../classendstone_1_1Identifier/"><strong>T</strong></a></td>
+<td style="text-align: right;">typedef T</td>
 <td style="text-align: left;"><a href="../classendstone_1_1BanList/#typedef-entrytype"><strong>EntryType</strong></a>  <br></td>
 </tr>
 </tbody>
@@ -2841,19 +2841,19 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-getentries"><strong>getEntries</strong></a> () override const = 0<br><em>Gets a vector containing pointers to every</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>in this list.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: right;">virtual bool</td>
 <td style="text-align: left;"><a href="#function-isbanned-12"><strong>isBanned</strong></a> (std::string name) override const = 0<br><em>Checks if a</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>exists for the target, indicating an active ban status.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: right;">virtual bool</td>
 <td style="text-align: left;"><a href="#function-isbanned-22"><strong>isBanned</strong></a> (std::string name, std::optional&lt; <a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> &gt; uuid, std::optional&lt; std::string &gt; xuid) const = 0<br><em>Checks if a</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>exists for the target, indicating an active ban status.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
+<td style="text-align: right;">virtual void</td>
 <td style="text-align: left;"><a href="#function-removeban-12"><strong>removeBan</strong></a> (std::string name) override = 0<br><em>Removes the specified player from this list, therefore indicating a "not banned" status.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
+<td style="text-align: right;">virtual void</td>
 <td style="text-align: left;"><a href="#function-removeban-22"><strong>removeBan</strong></a> (std::string name, std::optional&lt; <a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> &gt; uuid, std::optional&lt; std::string &gt; xuid) = 0<br><em>Removes the specified player from this list, therefore indicating a "not banned" status.</em></td>
 </tr>
 </tbody>
@@ -2869,27 +2869,27 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1Identifier/"><strong>T</strong></a> &gt;</td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; T &gt;</td>
 <td style="text-align: left;"><a href="../classendstone_1_1BanList/#function-addban-12"><strong>addBan</strong></a> (std::string target, std::optional&lt; std::string &gt; reason, std::optional&lt; BanEntry::Date &gt; expires, std::optional&lt; std::string &gt; source) = 0<br><em>Adds a ban to this list. If a previous ban exists, this will update the previous entry.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1Identifier/"><strong>T</strong></a> &gt;</td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; T &gt;</td>
 <td style="text-align: left;"><a href="../classendstone_1_1BanList/#function-addban-22"><strong>addBan</strong></a> (std::string target, std::optional&lt; std::string &gt; reason, std::chrono::seconds duration, std::optional&lt; std::string &gt; source) = 0<br><em>Adds a ban to this list. If a previous ban exists, this will update the previous entry.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Nullable/"><strong>Nullable</strong></a>&lt; <a href="../classendstone_1_1Identifier/"><strong>T</strong></a> &gt;</td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Nullable/"><strong>Nullable</strong></a>&lt; T &gt;</td>
 <td style="text-align: left;"><a href="../classendstone_1_1BanList/#function-getbanentry"><strong>getBanEntry</strong></a> (std::string target) const = 0<br><em>Gets a</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>by target.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual std::vector&lt; <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1Identifier/"><strong>T</strong></a> &gt; &gt;</td>
+<td style="text-align: right;">virtual std::vector&lt; <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; T &gt; &gt;</td>
 <td style="text-align: left;"><a href="../classendstone_1_1BanList/#function-getentries"><strong>getEntries</strong></a> () const = 0<br><em>Gets a vector containing pointers to every</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>in this list.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: right;">virtual bool</td>
 <td style="text-align: left;"><a href="../classendstone_1_1BanList/#function-isbanned"><strong>isBanned</strong></a> (std::string target) const = 0<br><em>Checks if a</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>exists for the target, indicating an active ban status.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
+<td style="text-align: right;">virtual void</td>
 <td style="text-align: left;"><a href="../classendstone_1_1BanList/#function-removeban"><strong>removeBan</strong></a> (std::string target) = 0<br><em>Removes the specified target from this list, therefore indicating a "not banned" status.</em></td>
 </tr>
 <tr>
@@ -2962,7 +2962,6 @@ For latest updates join the chat on
 </ul>
 <p><strong>Returns:</strong></p>
 <p><a href="../classendstone_1_1PlayerBanEntry/"><strong>PlayerBanEntry</strong></a> The entry for the newly created ban, or the entry for the (updated) previous ban. </p>
-<p>Implements <a href="../classendstone_1_1BanList/#function-addban-22"><em>endstone::BanList::addBan</em></a></p>
 <hr>
 
 <h3 id="function-addban-44">function addBan [4/4]<a class="headerlink" href="#function-addban-44" title="Permanent link">&para;</a></h3>
@@ -3225,7 +3224,7 @@ For latest updates join the chat on
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "stable", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
     
   </body>

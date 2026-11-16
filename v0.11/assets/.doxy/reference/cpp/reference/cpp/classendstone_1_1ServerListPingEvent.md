@@ -93,28 +93,28 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md)) <br> |
-|   | [**ServerListPingEvent**](#function-serverlistpingevent) ([**SocketAddress**](classendstone_1_1SocketAddress.md) address, std::string motd, [**int**](classendstone_1_1Identifier.md) network\_protocol\_version, std::string minecraft\_version\_network, [**int**](classendstone_1_1Identifier.md) num\_players, [**int**](classendstone_1_1Identifier.md) max\_players, std::string server\_guid, std::string level\_name, [**GameMode**](namespaceendstone.md#enum-gamemode) game\_mode, [**int**](classendstone_1_1Identifier.md) local\_port, [**int**](classendstone_1_1Identifier.md) local\_port\_v6) <br> |
+|   | [**ENDSTONE\_EVENT**](#function-endstone_event) (ServerListPingEvent) <br> |
+|   | [**ServerListPingEvent**](#function-serverlistpingevent) ([**SocketAddress**](classendstone_1_1SocketAddress.md) address, std::string motd, int network\_protocol\_version, std::string minecraft\_version\_network, int num\_players, int max\_players, std::string server\_guid, std::string level\_name, [**GameMode**](namespaceendstone.md#enum-gamemode) game\_mode, int local\_port, int local\_port\_v6) <br> |
 |  [**SocketAddress**](classendstone_1_1SocketAddress.md) | [**getAddress**](#function-getaddress) () const<br>_Get the address the ping is coming from._  |
 |  [**GameMode**](namespaceendstone.md#enum-gamemode) | [**getGameMode**](#function-getgamemode) () const<br>_Get the current game mode._  |
 |  std::string | [**getLevelName**](#function-getlevelname) () const<br>_Get the level name._  |
-|  [**int**](classendstone_1_1Identifier.md) | [**getLocalPort**](#function-getlocalport) () const<br>_Get the local port of the server._  |
-|  [**int**](classendstone_1_1Identifier.md) | [**getLocalPortV6**](#function-getlocalportv6) () const<br>_Get the local port of the server for IPv6 support._  |
-|  [**int**](classendstone_1_1Identifier.md) | [**getMaxPlayers**](#function-getmaxplayers) () const<br>_Get the maximum number of players allowed._  |
+|  int | [**getLocalPort**](#function-getlocalport) () const<br>_Get the local port of the server._  |
+|  int | [**getLocalPortV6**](#function-getlocalportv6) () const<br>_Get the local port of the server for IPv6 support._  |
+|  int | [**getMaxPlayers**](#function-getmaxplayers) () const<br>_Get the maximum number of players allowed._  |
 |  std::string | [**getMinecraftVersionNetwork**](#function-getminecraftversionnetwork) () const<br>_Get the network version of Minecraft that is supported by this server._  |
 |  std::string | [**getMotd**](#function-getmotd) () const<br>_Get the message of the day message._  |
-|  [**int**](classendstone_1_1Identifier.md) | [**getNetworkProtocolVersion**](#function-getnetworkprotocolversion) () const<br>_Get the network protocol version of this server._  |
-|  [**int**](classendstone_1_1Identifier.md) | [**getNumPlayers**](#function-getnumplayers) () const<br>_Get the number of players online._  |
+|  int | [**getNetworkProtocolVersion**](#function-getnetworkprotocolversion) () const<br>_Get the network protocol version of this server._  |
+|  int | [**getNumPlayers**](#function-getnumplayers) () const<br>_Get the number of players online._  |
 |  std::string | [**getServerGuid**](#function-getserverguid) () const<br>_Get the unique identifier of the server._  |
-|  [**void**](classendstone_1_1Identifier.md) | [**setGameMode**](#function-setgamemode) ([**GameMode**](namespaceendstone.md#enum-gamemode) game\_mode) <br>_Set the current game mode._  |
-|  [**void**](classendstone_1_1Identifier.md) | [**setLevelName**](#function-setlevelname) (std::string level\_name) <br>_Set the level name._  |
-|  [**void**](classendstone_1_1Identifier.md) | [**setLocalPort**](#function-setlocalport) ([**int**](classendstone_1_1Identifier.md) port) <br>_Set the local port of the server._  |
-|  [**void**](classendstone_1_1Identifier.md) | [**setLocalPortV6**](#function-setlocalportv6) ([**int**](classendstone_1_1Identifier.md) port) <br>_Set the local port of the server for IPv6 support._  |
-|  [**void**](classendstone_1_1Identifier.md) | [**setMaxPlayers**](#function-setmaxplayers) ([**int**](classendstone_1_1Identifier.md) max\_players) <br>_Set the maximum number of players allowed._  |
-|  [**void**](classendstone_1_1Identifier.md) | [**setMinecraftVersionNetwork**](#function-setminecraftversionnetwork) (std::string minecraft\_version\_network) <br>_Set the network version of Minecraft that is supported by this server._  |
-|  [**void**](classendstone_1_1Identifier.md) | [**setMotd**](#function-setmotd) (std::string motd) <br>_Change the message of the day message._  |
-|  [**void**](classendstone_1_1Identifier.md) | [**setNumPlayers**](#function-setnumplayers) ([**int**](classendstone_1_1Identifier.md) num\_players) <br>_Set the number of players online._  |
-|  [**void**](classendstone_1_1Identifier.md) | [**setServerGuid**](#function-setserverguid) (std::string guid) <br>_Set the unique identifier of the server._  |
+|  void | [**setGameMode**](#function-setgamemode) ([**GameMode**](namespaceendstone.md#enum-gamemode) game\_mode) <br>_Set the current game mode._  |
+|  void | [**setLevelName**](#function-setlevelname) (std::string level\_name) <br>_Set the level name._  |
+|  void | [**setLocalPort**](#function-setlocalport) (int port) <br>_Set the local port of the server._  |
+|  void | [**setLocalPortV6**](#function-setlocalportv6) (int port) <br>_Set the local port of the server for IPv6 support._  |
+|  void | [**setMaxPlayers**](#function-setmaxplayers) (int max\_players) <br>_Set the maximum number of players allowed._  |
+|  void | [**setMinecraftVersionNetwork**](#function-setminecraftversionnetwork) (std::string minecraft\_version\_network) <br>_Set the network version of Minecraft that is supported by this server._  |
+|  void | [**setMotd**](#function-setmotd) (std::string motd) <br>_Change the message of the day message._  |
+|  void | [**setNumPlayers**](#function-setnumplayers) (int num\_players) <br>_Set the number of players online._  |
+|  void | [**setServerGuid**](#function-setserverguid) (std::string guid) <br>_Set the unique identifier of the server._  |
 
 
 ## Public Functions inherited from endstone::Cancellable
@@ -123,9 +123,9 @@ See [endstone::Cancellable](classendstone_1_1Cancellable.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**cancel**](classendstone_1_1Cancellable.md#function-cancel) () <br>_Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**isCancelled**](classendstone_1_1Cancellable.md#function-iscancelled) () override const<br>_Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setCancelled**](classendstone_1_1Cancellable.md#function-setcancelled) ([**bool**](classendstone_1_1Identifier.md) cancel) override<br>_Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual void | [**cancel**](classendstone_1_1Cancellable.md#function-cancel) () <br>_Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual bool | [**isCancelled**](classendstone_1_1Cancellable.md#function-iscancelled) () override const<br>_Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual void | [**setCancelled**](classendstone_1_1Cancellable.md#function-setcancelled) (bool cancel) override<br>_Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
 
 
 ## Public Functions inherited from endstone::ICancellable
@@ -134,9 +134,9 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**cancel**](classendstone_1_1ICancellable.md#function-cancel) () = 0<br> |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**isCancelled**](classendstone_1_1ICancellable.md#function-iscancelled) () const = 0<br> |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setCancelled**](classendstone_1_1ICancellable.md#function-setcancelled) ([**bool**](classendstone_1_1Identifier.md) cancel) = 0<br> |
+| virtual void | [**cancel**](classendstone_1_1ICancellable.md#function-cancel) () = 0<br> |
+| virtual bool | [**isCancelled**](classendstone_1_1ICancellable.md#function-iscancelled) () const = 0<br> |
+| virtual void | [**setCancelled**](classendstone_1_1ICancellable.md#function-setcancelled) (bool cancel) = 0<br> |
 | virtual  | [**~ICancellable**](classendstone_1_1ICancellable.md#function-icancellable) () = default<br> |
 
 

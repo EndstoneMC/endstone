@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1CrossbowMeta" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::CrossbowMeta</compoundname>
     <basecompoundref refid="classendstone_1_1ItemMeta" prot="public" virt="non-virtual">endstone::ItemMeta</basecompoundref>
     <includes refid="crossbow__meta_8h" local="no">endstone/inventory/meta/crossbow_meta.h</includes>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="classendstone_1_1CrossbowMeta_1a459324fd5f1e597c8d86ab5f97bb2a81" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+      <memberdef kind="function" id="classendstone_1_1CrossbowMeta_1a459324fd5f1e597c8d86ab5f97bb2a81" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
         <definition>virtual bool endstone::CrossbowMeta::hasChargedProjectiles</definition>
         <argsstring>() const =0</argsstring>
         <name>hasChargedProjectiles</name>
@@ -23,7 +23,7 @@
         </inbodydescription>
         <location file="include/endstone/inventory/meta/crossbow_meta.h" line="34" column="19"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1CrossbowMeta_1a38213a27173640679f1cceef0e727157" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1CrossbowMeta_1a38213a27173640679f1cceef0e727157" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &gt;</type>
         <definition>virtual std::vector&lt; ItemStack &gt; endstone::CrossbowMeta::getChargedProjectiles</definition>
         <argsstring>() const =0</argsstring>
@@ -42,7 +42,7 @@
         <location file="include/endstone/inventory/meta/crossbow_meta.h" line="41" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CrossbowMeta_1abf1ebaf64014c75db3c3d97005eabf4c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::CrossbowMeta::setChargedProjectiles</definition>
         <argsstring>(std::vector&lt; ItemStack &gt; projectiles)=0</argsstring>
         <name>setChargedProjectiles</name>
@@ -71,13 +71,13 @@
         <location file="include/endstone/inventory/meta/crossbow_meta.h" line="48" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CrossbowMeta_1a6fdf10d11b9d51a4171436247750be58" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::CrossbowMeta::addChargedProjectile</definition>
         <argsstring>(const ItemStack &amp;item)=0</argsstring>
         <name>addChargedProjectile</name>
         <qualifiedname>endstone::CrossbowMeta::addChargedProjectile</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;</type>
           <declname>item</declname>
         </param>
         <briefdescription>

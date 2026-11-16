@@ -55,7 +55,7 @@ _Represents a header with a label._
 |   | [**Header**](#function-header-12) () = default<br> |
 |   | [**Header**](#function-header-22) (Message label) <br> |
 |  Message | [**getLabel**](#function-getlabel) () const<br>_Gets the label of the header._  |
-|  [**Header**](classendstone_1_1Header.md) & | [**setLabel**](#function-setlabel) (Message label) <br>_Sets the label of the header._  |
+|  Header & | [**setLabel**](#function-setlabel) (Message label) <br>_Sets the label of the header._  |
 
 
 

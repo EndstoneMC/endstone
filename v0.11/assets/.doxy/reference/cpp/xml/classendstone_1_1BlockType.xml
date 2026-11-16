@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1BlockType" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::BlockType</compoundname>
     <basecompoundref refid="classendstone_1_1Registry_1_1Type" prot="public" virt="non-virtual">endstone::Registry&lt; T &gt;::Type</basecompoundref>
     <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1BlockType_1aeae830d84b5168ebccfe9775be5e8bfc" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
-        <definition>constexpr auto endstone::BlockType::Air</definition>
+        <type>auto</type>
+        <definition>auto endstone::BlockType::Air</definition>
         <argsstring></argsstring>
         <name>Air</name>
         <qualifiedname>endstone::BlockType::Air</qualifiedname>
@@ -21,8 +21,8 @@
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="classendstone_1_1BlockType_1a853a735ab1fa78eeffbebb300e3c749f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+      <memberdef kind="function" id="classendstone_1_1BlockType_1a853a735ab1fa78eeffbebb300e3c749f" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
         <definition>virtual bool endstone::BlockType::hasItemType</definition>
         <argsstring>() const =0</argsstring>
         <name>hasItemType</name>
@@ -39,7 +39,7 @@
         </inbodydescription>
         <location file="include/endstone/block/block_type.h" line="41" column="19"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BlockType_1aa415d093dbd60f47b0cb358d70c2ddb7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1BlockType_1aa415d093dbd60f47b0cb358d70c2ddb7" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::unique_ptr&lt; <ref refid="classendstone_1_1BlockData" kindref="compound">BlockData</ref> &gt;</type>
         <definition>virtual std::unique_ptr&lt; BlockData &gt; endstone::BlockType::createBlockData</definition>
         <argsstring>() const =0</argsstring>

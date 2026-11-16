@@ -38,7 +38,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| class | [**ValueTag**](classendstone_1_1nbt_1_1ValueTag.md) &lt;[**typename**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;<br> |
+| class | [**ValueTag**](classendstone_1_1nbt_1_1ValueTag.md) &lt;typename T&gt;<br> |
 
 
 

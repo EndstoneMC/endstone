@@ -29,7 +29,10 @@
 
 | Type | Name |
 | ---: | :--- |
-| struct | [**JoinView**](structendstone_1_1detail_1_1JoinView.md) &lt;[**typename**](classendstone_1_1Identifier.md) [**It**](classendstone_1_1Identifier.md), [**typename**](classendstone_1_1Identifier.md) [**Sentinel**](classendstone_1_1Identifier.md)&gt;<br> |
+| class | [**CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md) <br> |
+| struct | [**JoinView**](structendstone_1_1detail_1_1JoinView.md) &lt;typename It, typename Sentinel&gt;<br> |
+| class | [**PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md) <br> |
+| struct | [**PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md) <br> |
 
 
 
@@ -40,7 +43,7 @@
 
 | Type | Name |
 | ---: | :--- |
-|  [**Return**](classendstone_1_1Identifier.md)(\*)(Arg...) | [**fp\_cast**](#variable-fp_cast)  <br> |
+|  Return(\*)(Arg...) | [**fp\_cast**](#variable-fp_cast)  <br> |
 
 
 
@@ -61,12 +64,12 @@
 
 | Type | Name |
 | ---: | :--- |
-|  [**void**](classendstone_1_1Identifier.md) \* | [**fp\_cast**](#function-fp_cast) ([**Return**](classendstone_1_1Identifier.md)(\*)(Args...) fp) <br>_Cast a function pointer to void pointer._  |
-|  [**void**](classendstone_1_1Identifier.md) \* | [**fp\_cast**](#function-fp_cast) ([**Return**](classendstone_1_1Identifier.md)(Class::\*)(Args...) fp) <br>_Cast a member function pointer to void pointer._  |
-|  [**auto**](classendstone_1_1Identifier.md) | [**fp\_cast**](#function-fp_cast) ([**Return**](classendstone_1_1Identifier.md)(Class::\*)(Arg...), [**void**](classendstone_1_1Identifier.md) \* address) <br>_Gets the original member function pointer from a detour member function pointer (const, no ref-qualifier)_  |
+|  void \* | [**fp\_cast**](#function-fp_cast) (Return(\*)(Args...) fp) <br>_Cast a function pointer to void pointer._  |
+|  void \* | [**fp\_cast**](#function-fp_cast) (Return(Class::\*)(Args...) fp) <br>_Cast a member function pointer to void pointer._  |
+|  auto | [**fp\_cast**](#function-fp_cast) (Return(Class::\*)(Arg...), void \* address) <br>_Gets the original member function pointer from a detour member function pointer (const, no ref-qualifier)._  |
 |  [**Server**](classendstone_1_1Server.md) & | [**getServer**](#function-getserver) () <br> |
-|  [**JoinView**](structendstone_1_1detail_1_1JoinView.md)&lt; [**It**](classendstone_1_1Identifier.md), [**Sentinel**](classendstone_1_1Identifier.md) &gt; | [**join**](#function-join) ([**It**](classendstone_1_1Identifier.md) begin, [**Sentinel**](classendstone_1_1Identifier.md) end, std::string\_view sep) <br> |
-|  [**auto**](classendstone_1_1Identifier.md) | [**join**](#function-join) ([**const**](classendstone_1_1Identifier.md) [**Range**](classendstone_1_1Identifier.md) & range, std::string\_view sep) <br> |
+|  [**JoinView**](structendstone_1_1detail_1_1JoinView.md)&lt; It, Sentinel &gt; | [**join**](#function-join) (It begin, Sentinel end, std::string\_view sep) <br> |
+|  auto | [**join**](#function-join) (const Range & range, std::string\_view sep) <br> |
 |  std::string | [**quoted**](#function-quoted) (std::string\_view value) <br> |
 
 
@@ -122,7 +125,7 @@ _Cast a function pointer to void pointer._
 ```C++
 template<typename Return, typename... Args>
 void * endstone::detail::fp_cast (
-    Return (*)(Args...) fp
+    Return(*)(Args...) fp
 ) 
 ```
 
@@ -165,7 +168,7 @@ _Cast a member function pointer to void pointer._
 ```C++
 template<typename Return, typename Class, typename... Args>
 void * endstone::detail::fp_cast (
-    Return (Class::*)(Args...) fp
+    Return(Class::*)(Args...) fp
 ) 
 ```
 
@@ -231,11 +234,11 @@ A void pointer to the constant member function.
 
 ### function fp\_cast 
 
-_Gets the original member function pointer from a detour member function pointer (const, no ref-qualifier)_ 
+_Gets the original member function pointer from a detour member function pointer (const, no ref-qualifier)._ 
 ```C++
 template<typename Return, typename Class, typename... Arg>
 auto endstone::detail::fp_cast (
-    Return (Class::*)(Arg...),
+    Return(Class::*)(Arg...),
     void * address
 ) 
 ```
@@ -278,7 +281,7 @@ Gets the current [**Server**](classendstone_1_1Server.md) singleton
 
 ```C++
 template<typename It, typename Sentinel>
-JoinView < It , Sentinel > endstone::detail::join (
+JoinView < It, Sentinel > endstone::detail::join (
     It begin,
     Sentinel end,
     std::string_view sep
@@ -297,7 +300,7 @@ JoinView < It , Sentinel > endstone::detail::join (
 ```C++
 template<typename Range>
 auto endstone::detail::join (
-    const  Range & range,
+    const Range & range,
     std::string_view sep
 ) 
 ```

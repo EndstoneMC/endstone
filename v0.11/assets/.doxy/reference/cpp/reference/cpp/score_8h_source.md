@@ -42,6 +42,7 @@ public:
 
     virtual void setValue(int score) = 0;
 
+
     [[nodiscard]] virtual bool isScoreSet() const = 0;
 
     [[nodiscard]] virtual Objective &getObjective() const = 0;

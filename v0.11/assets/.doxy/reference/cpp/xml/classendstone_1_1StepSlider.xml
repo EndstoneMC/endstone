@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1StepSlider" kind="class" language="C++" prot="public">
     <compoundname>endstone::StepSlider</compoundname>
     <basecompoundref refid="classendstone_1_1Dropdown" prot="public" virt="non-virtual">endstone::Dropdown</basecompoundref>
@@ -34,7 +34,7 @@
           <declname>options</declname>
         </param>
         <param>
-          <type>std::optional&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">int</ref> &gt;</type>
+          <type>std::optional&lt; int &gt;</type>
           <declname>default_index</declname>
           <defval>std::nullopt</defval>
         </param>

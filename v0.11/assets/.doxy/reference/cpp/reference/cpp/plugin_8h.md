@@ -50,6 +50,9 @@
 | Type | Name |
 | ---: | :--- |
 | class | [**Plugin**](classendstone_1_1Plugin.md) <br>_Represents a_ [_**Plugin**_](classendstone_1_1Plugin.md) _._ |
+| class | [**CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md) <br> |
+| class | [**PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md) <br> |
+| struct | [**PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md) <br> |
 
 
 

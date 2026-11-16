@@ -33,7 +33,7 @@ Inherits the following classes: [endstone::nbt::TagBase](structendstone_1_1nbt_1
 | Type | Name |
 | ---: | :--- |
 | typedef container\_type::const\_iterator | [**const\_iterator**](#typedef-const_iterator)  <br> |
-| typedef std::vector&lt; [**value\_type**](classendstone_1_1nbt_1_1Tag.md) &gt; | [**container\_type**](#typedef-container_type)  <br> |
+| typedef std::vector&lt; value\_type &gt; | [**container\_type**](#typedef-container_type)  <br> |
 | typedef container\_type::iterator | [**iterator**](#typedef-iterator)  <br> |
 | typedef std::size\_t | [**size\_type**](#typedef-size_type)  <br> |
 | typedef [**nbt::Tag**](classendstone_1_1nbt_1_1Tag.md) | [**value\_type**](#typedef-value_type)  <br> |
@@ -82,24 +82,24 @@ Inherits the following classes: [endstone::nbt::TagBase](structendstone_1_1nbt_1
 | Type | Name |
 | ---: | :--- |
 |   | [**ListTag**](#function-listtag-12) () = default<br> |
-|   | [**ListTag**](#function-listtag-22) (std::initializer\_list&lt; [**T**](classendstone_1_1Identifier.md) &gt; init) <br> |
-|  [**value\_type**](classendstone_1_1nbt_1_1Tag.md) & | [**at**](#function-at-12) (size\_type i) <br> |
-|  [**const**](classendstone_1_1Identifier.md) [**value\_type**](classendstone_1_1nbt_1_1Tag.md) & | [**at**](#function-at-22) (size\_type i) const<br> |
+|   | [**ListTag**](#function-listtag-22) (std::initializer\_list&lt; T &gt; init) <br> |
+|  value\_type & | [**at**](#function-at-12) (size\_type i) <br> |
+|  const value\_type & | [**at**](#function-at-22) (size\_type i) const<br> |
 |  iterator | [**begin**](#function-begin-12) () noexcept<br> |
 |  const\_iterator | [**begin**](#function-begin-22) () noexcept const<br> |
 |  const\_iterator | [**cbegin**](#function-cbegin) () noexcept const<br> |
 |  const\_iterator | [**cend**](#function-cend) () noexcept const<br> |
-|  [**void**](classendstone_1_1Identifier.md) | [**clear**](#function-clear) () noexcept<br> |
-|  [**value\_type**](classendstone_1_1nbt_1_1Tag.md) & | [**emplace\_back**](#function-emplace_back) ([**Args**](classendstone_1_1Identifier.md) &&... args) <br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**empty**](#function-empty) () noexcept const<br> |
+|  void | [**clear**](#function-clear) () noexcept<br> |
+|  value\_type & | [**emplace\_back**](#function-emplace_back) (Args &&... args) <br> |
+|  bool | [**empty**](#function-empty) () noexcept const<br> |
 |  iterator | [**end**](#function-end-12) () noexcept<br> |
 |  const\_iterator | [**end**](#function-end-22) () noexcept const<br> |
 |  iterator | [**erase**](#function-erase-12) (const\_iterator pos) <br> |
 |  iterator | [**erase**](#function-erase-22) (const\_iterator first, const\_iterator last) <br> |
-|  [**value\_type**](classendstone_1_1nbt_1_1Tag.md) & | [**operator[]**](#function-operator) (size\_type i) <br> |
-|  [**const**](classendstone_1_1Identifier.md) [**value\_type**](classendstone_1_1nbt_1_1Tag.md) & | [**operator[]**](#function-operator_1) (size\_type i) const<br> |
-|  [**void**](classendstone_1_1Identifier.md) | [**push\_back**](#function-push_back-12) ([**const**](classendstone_1_1Identifier.md) [**value\_type**](classendstone_1_1nbt_1_1Tag.md) & v) <br> |
-|  [**void**](classendstone_1_1Identifier.md) | [**push\_back**](#function-push_back-22) ([**value\_type**](classendstone_1_1nbt_1_1Tag.md) && v) <br> |
+|  value\_type & | [**operator[]**](#function-operator) (size\_type i) <br> |
+|  const value\_type & | [**operator[]**](#function-operator_1) (size\_type i) const<br> |
+|  void | [**push\_back**](#function-push_back-12) (const value\_type & v) <br> |
+|  void | [**push\_back**](#function-push_back-22) (value\_type && v) <br> |
 |  size\_type | [**size**](#function-size) () noexcept const<br> |
 |  nbt::Type | [**type**](#function-type) () noexcept const<br> |
 
@@ -246,7 +246,7 @@ endstone::ListTag::ListTag () = default
 ### function ListTag [2/2]
 
 ```C++
-template<typename  T>
+template<typename T>
 endstone::ListTag::ListTag (
     std::initializer_list< T > init
 ) 
@@ -277,7 +277,7 @@ inline value_type & endstone::ListTag::at (
 ### function at [2/2]
 
 ```C++
-inline const  value_type & endstone::ListTag::at (
+inline const value_type & endstone::ListTag::at (
     size_type i
 ) const
 ```
@@ -458,7 +458,7 @@ inline value_type & endstone::ListTag::operator[] (
 ### function operator[] 
 
 ```C++
-inline const  value_type & endstone::ListTag::operator[] (
+inline const value_type & endstone::ListTag::operator[] (
     size_type i
 ) const
 ```
@@ -474,7 +474,7 @@ inline const  value_type & endstone::ListTag::operator[] (
 
 ```C++
 void endstone::ListTag::push_back (
-    const  value_type & v
+    const value_type & v
 ) 
 ```
 
@@ -532,9 +532,9 @@ inline nbt::Type endstone::ListTag::type () noexcept const
 
 ```C++
 bool endstone::ListTag::operator!= (
-    const  ListTag & a,
-    const  ListTag & b
-) noexcept
+    const ListTag & a,
+    const ListTag & b
+) 
 ```
 
 
@@ -548,9 +548,9 @@ bool endstone::ListTag::operator!= (
 
 ```C++
 bool endstone::ListTag::operator== (
-    const  ListTag & a,
-    const  ListTag & b
-) noexcept
+    const ListTag & a,
+    const ListTag & b
+) 
 ```
 
 

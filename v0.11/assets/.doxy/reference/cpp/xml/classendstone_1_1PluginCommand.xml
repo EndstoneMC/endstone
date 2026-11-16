@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1PluginCommand" kind="class" language="C++" prot="public">
     <compoundname>endstone::PluginCommand</compoundname>
     <basecompoundref refid="classendstone_1_1Command" prot="public" virt="non-virtual">endstone::Command</basecompoundref>
@@ -42,7 +42,7 @@
         <name>PluginCommand</name>
         <qualifiedname>endstone::PluginCommand::PluginCommand</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Command" kindref="compound">Command</ref> &amp;</type>
+          <type>const Command &amp;</type>
           <declname>command</declname>
         </param>
         <param>
@@ -58,7 +58,7 @@
         <location file="include/endstone/command/plugin_command.h" line="33" column="5" bodyfile="include/endstone/command/plugin_command.h" bodystart="33" bodyend="33"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PluginCommand_1a376735d9dccfa3142004f92063808cdc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::PluginCommand::execute</definition>
         <argsstring>(CommandSender &amp;sender, const std::vector&lt; std::string &gt; &amp;args) const override</argsstring>
         <name>execute</name>
@@ -69,7 +69,7 @@
           <declname>sender</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::vector&lt; std::string &gt; &amp;</type>
+          <type>const std::vector&lt; std::string &gt; &amp;</type>
           <declname>args</declname>
         </param>
         <briefdescription>
@@ -102,7 +102,7 @@
         <location file="include/endstone/command/plugin_command.h" line="35" column="10" bodyfile="include/endstone/command/plugin_command.h" bodystart="35" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PluginCommand_1a49cc0fd16a008de539a703fa63fd7ef4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::PluginCommand::setExecutor</definition>
         <argsstring>(std::shared_ptr&lt; CommandExecutor &gt; executor)</argsstring>
         <name>setExecutor</name>
@@ -130,7 +130,7 @@
         </inbodydescription>
         <location file="include/endstone/command/plugin_command.h" line="63" column="18" bodyfile="include/endstone/command/plugin_command.h" bodystart="63" bodyend="63"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PluginCommand_1a555a83596463f0b58e8f1895f16c34d7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="classendstone_1_1PluginCommand_1a555a83596463f0b58e8f1895f16c34d7" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="classendstone_1_1CommandExecutor" kindref="compound">CommandExecutor</ref> &amp;</type>
         <definition>virtual CommandExecutor &amp; endstone::PluginCommand::getExecutor</definition>
         <argsstring>() const</argsstring>
@@ -148,7 +148,7 @@
         </inbodydescription>
         <location file="include/endstone/command/plugin_command.h" line="70" column="30" bodyfile="include/endstone/command/plugin_command.h" bodystart="70" bodyend="76"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PluginCommand_1a7f812a8e80c3f2c9fc578b3a77513c9a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PluginCommand_1a7f812a8e80c3f2c9fc578b3a77513c9a" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
         <definition>Plugin &amp; endstone::PluginCommand::getPlugin</definition>
         <argsstring>() const</argsstring>
@@ -166,8 +166,8 @@
         </inbodydescription>
         <location file="include/endstone/command/plugin_command.h" line="83" column="14" bodyfile="include/endstone/command/plugin_command.h" bodystart="83" bodyend="83"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PluginCommand_1a8d5cd569a483b56fc16e95757384a531" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="classendstone_1_1PluginCommand" kindref="compound">PluginCommand</ref> *</type>
+      <memberdef kind="function" id="classendstone_1_1PluginCommand_1a8d5cd569a483b56fc16e95757384a531" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>PluginCommand *</type>
         <definition>PluginCommand * endstone::PluginCommand::asPluginCommand</definition>
         <argsstring>() const override</argsstring>
         <name>asPluginCommand</name>

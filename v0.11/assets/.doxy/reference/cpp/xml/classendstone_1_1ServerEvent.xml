@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1ServerEvent" kind="class" language="C++" prot="public">
     <compoundname>endstone::ServerEvent</compoundname>
     <basecompoundref refid="classendstone_1_1Event" prot="public" virt="non-virtual">endstone::Event</basecompoundref>
@@ -17,9 +17,9 @@
         <name>Event</name>
         <qualifiedname>endstone::ServerEvent::Event</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <type>bool</type>
           <declname>async</declname>
-          <defval><ref refid="classendstone_1_1Identifier" kindref="compound">false</ref></defval>
+          <defval>false</defval>
         </param>
         <briefdescription>
         </briefdescription>
@@ -36,7 +36,7 @@
         <name>Event</name>
         <qualifiedname>endstone::ServerEvent::Event</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Event" kindref="compound">Event</ref> &amp;</type>
+          <type>const Event &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -53,7 +53,7 @@
         <name>Event</name>
         <qualifiedname>endstone::ServerEvent::Event</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Event" kindref="compound">Event</ref> &amp;&amp;</type>
+          <type>Event &amp;&amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -70,16 +70,16 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3">
-        <label>endstone::Cancellable&lt; ServerEvent &gt;</label>
-        <link refid="classendstone_1_1Cancellable"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
       <node id="4">
         <label>endstone::BroadcastMessageEvent</label>
         <link refid="classendstone_1_1BroadcastMessageEvent"/>
         <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::Cancellable&lt; ServerEvent &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
       <node id="2">

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1PlayerBanEntry" kind="class" language="C++" prot="public">
     <compoundname>endstone::PlayerBanEntry</compoundname>
     <basecompoundref refid="classendstone_1_1BanEntry" prot="public" virt="non-virtual">endstone::BanEntry</basecompoundref>
@@ -77,7 +77,7 @@
         </inbodydescription>
         <location file="include/endstone/ban/player_ban_entry.h" line="31" column="14" bodyfile="include/endstone/ban/player_ban_entry.h" bodystart="31" bodyend="35"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PlayerBanEntry_1a896cb5a70c13eaae3274577097a4c8be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PlayerBanEntry_1a896cb5a70c13eaae3274577097a4c8be" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
         <definition>std::string endstone::PlayerBanEntry::getName</definition>
         <argsstring>() const</argsstring>
@@ -95,7 +95,7 @@
         </inbodydescription>
         <location file="include/endstone/ban/player_ban_entry.h" line="42" column="18" bodyfile="include/endstone/ban/player_ban_entry.h" bodystart="42" bodyend="42"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PlayerBanEntry_1aa8aceaaecf33187241f042e1ae0a9e35" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PlayerBanEntry_1aa8aceaaecf33187241f042e1ae0a9e35" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; <ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> &gt;</type>
         <definition>std::optional&lt; UUID &gt; endstone::PlayerBanEntry::getUniqueId</definition>
         <argsstring>() const</argsstring>
@@ -113,7 +113,7 @@
         </inbodydescription>
         <location file="include/endstone/ban/player_ban_entry.h" line="49" column="20" bodyfile="include/endstone/ban/player_ban_entry.h" bodystart="49" bodyend="49"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PlayerBanEntry_1a28bafcfc774eb95548936c79ca407ebf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PlayerBanEntry_1a28bafcfc774eb95548936c79ca407ebf" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; std::string &gt;</type>
         <definition>std::optional&lt; std::string &gt; endstone::PlayerBanEntry::getXuid</definition>
         <argsstring>() const</argsstring>

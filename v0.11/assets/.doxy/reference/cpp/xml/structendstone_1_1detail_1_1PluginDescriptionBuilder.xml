@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
-  <compounddef id="structendstone_1_1detail_1_1PluginDescriptionBuilder" kind="struct" language="C++" prot="private">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="structendstone_1_1detail_1_1PluginDescriptionBuilder" kind="struct" language="C++" prot="public">
     <compoundname>endstone::detail::PluginDescriptionBuilder</compoundname>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a0db96dd45fceffa8c0005a1602a4a2ab" prot="public" static="no" mutable="no">
@@ -160,7 +160,7 @@
         <location file="include/endstone/plugin/plugin.h" line="274" column="23" bodyfile="include/endstone/plugin/plugin.h" bodystart="274" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structendstone_1_1detail_1_1PluginDescriptionBuilder_1acddfac13f3632912867ac1c39a35d8af" prot="public" static="no" mutable="no">
-        <type>std::unordered_map&lt; std::string, CommandBuilder &gt;</type>
+        <type>std::unordered_map&lt; std::string, <ref refid="classendstone_1_1detail_1_1CommandBuilder" kindref="compound">CommandBuilder</ref> &gt;</type>
         <definition>std::unordered_map&lt;std::string, CommandBuilder&gt; endstone::detail::PluginDescriptionBuilder::commands</definition>
         <argsstring></argsstring>
         <name>commands</name>
@@ -174,7 +174,7 @@
         <location file="include/endstone/plugin/plugin.h" line="275" column="24" bodyfile="include/endstone/plugin/plugin.h" bodystart="275" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a9eed110ec8553b4838800d0df4cdbba2" prot="public" static="no" mutable="no">
-        <type>std::unordered_map&lt; std::string, PermissionBuilder &gt;</type>
+        <type>std::unordered_map&lt; std::string, <ref refid="classendstone_1_1detail_1_1PermissionBuilder" kindref="compound">PermissionBuilder</ref> &gt;</type>
         <definition>std::unordered_map&lt;std::string, PermissionBuilder&gt; endstone::detail::PluginDescriptionBuilder::permissions</definition>
         <argsstring></argsstring>
         <name>permissions</name>
@@ -190,7 +190,7 @@
     </sectiondef>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="structendstone_1_1detail_1_1PluginDescriptionBuilder_1ac94dc23d3e899ca9d63ad6f785c188a4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>CommandBuilder &amp;</type>
+        <type><ref refid="classendstone_1_1detail_1_1CommandBuilder" kindref="compound">CommandBuilder</ref> &amp;</type>
         <definition>CommandBuilder &amp; endstone::detail::PluginDescriptionBuilder::command</definition>
         <argsstring>(std::string name)</argsstring>
         <name>command</name>
@@ -208,7 +208,7 @@
         <location file="include/endstone/plugin/plugin.h" line="278" column="20" bodyfile="include/endstone/plugin/plugin.h" bodystart="278" bodyend="282"/>
       </memberdef>
       <memberdef kind="function" id="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a7a0a3a2fdc436f2cf37a7549504492db" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>PermissionBuilder &amp;</type>
+        <type><ref refid="classendstone_1_1detail_1_1PermissionBuilder" kindref="compound">PermissionBuilder</ref> &amp;</type>
         <definition>PermissionBuilder &amp; endstone::detail::PluginDescriptionBuilder::permission</definition>
         <argsstring>(std::string name)</argsstring>
         <name>permission</name>
@@ -225,7 +225,7 @@
         </inbodydescription>
         <location file="include/endstone/plugin/plugin.h" line="284" column="23" bodyfile="include/endstone/plugin/plugin.h" bodystart="284" bodyend="288"/>
       </memberdef>
-      <memberdef kind="function" id="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a80472466bde213571daf3ba7e3644079" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a80472466bde213571daf3ba7e3644079" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1PluginDescription" kindref="compound">PluginDescription</ref></type>
         <definition>PluginDescription endstone::detail::PluginDescriptionBuilder::build</definition>
         <argsstring>(std::string name, std::string version) const</argsstring>
@@ -249,7 +249,7 @@
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-func">
-      <memberdef kind="function" id="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a782fcda61234c0fa5b7f5df56091cfac" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a782fcda61234c0fa5b7f5df56091cfac" prot="private" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; <ref refid="classendstone_1_1Command" kindref="compound">Command</ref> &gt;</type>
         <definition>std::vector&lt; Command &gt; endstone::detail::PluginDescriptionBuilder::buildCommands</definition>
         <argsstring>() const</argsstring>
@@ -263,7 +263,7 @@
         </inbodydescription>
         <location file="include/endstone/plugin/plugin.h" line="310" column="18" bodyfile="include/endstone/plugin/plugin.h" bodystart="310" bodyend="318"/>
       </memberdef>
-      <memberdef kind="function" id="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a5aea521dd4d859c086faa0f0293dd6ce" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a5aea521dd4d859c086faa0f0293dd6ce" prot="private" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; <ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref> &gt;</type>
         <definition>std::vector&lt; Permission &gt; endstone::detail::PluginDescriptionBuilder::buildPermissions</definition>
         <argsstring>() const</argsstring>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1PlayerDimensionChangeEvent" kind="class" language="C++" prot="public">
     <compoundname>endstone::PlayerDimensionChangeEvent</compoundname>
     <basecompoundref refid="classendstone_1_1PlayerEvent" prot="public" virt="non-virtual">endstone::PlayerEvent</basecompoundref>
@@ -42,7 +42,7 @@
         <name>ENDSTONE_EVENT</name>
         <qualifiedname>endstone::PlayerDimensionChangeEvent::ENDSTONE_EVENT</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1PlayerDimensionChangeEvent" kindref="compound">PlayerDimensionChangeEvent</ref></type>
+          <type>PlayerDimensionChangeEvent</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -78,7 +78,7 @@
         </inbodydescription>
         <location file="include/endstone/event/player/player_dimension_change_event.h" line="29" column="14" bodyfile="include/endstone/event/player/player_dimension_change_event.h" bodystart="29" bodyend="32"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PlayerDimensionChangeEvent_1a9fe866587b790b24d5b811b70a2e9d19" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PlayerDimensionChangeEvent_1a9fe866587b790b24d5b811b70a2e9d19" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> &amp;</type>
         <definition>Dimension &amp; endstone::PlayerDimensionChangeEvent::getFrom</definition>
         <argsstring>() const</argsstring>
@@ -96,7 +96,7 @@
         </inbodydescription>
         <location file="include/endstone/event/player/player_dimension_change_event.h" line="39" column="16" bodyfile="include/endstone/event/player/player_dimension_change_event.h" bodystart="39" bodyend="39"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PlayerDimensionChangeEvent_1a6fc95e56eba0598121273b95006ead5a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PlayerDimensionChangeEvent_1a6fc95e56eba0598121273b95006ead5a" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> &amp;</type>
         <definition>Dimension &amp; endstone::PlayerDimensionChangeEvent::getTo</definition>
         <argsstring>() const</argsstring>

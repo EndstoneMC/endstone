@@ -93,7 +93,7 @@ Inherits the following classes: [endstone::ServerEvent](classendstone_1_1ServerE
 
 | Type | Name |
 | ---: | :--- |
-|   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PluginEnableEvent**](classendstone_1_1PluginEnableEvent.md)) <br> |
+|   | [**ENDSTONE\_EVENT**](#function-endstone_event) (PluginEnableEvent) <br> |
 |   | [**PluginEnableEvent**](#function-pluginenableevent) ([**Plugin**](classendstone_1_1Plugin.md) & plugin) <br> |
 |  [**Plugin**](classendstone_1_1Plugin.md) & | [**getPlugin**](#function-getplugin) () const<br> |
 
@@ -104,9 +104,9 @@ See [endstone::ServerEvent](classendstone_1_1ServerEvent.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**Event**](classendstone_1_1ServerEvent.md#function-event-13) ([**bool**](classendstone_1_1Identifier.md) async=[**false**](classendstone_1_1Identifier.md)) <br> |
-|   | [**Event**](classendstone_1_1ServerEvent.md#function-event-23) ([**const**](classendstone_1_1Identifier.md) [**Event**](classendstone_1_1Event.md) &) = delete<br> |
-|   | [**Event**](classendstone_1_1ServerEvent.md#function-event-33) ([**Event**](classendstone_1_1Event.md) &&) = default<br> |
+|   | [**Event**](classendstone_1_1ServerEvent.md#function-event-13) (bool async=false) <br> |
+|   | [**Event**](classendstone_1_1ServerEvent.md#function-event-23) (const Event &) = delete<br> |
+|   | [**Event**](classendstone_1_1ServerEvent.md#function-event-33) (Event &&) = default<br> |
 
 
 ## Public Functions inherited from endstone::Event
@@ -115,13 +115,13 @@ See [endstone::Event](classendstone_1_1Event.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**Event**](classendstone_1_1Event.md#function-event-13) ([**bool**](classendstone_1_1Identifier.md) async=[**false**](classendstone_1_1Identifier.md)) <br> |
-|   | [**Event**](classendstone_1_1Event.md#function-event-23) ([**const**](classendstone_1_1Identifier.md) [**Event**](classendstone_1_1Event.md) &) = delete<br> |
-|   | [**Event**](classendstone_1_1Event.md#function-event-33) ([**Event**](classendstone_1_1Event.md) &&) = default<br> |
+|   | [**Event**](classendstone_1_1Event.md#function-event-13) (bool async=false) <br> |
+|   | [**Event**](classendstone_1_1Event.md#function-event-23) (const Event &) = delete<br> |
+|   | [**Event**](classendstone_1_1Event.md#function-event-33) (Event &&) = default<br> |
 | virtual std::string | [**getEventName**](classendstone_1_1Event.md#function-geteventname) () const = 0<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**isAsynchronous**](classendstone_1_1Event.md#function-isasynchronous) () const<br> |
-|  [**Event**](classendstone_1_1Event.md) & | [**operator=**](classendstone_1_1Event.md#function-operator) ([**const**](classendstone_1_1Identifier.md) [**Event**](classendstone_1_1Event.md) &) = delete<br> |
-|  [**Event**](classendstone_1_1Event.md) & | [**operator=**](classendstone_1_1Event.md#function-operator_1) ([**Event**](classendstone_1_1Event.md) &&) = default<br> |
+|  bool | [**isAsynchronous**](classendstone_1_1Event.md#function-isasynchronous) () const<br> |
+|  Event & | [**operator=**](classendstone_1_1Event.md#function-operator) (const Event &) = delete<br> |
+|  Event & | [**operator=**](classendstone_1_1Event.md#function-operator_1) (Event &&) = default<br> |
 | virtual  | [**~Event**](classendstone_1_1Event.md#function-event) () = default<br> |
 
 

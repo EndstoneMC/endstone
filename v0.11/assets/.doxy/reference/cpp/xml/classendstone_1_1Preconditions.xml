@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1Preconditions" kind="class" language="C++" prot="public">
     <compoundname>endstone::Preconditions</compoundname>
     <sectiondef kind="public-static-func">
@@ -11,13 +11,13 @@
             <defname>Args</defname>
           </param>
         </templateparamlist>
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>static void endstone::Preconditions::checkArgument</definition>
         <argsstring>(bool condition, std::format_string&lt; Args... &gt; format, Args &amp;&amp;...args)</argsstring>
         <name>checkArgument</name>
         <qualifiedname>endstone::Preconditions::checkArgument</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <type>bool</type>
           <declname>condition</declname>
         </param>
         <param>
@@ -25,7 +25,7 @@
           <declname>format</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">Args</ref> &amp;&amp;...</type>
+          <type>Args &amp;&amp;...</type>
           <declname>args</declname>
         </param>
         <briefdescription>
@@ -44,13 +44,13 @@
             <defname>Args</defname>
           </param>
         </templateparamlist>
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>static void endstone::Preconditions::checkState</definition>
         <argsstring>(bool condition, std::format_string&lt; Args... &gt; format, Args &amp;&amp;...args)</argsstring>
         <name>checkState</name>
         <qualifiedname>endstone::Preconditions::checkState</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <type>bool</type>
           <declname>condition</declname>
         </param>
         <param>
@@ -58,7 +58,7 @@
           <declname>format</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">Args</ref> &amp;&amp;...</type>
+          <type>Args &amp;&amp;...</type>
           <declname>args</declname>
         </param>
         <briefdescription>

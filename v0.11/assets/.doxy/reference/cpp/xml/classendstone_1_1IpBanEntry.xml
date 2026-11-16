@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1IpBanEntry" kind="class" language="C++" prot="public">
     <compoundname>endstone::IpBanEntry</compoundname>
     <basecompoundref refid="classendstone_1_1BanEntry" prot="public" virt="non-virtual">endstone::BanEntry</basecompoundref>
@@ -39,7 +39,7 @@
         </inbodydescription>
         <location file="include/endstone/ban/ip_ban_entry.h" line="28" column="14" bodyfile="include/endstone/ban/ip_ban_entry.h" bodystart="28" bodyend="28"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1IpBanEntry_1a015a82a92b1a448b5e4235c15e75baa2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1IpBanEntry_1a015a82a92b1a448b5e4235c15e75baa2" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
         <definition>std::string endstone::IpBanEntry::getAddress</definition>
         <argsstring>() const</argsstring>

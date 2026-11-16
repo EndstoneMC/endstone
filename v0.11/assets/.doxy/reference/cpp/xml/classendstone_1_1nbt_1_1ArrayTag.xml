@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1nbt_1_1ArrayTag" kind="class" language="C++" prot="public">
     <compoundname>endstone::nbt::ArrayTag</compoundname>
     <basecompoundref refid="structendstone_1_1nbt_1_1TagBase" prot="public" virt="non-virtual">endstone::nbt::TagBase</basecompoundref>
     <templateparamlist>
       <param>
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">typename</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
+        <type>typename T</type>
       </param>
     </templateparamlist>
     <sectiondef kind="public-type">
       <memberdef kind="typedef" id="classendstone_1_1nbt_1_1ArrayTag_1adf7d5bc7fc62e0182b232f3087f7d1e6" prot="public" static="no">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
+        <type>T</type>
         <definition>using endstone::nbt::ArrayTag&lt; T &gt;::value_type =  T</definition>
         <argsstring></argsstring>
         <name>value_type</name>
@@ -38,7 +38,7 @@
         <location file="include/endstone/nbt/array.h" line="30" column="5" bodyfile="include/endstone/nbt/array.h" bodystart="30" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="classendstone_1_1nbt_1_1ArrayTag_1a290f628a0e071867af0d46c5356889cf" prot="public" static="no">
-        <type>std::vector&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">value_type</ref> &gt;</type>
+        <type>std::vector&lt; value_type &gt;</type>
         <definition>using endstone::nbt::ArrayTag&lt; T &gt;::storage_type =  std::vector&lt;value_type&gt;</definition>
         <argsstring></argsstring>
         <name>storage_type</name>
@@ -52,7 +52,7 @@
         <location file="include/endstone/nbt/array.h" line="31" column="5" bodyfile="include/endstone/nbt/array.h" bodystart="31" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="classendstone_1_1nbt_1_1ArrayTag_1a42dda796d5ef80fa0fa8eab3df4457af" prot="public" static="no">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">typename</ref> storage_type::iterator</type>
+        <type>typename storage_type::iterator</type>
         <definition>using endstone::nbt::ArrayTag&lt; T &gt;::iterator =  typename storage_type::iterator</definition>
         <argsstring></argsstring>
         <name>iterator</name>
@@ -66,7 +66,7 @@
         <location file="include/endstone/nbt/array.h" line="32" column="5" bodyfile="include/endstone/nbt/array.h" bodystart="32" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="classendstone_1_1nbt_1_1ArrayTag_1ac9969841cedd0986327c6f32b7d43d90" prot="public" static="no">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">typename</ref> storage_type::const_iterator</type>
+        <type>typename storage_type::const_iterator</type>
         <definition>using endstone::nbt::ArrayTag&lt; T &gt;::const_iterator =  typename storage_type::const_iterator</definition>
         <argsstring></argsstring>
         <name>const_iterator</name>
@@ -80,7 +80,7 @@
         <location file="include/endstone/nbt/array.h" line="33" column="5" bodyfile="include/endstone/nbt/array.h" bodystart="33" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="classendstone_1_1nbt_1_1ArrayTag_1a4395264299b3c3968c53c9bca1cbdb97" prot="public" static="no">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">typename</ref> storage_type::difference_type</type>
+        <type>typename storage_type::difference_type</type>
         <definition>using endstone::nbt::ArrayTag&lt; T &gt;::difference_type =  typename storage_type::difference_type</definition>
         <argsstring></argsstring>
         <name>difference_type</name>
@@ -146,7 +146,7 @@
       <memberdef kind="function" id="classendstone_1_1nbt_1_1ArrayTag_1acb4cb9db0b926245a58594a3931e2983" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type><ref refid="classendstone_1_1Identifier" kindref="compound">class</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">It</ref></type>
+            <type>class It</type>
           </param>
         </templateparamlist>
         <type></type>
@@ -155,11 +155,11 @@
         <name>ArrayTag</name>
         <qualifiedname>endstone::nbt::ArrayTag::ArrayTag</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">It</ref></type>
+          <type>It</type>
           <declname>first</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">It</ref></type>
+          <type>It</type>
           <declname>last</declname>
         </param>
         <briefdescription>
@@ -177,7 +177,7 @@
         <name>ArrayTag</name>
         <qualifiedname>endstone::nbt::ArrayTag::ArrayTag</qualifiedname>
         <param>
-          <type>std::initializer_list&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">value_type</ref> &gt;</type>
+          <type>std::initializer_list&lt; value_type &gt;</type>
           <declname>init</declname>
         </param>
         <briefdescription>
@@ -189,7 +189,7 @@
         <location file="include/endstone/nbt/array.h" line="43" column="5" bodyfile="include/endstone/nbt/array.h" bodystart="43" bodyend="43"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1ArrayTag_1ad789c28675017d69292a1a526b1a942b" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::nbt::ArrayTag&lt; T &gt;::empty</definition>
         <argsstring>() const noexcept</argsstring>
         <name>empty</name>
@@ -217,7 +217,7 @@
         <location file="include/endstone/nbt/array.h" line="47" column="15" bodyfile="include/endstone/nbt/array.h" bodystart="47" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1ArrayTag_1a07cc765ce138bdab900944be6eeb4fd2" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::nbt::ArrayTag&lt; T &gt;::clear</definition>
         <argsstring>() noexcept</argsstring>
         <name>clear</name>
@@ -231,7 +231,7 @@
         <location file="include/endstone/nbt/array.h" line="48" column="10" bodyfile="include/endstone/nbt/array.h" bodystart="48" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1ArrayTag_1a6f2cfdcd78944227ac799a84e2d4837f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">value_type</ref> &amp;</type>
+        <type>value_type &amp;</type>
         <definition>value_type &amp; endstone::nbt::ArrayTag&lt; T &gt;::at</definition>
         <argsstring>(size_type i)</argsstring>
         <name>at</name>
@@ -249,7 +249,7 @@
         <location file="include/endstone/nbt/array.h" line="51" column="16" bodyfile="include/endstone/nbt/array.h" bodystart="51" bodyend="57"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1ArrayTag_1a1a0f91ede18ffafa5b7cc94367f7a01b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">value_type</ref> &amp;</type>
+        <type>const value_type &amp;</type>
         <definition>const value_type &amp; endstone::nbt::ArrayTag&lt; T &gt;::at</definition>
         <argsstring>(size_type i) const</argsstring>
         <name>at</name>
@@ -267,7 +267,7 @@
         <location file="include/endstone/nbt/array.h" line="58" column="22" bodyfile="include/endstone/nbt/array.h" bodystart="58" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1ArrayTag_1acc1eea69891994857a66ced1b668f209" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">value_type</ref> &amp;</type>
+        <type>value_type &amp;</type>
         <definition>value_type &amp; endstone::nbt::ArrayTag&lt; T &gt;::operator[]</definition>
         <argsstring>(size_type i)</argsstring>
         <name>operator[]</name>
@@ -285,7 +285,7 @@
         <location file="include/endstone/nbt/array.h" line="65" column="16" bodyfile="include/endstone/nbt/array.h" bodystart="65" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1ArrayTag_1a09984df202851cdacae3f0e51a2911f3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">value_type</ref> &amp;</type>
+        <type>const value_type &amp;</type>
         <definition>const value_type &amp; endstone::nbt::ArrayTag&lt; T &gt;::operator[]</definition>
         <argsstring>(size_type i) const</argsstring>
         <name>operator[]</name>
@@ -303,7 +303,7 @@
         <location file="include/endstone/nbt/array.h" line="66" column="22" bodyfile="include/endstone/nbt/array.h" bodystart="66" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1ArrayTag_1aa92ca3aebfae1544f39e255f58e39ab9" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">value_type</ref> *</type>
+        <type>value_type *</type>
         <definition>value_type * endstone::nbt::ArrayTag&lt; T &gt;::data</definition>
         <argsstring>() noexcept</argsstring>
         <name>data</name>
@@ -317,7 +317,7 @@
         <location file="include/endstone/nbt/array.h" line="67" column="16" bodyfile="include/endstone/nbt/array.h" bodystart="67" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1ArrayTag_1a3955d9cb0e4d4f3050a8963c18bcd3a5" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">value_type</ref> *</type>
+        <type>const value_type *</type>
         <definition>const value_type * endstone::nbt::ArrayTag&lt; T &gt;::data</definition>
         <argsstring>() const noexcept</argsstring>
         <name>data</name>
@@ -331,13 +331,13 @@
         <location file="include/endstone/nbt/array.h" line="68" column="22" bodyfile="include/endstone/nbt/array.h" bodystart="68" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1ArrayTag_1ac29404142f8794e18649fc254a776e83" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::nbt::ArrayTag&lt; T &gt;::push_back</definition>
         <argsstring>(value_type v)</argsstring>
         <name>push_back</name>
         <qualifiedname>endstone::nbt::ArrayTag::push_back</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">value_type</ref></type>
+          <type>value_type</type>
           <declname>v</declname>
         </param>
         <briefdescription>
@@ -351,20 +351,20 @@
       <memberdef kind="function" id="classendstone_1_1nbt_1_1ArrayTag_1a9e48bb4e9ed6dbe4165109f018589d52" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type><ref refid="classendstone_1_1Identifier" kindref="compound">class</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">It</ref></type>
+            <type>class It</type>
           </param>
         </templateparamlist>
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::nbt::ArrayTag&lt; T &gt;::assign</definition>
         <argsstring>(It first, It last)</argsstring>
         <name>assign</name>
         <qualifiedname>endstone::nbt::ArrayTag::assign</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">It</ref></type>
+          <type>It</type>
           <declname>first</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">It</ref></type>
+          <type>It</type>
           <declname>last</declname>
         </param>
         <briefdescription>
@@ -386,7 +386,7 @@
           <declname>pos</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">value_type</ref></type>
+          <type>value_type</type>
           <declname>v</declname>
         </param>
         <briefdescription>
@@ -502,17 +502,17 @@
     </sectiondef>
     <sectiondef kind="friend">
       <memberdef kind="friend" id="classendstone_1_1nbt_1_1ArrayTag_1abed8d0c718a3d324319363267f845e96" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool operator==</definition>
         <argsstring>(const ArrayTag &amp;a, const ArrayTag &amp;b) noexcept</argsstring>
         <name>operator==</name>
         <qualifiedname>endstone::nbt::ArrayTag::operator==</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1nbt_1_1ArrayTag" kindref="compound">ArrayTag</ref> &amp;</type>
+          <type>const ArrayTag &amp;</type>
           <declname>a</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1nbt_1_1ArrayTag" kindref="compound">ArrayTag</ref> &amp;</type>
+          <type>const ArrayTag &amp;</type>
           <declname>b</declname>
         </param>
         <briefdescription>
@@ -524,17 +524,17 @@
         <location file="include/endstone/nbt/array.h" line="89" column="17" bodyfile="include/endstone/nbt/array.h" bodystart="89" bodyend="89"/>
       </memberdef>
       <memberdef kind="friend" id="classendstone_1_1nbt_1_1ArrayTag_1ae5ca07ea4121296e984e8492bc67fb66" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool operator!=</definition>
         <argsstring>(const ArrayTag &amp;a, const ArrayTag &amp;b) noexcept</argsstring>
         <name>operator!=</name>
         <qualifiedname>endstone::nbt::ArrayTag::operator!=</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1nbt_1_1ArrayTag" kindref="compound">ArrayTag</ref> &amp;</type>
+          <type>const ArrayTag &amp;</type>
           <declname>a</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1nbt_1_1ArrayTag" kindref="compound">ArrayTag</ref> &amp;</type>
+          <type>const ArrayTag &amp;</type>
           <declname>b</declname>
         </param>
         <briefdescription>
@@ -546,17 +546,17 @@
         <location file="include/endstone/nbt/array.h" line="90" column="17" bodyfile="include/endstone/nbt/array.h" bodystart="90" bodyend="90"/>
       </memberdef>
       <memberdef kind="friend" id="classendstone_1_1nbt_1_1ArrayTag_1af63ee7c77276cff0767660389a4a3f67" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool operator==</definition>
         <argsstring>(const ArrayTag &amp;a, const storage_type &amp;b) noexcept</argsstring>
         <name>operator==</name>
         <qualifiedname>endstone::nbt::ArrayTag::operator==</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1nbt_1_1ArrayTag" kindref="compound">ArrayTag</ref> &amp;</type>
+          <type>const ArrayTag &amp;</type>
           <declname>a</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> storage_type &amp;</type>
+          <type>const storage_type &amp;</type>
           <declname>b</declname>
         </param>
         <briefdescription>
@@ -568,17 +568,17 @@
         <location file="include/endstone/nbt/array.h" line="91" column="17" bodyfile="include/endstone/nbt/array.h" bodystart="91" bodyend="91"/>
       </memberdef>
       <memberdef kind="friend" id="classendstone_1_1nbt_1_1ArrayTag_1a782aa3b9180b33a00abc4ef7f4d41332" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool operator==</definition>
         <argsstring>(const storage_type &amp;a, const ArrayTag &amp;b) noexcept</argsstring>
         <name>operator==</name>
         <qualifiedname>endstone::nbt::ArrayTag::operator==</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> storage_type &amp;</type>
+          <type>const storage_type &amp;</type>
           <declname>a</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1nbt_1_1ArrayTag" kindref="compound">ArrayTag</ref> &amp;</type>
+          <type>const ArrayTag &amp;</type>
           <declname>b</declname>
         </param>
         <briefdescription>
@@ -590,17 +590,17 @@
         <location file="include/endstone/nbt/array.h" line="92" column="17" bodyfile="include/endstone/nbt/array.h" bodystart="92" bodyend="92"/>
       </memberdef>
       <memberdef kind="friend" id="classendstone_1_1nbt_1_1ArrayTag_1aec15badcb96fdaa6b29f8d2ec4dc0ba5" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool operator!=</definition>
         <argsstring>(const ArrayTag &amp;a, const storage_type &amp;b) noexcept</argsstring>
         <name>operator!=</name>
         <qualifiedname>endstone::nbt::ArrayTag::operator!=</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1nbt_1_1ArrayTag" kindref="compound">ArrayTag</ref> &amp;</type>
+          <type>const ArrayTag &amp;</type>
           <declname>a</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> storage_type &amp;</type>
+          <type>const storage_type &amp;</type>
           <declname>b</declname>
         </param>
         <briefdescription>
@@ -612,17 +612,17 @@
         <location file="include/endstone/nbt/array.h" line="93" column="17" bodyfile="include/endstone/nbt/array.h" bodystart="93" bodyend="93"/>
       </memberdef>
       <memberdef kind="friend" id="classendstone_1_1nbt_1_1ArrayTag_1a4cd6d74a86ec21f1be3a3143fb08b4a9" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool operator!=</definition>
         <argsstring>(const storage_type &amp;a, const ArrayTag &amp;b) noexcept</argsstring>
         <name>operator!=</name>
         <qualifiedname>endstone::nbt::ArrayTag::operator!=</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> storage_type &amp;</type>
+          <type>const storage_type &amp;</type>
           <declname>a</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1nbt_1_1ArrayTag" kindref="compound">ArrayTag</ref> &amp;</type>
+          <type>const ArrayTag &amp;</type>
           <declname>b</declname>
         </param>
         <briefdescription>

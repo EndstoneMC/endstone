@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="bar__flag_8h" kind="file" language="C++">
     <compoundname>bar_flag.h</compoundname>
     <includedby refid="boss__bar_8h" local="yes">include/endstone/boss/boss_bar.h</includedby>
@@ -247,8 +247,8 @@
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
 <codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceendstone" kindref="compound">endstone</ref><sp/>{</highlight></codeline>
 <codeline lineno="18" refid="namespaceendstone_1acc3803a64f53c1f4880bc60821eca362" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="namespaceendstone_1acc3803a64f53c1f4880bc60821eca362" kindref="member">BarFlag</ref><sp/>{</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceendstone_1acc3803a64f53c1f4880bc60821eca362aa12715294416f81a7a85a5a7ebb8fc70" kindref="member">DarkenSky</ref>,</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceendstone_1acc3803a64f53c1f4880bc60821eca362a9ee43b94d40ab3242ce5f7f8fcc332a1" kindref="member">CreateFog</ref>,</highlight></codeline>
+<codeline lineno="22" refid="namespaceendstone_1acc3803a64f53c1f4880bc60821eca362aa12715294416f81a7a85a5a7ebb8fc70" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceendstone_1acc3803a64f53c1f4880bc60821eca362aa12715294416f81a7a85a5a7ebb8fc70" kindref="member">DarkenSky</ref>,</highlight></codeline>
+<codeline lineno="26" refid="namespaceendstone_1acc3803a64f53c1f4880bc60821eca362a9ee43b94d40ab3242ce5f7f8fcc332a1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceendstone_1acc3803a64f53c1f4880bc60821eca362a9ee43b94d40ab3242ce5f7f8fcc332a1" kindref="member">CreateFog</ref>,</highlight></codeline>
 <codeline lineno="27"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="28"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>

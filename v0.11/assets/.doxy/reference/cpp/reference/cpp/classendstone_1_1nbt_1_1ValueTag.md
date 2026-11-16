@@ -2,7 +2,7 @@
 
 # Class endstone::nbt::ValueTag
 
-**template &lt;[**typename**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;**
+**template &lt;typename T&gt;**
 
 
 
@@ -34,7 +34,7 @@ Inherits the following classes: [endstone::nbt::TagBase](structendstone_1_1nbt_1
 
 | Type | Name |
 | ---: | :--- |
-| typedef [**T**](classendstone_1_1Identifier.md) | [**value\_type**](#typedef-value_type)  <br> |
+| typedef T | [**value\_type**](#typedef-value_type)  <br> |
 
 
 
@@ -79,11 +79,11 @@ Inherits the following classes: [endstone::nbt::TagBase](structendstone_1_1nbt_1
 
 | Type | Name |
 | ---: | :--- |
-|  [**constexpr**](classendstone_1_1Identifier.md) | [**ValueTag**](#function-valuetag-13) () = default<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) | [**ValueTag**](#function-valuetag-23) ([**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) & v) <br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) | [**ValueTag**](#function-valuetag-33) ([**T**](classendstone_1_1Identifier.md) && v) <br> |
+|  constexpr | [**ValueTag**](#function-valuetag-13) () = default<br> |
+|  constexpr | [**ValueTag**](#function-valuetag-23) (const T & v) <br> |
+|  constexpr | [**ValueTag**](#function-valuetag-33) (T && v) <br> |
 |   | [**operator const T &**](#function-operator-const-t-&) () noexcept const<br> |
-|  [**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) & | [**value**](#function-value) () noexcept const<br> |
+|  const T & | [**value**](#function-value) () noexcept const<br> |
 
 
 
@@ -177,7 +177,7 @@ constexpr endstone::nbt::ValueTag::ValueTag () = default
 
 ```C++
 inline explicit constexpr endstone::nbt::ValueTag::ValueTag (
-    const  T & v
+    const T & v
 ) 
 ```
 
@@ -219,7 +219,7 @@ inline endstone::nbt::ValueTag::operator const T & () noexcept const
 ### function value 
 
 ```C++
-inline const  T & endstone::nbt::ValueTag::value () noexcept const
+inline const T & endstone::nbt::ValueTag::value () noexcept const
 ```
 
 
@@ -234,9 +234,9 @@ inline const  T & endstone::nbt::ValueTag::value () noexcept const
 ### friend operator!= 
 
 ```C++
-inline constexpr  bool endstone::nbt::ValueTag::operator!= (
-    const  ValueTag & a,
-    const  ValueTag & b
+inline bool endstone::nbt::ValueTag::operator!= (
+    const ValueTag & a,
+    const ValueTag & b
 ) noexcept
 ```
 
@@ -250,9 +250,9 @@ inline constexpr  bool endstone::nbt::ValueTag::operator!= (
 ### friend operator!= 
 
 ```C++
-inline constexpr  bool endstone::nbt::ValueTag::operator!= (
-    const  ValueTag & a,
-    const  T & b
+inline bool endstone::nbt::ValueTag::operator!= (
+    const ValueTag & a,
+    const T & b
 ) noexcept
 ```
 
@@ -266,9 +266,9 @@ inline constexpr  bool endstone::nbt::ValueTag::operator!= (
 ### friend operator!= 
 
 ```C++
-inline constexpr  bool endstone::nbt::ValueTag::operator!= (
-    const  T & a,
-    const  ValueTag & b
+inline bool endstone::nbt::ValueTag::operator!= (
+    const T & a,
+    const ValueTag & b
 ) noexcept
 ```
 
@@ -282,9 +282,9 @@ inline constexpr  bool endstone::nbt::ValueTag::operator!= (
 ### friend operator== 
 
 ```C++
-inline constexpr  bool endstone::nbt::ValueTag::operator== (
-    const  ValueTag & a,
-    const  ValueTag & b
+inline bool endstone::nbt::ValueTag::operator== (
+    const ValueTag & a,
+    const ValueTag & b
 ) noexcept
 ```
 
@@ -298,9 +298,9 @@ inline constexpr  bool endstone::nbt::ValueTag::operator== (
 ### friend operator== 
 
 ```C++
-inline constexpr  bool endstone::nbt::ValueTag::operator== (
-    const  ValueTag & a,
-    const  T & b
+inline bool endstone::nbt::ValueTag::operator== (
+    const ValueTag & a,
+    const T & b
 ) noexcept
 ```
 
@@ -314,9 +314,9 @@ inline constexpr  bool endstone::nbt::ValueTag::operator== (
 ### friend operator== 
 
 ```C++
-inline constexpr  bool endstone::nbt::ValueTag::operator== (
-    const  T & a,
-    const  ValueTag & b
+inline bool endstone::nbt::ValueTag::operator== (
+    const T & a,
+    const ValueTag & b
 ) noexcept
 ```
 

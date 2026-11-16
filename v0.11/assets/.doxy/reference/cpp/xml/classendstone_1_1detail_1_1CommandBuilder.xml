@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
-  <compounddef id="classendstone_1_1detail_1_1CommandBuilder" kind="class" language="C++" prot="private">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="classendstone_1_1detail_1_1CommandBuilder" kind="class" language="C++" prot="public">
     <compoundname>endstone::detail::CommandBuilder</compoundname>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1detail_1_1CommandBuilder_1a743a95f547b137b5c966eb97cc4bff20" prot="private" static="no" mutable="no">
@@ -186,7 +186,7 @@
         </inbodydescription>
         <location file="include/endstone/plugin/plugin.h" line="211" column="20" bodyfile="include/endstone/plugin/plugin.h" bodystart="211" bodyend="215"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1detail_1_1CommandBuilder_1a23eb482bf7b9baa80c637436c32e0245" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1detail_1_1CommandBuilder_1a23eb482bf7b9baa80c637436c32e0245" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Command" kindref="compound">Command</ref></type>
         <definition>Command endstone::detail::CommandBuilder::build</definition>
         <argsstring>() const</argsstring>

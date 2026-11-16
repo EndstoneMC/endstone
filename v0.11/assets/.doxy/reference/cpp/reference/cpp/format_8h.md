@@ -39,7 +39,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| struct | [**JoinView**](structendstone_1_1detail_1_1JoinView.md) &lt;[**typename**](classendstone_1_1Identifier.md) [**It**](classendstone_1_1Identifier.md), [**typename**](classendstone_1_1Identifier.md) [**Sentinel**](classendstone_1_1Identifier.md)&gt;<br> |
+| struct | [**JoinView**](structendstone_1_1detail_1_1JoinView.md) &lt;typename It, typename Sentinel&gt;<br> |
 | struct | [**formatter&lt; endstone::detail::JoinView&lt; It, Sentinel &gt; &gt;**](structstd_1_1formatter_3_01endstone_1_1detail_1_1JoinView_3_01It_00_01Sentinel_01_4_01_4.md) &lt;typename It, typename Sentinel&gt;<br> |
 
 

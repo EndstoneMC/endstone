@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1Permissible" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::Permissible</compoundname>
     <derivedcompoundref refid="classendstone_1_1CommandSender" prot="public" virt="non-virtual">endstone::CommandSender</derivedcompoundref>
@@ -19,7 +19,7 @@
         </inbodydescription>
         <location file="include/endstone/permissions/permissible.h" line="37" column="13"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Permissible_1a6d78baa46215c951dc25cb5e55af085c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Permissible_1a6d78baa46215c951dc25cb5e55af085c" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>PermissionLevel</type>
         <definition>virtual PermissionLevel endstone::Permissible::getPermissionLevel</definition>
         <argsstring>() const =0</argsstring>
@@ -38,8 +38,8 @@
         </inbodydescription>
         <location file="include/endstone/permissions/permissible.h" line="44" column="30"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Permissible_1ae625f98f57116c559dc35a6cfce960d9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+      <memberdef kind="function" id="classendstone_1_1Permissible_1ae625f98f57116c559dc35a6cfce960d9" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
         <definition>virtual bool endstone::Permissible::isPermissionSet</definition>
         <argsstring>(std::string name) const =0</argsstring>
         <name>isPermissionSet</name>
@@ -70,15 +70,15 @@
         </inbodydescription>
         <location file="include/endstone/permissions/permissible.h" line="52" column="19"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Permissible_1af40d6121208b293a05abf56c47792995" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+      <memberdef kind="function" id="classendstone_1_1Permissible_1af40d6121208b293a05abf56c47792995" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
         <definition>virtual bool endstone::Permissible::isPermissionSet</definition>
         <argsstring>(const Permission &amp;perm) const =0</argsstring>
         <name>isPermissionSet</name>
         <qualifiedname>endstone::Permissible::isPermissionSet</qualifiedname>
         <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1a3a0af073b600c858dc0587c9a399296d">isPermissionSet</reimplementedby>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref> &amp;</type>
           <declname>perm</declname>
         </param>
         <briefdescription>
@@ -102,8 +102,8 @@
         </inbodydescription>
         <location file="include/endstone/permissions/permissible.h" line="60" column="19"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Permissible_1ade03215666f81be410f2b058fa2c158b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+      <memberdef kind="function" id="classendstone_1_1Permissible_1ade03215666f81be410f2b058fa2c158b" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
         <definition>virtual bool endstone::Permissible::hasPermission</definition>
         <argsstring>(std::string name) const =0</argsstring>
         <name>hasPermission</name>
@@ -134,15 +134,15 @@
         </inbodydescription>
         <location file="include/endstone/permissions/permissible.h" line="69" column="19"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Permissible_1ae3da30350acda91f5a007e15fc783ae6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+      <memberdef kind="function" id="classendstone_1_1Permissible_1ae3da30350acda91f5a007e15fc783ae6" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
         <definition>virtual bool endstone::Permissible::hasPermission</definition>
         <argsstring>(const Permission &amp;perm) const =0</argsstring>
         <name>hasPermission</name>
         <qualifiedname>endstone::Permissible::hasPermission</qualifiedname>
         <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1a47a9cae3fa4ac1c4cb19a39d3f716a7c">hasPermission</reimplementedby>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref> &amp;</type>
           <declname>perm</declname>
         </param>
         <briefdescription>
@@ -178,11 +178,11 @@
           <declname>plugin</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string &amp;</type>
+          <type>const std::string &amp;</type>
           <declname>name</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <type>bool</type>
           <declname>value</declname>
         </param>
         <briefdescription>
@@ -255,7 +255,7 @@
         <location file="include/endstone/permissions/permissible.h" line="96" column="34"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Permissible_1abcc26358591f3aef6007d815e8265c47" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>virtual bool endstone::Permissible::removeAttachment</definition>
         <argsstring>(PermissionAttachment &amp;attachment)=0</argsstring>
         <name>removeAttachment</name>
@@ -287,7 +287,7 @@
         <location file="include/endstone/permissions/permissible.h" line="104" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Permissible_1acbd0e4c4815db28b66ef14976f110af5" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Permissible::recalculatePermissions</definition>
         <argsstring>()=0</argsstring>
         <name>recalculatePermissions</name>
@@ -302,7 +302,7 @@
         </inbodydescription>
         <location file="include/endstone/permissions/permissible.h" line="110" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Permissible_1ad9307f3eef07e6e03a55b4fe9aab9be6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Permissible_1ad9307f3eef07e6e03a55b4fe9aab9be6" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::unordered_set&lt; <ref refid="classendstone_1_1PermissionAttachmentInfo" kindref="compound">PermissionAttachmentInfo</ref> * &gt;</type>
         <definition>virtual std::unordered_set&lt; PermissionAttachmentInfo * &gt; endstone::Permissible::getEffectivePermissions</definition>
         <argsstring>() const =0</argsstring>
@@ -321,7 +321,7 @@
         </inbodydescription>
         <location file="include/endstone/permissions/permissible.h" line="117" column="33"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Permissible_1a49323c37f310044720678e27513b44dc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Permissible_1a49323c37f310044720678e27513b44dc" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> *</type>
         <definition>virtual CommandSender * endstone::Permissible::asCommandSender</definition>
         <argsstring>() const =0</argsstring>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1BlockFormEvent" kind="class" language="C++" prot="public" final="yes">
     <compoundname>endstone::BlockFormEvent</compoundname>
     <basecompoundref refid="classendstone_1_1BlockGrowEvent" prot="public" virt="non-virtual">endstone::BlockGrowEvent</basecompoundref>
@@ -60,14 +60,6 @@
 <para>If a <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> <ref refid="classendstone_1_1Form" kindref="compound">Form</ref> event is cancelled, the block will not be formed. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3">
-        <label>endstone::Cancellable&lt; BlockEvent &gt;</label>
-        <link refid="classendstone_1_1Cancellable"/>
-        <childnode refid="4" relation="public-inheritance">
-        </childnode>
-        <childnode refid="6" relation="public-inheritance">
-        </childnode>
-      </node>
       <node id="4">
         <label>endstone::BlockEvent</label>
         <link refid="classendstone_1_1BlockEvent"/>
@@ -84,6 +76,14 @@
         <label>endstone::BlockGrowEvent</label>
         <link refid="classendstone_1_1BlockGrowEvent"/>
         <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::Cancellable&lt; BlockEvent &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6" relation="public-inheritance">
         </childnode>
       </node>
       <node id="5">
@@ -96,14 +96,6 @@
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3">
-        <label>endstone::Cancellable&lt; BlockEvent &gt;</label>
-        <link refid="classendstone_1_1Cancellable"/>
-        <childnode refid="4" relation="public-inheritance">
-        </childnode>
-        <childnode refid="6" relation="public-inheritance">
-        </childnode>
-      </node>
       <node id="4">
         <label>endstone::BlockEvent</label>
         <link refid="classendstone_1_1BlockEvent"/>
@@ -120,6 +112,14 @@
         <label>endstone::BlockGrowEvent</label>
         <link refid="classendstone_1_1BlockGrowEvent"/>
         <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::Cancellable&lt; BlockEvent &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6" relation="public-inheritance">
         </childnode>
       </node>
       <node id="5">

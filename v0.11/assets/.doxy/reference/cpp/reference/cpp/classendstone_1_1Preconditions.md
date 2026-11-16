@@ -53,8 +53,8 @@
 
 | Type | Name |
 | ---: | :--- |
-|  [**void**](classendstone_1_1Identifier.md) | [**checkArgument**](#function-checkargument) ([**bool**](classendstone_1_1Identifier.md) condition, std::format\_string&lt; Args... &gt; format, [**Args**](classendstone_1_1Identifier.md) &&... args) <br> |
-|  [**void**](classendstone_1_1Identifier.md) | [**checkState**](#function-checkstate) ([**bool**](classendstone_1_1Identifier.md) condition, std::format\_string&lt; Args... &gt; format, [**Args**](classendstone_1_1Identifier.md) &&... args) <br> |
+|  void | [**checkArgument**](#function-checkargument) (bool condition, std::format\_string&lt; Args... &gt; format, Args &&... args) <br> |
+|  void | [**checkState**](#function-checkstate) (bool condition, std::format\_string&lt; Args... &gt; format, Args &&... args) <br> |
 
 
 

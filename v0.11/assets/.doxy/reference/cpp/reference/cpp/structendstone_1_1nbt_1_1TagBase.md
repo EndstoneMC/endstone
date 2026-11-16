@@ -15,7 +15,7 @@
 
 
 
-Inherited by the following classes: [endstone::CompoundTag](classendstone_1_1CompoundTag.md),  [endstone::ListTag](classendstone_1_1ListTag.md),  [endstone::nbt::ArrayTag](classendstone_1_1nbt_1_1ArrayTag.md),  [endstone::nbt::ValueTag](classendstone_1_1nbt_1_1ValueTag.md)
+Inherited by the following classes: [endstone::nbt::ArrayTag](classendstone_1_1nbt_1_1ArrayTag.md),  [endstone::nbt::ArrayTag](classendstone_1_1nbt_1_1ArrayTag.md),  [endstone::nbt::ValueTag](classendstone_1_1nbt_1_1ValueTag.md),  [endstone::nbt::ValueTag](classendstone_1_1nbt_1_1ValueTag.md),  [endstone::nbt::ValueTag](classendstone_1_1nbt_1_1ValueTag.md),  [endstone::nbt::ValueTag](classendstone_1_1nbt_1_1ValueTag.md),  [endstone::nbt::ValueTag](classendstone_1_1nbt_1_1ValueTag.md),  [endstone::nbt::ValueTag](classendstone_1_1nbt_1_1ValueTag.md),  [endstone::nbt::ValueTag](classendstone_1_1nbt_1_1ValueTag.md),  [endstone::CompoundTag](classendstone_1_1CompoundTag.md),  [endstone::ListTag](classendstone_1_1ListTag.md),  [endstone::nbt::ArrayTag](classendstone_1_1nbt_1_1ArrayTag.md),  [endstone::nbt::ValueTag](classendstone_1_1nbt_1_1ValueTag.md)
 
 
 

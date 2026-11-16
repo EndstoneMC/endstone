@@ -16,7 +16,7 @@ _Helper type for visitors._ [More...](#detailed-description)
 
 
 
-Inherits the following classes: endstone::Func
+Inherits the following classes: Func...
 
 
 

@@ -98,15 +98,15 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md)) <br> |
+|   | [**ENDSTONE\_EVENT**](#function-endstone_event) (PlayerInteractEvent) <br> |
 |   | [**PlayerInteractEvent**](#function-playerinteractevent) ([**Player**](classendstone_1_1Player.md) & player, [**Action**](classendstone_1_1PlayerInteractEvent.md#enum-action) action, std::optional&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; item, [**Block**](classendstone_1_1Block.md) \* block\_clicked, [**BlockFace**](namespaceendstone.md#enum-blockface) block\_face, std::optional&lt; [**Vector**](classendstone_1_1Vector.md) &gt; clicked\_position) <br> |
 |  [**Action**](classendstone_1_1PlayerInteractEvent.md#enum-action) | [**getAction**](#function-getaction) () const<br>_Returns the action type._  |
 |  [**Block**](classendstone_1_1Block.md) \* | [**getBlock**](#function-getblock) () const<br>_Returns the clicked block._  |
 |  [**BlockFace**](namespaceendstone.md#enum-blockface) | [**getBlockFace**](#function-getblockface) () const<br>_Returns the face of the block that was clicked._  |
 |  std::optional&lt; [**Vector**](classendstone_1_1Vector.md) &gt; | [**getClickedPosition**](#function-getclickedposition) () const<br>_Gets the exact position on the block the player interacted with._  |
-|  [**const**](classendstone_1_1Identifier.md) std::optional&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; & | [**getItem**](#function-getitem) () const<br>_Returns the item in hand represented by this event._  |
-|  [**bool**](classendstone_1_1Identifier.md) | [**hasBlock**](#function-hasblock) () const<br>_Check if this event involved a block._  |
-|  [**bool**](classendstone_1_1Identifier.md) | [**hasItem**](#function-hasitem) () const<br>_Check if this event involved an item._  |
+|  const std::optional&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; & | [**getItem**](#function-getitem) () const<br>_Returns the item in hand represented by this event._  |
+|  bool | [**hasBlock**](#function-hasblock) () const<br>_Check if this event involved a block._  |
+|  bool | [**hasItem**](#function-hasitem) () const<br>_Check if this event involved an item._  |
 
 
 ## Public Functions inherited from endstone::Cancellable
@@ -115,9 +115,9 @@ See [endstone::Cancellable](classendstone_1_1Cancellable.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**cancel**](classendstone_1_1Cancellable.md#function-cancel) () <br>_Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**isCancelled**](classendstone_1_1Cancellable.md#function-iscancelled) () override const<br>_Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setCancelled**](classendstone_1_1Cancellable.md#function-setcancelled) ([**bool**](classendstone_1_1Identifier.md) cancel) override<br>_Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual void | [**cancel**](classendstone_1_1Cancellable.md#function-cancel) () <br>_Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual bool | [**isCancelled**](classendstone_1_1Cancellable.md#function-iscancelled) () override const<br>_Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual void | [**setCancelled**](classendstone_1_1Cancellable.md#function-setcancelled) (bool cancel) override<br>_Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
 
 
 ## Public Functions inherited from endstone::ICancellable
@@ -126,9 +126,9 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**cancel**](classendstone_1_1ICancellable.md#function-cancel) () = 0<br> |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**isCancelled**](classendstone_1_1ICancellable.md#function-iscancelled) () const = 0<br> |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setCancelled**](classendstone_1_1ICancellable.md#function-setcancelled) ([**bool**](classendstone_1_1Identifier.md) cancel) = 0<br> |
+| virtual void | [**cancel**](classendstone_1_1ICancellable.md#function-cancel) () = 0<br> |
+| virtual bool | [**isCancelled**](classendstone_1_1ICancellable.md#function-iscancelled) () const = 0<br> |
+| virtual void | [**setCancelled**](classendstone_1_1ICancellable.md#function-setcancelled) (bool cancel) = 0<br> |
 | virtual  | [**~ICancellable**](classendstone_1_1ICancellable.md#function-icancellable) () = default<br> |
 
 
@@ -283,7 +283,7 @@ inline Action endstone::PlayerInteractEvent::getAction () const
 
 **Returns:**
 
-Action returns the type of interaction 
+[**Action**](classendstone_1_1PlayerInteractEvent.md#enum-action) returns the type of interaction 
 
 
 
@@ -333,7 +333,7 @@ inline BlockFace endstone::PlayerInteractEvent::getBlockFace () const
 
 **Returns:**
 
-BlockFace returns the face of the block that was clicked 
+[**BlockFace**](namespaceendstone.md#enum-blockface) returns the face of the block that was clicked 
 
 
 

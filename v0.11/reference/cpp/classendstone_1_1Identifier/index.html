@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../../assets/logo.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -2815,7 +2815,7 @@ For latest updates join the chat on
 
 
 <h1 id="class-endstoneidentifier">Class endstone::Identifier<a class="headerlink" href="#class-endstoneidentifier" title="Permanent link">&para;</a></h1>
-<p><strong>template &lt;<a href="./"><strong>typename</strong></a> <a href="./"><strong>T</strong></a>&gt;</strong></p>
+<p><strong>template &lt;typename T&gt;</strong></p>
 <p><a href="../annotated/"><strong>ClassList</strong></a> <strong>&gt;</strong> <a href="../namespaceendstone/"><strong>endstone</strong></a> <strong>&gt;</strong> <a href="./"><strong>Identifier</strong></a></p>
 <p><em>Represents a identifier consisting of two components: a namespace and a key.</em> </p>
 <ul>
@@ -2831,7 +2831,7 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>constexpr</strong></a> std::string_view</td>
+<td style="text-align: right;">std::string_view</td>
 <td style="text-align: left;"><a href="#variable-minecraft"><strong>Minecraft</strong></a>   = <code>"minecraft"</code><br><em>The namespace representing all inbuilt keys.</em></td>
 </tr>
 </tbody>
@@ -2846,27 +2846,27 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>constexpr</strong></a></td>
-<td style="text-align: left;"><a href="#function-identifier-14"><strong>Identifier</strong></a> (<a href="./"><strong>const</strong></a> <a href="./"><strong>char</strong></a> * s) noexcept<br></td>
+<td style="text-align: right;">constexpr</td>
+<td style="text-align: left;"><a href="#function-identifier-14"><strong>Identifier</strong></a> (const char * s) noexcept<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>constexpr</strong></a></td>
-<td style="text-align: left;"><a href="#function-identifier-24"><strong>Identifier</strong></a> (<a href="./"><strong>const</strong></a> std::string &amp; s) noexcept<br></td>
+<td style="text-align: right;">constexpr</td>
+<td style="text-align: left;"><a href="#function-identifier-24"><strong>Identifier</strong></a> (const std::string &amp; s) noexcept<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>constexpr</strong></a></td>
-<td style="text-align: left;"><a href="#function-identifier-34"><strong>Identifier</strong></a> (<a href="./"><strong>const</strong></a> std::string_view &amp; identifier) noexcept<br></td>
+<td style="text-align: right;">constexpr</td>
+<td style="text-align: left;"><a href="#function-identifier-34"><strong>Identifier</strong></a> (const std::string_view &amp; identifier) noexcept<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>constexpr</strong></a></td>
-<td style="text-align: left;"><a href="#function-identifier-44"><strong>Identifier</strong></a> (<a href="./"><strong>const</strong></a> std::string_view &amp; namespace_, <a href="./"><strong>const</strong></a> std::string_view &amp; key) noexcept<br></td>
+<td style="text-align: right;">constexpr</td>
+<td style="text-align: left;"><a href="#function-identifier-44"><strong>Identifier</strong></a> (const std::string_view &amp; namespace_, const std::string_view &amp; key) noexcept<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>constexpr</strong></a> std::string_view</td>
+<td style="text-align: right;">std::string_view</td>
 <td style="text-align: left;"><a href="#function-getkey"><strong>getKey</strong></a> () noexcept const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>constexpr</strong></a> std::string_view</td>
+<td style="text-align: right;">std::string_view</td>
 <td style="text-align: left;"><a href="#function-getnamespace"><strong>getNamespace</strong></a> () noexcept const<br></td>
 </tr>
 <tr>
@@ -2874,12 +2874,12 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-string"><strong>string</strong></a> () const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>constexpr</strong></a> <a href="./"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-operator"><strong>operator!=</strong></a> (<a href="./"><strong>const</strong></a> <a href="./"><strong>Identifier</strong></a> &amp; other) noexcept const<br></td>
+<td style="text-align: right;">bool</td>
+<td style="text-align: left;"><a href="#function-operator"><strong>operator!=</strong></a> (const Identifier &amp; other) noexcept const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>constexpr</strong></a> <a href="./"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-operator_1"><strong>operator==</strong></a> (<a href="./"><strong>const</strong></a> <a href="./"><strong>Identifier</strong></a> &amp; other) noexcept const<br></td>
+<td style="text-align: right;">bool</td>
+<td style="text-align: left;"><a href="#function-operator_1"><strong>operator==</strong></a> (const Identifier &amp; other) noexcept const<br></td>
 </tr>
 </tbody>
 </table>
@@ -2893,21 +2893,21 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>constexpr</strong></a> <a href="./"><strong>Identifier</strong></a></td>
-<td style="text-align: left;"><a href="#function-minecraft"><strong>minecraft</strong></a> (<a href="./"><strong>const</strong></a> std::string_view key) noexcept<br></td>
+<td style="text-align: right;">Identifier</td>
+<td style="text-align: left;"><a href="#function-minecraft"><strong>minecraft</strong></a> (const std::string_view key) noexcept<br></td>
 </tr>
 </tbody>
 </table>
 <h2 id="public-static-attributes-documentation">Public Static Attributes Documentation<a class="headerlink" href="#public-static-attributes-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="variable-minecraft">variable Minecraft<a class="headerlink" href="#variable-minecraft" title="Permanent link">&para;</a></h3>
 <p><em>The namespace representing all inbuilt keys.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Identifier</span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;::</span><span class="n">Minecraft</span><span class="p">;</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Identifier</span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;::</span><span class="n">Minecraft</span><span class="p">;</span>
 </span></code></pre></div></p>
 <hr>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-identifier-14">function Identifier [&frac14;]<a class="headerlink" href="#function-identifier-14" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Identifier</span><span class="o">::</span><span class="n">Identifier</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">s</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">s</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
 </span></code></pre></div>
 <hr>
@@ -2935,12 +2935,12 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-getkey">function getKey<a class="headerlink" href="#function-getkey" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Identifier</span><span class="o">::</span><span class="n">getKey</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Identifier</span><span class="o">::</span><span class="n">getKey</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="function-getnamespace">function getNamespace<a class="headerlink" href="#function-getnamespace" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Identifier</span><span class="o">::</span><span class="n">getNamespace</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Identifier</span><span class="o">::</span><span class="n">getNamespace</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div>
 <hr>
 
@@ -2950,21 +2950,21 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-operator">function operator!=<a class="headerlink" href="#function-operator" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Identifier</span><span class="o">::</span><span class="k">operator</span><span class="o">!=</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">Identifier</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Identifier</span><span class="o">::</span><span class="k">operator</span><span class="o">!=</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Identifier</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="function-operator_1">function operator==<a class="headerlink" href="#function-operator_1" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Identifier</span><span class="o">::</span><span class="k">operator</span><span class="o">==</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">Identifier</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Identifier</span><span class="o">::</span><span class="k">operator</span><span class="o">==</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Identifier</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div>
 <hr>
 <h2 id="public-static-functions-documentation">Public Static Functions Documentation<a class="headerlink" href="#public-static-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-minecraft">function minecraft<a class="headerlink" href="#function-minecraft" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w">  </span><span class="n">Identifier</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Identifier</span><span class="o">::</span><span class="n">minecraft</span><span class="w"> </span><span class="p">(</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">Identifier</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Identifier</span><span class="o">::</span><span class="n">minecraft</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">key</span>
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
 </span></code></pre></div>
@@ -3098,7 +3098,7 @@ For latest updates join the chat on
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "stable", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
     
   </body>

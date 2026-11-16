@@ -55,7 +55,7 @@ _Represents a text label._
 |   | [**Label**](#function-label-12) () = default<br> |
 |   | [**Label**](#function-label-22) (Message text) <br> |
 |  Message | [**getText**](#function-gettext) () const<br>_Gets the text of the label._  |
-|  [**Label**](classendstone_1_1Label.md) & | [**setText**](#function-settext) (Message text) <br>_Sets the text of the label._  |
+|  Label & | [**setText**](#function-settext) (Message text) <br>_Sets the text of the label._  |
 
 
 

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1TextInput" kind="class" language="C++" prot="public">
     <compoundname>endstone::TextInput</compoundname>
     <includes refid="text__input_8h" local="no">endstone/form/controls/text_input.h</includes>
@@ -89,7 +89,7 @@
         </inbodydescription>
         <location file="include/endstone/form/controls/text_input.h" line="31" column="14" bodyfile="include/endstone/form/controls/text_input.h" bodystart="31" bodyend="34"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1TextInput_1ad71cdf754913ee542a4ba0149824e214" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1TextInput_1ad71cdf754913ee542a4ba0149824e214" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>Message</type>
         <definition>Message endstone::TextInput::getLabel</definition>
         <argsstring>() const</argsstring>
@@ -108,7 +108,7 @@
         <location file="include/endstone/form/controls/text_input.h" line="41" column="14" bodyfile="include/endstone/form/controls/text_input.h" bodystart="41" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1TextInput_1a0d2843a5fffa953b6aa5e74a6cc0ac08" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1TextInput" kindref="compound">TextInput</ref> &amp;</type>
+        <type>TextInput &amp;</type>
         <definition>TextInput &amp; endstone::TextInput::setLabel</definition>
         <argsstring>(Message label)</argsstring>
         <name>setLabel</name>
@@ -138,7 +138,7 @@
         </inbodydescription>
         <location file="include/endstone/form/controls/text_input.h" line="49" column="15" bodyfile="include/endstone/form/controls/text_input.h" bodystart="49" bodyend="53"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1TextInput_1aca59bfd3c2b319af6e30336193dcf025" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1TextInput_1aca59bfd3c2b319af6e30336193dcf025" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>Message</type>
         <definition>Message endstone::TextInput::getPlaceholder</definition>
         <argsstring>() const</argsstring>
@@ -157,7 +157,7 @@
         <location file="include/endstone/form/controls/text_input.h" line="60" column="14" bodyfile="include/endstone/form/controls/text_input.h" bodystart="60" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1TextInput_1ae28e7f3a57e8dd27e23d0b9480bb2393" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1TextInput" kindref="compound">TextInput</ref> &amp;</type>
+        <type>TextInput &amp;</type>
         <definition>TextInput &amp; endstone::TextInput::setPlaceholder</definition>
         <argsstring>(Message placeholder)</argsstring>
         <name>setPlaceholder</name>
@@ -187,7 +187,7 @@
         </inbodydescription>
         <location file="include/endstone/form/controls/text_input.h" line="68" column="15" bodyfile="include/endstone/form/controls/text_input.h" bodystart="68" bodyend="72"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1TextInput_1ab24213ee14ce543cb7bf0ebd23fdbf4d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1TextInput_1ab24213ee14ce543cb7bf0ebd23fdbf4d" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; std::string &gt;</type>
         <definition>std::optional&lt; std::string &gt; endstone::TextInput::getDefaultValue</definition>
         <argsstring>() const</argsstring>
@@ -206,7 +206,7 @@
         <location file="include/endstone/form/controls/text_input.h" line="79" column="20" bodyfile="include/endstone/form/controls/text_input.h" bodystart="79" bodyend="79"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1TextInput_1a2bf266925a2e5a753d556cbe18e429d8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1TextInput" kindref="compound">TextInput</ref> &amp;</type>
+        <type>TextInput &amp;</type>
         <definition>TextInput &amp; endstone::TextInput::setDefaultValue</definition>
         <argsstring>(std::optional&lt; std::string &gt; text)</argsstring>
         <name>setDefaultValue</name>

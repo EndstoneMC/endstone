@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1WeatherChangeEvent" kind="class" language="C++" prot="public">
     <compoundname>endstone::WeatherChangeEvent</compoundname>
     <basecompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; WeatherEvent &gt;</basecompoundref>
     <includes refid="weather__change__event_8h" local="no">endstone/event/weather/weather_change_event.h</includes>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1WeatherChangeEvent_1a2bde9420885bad855573e4557f771a8d" prot="private" static="no" mutable="no">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::WeatherChangeEvent::to_</definition>
         <argsstring></argsstring>
         <name>to_</name>
@@ -28,7 +28,7 @@
         <name>ENDSTONE_EVENT</name>
         <qualifiedname>endstone::WeatherChangeEvent::ENDSTONE_EVENT</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1WeatherChangeEvent" kindref="compound">WeatherChangeEvent</ref></type>
+          <type>WeatherChangeEvent</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -49,7 +49,7 @@
           <declname>level</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <type>const bool</type>
           <declname>to</declname>
         </param>
         <briefdescription>
@@ -74,8 +74,8 @@
         </inbodydescription>
         <location file="include/endstone/event/weather/weather_change_event.h" line="31" column="5"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1WeatherChangeEvent_1a6f1a7f2b0be3478b85737c52f35da02e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+      <memberdef kind="function" id="classendstone_1_1WeatherChangeEvent_1a6f1a7f2b0be3478b85737c52f35da02e" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
         <definition>bool endstone::WeatherChangeEvent::toWeatherState</definition>
         <argsstring>() const</argsstring>
         <name>toWeatherState</name>

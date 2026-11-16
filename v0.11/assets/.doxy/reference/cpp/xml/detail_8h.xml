@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="detail_8h" kind="file" language="C++">
     <compoundname>detail.h</compoundname>
     <includes local="no">cstring</includes>
@@ -231,7 +231,7 @@
 <codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;endstone/version.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="36"><highlight class="normal"></highlight></codeline>
 <codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceendstone" kindref="compound">endstone</ref><sp/>{</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Server;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1Server" kindref="compound">Server</ref>;</highlight></codeline>
 <codeline lineno="39"><highlight class="normal"></highlight></codeline>
 <codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">detail<sp/>{</highlight></codeline>
 <codeline lineno="51"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Return,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Args&gt;</highlight></codeline>
@@ -251,7 +251,7 @@
 <codeline lineno="76"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"></highlight></codeline>
 <codeline lineno="89"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Return,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Class,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Args&gt;</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*fp_cast(Return<sp/>(Class::*fp)(Args...)<sp/>const)</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*fp_cast(Return<sp/>(Class::*fp)(Args...)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="91"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*v;</highlight></codeline>
 <codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>std::memcpy(&amp;v,<sp/>&amp;fp,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(v));</highlight></codeline>
@@ -267,7 +267,7 @@
 <codeline lineno="103"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="104"><highlight class="normal"></highlight></codeline>
 <codeline lineno="105"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Return,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Class,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Arg&gt;</highlight></codeline>
-<codeline lineno="106"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>fp_cast(Return<sp/>(Class::*)(Arg...),<sp/>void<sp/>*address)</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>fp_cast(Return<sp/>(Class::*)(Arg...),<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*address)</highlight></codeline>
 <codeline lineno="107"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>Return<sp/>(Class::*result)(Arg...);</highlight></codeline>
 <codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>std::memset(&amp;result,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(result));</highlight></codeline>
@@ -276,9 +276,9 @@
 <codeline lineno="112"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="113"><highlight class="normal"></highlight></codeline>
 <codeline lineno="117"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Return,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Class,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Arg&gt;</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>fp_cast(Return<sp/>(Class::*)(Arg...)<sp/>const,<sp/>void<sp/>*address)</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>fp_cast(Return<sp/>(Class::*)(Arg...)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*address)</highlight></codeline>
 <codeline lineno="119"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>Return<sp/>(Class::*result)(Arg...)<sp/>const;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>Return<sp/>(Class::*result)(Arg...)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>std::memset(&amp;result,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(result));</highlight></codeline>
 <codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>std::memcpy(&amp;result,<sp/>&amp;address,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(address));</highlight></codeline>
 <codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>

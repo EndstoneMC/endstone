@@ -38,8 +38,8 @@
 
 | Type | Name |
 | ---: | :--- |
-| class | [**NotNull**](classendstone_1_1NotNull.md) &lt;[**class**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;<br> |
-| class | [**Nullable**](classendstone_1_1Nullable.md) &lt;[**class**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;<br> |
+| class | [**NotNull**](classendstone_1_1NotNull.md) &lt;class T&gt;<br> |
+| class | [**Nullable**](classendstone_1_1Nullable.md) &lt;class T&gt;<br> |
 
 
 

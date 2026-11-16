@@ -52,6 +52,7 @@
 | Type | Name |
 | ---: | :--- |
 | class | [**Tag**](classendstone_1_1nbt_1_1Tag.md) <br> |
+| struct | [**escape\_view**](structendstone_1_1nbt_1_1escape__view.md) <br> |
 | struct | [**formatter&lt; endstone::ByteArrayTag &gt;**](structstd_1_1formatter_3_01endstone_1_1ByteArrayTag_01_4.md) &lt;&gt;<br> |
 | struct | [**formatter&lt; endstone::ByteTag &gt;**](structstd_1_1formatter_3_01endstone_1_1ByteTag_01_4.md) &lt;&gt;<br> |
 | struct | [**formatter&lt; endstone::CompoundTag &gt;**](structstd_1_1formatter_3_01endstone_1_1CompoundTag_01_4.md) &lt;&gt;<br> |

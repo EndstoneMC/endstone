@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1Level" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::Level</compoundname>
     <includes refid="level_8h" local="no">endstone/level/level.h</includes>
@@ -18,7 +18,7 @@
         </inbodydescription>
         <location file="include/endstone/level/level.h" line="31" column="13"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Level_1aa55eace2debac6499fd261db27a260bf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Level_1aa55eace2debac6499fd261db27a260bf" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
         <definition>virtual std::string endstone::Level::getName</definition>
         <argsstring>() const =0</argsstring>
@@ -36,7 +36,7 @@
         </inbodydescription>
         <location file="include/endstone/level/level.h" line="38" column="26"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Level_1a6eac0b57be7148b605cbe9961261a833" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Level_1a6eac0b57be7148b605cbe9961261a833" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> * &gt;</type>
         <definition>virtual std::vector&lt; Actor * &gt; endstone::Level::getActors</definition>
         <argsstring>() const =0</argsstring>
@@ -54,8 +54,8 @@
         </inbodydescription>
         <location file="include/endstone/level/level.h" line="45" column="26"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Level_1a2a0a6904b53c1d0952c6bdcfce91d0cd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+      <memberdef kind="function" id="classendstone_1_1Level_1a2a0a6904b53c1d0952c6bdcfce91d0cd" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>int</type>
         <definition>virtual int endstone::Level::getTime</definition>
         <argsstring>() const =0</argsstring>
         <name>getTime</name>
@@ -73,13 +73,13 @@
         <location file="include/endstone/level/level.h" line="52" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Level_1a52d11546e286762d10b7c2a523fd2dd7" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Level::setTime</definition>
         <argsstring>(int time)=0</argsstring>
         <name>setTime</name>
         <qualifiedname>endstone::Level::setTime</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>time</declname>
         </param>
         <briefdescription>
@@ -101,7 +101,7 @@
         </inbodydescription>
         <location file="include/endstone/level/level.h" line="59" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Level_1ac4329b1323d1e61be61c1efeb4e8ecd9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Level_1ac4329b1323d1e61be61c1efeb4e8ecd9" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; <ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> * &gt;</type>
         <definition>virtual std::vector&lt; Dimension * &gt; endstone::Level::getDimensions</definition>
         <argsstring>() const =0</argsstring>
@@ -119,7 +119,7 @@
         </inbodydescription>
         <location file="include/endstone/level/level.h" line="66" column="26"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Level_1ad688e6ab223f171816d8ed7956075c7e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Level_1ad688e6ab223f171816d8ed7956075c7e" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> *</type>
         <definition>virtual Dimension * endstone::Level::getDimension</definition>
         <argsstring>(std::string name) const =0</argsstring>
@@ -150,7 +150,7 @@
         </inbodydescription>
         <location file="include/endstone/level/level.h" line="75" column="24"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Level_1a353a8752c7825d35373287ede5e4019a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Level_1a353a8752c7825d35373287ede5e4019a" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::int64_t</type>
         <definition>virtual std::int64_t endstone::Level::getSeed</definition>
         <argsstring>() const =0</argsstring>

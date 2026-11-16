@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1BlockCookEvent" kind="class" language="C++" prot="public">
     <compoundname>endstone::BlockCookEvent</compoundname>
     <basecompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; BlockEvent &gt;</basecompoundref>
@@ -42,7 +42,7 @@
         <name>ENDSTONE_EVENT</name>
         <qualifiedname>endstone::BlockCookEvent::ENDSTONE_EVENT</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1BlockCookEvent" kindref="compound">BlockCookEvent</ref></type>
+          <type>BlockCookEvent</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -78,8 +78,8 @@
         </inbodydescription>
         <location file="include/endstone/event/block/block_cook_event.h" line="31" column="5" bodyfile="include/endstone/event/block/block_cook_event.h" bodystart="31" bodyend="34"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BlockCookEvent_1a48bbbed0ceebb9f258cb7386ad47b15e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;</type>
+      <memberdef kind="function" id="classendstone_1_1BlockCookEvent_1a48bbbed0ceebb9f258cb7386ad47b15e" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;</type>
         <definition>const ItemStack &amp; endstone::BlockCookEvent::getSource</definition>
         <argsstring>() const</argsstring>
         <name>getSource</name>
@@ -96,8 +96,8 @@
         </inbodydescription>
         <location file="include/endstone/event/block/block_cook_event.h" line="41" column="22" bodyfile="include/endstone/event/block/block_cook_event.h" bodystart="41" bodyend="41"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BlockCookEvent_1a0b7b3c972fa4056c0598cba0a6259b1a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;</type>
+      <memberdef kind="function" id="classendstone_1_1BlockCookEvent_1a0b7b3c972fa4056c0598cba0a6259b1a" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;</type>
         <definition>const ItemStack &amp; endstone::BlockCookEvent::getResult</definition>
         <argsstring>() const</argsstring>
         <name>getResult</name>
@@ -115,7 +115,7 @@
         <location file="include/endstone/event/block/block_cook_event.h" line="48" column="22" bodyfile="include/endstone/event/block/block_cook_event.h" bodystart="48" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockCookEvent_1abb5195f0935e9caa43421e261728ec06" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::BlockCookEvent::setResult</definition>
         <argsstring>(ItemStack result)</argsstring>
         <name>setResult</name>
@@ -150,14 +150,6 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2">
-        <label>endstone::Cancellable&lt; BlockEvent &gt;</label>
-        <link refid="classendstone_1_1Cancellable"/>
-        <childnode refid="3" relation="public-inheritance">
-        </childnode>
-        <childnode refid="5" relation="public-inheritance">
-        </childnode>
-      </node>
       <node id="1">
         <label>endstone::BlockCookEvent</label>
         <link refid="classendstone_1_1BlockCookEvent"/>
@@ -168,6 +160,14 @@
         <label>endstone::BlockEvent</label>
         <link refid="classendstone_1_1BlockEvent"/>
         <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::Cancellable&lt; BlockEvent &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
         </childnode>
       </node>
       <node id="4">
@@ -180,14 +180,6 @@
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2">
-        <label>endstone::Cancellable&lt; BlockEvent &gt;</label>
-        <link refid="classendstone_1_1Cancellable"/>
-        <childnode refid="3" relation="public-inheritance">
-        </childnode>
-        <childnode refid="5" relation="public-inheritance">
-        </childnode>
-      </node>
       <node id="1">
         <label>endstone::BlockCookEvent</label>
         <link refid="classendstone_1_1BlockCookEvent"/>
@@ -198,6 +190,14 @@
         <label>endstone::BlockEvent</label>
         <link refid="classendstone_1_1BlockEvent"/>
         <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::Cancellable&lt; BlockEvent &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
         </childnode>
       </node>
       <node id="4">

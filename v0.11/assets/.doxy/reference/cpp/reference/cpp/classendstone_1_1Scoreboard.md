@@ -56,14 +56,14 @@ Inherits the following classes: std::enable_shared_from_this< Scoreboard >
 | virtual std::unique\_ptr&lt; [**Objective**](classendstone_1_1Objective.md) &gt; | [**addObjective**](#function-addobjective-13) (std::string name, [**Criteria::Type**](classendstone_1_1Criteria.md#enum-type) criteria) = 0<br>_Registers an_ [_**Objective**_](classendstone_1_1Objective.md) _on this_[_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
 | virtual std::unique\_ptr&lt; [**Objective**](classendstone_1_1Objective.md) &gt; | [**addObjective**](#function-addobjective-23) (std::string name, [**Criteria::Type**](classendstone_1_1Criteria.md#enum-type) criteria, std::string display\_name) = 0<br>_Registers an_ [_**Objective**_](classendstone_1_1Objective.md) _on this_[_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
 | virtual std::unique\_ptr&lt; [**Objective**](classendstone_1_1Objective.md) &gt; | [**addObjective**](#function-addobjective-33) (std::string name, [**Criteria::Type**](classendstone_1_1Criteria.md#enum-type) criteria, std::string display\_name, [**RenderType**](namespaceendstone.md#enum-rendertype) render\_type) = 0<br>_Registers an_ [_**Objective**_](classendstone_1_1Objective.md) _on this_[_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**clearSlot**](#function-clearslot) ([**DisplaySlot**](namespaceendstone.md#enum-displayslot) slot) = 0<br>_Clears any objective in the specified slot._  |
+| virtual void | [**clearSlot**](#function-clearslot) ([**DisplaySlot**](namespaceendstone.md#enum-displayslot) slot) = 0<br>_Clears any objective in the specified slot._  |
 | virtual std::vector&lt; [**ScoreEntry**](namespaceendstone.md#typedef-scoreentry) &gt; | [**getEntries**](#function-getentries) () const = 0<br>_Gets all entries tracked by this_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
 | virtual std::unique\_ptr&lt; [**Objective**](classendstone_1_1Objective.md) &gt; | [**getObjective**](#function-getobjective-12) (std::string name) const = 0<br>_Gets an_ [_**Objective**_](classendstone_1_1Objective.md) _on this_[_**Scoreboard**_](classendstone_1_1Scoreboard.md) _by name._ |
-| virtual std::unique\_ptr&lt; [**Objective**](classendstone_1_1Objective.md) &gt; | [**getObjective**](#function-getobjective-22) ([**DisplaySlot**](namespaceendstone.md#enum-displayslot) slot) const = 0<br>_Gets the_ [_**Objective**_](classendstone_1_1Objective.md) _currently displayed in a DisplaySlot on this_[_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
+| virtual std::unique\_ptr&lt; [**Objective**](classendstone_1_1Objective.md) &gt; | [**getObjective**](#function-getobjective-22) ([**DisplaySlot**](namespaceendstone.md#enum-displayslot) slot) const = 0<br>_Gets the_ [_**Objective**_](classendstone_1_1Objective.md) _currently displayed in a_[_**DisplaySlot**_](namespaceendstone.md#enum-displayslot) _on this_[_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
 | virtual std::vector&lt; std::unique\_ptr&lt; [**Objective**](classendstone_1_1Objective.md) &gt; &gt; | [**getObjectives**](#function-getobjectives) () const = 0<br>_Gets all Objectives on this_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
 | virtual std::vector&lt; std::unique\_ptr&lt; [**Objective**](classendstone_1_1Objective.md) &gt; &gt; | [**getObjectivesByCriteria**](#function-getobjectivesbycriteria) ([**Criteria::Type**](classendstone_1_1Criteria.md#enum-type) criteria) const = 0<br>_Gets all Objectives of a_ [_**Criteria**_](classendstone_1_1Criteria.md) _on the_[_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
 | virtual std::vector&lt; std::unique\_ptr&lt; [**Score**](classendstone_1_1Score.md) &gt; &gt; | [**getScores**](#function-getscores) ([**ScoreEntry**](namespaceendstone.md#typedef-scoreentry) entry) const = 0<br>_Gets all scores for an entry on this_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**resetScores**](#function-resetscores) ([**ScoreEntry**](namespaceendstone.md#typedef-scoreentry) entry) = 0<br>_Removes all scores for an entry on this_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
+| virtual void | [**resetScores**](#function-resetscores) ([**ScoreEntry**](namespaceendstone.md#typedef-scoreentry) entry) = 0<br>_Removes all scores for an entry on this_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
 | virtual  | [**~Scoreboard**](#function-scoreboard) () = default<br> |
 
 
@@ -300,7 +300,7 @@ the [**Objective**](classendstone_1_1Objective.md) or `nullptr` if it does not e
 
 ### function getObjective [2/2]
 
-_Gets the_ [_**Objective**_](classendstone_1_1Objective.md) _currently displayed in a DisplaySlot on this_[_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._
+_Gets the_ [_**Objective**_](classendstone_1_1Objective.md) _currently displayed in a_[_**DisplaySlot**_](namespaceendstone.md#enum-displayslot) _on this_[_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._
 ```C++
 virtual std::unique_ptr< Objective > endstone::Scoreboard::getObjective (
     DisplaySlot slot
@@ -314,13 +314,13 @@ virtual std::unique_ptr< Objective > endstone::Scoreboard::getObjective (
 **Parameters:**
 
 
-* `slot` The DisplaySlot 
+* `slot` The [**DisplaySlot**](namespaceendstone.md#enum-displayslot) 
 
 
 
 **Returns:**
 
-the [**Objective**](classendstone_1_1Objective.md) currently displayed or `nullptr` if nothing is displayed in that DisplaySlot 
+the [**Objective**](classendstone_1_1Objective.md) currently displayed or `nullptr` if nothing is displayed in that [**DisplaySlot**](namespaceendstone.md#enum-displayslot) 
 
 
 

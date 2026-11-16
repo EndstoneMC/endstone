@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1CommandMap" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::CommandMap</compoundname>
     <includes refid="command__map_8h" local="no">endstone/command/command_map.h</includes>
@@ -25,7 +25,7 @@
         <name>CommandMap</name>
         <qualifiedname>endstone::CommandMap::CommandMap</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> &amp;</type>
+          <type>const CommandMap &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -36,13 +36,13 @@
         <location file="include/endstone/command/command_map.h" line="33" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandMap_1af84987985d1b5dd0dcd0c14840dae7da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> &amp;</type>
+        <type>CommandMap &amp;</type>
         <definition>CommandMap &amp; endstone::CommandMap::operator=</definition>
         <argsstring>(const CommandMap &amp;)=delete</argsstring>
         <name>operator=</name>
         <qualifiedname>endstone::CommandMap::operator=</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> &amp;</type>
+          <type>const CommandMap &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -59,7 +59,7 @@
         <name>CommandMap</name>
         <qualifiedname>endstone::CommandMap::CommandMap</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> &amp;&amp;</type>
+          <type>CommandMap &amp;&amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -70,13 +70,13 @@
         <location file="include/endstone/command/command_map.h" line="35" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandMap_1a71900d4f6d83ea0a21f9b2dbddcae322" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> &amp;</type>
+        <type>CommandMap &amp;</type>
         <definition>CommandMap &amp; endstone::CommandMap::operator=</definition>
         <argsstring>(CommandMap &amp;&amp;)=default</argsstring>
         <name>operator=</name>
         <qualifiedname>endstone::CommandMap::operator=</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> &amp;&amp;</type>
+          <type>CommandMap &amp;&amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -101,7 +101,7 @@
         <location file="include/endstone/command/command_map.h" line="38" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandMap_1a5b3beafddf2091946afee009ae1cf5de" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>virtual bool endstone::CommandMap::registerCommand</definition>
         <argsstring>(std::shared_ptr&lt; Command &gt; command)=0</argsstring>
         <name>registerCommand</name>
@@ -132,7 +132,7 @@
         <location file="include/endstone/command/command_map.h" line="46" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandMap_1a4f06f0f67a32638079499c1b8bbc8dbc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>virtual bool endstone::CommandMap::dispatch</definition>
         <argsstring>(CommandSender &amp;sender, std::string command_line) const =0</argsstring>
         <name>dispatch</name>
@@ -175,7 +175,7 @@
         <location file="include/endstone/command/command_map.h" line="55" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandMap_1a668e38f90aad2458f33563f84d87c95a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::CommandMap::clearCommands</definition>
         <argsstring>()=0</argsstring>
         <name>clearCommands</name>
@@ -189,7 +189,7 @@
         </inbodydescription>
         <location file="include/endstone/command/command_map.h" line="60" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1CommandMap_1a8b44b32258c2a2d0dabfcc3618f1f383" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1CommandMap_1a8b44b32258c2a2d0dabfcc3618f1f383" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::shared_ptr&lt; <ref refid="classendstone_1_1Command" kindref="compound">Command</ref> &gt;</type>
         <definition>virtual std::shared_ptr&lt; Command &gt; endstone::CommandMap::getCommand</definition>
         <argsstring>(std::string name) const =0</argsstring>

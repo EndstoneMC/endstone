@@ -54,7 +54,7 @@ Inherits the following classes: std::formatter< std::string_view >
 
 | Type | Name |
 | ---: | :--- |
-|  auto | [**format**](#function-format) (const [**endstone::IntArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md) & tag, FormatContext & ctx) const<br> |
+|  auto | [**format**](#function-format) (const endstone::IntArrayTag & tag, FormatContext & ctx) const<br> |
 
 
 

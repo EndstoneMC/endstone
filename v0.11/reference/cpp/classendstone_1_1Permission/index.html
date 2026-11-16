@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../../assets/logo.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -2828,7 +2828,7 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
+<td style="text-align: right;">auto</td>
 <td style="text-align: left;"><a href="#variable-defaultpermission"><strong>DefaultPermission</strong></a>   = <code>PermissionDefault::Operator</code><br></td>
 </tr>
 </tbody>
@@ -2844,18 +2844,18 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-permission"><strong>Permission</strong></a> (std::string name, std::string description="", <a href="../namespaceendstone/#enum-permissiondefault"><strong>PermissionDefault</strong></a> default_value=DefaultPermission, std::unordered_map&lt; std::string, <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> &gt; children={}) <br></td>
+<td style="text-align: left;"><a href="#function-permission"><strong>Permission</strong></a> (std::string name, std::string description="", <a href="../namespaceendstone/#enum-permissiondefault"><strong>PermissionDefault</strong></a> default_value=DefaultPermission, std::unordered_map&lt; std::string, bool &gt; children={}) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>Permission</strong></a> *</td>
-<td style="text-align: left;"><a href="#function-addparent-12"><strong>addParent</strong></a> (std::string name, <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> value) <br></td>
+<td style="text-align: right;">Permission *</td>
+<td style="text-align: left;"><a href="#function-addparent-12"><strong>addParent</strong></a> (std::string name, bool value) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-addparent-22"><strong>addParent</strong></a> (<a href="./"><strong>Permission</strong></a> &amp; perm, <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> value) const<br></td>
+<td style="text-align: right;">void</td>
+<td style="text-align: left;"><a href="#function-addparent-22"><strong>addParent</strong></a> (Permission &amp; perm, bool value) const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">std::unordered_map&lt; std::string, <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> &gt; &amp;</td>
+<td style="text-align: right;">std::unordered_map&lt; std::string, bool &gt; &amp;</td>
 <td style="text-align: left;"><a href="#function-getchildren"><strong>getChildren</strong></a> () <br></td>
 </tr>
 <tr>
@@ -2875,26 +2875,26 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-getpermissibles"><strong>getPermissibles</strong></a> () const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
+<td style="text-align: right;">void</td>
 <td style="text-align: left;"><a href="#function-init"><strong>init</strong></a> (<a href="../classendstone_1_1PluginManager/"><strong>PluginManager</strong></a> &amp; plugin_manager) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
+<td style="text-align: right;">void</td>
 <td style="text-align: left;"><a href="#function-recalculatepermissibles"><strong>recalculatePermissibles</strong></a> () <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
+<td style="text-align: right;">void</td>
 <td style="text-align: left;"><a href="#function-setdefault"><strong>setDefault</strong></a> (<a href="../namespaceendstone/#enum-permissiondefault"><strong>PermissionDefault</strong></a> value) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
+<td style="text-align: right;">void</td>
 <td style="text-align: left;"><a href="#function-setdescription"><strong>setDescription</strong></a> (std::string value) <br></td>
 </tr>
 </tbody>
 </table>
 <h2 id="public-static-attributes-documentation">Public Static Attributes Documentation<a class="headerlink" href="#public-static-attributes-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="variable-defaultpermission">variable DefaultPermission<a class="headerlink" href="#variable-defaultpermission" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Permission</span><span class="o">::</span><span class="n">DefaultPermission</span><span class="p">;</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Permission</span><span class="o">::</span><span class="n">DefaultPermission</span><span class="p">;</span>
 </span></code></pre></div>
 <hr>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
@@ -3147,7 +3147,7 @@ For latest updates join the chat on
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "stable", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
     
   </body>

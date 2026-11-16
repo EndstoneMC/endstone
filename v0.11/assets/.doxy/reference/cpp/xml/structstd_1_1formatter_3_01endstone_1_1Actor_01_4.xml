@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="structstd_1_1formatter_3_01endstone_1_1Actor_01_4" kind="struct" language="C++" prot="public">
     <compoundname>std::formatter&lt; endstone::Actor &gt;</compoundname>
     <basecompoundref prot="public" virt="non-virtual">std::formatter&lt; std::string_view &gt;</basecompoundref>
@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor.h" line="249" column="5" bodyfile="include/endstone/actor/actor.h" bodystart="249" bodyend="-1"/>
+        <location file="include/endstone/actor/actor.h" line="251" column="5" bodyfile="include/endstone/actor/actor.h" bodystart="251" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -34,7 +34,7 @@
         <name>format</name>
         <qualifiedname>std::formatter&lt; endstone::Actor &gt;::format</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1Actor" kindref="compound">Type</ref> &amp;</type>
+          <type>const Type &amp;</type>
           <declname>val</declname>
         </param>
         <param>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor.h" line="252" column="10" bodyfile="include/endstone/actor/actor.h" bodystart="252" bodyend="255"/>
+        <location file="include/endstone/actor/actor.h" line="254" column="10" bodyfile="include/endstone/actor/actor.h" bodystart="254" bodyend="257"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -76,7 +76,7 @@
         <label>std::formatter&lt; std::string_view &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/actor/actor.h" line="248" column="1" bodyfile="include/endstone/actor/actor.h" bodystart="248" bodyend="256"/>
+    <location file="include/endstone/actor/actor.h" line="250" column="1" bodyfile="include/endstone/actor/actor.h" bodystart="250" bodyend="258"/>
     <listofallmembers>
       <member refid="structstd_1_1formatter_3_01endstone_1_1Actor_01_4_1ac229a6f5276f1a19f41688548dade255" prot="public" virt="non-virtual"><scope>std::formatter&lt; endstone::Actor &gt;</scope><name>format</name></member>
       <member refid="structstd_1_1formatter_3_01endstone_1_1Actor_01_4_1a83110efaf734efc11af0b442c3eb75ac" prot="public" virt="non-virtual"><scope>std::formatter&lt; endstone::Actor &gt;</scope><name>Type</name></member>

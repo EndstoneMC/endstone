@@ -52,7 +52,7 @@ _Represents an objective on a scoreboard that can show scores specific to entrie
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**const**](classendstone_1_1Identifier.md) [**Criteria**](classendstone_1_1Criteria.md) & | [**getCriteria**](#function-getcriteria) () const = 0<br>_Gets the criteria this objective tracks._  |
+| virtual const [**Criteria**](classendstone_1_1Criteria.md) & | [**getCriteria**](#function-getcriteria) () const = 0<br>_Gets the criteria this objective tracks._  |
 | virtual std::string | [**getDisplayName**](#function-getdisplayname) () const = 0<br>_Gets the name displayed to players for this objective._  |
 | virtual std::optional&lt; [**DisplaySlot**](namespaceendstone.md#enum-displayslot) &gt; | [**getDisplaySlot**](#function-getdisplayslot) () const = 0<br>_Gets the display slot this objective is displayed at._  |
 | virtual std::string | [**getName**](#function-getname) () const = 0<br>_Gets the name of this_ [_**Objective**_](classendstone_1_1Objective.md) _._ |
@@ -60,15 +60,15 @@ _Represents an objective on a scoreboard that can show scores specific to entrie
 | virtual std::unique\_ptr&lt; [**Score**](classendstone_1_1Score.md) &gt; | [**getScore**](#function-getscore) ([**ScoreEntry**](namespaceendstone.md#typedef-scoreentry) entry) const = 0<br>_Sets manner in which this objective will be rendered._  |
 | virtual [**Scoreboard**](classendstone_1_1Scoreboard.md) & | [**getScoreboard**](#function-getscoreboard) () const = 0<br>_Gets the scoreboard to which this objective is attached._  |
 | virtual std::optional&lt; [**ObjectiveSortOrder**](namespaceendstone.md#enum-objectivesortorder) &gt; | [**getSortOrder**](#function-getsortorder) () const = 0<br>_Gets the sort order for this objective._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**isDisplayed**](#function-isdisplayed) () const = 0<br>_Gets if the objective is currently displayed in a slot._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**isModifiable**](#function-ismodifiable) () const = 0<br>_Gets if the objective's scores can be modified directly by a plugin._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**operator!=**](#function-operator) ([**const**](classendstone_1_1Identifier.md) [**Objective**](classendstone_1_1Objective.md) & other) const = 0<br> |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**operator==**](#function-operator_1) ([**const**](classendstone_1_1Identifier.md) [**Objective**](classendstone_1_1Objective.md) & other) const = 0<br> |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setDisplay**](#function-setdisplay) (std::optional&lt; [**DisplaySlot**](namespaceendstone.md#enum-displayslot) &gt; slot, [**ObjectiveSortOrder**](namespaceendstone.md#enum-objectivesortorder) order) = 0<br>_Sets the display slot and sort order for this objective. This will remove it from any other display slot._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setDisplayName**](#function-setdisplayname) (std::string display\_name) = 0<br>_Sets the name displayed to players for this objective._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setDisplaySlot**](#function-setdisplayslot) (std::optional&lt; [**DisplaySlot**](namespaceendstone.md#enum-displayslot) &gt; slot) = 0<br>_Sets the display slot for this objective. This will remove it from any other display slot._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setSortOrder**](#function-setsortorder) ([**ObjectiveSortOrder**](namespaceendstone.md#enum-objectivesortorder) order) = 0<br>_Sets the sort order for this objective._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**unregister**](#function-unregister) () const = 0<br>_Unregisters this objective from the associated_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
+| virtual bool | [**isDisplayed**](#function-isdisplayed) () const = 0<br>_Gets if the objective is currently displayed in a slot._  |
+| virtual bool | [**isModifiable**](#function-ismodifiable) () const = 0<br>_Gets if the objective's scores can be modified directly by a plugin._  |
+| virtual bool | [**operator!=**](#function-operator) (const [**Objective**](classendstone_1_1Objective.md) & other) const = 0<br> |
+| virtual bool | [**operator==**](#function-operator_1) (const [**Objective**](classendstone_1_1Objective.md) & other) const = 0<br> |
+| virtual void | [**setDisplay**](#function-setdisplay) (std::optional&lt; [**DisplaySlot**](namespaceendstone.md#enum-displayslot) &gt; slot, [**ObjectiveSortOrder**](namespaceendstone.md#enum-objectivesortorder) order) = 0<br>_Sets the display slot and sort order for this objective. This will remove it from any other display slot._  |
+| virtual void | [**setDisplayName**](#function-setdisplayname) (std::string display\_name) = 0<br>_Sets the name displayed to players for this objective._  |
+| virtual void | [**setDisplaySlot**](#function-setdisplayslot) (std::optional&lt; [**DisplaySlot**](namespaceendstone.md#enum-displayslot) &gt; slot) = 0<br>_Sets the display slot for this objective. This will remove it from any other display slot._  |
+| virtual void | [**setSortOrder**](#function-setsortorder) ([**ObjectiveSortOrder**](namespaceendstone.md#enum-objectivesortorder) order) = 0<br>_Sets the sort order for this objective._  |
+| virtual void | [**unregister**](#function-unregister) () const = 0<br>_Unregisters this objective from the associated_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
 | virtual  | [**~Objective**](#function-objective) () = default<br> |
 
 
@@ -107,7 +107,7 @@ _Represents an objective on a scoreboard that can show scores specific to entrie
 
 _Gets the criteria this objective tracks._ 
 ```C++
-virtual const  Criteria & endstone::Objective::getCriteria () const = 0
+virtual const Criteria & endstone::Objective::getCriteria () const = 0
 ```
 
 
@@ -378,7 +378,7 @@ true if scores are modifiable
 
 ```C++
 virtual bool endstone::Objective::operator!= (
-    const  Objective & other
+    const Objective & other
 ) const = 0
 ```
 
@@ -393,7 +393,7 @@ virtual bool endstone::Objective::operator!= (
 
 ```C++
 virtual bool endstone::Objective::operator== (
-    const  Objective & other
+    const Objective & other
 ) const = 0
 ```
 

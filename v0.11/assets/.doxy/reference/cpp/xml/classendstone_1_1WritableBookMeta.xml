@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1WritableBookMeta" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::WritableBookMeta</compoundname>
     <basecompoundref refid="classendstone_1_1ItemMeta" prot="public" virt="non-virtual">endstone::ItemMeta</basecompoundref>
     <derivedcompoundref refid="classendstone_1_1BookMeta" prot="public" virt="non-virtual">endstone::BookMeta</derivedcompoundref>
     <includes refid="writable__book__meta_8h" local="no">endstone/inventory/meta/writable_book_meta.h</includes>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="classendstone_1_1WritableBookMeta_1a778ade876436bcd7dc30d4d2a44729bf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+      <memberdef kind="function" id="classendstone_1_1WritableBookMeta_1a778ade876436bcd7dc30d4d2a44729bf" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
         <definition>virtual bool endstone::WritableBookMeta::hasPages</definition>
         <argsstring>() const =0</argsstring>
         <name>hasPages</name>
@@ -24,14 +24,14 @@
         </inbodydescription>
         <location file="include/endstone/inventory/meta/writable_book_meta.h" line="35" column="19"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1WritableBookMeta_1a88f4642c54fda6ad370504b494050db0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1WritableBookMeta_1a88f4642c54fda6ad370504b494050db0" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
         <definition>virtual std::string endstone::WritableBookMeta::getPage</definition>
         <argsstring>(int page) const =0</argsstring>
         <name>getPage</name>
         <qualifiedname>endstone::WritableBookMeta::getPage</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>page</declname>
         </param>
         <briefdescription>
@@ -58,13 +58,13 @@
         <location file="include/endstone/inventory/meta/writable_book_meta.h" line="45" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1WritableBookMeta_1ac40efd712c8fe6ecc7bb8c7fd503de97" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::WritableBookMeta::setPage</definition>
         <argsstring>(int page, std::string data)=0</argsstring>
         <name>setPage</name>
         <qualifiedname>endstone::WritableBookMeta::setPage</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>page</declname>
         </param>
         <param>
@@ -101,7 +101,7 @@ Pages are 1-indexed.</para>
         </inbodydescription>
         <location file="include/endstone/inventory/meta/writable_book_meta.h" line="57" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1WritableBookMeta_1a488476c1a3cd831188fdeb8f8ae26d3d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1WritableBookMeta_1a488476c1a3cd831188fdeb8f8ae26d3d" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; std::string &gt;</type>
         <definition>virtual std::vector&lt; std::string &gt; endstone::WritableBookMeta::getPages</definition>
         <argsstring>() const =0</argsstring>
@@ -127,13 +127,13 @@ Pages are 1-indexed.</para>
             <defname>Args</defname>
           </param>
         </templateparamlist>
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::WritableBookMeta::setPages</definition>
         <argsstring>(Args &amp;&amp;...pages)</argsstring>
         <name>setPages</name>
         <qualifiedname>endstone::WritableBookMeta::setPages</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">Args</ref> &amp;&amp;...</type>
+          <type>Args &amp;&amp;...</type>
           <declname>pages</declname>
         </param>
         <briefdescription>
@@ -158,7 +158,7 @@ Pages are 1-indexed.</para>
         <location file="include/endstone/inventory/meta/writable_book_meta.h" line="74" column="10" bodyfile="include/endstone/inventory/meta/writable_book_meta.h" bodystart="74" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1WritableBookMeta_1af78248585a392637bb362107854f5d87" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::WritableBookMeta::setPages</definition>
         <argsstring>(std::vector&lt; std::string &gt; pages)=0</argsstring>
         <name>setPages</name>
@@ -197,13 +197,13 @@ Pages are 1-indexed.</para>
             <defname>Args</defname>
           </param>
         </templateparamlist>
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::WritableBookMeta::addPage</definition>
         <argsstring>(Args &amp;&amp;...pages)</argsstring>
         <name>addPage</name>
         <qualifiedname>endstone::WritableBookMeta::addPage</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">Args</ref> &amp;&amp;...</type>
+          <type>Args &amp;&amp;...</type>
           <declname>pages</declname>
         </param>
         <briefdescription>
@@ -228,7 +228,7 @@ Pages are 1-indexed.</para>
         <location file="include/endstone/inventory/meta/writable_book_meta.h" line="96" column="10" bodyfile="include/endstone/inventory/meta/writable_book_meta.h" bodystart="96" bodyend="99"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1WritableBookMeta_1a8c6bbef3da6c8cf8005b7d6c1ca9ac15" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::WritableBookMeta::addPage</definition>
         <argsstring>(std::vector&lt; std::string &gt; pages)=0</argsstring>
         <name>addPage</name>
@@ -258,8 +258,8 @@ Pages are 1-indexed.</para>
         </inbodydescription>
         <location file="include/endstone/inventory/meta/writable_book_meta.h" line="108" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1WritableBookMeta_1a207196509c31e42333531d547b0f1af0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+      <memberdef kind="function" id="classendstone_1_1WritableBookMeta_1a207196509c31e42333531d547b0f1af0" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>int</type>
         <definition>virtual int endstone::WritableBookMeta::getPageCount</definition>
         <argsstring>() const =0</argsstring>
         <name>getPageCount</name>

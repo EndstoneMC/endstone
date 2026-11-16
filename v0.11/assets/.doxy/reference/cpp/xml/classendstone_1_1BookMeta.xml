@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1BookMeta" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::BookMeta</compoundname>
     <basecompoundref refid="classendstone_1_1WritableBookMeta" prot="public" virt="non-virtual">endstone::WritableBookMeta</basecompoundref>
@@ -12,7 +12,7 @@
         <enumvalue id="classendstone_1_1BookMeta_1a0575b8edcc2727899e4e44fcc941e737a0a52da7a03a6de3beefe54f8c03ad80d" prot="public">
           <name>Original</name>
           <briefdescription>
-<para>Book written into a book-and-quill. Can be copied. (Default value) </para>
+<para>Book written into a book-and-quill. Can be copied. (Default value). </para>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
@@ -44,8 +44,8 @@
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="classendstone_1_1BookMeta_1a8ecca25a84dbcdcc05131d5aa52b0792" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+      <memberdef kind="function" id="classendstone_1_1BookMeta_1a8ecca25a84dbcdcc05131d5aa52b0792" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
         <definition>virtual bool endstone::BookMeta::hasTitle</definition>
         <argsstring>() const =0</argsstring>
         <name>hasTitle</name>
@@ -62,7 +62,7 @@
         </inbodydescription>
         <location file="include/endstone/inventory/meta/book_meta.h" line="53" column="19"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BookMeta_1ad3ccd6d94c0ccca6f27161bd66a7865d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1BookMeta_1ad3ccd6d94c0ccca6f27161bd66a7865d" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
         <definition>virtual std::string endstone::BookMeta::getTitle</definition>
         <argsstring>() const =0</argsstring>
@@ -83,7 +83,7 @@
         <location file="include/endstone/inventory/meta/book_meta.h" line="62" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BookMeta_1aaf83599af609f13ffcff2529058f82a5" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::BookMeta::setTitle</definition>
         <argsstring>(std::optional&lt; std::string &gt; title)=0</argsstring>
         <name>setTitle</name>
@@ -115,8 +115,8 @@
         </inbodydescription>
         <location file="include/endstone/inventory/meta/book_meta.h" line="73" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BookMeta_1a998af616da38d1fae1540ed543a50858" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+      <memberdef kind="function" id="classendstone_1_1BookMeta_1a998af616da38d1fae1540ed543a50858" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
         <definition>virtual bool endstone::BookMeta::hasAuthor</definition>
         <argsstring>() const =0</argsstring>
         <name>hasAuthor</name>
@@ -133,7 +133,7 @@
         </inbodydescription>
         <location file="include/endstone/inventory/meta/book_meta.h" line="80" column="19"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BookMeta_1a04ea1998ed105347d0c6424104963835" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1BookMeta_1a04ea1998ed105347d0c6424104963835" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
         <definition>virtual std::string endstone::BookMeta::getAuthor</definition>
         <argsstring>() const =0</argsstring>
@@ -154,7 +154,7 @@
         <location file="include/endstone/inventory/meta/book_meta.h" line="89" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BookMeta_1a23263421a05082ce203afb1e454f8a30" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::BookMeta::setAuthor</definition>
         <argsstring>(std::optional&lt; std::string &gt; author)=0</argsstring>
         <name>setAuthor</name>
@@ -182,8 +182,8 @@
         </inbodydescription>
         <location file="include/endstone/inventory/meta/book_meta.h" line="96" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BookMeta_1a8c94e32c426cf5b285e89cfd752db167" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+      <memberdef kind="function" id="classendstone_1_1BookMeta_1a8c94e32c426cf5b285e89cfd752db167" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
         <definition>virtual bool endstone::BookMeta::hasGeneration</definition>
         <argsstring>() const =0</argsstring>
         <name>hasGeneration</name>
@@ -200,7 +200,7 @@
         </inbodydescription>
         <location file="include/endstone/inventory/meta/book_meta.h" line="103" column="19"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BookMeta_1af1d15866a2ba5d5a3465ef4cb7720468" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1BookMeta_1af1d15866a2ba5d5a3465ef4cb7720468" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::optional&lt; <ref refid="classendstone_1_1BookMeta_1a0575b8edcc2727899e4e44fcc941e737" kindref="member">Generation</ref> &gt;</type>
         <definition>virtual std::optional&lt; Generation &gt; endstone::BookMeta::getGeneration</definition>
         <argsstring>() const =0</argsstring>
@@ -221,7 +221,7 @@
         <location file="include/endstone/inventory/meta/book_meta.h" line="112" column="28"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BookMeta_1a4dce971cb64a6ad8ed115498bedce599" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::BookMeta::setGeneration</definition>
         <argsstring>(std::optional&lt; Generation &gt; generation)=0</argsstring>
         <name>setGeneration</name>

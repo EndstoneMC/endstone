@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="equipment__slot_8h" kind="file" language="C++">
     <compoundname>equipment_slot.h</compoundname>
     <includes local="no">memory</includes>
@@ -73,7 +73,7 @@
 <codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>Legs,</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>Chest,</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>Head,</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceendstone_1afad3b218f2082aec71169d21f2493a39aac101b32dda4448cf13a93fe283dddd8" kindref="member">Body</ref></highlight></codeline>
+<codeline lineno="31" refid="namespaceendstone_1afad3b218f2082aec71169d21f2493a39aac101b32dda4448cf13a93fe283dddd8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceendstone_1afad3b218f2082aec71169d21f2493a39aac101b32dda4448cf13a93fe283dddd8" kindref="member">Body</ref></highlight></codeline>
 <codeline lineno="32"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="33"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>

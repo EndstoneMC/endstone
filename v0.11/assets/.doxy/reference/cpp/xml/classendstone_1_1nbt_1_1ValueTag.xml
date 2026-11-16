@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1nbt_1_1ValueTag" kind="class" language="C++" prot="public">
     <compoundname>endstone::nbt::ValueTag</compoundname>
     <basecompoundref refid="structendstone_1_1nbt_1_1TagBase" prot="public" virt="non-virtual">endstone::nbt::TagBase</basecompoundref>
     <templateparamlist>
       <param>
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">typename</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
+        <type>typename T</type>
       </param>
     </templateparamlist>
     <sectiondef kind="public-type">
       <memberdef kind="typedef" id="classendstone_1_1nbt_1_1ValueTag_1a04092936a8d9b302c4235cae7c30ff16" prot="public" static="no">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
+        <type>T</type>
         <definition>using endstone::nbt::ValueTag&lt; T &gt;::value_type =  T</definition>
         <argsstring></argsstring>
         <name>value_type</name>
@@ -26,7 +26,7 @@
     </sectiondef>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1nbt_1_1ValueTag_1adf5bbb54b5f7415160ab3a91a7244749" prot="private" static="no" mutable="no">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
+        <type>T</type>
         <definition>T endstone::nbt::ValueTag&lt; T &gt;::value_</definition>
         <argsstring></argsstring>
         <name>value_</name>
@@ -42,8 +42,8 @@
     </sectiondef>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1nbt_1_1ValueTag_1adcfa507826566fcf4464d4bb1569f56c" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref></type>
-        <definition>constexpr endstone::nbt::ValueTag&lt; T &gt;::ValueTag</definition>
+        <type>constexpr</type>
+        <definition>endstone::nbt::ValueTag&lt; T &gt;::ValueTag</definition>
         <argsstring>()=default</argsstring>
         <name>ValueTag</name>
         <qualifiedname>endstone::nbt::ValueTag::ValueTag</qualifiedname>
@@ -56,13 +56,13 @@
         <location file="include/endstone/nbt/value.h" line="29" column="15"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1ValueTag_1aed5d340ee4b1e1a612164795a74388dc" prot="public" static="no" constexpr="yes" const="no" explicit="yes" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref></type>
-        <definition>constexpr endstone::nbt::ValueTag&lt; T &gt;::ValueTag</definition>
+        <type>constexpr</type>
+        <definition>endstone::nbt::ValueTag&lt; T &gt;::ValueTag</definition>
         <argsstring>(const T &amp;v)</argsstring>
         <name>ValueTag</name>
         <qualifiedname>endstone::nbt::ValueTag::ValueTag</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> &amp;</type>
+          <type>const T &amp;</type>
           <declname>v</declname>
         </param>
         <briefdescription>
@@ -74,13 +74,13 @@
         <location file="include/endstone/nbt/value.h" line="30" column="24" bodyfile="include/endstone/nbt/value.h" bodystart="30" bodyend="30"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1ValueTag_1a5f92d27d1cc4365bd9f1e8f1f4e52b70" prot="public" static="no" constexpr="yes" const="no" explicit="yes" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref></type>
-        <definition>constexpr endstone::nbt::ValueTag&lt; T &gt;::ValueTag</definition>
+        <type>constexpr</type>
+        <definition>endstone::nbt::ValueTag&lt; T &gt;::ValueTag</definition>
         <argsstring>(T &amp;&amp;v)</argsstring>
         <name>ValueTag</name>
         <qualifiedname>endstone::nbt::ValueTag::ValueTag</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> &amp;&amp;</type>
+          <type>T &amp;&amp;</type>
           <declname>v</declname>
         </param>
         <briefdescription>
@@ -106,7 +106,7 @@
         <location file="include/endstone/nbt/value.h" line="34" column="5" bodyfile="include/endstone/nbt/value.h" bodystart="34" bodyend="34"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1ValueTag_1ac9859bc29b87f3d8393ae87517ca7176" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> &amp;</type>
+        <type>const T &amp;</type>
         <definition>const T &amp; endstone::nbt::ValueTag&lt; T &gt;::value</definition>
         <argsstring>() const noexcept</argsstring>
         <name>value</name>
@@ -122,17 +122,17 @@
     </sectiondef>
     <sectiondef kind="friend">
       <memberdef kind="friend" id="classendstone_1_1nbt_1_1ValueTag_1a2bc22ac376e14c6885264fe205f93609" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
-        <definition>constexpr bool operator==</definition>
+        <type>bool</type>
+        <definition>bool operator==</definition>
         <argsstring>(const ValueTag &amp;a, const ValueTag &amp;b) noexcept</argsstring>
         <name>operator==</name>
         <qualifiedname>endstone::nbt::ValueTag::operator==</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">ValueTag</ref> &amp;</type>
+          <type>const ValueTag &amp;</type>
           <declname>a</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">ValueTag</ref> &amp;</type>
+          <type>const ValueTag &amp;</type>
           <declname>b</declname>
         </param>
         <briefdescription>
@@ -144,17 +144,17 @@
         <location file="include/endstone/nbt/value.h" line="39" column="27" bodyfile="include/endstone/nbt/value.h" bodystart="39" bodyend="39"/>
       </memberdef>
       <memberdef kind="friend" id="classendstone_1_1nbt_1_1ValueTag_1adf78f6a373d9c2007bec52994e9f79d5" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
-        <definition>constexpr bool operator!=</definition>
+        <type>bool</type>
+        <definition>bool operator!=</definition>
         <argsstring>(const ValueTag &amp;a, const ValueTag &amp;b) noexcept</argsstring>
         <name>operator!=</name>
         <qualifiedname>endstone::nbt::ValueTag::operator!=</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">ValueTag</ref> &amp;</type>
+          <type>const ValueTag &amp;</type>
           <declname>a</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">ValueTag</ref> &amp;</type>
+          <type>const ValueTag &amp;</type>
           <declname>b</declname>
         </param>
         <briefdescription>
@@ -166,17 +166,17 @@
         <location file="include/endstone/nbt/value.h" line="41" column="27" bodyfile="include/endstone/nbt/value.h" bodystart="41" bodyend="41"/>
       </memberdef>
       <memberdef kind="friend" id="classendstone_1_1nbt_1_1ValueTag_1a0fecd2d88ed80412529ab707c8d330ea" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
-        <definition>constexpr bool operator==</definition>
+        <type>bool</type>
+        <definition>bool operator==</definition>
         <argsstring>(const ValueTag &amp;a, const T &amp;b) noexcept</argsstring>
         <name>operator==</name>
         <qualifiedname>endstone::nbt::ValueTag::operator==</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">ValueTag</ref> &amp;</type>
+          <type>const ValueTag &amp;</type>
           <declname>a</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> &amp;</type>
+          <type>const T &amp;</type>
           <declname>b</declname>
         </param>
         <briefdescription>
@@ -188,17 +188,17 @@
         <location file="include/endstone/nbt/value.h" line="44" column="27" bodyfile="include/endstone/nbt/value.h" bodystart="44" bodyend="44"/>
       </memberdef>
       <memberdef kind="friend" id="classendstone_1_1nbt_1_1ValueTag_1a11c8f3ed0a7474b8f59ca9411dd90720" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
-        <definition>constexpr bool operator==</definition>
+        <type>bool</type>
+        <definition>bool operator==</definition>
         <argsstring>(const T &amp;a, const ValueTag &amp;b) noexcept</argsstring>
         <name>operator==</name>
         <qualifiedname>endstone::nbt::ValueTag::operator==</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> &amp;</type>
+          <type>const T &amp;</type>
           <declname>a</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">ValueTag</ref> &amp;</type>
+          <type>const ValueTag &amp;</type>
           <declname>b</declname>
         </param>
         <briefdescription>
@@ -210,17 +210,17 @@
         <location file="include/endstone/nbt/value.h" line="45" column="27" bodyfile="include/endstone/nbt/value.h" bodystart="45" bodyend="45"/>
       </memberdef>
       <memberdef kind="friend" id="classendstone_1_1nbt_1_1ValueTag_1a744398e810df61c160a28eec123e595a" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
-        <definition>constexpr bool operator!=</definition>
+        <type>bool</type>
+        <definition>bool operator!=</definition>
         <argsstring>(const ValueTag &amp;a, const T &amp;b) noexcept</argsstring>
         <name>operator!=</name>
         <qualifiedname>endstone::nbt::ValueTag::operator!=</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">ValueTag</ref> &amp;</type>
+          <type>const ValueTag &amp;</type>
           <declname>a</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> &amp;</type>
+          <type>const T &amp;</type>
           <declname>b</declname>
         </param>
         <briefdescription>
@@ -232,17 +232,17 @@
         <location file="include/endstone/nbt/value.h" line="46" column="27" bodyfile="include/endstone/nbt/value.h" bodystart="46" bodyend="46"/>
       </memberdef>
       <memberdef kind="friend" id="classendstone_1_1nbt_1_1ValueTag_1a1150898be4a733f0200e6556af29bb81" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
-        <definition>constexpr bool operator!=</definition>
+        <type>bool</type>
+        <definition>bool operator!=</definition>
         <argsstring>(const T &amp;a, const ValueTag &amp;b) noexcept</argsstring>
         <name>operator!=</name>
         <qualifiedname>endstone::nbt::ValueTag::operator!=</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> &amp;</type>
+          <type>const T &amp;</type>
           <declname>a</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">ValueTag</ref> &amp;</type>
+          <type>const ValueTag &amp;</type>
           <declname>b</declname>
         </param>
         <briefdescription>

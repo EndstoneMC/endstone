@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="dir_7c05c37b25e9c9eccd9c63c2d313ba28" kind="dir">
     <compoundname>include/endstone/event/player</compoundname>
     <innerfile refid="player__bed__enter__event_8h">player_bed_enter_event.h</innerfile>

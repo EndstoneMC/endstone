@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1ActorKnockbackEvent" kind="class" language="C++" prot="public">
     <compoundname>endstone::ActorKnockbackEvent</compoundname>
     <basecompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; ActorEvent&lt; Mob &gt; &gt;</basecompoundref>
@@ -70,7 +70,7 @@
         <name>ENDSTONE_EVENT</name>
         <qualifiedname>endstone::ActorKnockbackEvent::ENDSTONE_EVENT</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1ActorKnockbackEvent" kindref="compound">ActorKnockbackEvent</ref></type>
+          <type>ActorKnockbackEvent</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -106,7 +106,7 @@
         </inbodydescription>
         <location file="include/endstone/event/actor/actor_knockback_event.h" line="30" column="14" bodyfile="include/endstone/event/actor/actor_knockback_event.h" bodystart="30" bodyend="33"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ActorKnockbackEvent_1a4dc601b2fc54d46ef20821a75035cd2e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1ActorKnockbackEvent_1a4dc601b2fc54d46ef20821a75035cd2e" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> *</type>
         <definition>Actor * endstone::ActorKnockbackEvent::getSource</definition>
         <argsstring>() const</argsstring>
@@ -124,7 +124,7 @@
         </inbodydescription>
         <location file="include/endstone/event/actor/actor_knockback_event.h" line="40" column="12" bodyfile="include/endstone/event/actor/actor_knockback_event.h" bodystart="40" bodyend="40"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ActorKnockbackEvent_1aa141894e58254a8afe5f28d19d7aed02" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1ActorKnockbackEvent_1aa141894e58254a8afe5f28d19d7aed02" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref></type>
         <definition>Vector endstone::ActorKnockbackEvent::getKnockback</definition>
         <argsstring>() const</argsstring>
@@ -144,7 +144,7 @@
         <location file="include/endstone/event/actor/actor_knockback_event.h" line="50" column="13" bodyfile="include/endstone/event/actor/actor_knockback_event.h" bodystart="50" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ActorKnockbackEvent_1a4d0589c39958cc0b744f76ba1d6e7714" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::ActorKnockbackEvent::setKnockback</definition>
         <argsstring>(Vector knockback)</argsstring>
         <name>setKnockback</name>
@@ -185,18 +185,18 @@
         <childnode refid="4" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="1">
+        <label>endstone::ActorKnockbackEvent</label>
+        <link refid="classendstone_1_1ActorKnockbackEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
       <node id="2">
         <label>endstone::Cancellable&lt; ActorEvent&lt; Mob &gt; &gt;</label>
         <link refid="classendstone_1_1Cancellable"/>
         <childnode refid="3" relation="public-inheritance">
         </childnode>
         <childnode refid="5" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="1">
-        <label>endstone::ActorKnockbackEvent</label>
-        <link refid="classendstone_1_1ActorKnockbackEvent"/>
-        <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
       <node id="4">
@@ -215,18 +215,18 @@
         <childnode refid="4" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="1">
+        <label>endstone::ActorKnockbackEvent</label>
+        <link refid="classendstone_1_1ActorKnockbackEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
       <node id="2">
         <label>endstone::Cancellable&lt; ActorEvent&lt; Mob &gt; &gt;</label>
         <link refid="classendstone_1_1Cancellable"/>
         <childnode refid="3" relation="public-inheritance">
         </childnode>
         <childnode refid="5" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="1">
-        <label>endstone::ActorKnockbackEvent</label>
-        <link refid="classendstone_1_1ActorKnockbackEvent"/>
-        <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
       <node id="4">

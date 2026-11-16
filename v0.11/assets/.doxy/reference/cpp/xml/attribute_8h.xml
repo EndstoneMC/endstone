@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="attribute_8h" kind="file" language="C++">
     <compoundname>attribute.h</compoundname>
     <includes refid="identifier_8h" local="yes">endstone/identifier.h</includes>
@@ -61,7 +61,7 @@
 <codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/identifier.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="18"><highlight class="normal"></highlight></codeline>
 <codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceendstone" kindref="compound">endstone</ref><sp/>{</highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">AttributeId<sp/>=<sp/>Identifier&lt;class<sp/>Attribute&gt;;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">AttributeId<sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">Identifier&lt;class Attribute&gt;</ref>;</highlight></codeline>
 <codeline lineno="24" refid="classendstone_1_1Attribute" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1Attribute" kindref="compound">Attribute</ref><sp/>{</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="27" refid="classendstone_1_1Attribute_1a0a08b7a3c41aeea1e8f99c01c0b7ad0e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Attribute_1a0a08b7a3c41aeea1e8f99c01c0b7ad0e" kindref="member">Health</ref><sp/>=<sp/>AttributeId::minecraft(</highlight><highlight class="stringliteral">&quot;health&quot;</highlight><highlight class="normal">);</highlight></codeline>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1PlayerGameModeChangeEvent" kind="class" language="C++" prot="public">
     <compoundname>endstone::PlayerGameModeChangeEvent</compoundname>
     <basecompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; PlayerEvent &gt;</basecompoundref>
@@ -28,7 +28,7 @@
         <name>ENDSTONE_EVENT</name>
         <qualifiedname>endstone::PlayerGameModeChangeEvent::ENDSTONE_EVENT</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1PlayerGameModeChangeEvent" kindref="compound">PlayerGameModeChangeEvent</ref></type>
+          <type>PlayerGameModeChangeEvent</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -74,17 +74,17 @@
         </inbodydescription>
         <location file="include/endstone/event/player/player_game_mode_change_event.h" line="33" column="5"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PlayerGameModeChangeEvent_1a422c30eafa2b703fd105138e45da4540" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PlayerGameModeChangeEvent_1a422c30eafa2b703fd105138e45da4540" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="namespaceendstone_1a3185831693a75ff4595095c0fe568c2a" kindref="member">GameMode</ref></type>
         <definition>GameMode endstone::PlayerGameModeChangeEvent::getNewGameMode</definition>
         <argsstring>() const</argsstring>
         <name>getNewGameMode</name>
         <qualifiedname>endstone::PlayerGameModeChangeEvent::getNewGameMode</qualifiedname>
         <briefdescription>
-<para>Gets the GameMode the player is switched to. </para>
+<para>Gets the <ref refid="namespaceendstone_1a3185831693a75ff4595095c0fe568c2a" kindref="member">GameMode</ref> the player is switched to. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>player&apos;s new GameMode </para>
+<para><simplesect kind="return"><para>player&apos;s new <ref refid="namespaceendstone_1a3185831693a75ff4595095c0fe568c2a" kindref="member">GameMode</ref> </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -94,7 +94,7 @@
       </memberdef>
     </sectiondef>
     <briefdescription>
-<para>Called when the GameMode of the player is changed. </para>
+<para>Called when the <ref refid="namespaceendstone_1a3185831693a75ff4595095c0fe568c2a" kindref="member">GameMode</ref> of the player is changed. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>

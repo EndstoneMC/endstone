@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="classendstone_1_1ActorDeathEvent" kind="class" language="C++" prot="public">
     <compoundname>endstone::ActorDeathEvent</compoundname>
     <basecompoundref refid="classendstone_1_1ActorEvent" prot="public" virt="non-virtual">endstone::ActorEvent&lt; Mob &gt;</basecompoundref>
@@ -29,7 +29,7 @@
         <name>ENDSTONE_EVENT</name>
         <qualifiedname>endstone::ActorDeathEvent::ENDSTONE_EVENT</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1ActorDeathEvent" kindref="compound">ActorDeathEvent</ref></type>
+          <type>ActorDeathEvent</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -61,7 +61,7 @@
         </inbodydescription>
         <location file="include/endstone/event/actor/actor_death_event.h" line="31" column="5" bodyfile="include/endstone/event/actor/actor_death_event.h" bodystart="31" bodyend="34"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ActorDeathEvent_1ac269e4dac094cf1275a1fe60302872ed" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1ActorDeathEvent_1ac269e4dac094cf1275a1fe60302872ed" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1DamageSource" kindref="compound">DamageSource</ref> &amp;</type>
         <definition>DamageSource &amp; endstone::ActorDeathEvent::getDamageSource</definition>
         <argsstring>() const</argsstring>
@@ -86,16 +86,16 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2">
-        <label>endstone::ActorEvent&lt; Mob &gt;</label>
-        <link refid="classendstone_1_1ActorEvent"/>
-        <childnode refid="3" relation="public-inheritance">
-        </childnode>
-      </node>
       <node id="1">
         <label>endstone::ActorDeathEvent</label>
         <link refid="classendstone_1_1ActorDeathEvent"/>
         <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::ActorEvent&lt; Mob &gt;</label>
+        <link refid="classendstone_1_1ActorEvent"/>
+        <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
       <node id="3">
@@ -110,16 +110,16 @@
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2">
-        <label>endstone::ActorEvent&lt; Mob &gt;</label>
-        <link refid="classendstone_1_1ActorEvent"/>
-        <childnode refid="3" relation="public-inheritance">
-        </childnode>
-      </node>
       <node id="1">
         <label>endstone::ActorDeathEvent</label>
         <link refid="classendstone_1_1ActorDeathEvent"/>
         <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::ActorEvent&lt; Mob &gt;</label>
+        <link refid="classendstone_1_1ActorEvent"/>
+        <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
       <node id="3">
