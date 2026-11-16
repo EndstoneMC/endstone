@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed the server crashing on startup on Windows when no display is connected.
+
 ## [0.11.16] - 2026-11-16
 
 ### Added
