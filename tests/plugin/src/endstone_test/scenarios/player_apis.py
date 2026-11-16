@@ -4,6 +4,7 @@ import uuid
 from endstone import Ability, GameMode
 from endstone.block import Side
 from endstone.boss import BarColor, BarFlag, BarStyle
+from endstone.command import CommandExecutor
 from endstone.event import BlockPlaceEvent, PlayerOpenSignEvent
 from endstone.form import (
     ActionForm,
@@ -727,6 +728,53 @@ async def commands(ctx: Context) -> None:
     player.is_op = False
     names = await listed()
     assert "gamemode" not in names and "testoptmsg" not in names, names
+
+
+class ArgsRecorder(CommandExecutor):
+    def __init__(self):
+        CommandExecutor.__init__(self)
+        self.seen: list[tuple[str, list[str]]] = []
+
+    def on_command(self, sender, command, args) -> bool:
+        self.seen.append((sender.name, list(args)))
+        return True
+
+
+OPTIONAL_MESSAGE = [
+    ("testoptmsg2 a", ["a"]),
+    ("testoptmsg2 a x", ["a", "x"]),
+    ("testoptmsg2 b y hello world", ["b", "y", "hello world"]),
+]
+
+
+@scenario("apis.commands.optional_message", budget=1500)
+async def commands_optional_message(ctx: Context) -> None:
+    command = ctx.plugin.get_command("testoptmsg2")
+    recorder = ArgsRecorder()
+    command.executor = recorder
+    try:
+        for line, args in OPTIONAL_MESSAGE:
+            result = ctx.command(line)
+            assert result.success, (line, result.output)
+            assert recorder.seen[-1][1] == args, (line, recorder.seen)
+
+        bot, player = await join(ctx, "ApOptMsg", op=True)
+        await ctx.ticks(20)
+        since = await mark(bot)
+        player.update_commands()
+        await settle(ctx, player, bot, since)
+        found = await wait_for(ctx, bot, "AvailableCommandsPacket", since, lambda f: len(f) >= 1, "the command list")
+        overloads = next(c["overloads"] for c in found[-1]["commands"] if c["name"] == "testoptmsg2")
+        shapes = sorted([(p["name"], p["optional"]) for p in o["params"]] for o in overloads)
+        assert shapes == [[("mode", False)], [("mode", False), ("action", False), ("msg", False)]], shapes
+
+        for line, args in OPTIONAL_MESSAGE:
+            count = len(recorder.seen)
+            await bot.call("local_player.run_command", f"/{line}")
+            await ctx.until(lambda: len(recorder.seen) > count, what=f"/{line} from ApOptMsg")
+            assert recorder.seen[-1] == ("ApOptMsg", args), (line, recorder.seen)
+    finally:
+        command.executor = None
 
 
 @scenario("apis.gamemode", budget=1500)

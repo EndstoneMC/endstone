@@ -252,6 +252,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed a NetherNet server on Linux refusing to start with its port in use when restarted right after stopping.
 - Fixed `ServerListPingEvent.address` being empty for a NetherNet server-list ping.
 - Fixed a cancelled `ServerListPingEvent` answering a NetherNet server-list ping with an error instead of not answering.
+- Fixed plugin commands with an optional argument before a message argument failing with "Command version mismatch" when the message is omitted (#559).
 
 #### Type annotations
 

@@ -51,6 +51,13 @@ class EndstoneTest(Plugin):
             "usages": ["/testoptmsg [msg: message]"],
             "permissions": ["endstone_test.command.testoptmsg"],
         },
+        "testoptmsg2": {
+            "description": "Test command with an optional argument before a message argument",
+            "usages": [
+                "/testoptmsg2 (a|b)<mode: EndstoneTestMsgMode> (x|y)[action: EndstoneTestMsgAction] [msg: message]"
+            ],
+            "permissions": ["endstone_test.command.testoptmsg2"],
+        },
     }
 
     permissions = {
@@ -60,6 +67,10 @@ class EndstoneTest(Plugin):
         },
         "endstone_test.command.testoptmsg": {
             "description": "Allow users to use the /testoptmsg command.",
+            "default": "op",
+        },
+        "endstone_test.command.testoptmsg2": {
+            "description": "Allow users to use the /testoptmsg2 command.",
             "default": "op",
         },
         "endstone_test.granted": {
