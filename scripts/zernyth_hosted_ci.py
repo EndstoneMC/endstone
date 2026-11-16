@@ -95,6 +95,9 @@ def prepare():
     home = Path(os.environ["CONAN_HOME"])
     (home / "profiles").mkdir(parents=True, exist_ok=True)
     shutil.copyfile(ROOT / "config/conan/windows-hosted.profile", home / "profiles/default")
+    # The pinned Funchook and Mojang RakNet recipes are provided by the
+    # repository's existing Endstone remote, alongside Conan Center.
+    shutil.copyfile(ROOT / ".conan2/remotes.json", home / "remotes.json")
     conan = shutil.which("conan")
     if not conan:
         raise RuntimeError("Pinned Conan installation is missing")
