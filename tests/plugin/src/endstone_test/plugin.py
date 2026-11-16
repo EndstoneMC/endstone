@@ -34,14 +34,25 @@ class EndstoneTest(Plugin):
                 "/test spawn <entity: entity_type>",
             ],
             "permissions": ["endstone_test.command.test"],
-        }
+        },
+        "testoptmsg2": {
+            "description": "Test command with an optional argument before a message argument",
+            "usages": [
+                "/testoptmsg2 (a|b)<mode: EndstoneTestMsgMode> (x|y)[action: EndstoneTestMsgAction] [msg: message]"
+            ],
+            "permissions": ["endstone_test.command.testoptmsg2"],
+        },
     }
 
     permissions = {
         "endstone_test.command.test": {
             "description": "Allow users to use the /test command.",
             "default": "op",
-        }
+        },
+        "endstone_test.command.testoptmsg2": {
+            "description": "Allow users to use the /testoptmsg2 command.",
+            "default": "op",
+        },
     }
 
     def __init__(self):

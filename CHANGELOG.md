@@ -33,6 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed the `ItemStack` constructor raising `RuntimeError` instead of `ValueError` for an amount outside 1 to 255.
 - Fixed `Skin.id` cutting the end off a skin id that does not end with the cape id.
 - Fixed NetherNet servers showing up in the LAN tab when `enable-lan-visibility` is `false` or the world's `LANBroadcast` flag is off.
+- Fixed plugin commands with an optional argument before a message argument failing with "Command version mismatch" when the message is omitted (#559).
 
 ## [0.11.15] - 2026-10-28
 

@@ -447,14 +447,23 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
                     break;  // early stop if any of the param in the usage is invalid
                 }
                 data.chained_subcommand_symbol = static_cast<int>(it->second);
-                if (parameter.type == "message") {
-                    data.is_optional = false;
-                }
             }
             param_data.push_back(data);
         }
 
         if (success) {
+            if (!parameters.empty() && !parameters.back().is_enum && parameters.back().type == "message") {
+                auto required = param_data;
+                for (auto &data : required) {
+                    data.is_optional = false;
+                }
+                for (std::size_t i = 0; i + 1 < param_data.size(); ++i) {
+                    if (param_data[i].is_optional) {
+                        pending_param_data.emplace_back(required.begin(), required.begin() + i);
+                    }
+                }
+                param_data = std::move(required);
+            }
             pending_param_data.push_back(param_data);
             created_enums.insert(created_enums.end(), usage_enums.begin(), usage_enums.end());
         }
