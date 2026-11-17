@@ -11,6 +11,7 @@ import socket
 import subprocess
 import sys
 import tempfile
+import time
 import zipfile
 from pathlib import Path
 from typing import Union
@@ -33,6 +34,13 @@ _SERVER_PROPERTY_OVERRIDES = {
 
 # NetworkStackLatencyPacket, left unbounded by the shipped packetlimitconfig.json.
 _PING_PACKET_ID = 115
+
+# A server restarted in place can inherit its predecessor's sockets on the NetherNet signaling port: the kernel keeps
+# a dead process's TCP sockets for up to a minute (a container restarted in the same network namespace sees exactly
+# this). Supervisors restart a process that exits at once, so give the port time to be released instead of turning
+# that drain into a restart loop.
+_SERVER_PORT_WAIT_SECONDS = 120.0
+_SERVER_PORT_RETRY_SECONDS = 1.0
 
 _COMMENTED_OUT_PROPERTY = re.compile(r"([A-Za-z0-9._-]+)=")
 
@@ -234,6 +242,9 @@ class Bootstrap:
     def _check_server_port(self) -> None:
         """
         Exits when the NetherNet signaling port is taken, which the Bedrock Dedicated Server does not report.
+
+        The port is given a short while to become free first: a server restarted in place can inherit its
+        predecessor's sockets on it, and exiting at once would restart-loop until they expire.
         """
         path = self.server_path / "server.properties"
         if not path.exists():
@@ -254,16 +265,29 @@ class Bootstrap:
             dualstack = socket.has_dualstack_ipv6()
             family = socket.AF_INET6 if dualstack else socket.AF_INET
 
-        try:
-            socket.create_server((host, port), family=family, dualstack_ipv6=dualstack).close()
-        except OSError as e:
-            if e.errno != errno.EADDRINUSE:
+        deadline = time.monotonic() + _SERVER_PORT_WAIT_SECONDS
+        waiting = False
+        while True:
+            try:
+                socket.create_server((host, port), family=family, dualstack_ipv6=dualstack).close()
                 return
-            self._logger.error(
-                f"Port [{port}] may be in use by another process. Free up port and re-run program or adjust "
-                "server.properties file to use alternate ports for server"
-            )
-            sys.exit(1)
+            except OSError as e:
+                if e.errno != errno.EADDRINUSE:
+                    return
+                remaining = deadline - time.monotonic()
+                if remaining <= 0:
+                    self._logger.error(
+                        f"Port [{port}] may be in use by another process. Free up port and re-run program or adjust "
+                        "server.properties file to use alternate ports for server"
+                    )
+                    sys.exit(1)
+                if not waiting:
+                    self._logger.warning(
+                        f"Port [{port}] is in use, waiting up to "
+                        f"{_SERVER_PORT_WAIT_SECONDS:.0f}s for it to be released..."
+                    )
+                    waiting = True
+                time.sleep(min(_SERVER_PORT_RETRY_SECONDS, remaining))
 
     def _prepare(self) -> None:
         # ensure the plugin folder exists

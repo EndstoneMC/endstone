@@ -1,6 +1,8 @@
 import importlib
 import logging
 import socket
+import threading
+import time
 
 import pytest
 
@@ -27,7 +29,12 @@ def occupied_port():
         yield server.getsockname()[1]
 
 
-def test_exits_when_nethernet_port_is_in_use(check_server_port, occupied_port, caplog):
+@pytest.fixture
+def no_wait(monkeypatch):
+    monkeypatch.setattr("endstone.cli.base._SERVER_PORT_WAIT_SECONDS", 0)
+
+
+def test_exits_when_nethernet_port_is_in_use(check_server_port, occupied_port, no_wait, caplog):
     with pytest.raises(SystemExit) as exc_info:
         check_server_port(f"server-port={occupied_port}\ntransport=nethernet\n")
 
@@ -35,7 +42,7 @@ def test_exits_when_nethernet_port_is_in_use(check_server_port, occupied_port, c
     assert f"Port [{occupied_port}] may be in use by another process." in caplog.text
 
 
-def test_exits_when_server_ip_port_is_in_use(check_server_port, caplog):
+def test_exits_when_server_ip_port_is_in_use(check_server_port, no_wait, caplog):
     with socket.create_server(("127.0.0.1", 0)) as server:
         port = server.getsockname()[1]
         with pytest.raises(SystemExit):
@@ -51,3 +58,35 @@ def test_starts_when_nethernet_port_is_free(check_server_port):
 
 def test_raknet_is_left_to_the_server(check_server_port, occupied_port):
     check_server_port(f"server-port={occupied_port}\ntransport=raknet\n")
+
+
+def test_waits_for_nethernet_port_to_be_released(check_server_port, monkeypatch, caplog):
+    monkeypatch.setattr("endstone.cli.base._SERVER_PORT_WAIT_SECONDS", 5)
+    monkeypatch.setattr("endstone.cli.base._SERVER_PORT_RETRY_SECONDS", 0.05)
+
+    dualstack = socket.has_dualstack_ipv6()
+    family = socket.AF_INET6 if dualstack else socket.AF_INET
+    with socket.create_server(("", 0), family=family, dualstack_ipv6=dualstack) as server:
+        port = server.getsockname()[1]
+        releaser = threading.Timer(0.3, server.close)
+        releaser.start()
+        try:
+            check_server_port(f"server-port={port}\ntransport=nethernet\n")
+        finally:
+            releaser.join()
+
+    assert f"Port [{port}] is in use, waiting" in caplog.text
+
+
+def test_gives_up_after_waiting_for_the_port(check_server_port, occupied_port, monkeypatch, caplog):
+    monkeypatch.setattr("endstone.cli.base._SERVER_PORT_WAIT_SECONDS", 0.3)
+    monkeypatch.setattr("endstone.cli.base._SERVER_PORT_RETRY_SECONDS", 0.05)
+
+    started = time.monotonic()
+    with pytest.raises(SystemExit) as exc_info:
+        check_server_port(f"server-port={occupied_port}\ntransport=nethernet\n")
+    elapsed = time.monotonic() - started
+
+    assert exc_info.value.code == 1
+    assert elapsed >= 0.3
+    assert f"Port [{occupied_port}] may be in use by another process." in caplog.text
