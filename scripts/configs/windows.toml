@@ -488,6 +488,30 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 55 ? 44 0F 29 4D ? 44 0F 29 45 ? 0F 29 7D ? 0F 29 75 ? 48 C7 45 ? ? ? ? ? 4C 89 C7"
 
 [[signatures]]
+name = "?_addEnumValuesInternal@CommandRegistry@@QEAA?AVSymbol@1@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV?$vector@U?$pair@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_K@std@@V?$allocator@U?$pair@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_K@std@@@2@@4@V?$typeid_t@VCommandRegistry@@@Bedrock@@P81@EBA_NPEAXAEBUParseToken@1@AEBVCommandOrigin@@HAEAV34@AEAV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@4@@Z@Z"
+relative = false
+extra = 0
+# The string-taking typed overload of CommandRegistry::_addEnumValuesInternal (name, vector<pair<string, u64>>,
+# typeid, ParseFunction): addSoftTerminal per value, then forwards the (terminal, value) pairs to the sibling
+# overload taking vector<pair<u64, u64>>. NOT the string-only overload the public addEnumValues(name,
+# vector<string>) forwards to, and NOT the pair<u64,u64> sibling - the two typed overloads have near-identical
+# prologues; hooking the sibling with this declaration reads 40-byte pair<string,u64> elements as 16-byte
+# pair<u64,u64> and crashes.
+# 1. find bytes "enum name: <{}>\0" (ContentLog scope); among the functions referencing it, this is the one
+#    whose body calls the pair<u64,u64> sibling (which _Find-s mEnumLookup and on a hit calls
+#    addEnumValuesToExisting with the existing enum index, returning index | 0x300000; on a miss constructs a
+#    new Enum {name, type, parse, values} in mEnums / mEnumLookup / type_lookup_)
+# 2. the addEnumValues<DimensionType, MinecraftCommandsAnon::DimensionConverter> instantiation tail-calls this
+#    overload after widening each DimensionType to u64; MinecraftCommands::initCoreEnums and
+#    registerSharedClientServerEnums call that instantiation with the enum name "Dimension"
+# uniqueness: matches exactly once in the 1.26.65 .text (0x53bc00); references "enum name: <{}>" (0xb2eeea7)
+# and calls the pair<u64,u64> sibling at 0x531470, whose addEnumValuesToExisting callee sits at 0x53c1c0
+# name: reconstructed public, so the key is the public mangling (QEAA), not BDS's private one (AEAA)
+# function prologue through the 5-argument shuffle (this/name/values/typeid; parse arrives on the stack);
+# mov r13,r8 (4D 89 C5) distinguishes it from the sibling's mov r12,r8 (4D 89 C4)
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 75 ? 48 C7 45 ? FE FF FF FF 4D 89 CE 4D 89 C5"
+
+[[signatures]]
 name = "?addEnumValues@CommandRegistry@@QEAAHAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@3@@Z"
 relative = false
 extra = 0

@@ -148,3 +148,10 @@ int CommandRegistry::addEnumValues(const std::string &name, const std::vector<st
 {
     return BEDROCK_CALL(&CommandRegistry::addEnumValues, this, name, values);
 }
+
+CommandRegistry::Symbol CommandRegistry::_addEnumValuesInternal(
+    const std::string &name, const std::vector<std::pair<std::string, std::uint64_t>> &values,
+    Bedrock::typeid_t<CommandRegistry> type, const ParseFunction parse)
+{
+    return BEDROCK_CALL(&CommandRegistry::_addEnumValuesInternal, this, name, values, type, parse);
+}

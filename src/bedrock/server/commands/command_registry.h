@@ -363,6 +363,16 @@ public:
     template <typename CommandType>
     const Overload *registerOverload(const char *name, CommandVersion version,
                                      std::vector<CommandParameterData> params);
+
+    // Endstone: private -> public
+    Symbol _addEnumValuesInternal(const std::string &name,
+                                  const std::vector<std::pair<std::string, std::uint64_t>> &values,
+                                  Bedrock::typeid_t<CommandRegistry> type, ParseFunction parse);
+    [[nodiscard]] const Enum *getEnum(const std::string &name) const
+    {
+        const auto it = enum_lookup_.find(name);
+        return it == enum_lookup_.end() ? nullptr : &enums_[it->second];
+    }
     // Endstone ends
 
 private:

@@ -24,6 +24,8 @@
 #include "bedrock/network/packet/dimension_data_packet.h"
 #include "bedrock/network/packet_sender.h"
 #include "bedrock/platform/uuid.h"
+#include "bedrock/server/commands/command_registry.h"
+#include "bedrock/server/commands/minecraft_commands.h"
 #include "bedrock/world/level/dimension/dimension.h"
 #include "bedrock/world/level/dimension/dimension_definition_group.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
@@ -33,11 +35,14 @@
 #include "bedrock/world/level/storage/game_rule_utils.h"
 #include "bedrock/world/level/storage/game_rules.h"
 #include "endstone/core/actor/actor.h"
+#include "endstone/core/command/command_map.h"
 #include "endstone/core/game_rule.h"
 #include "endstone/core/inventory/recipe_data.h"
 #include "endstone/core/level/dimension.h"
+#include "endstone/core/server.h"
 #include "endstone/event/level/dimension_load_event.h"
 #include "endstone/level/dimension.h"
+#include "endstone/player.h"
 #include "endstone/plugin/plugin_manager.h"
 
 namespace endstone::core {
@@ -160,11 +165,23 @@ Nullable<Dimension> EndstoneLevel::createDimension(const DimensionCreator &creat
         .pack_id = mce::UUID::EMPTY,
         .default_biome = "minecraft:ocean",
     };
-    if (dimension_manager.serverRegisterCustomDimension(name, definition)) {
+    if (const auto type = dimension_manager.serverRegisterCustomDimension(name, definition)) {
         auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::DimensionDataPacket);
         auto &pk = static_cast<DimensionDataPacket &>(*packet);
         pk.payload.dimension_definition_group = dimension_manager.getDimensionDefinitionGroup();
         level_.getPacketSender()->sendBroadcast(*packet);
+        // Vanilla builds the "Dimension" command enum once, in MinecraftCommands::initCoreEnums during
+        // ServerInstance::_postLevelInitialization; every Endstone plugin registers dimensions later, so extend
+        // the enum here or `execute in <id>` fails to parse. Mirrors initCoreEnums' custom-dimension pass,
+        // reusing the existing enum's typeid and parse function.
+        auto &registry = server_.getCommandMap().getHandle().getRegistry();
+        if (const auto *dimension_enum = registry.getEnum("Dimension")) {
+            registry._addEnumValuesInternal("Dimension", {{name, static_cast<std::uint64_t>(type->value)}},
+                                            dimension_enum->type, dimension_enum->parse);
+            for (const auto &player : server_.getOnlinePlayers()) {
+                player->updateCommands();
+            }
+        }
     }
     const auto dimension = dimension_manager.getOrCreateDimension(name);
     if (!dimension.isSet()) {
