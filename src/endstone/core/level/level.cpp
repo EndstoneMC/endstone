@@ -170,10 +170,6 @@ Nullable<Dimension> EndstoneLevel::createDimension(const DimensionCreator &creat
         auto &pk = static_cast<DimensionDataPacket &>(*packet);
         pk.payload.dimension_definition_group = dimension_manager.getDimensionDefinitionGroup();
         level_.getPacketSender()->sendBroadcast(*packet);
-        // Vanilla builds the "Dimension" command enum once, in MinecraftCommands::initCoreEnums during
-        // ServerInstance::_postLevelInitialization; every Endstone plugin registers dimensions later, so extend
-        // the enum here or `execute in <id>` fails to parse. Mirrors initCoreEnums' custom-dimension pass,
-        // reusing the existing enum's typeid and parse function.
         auto &registry = server_.getCommandMap().getHandle().getRegistry();
         if (const auto *dimension_enum = registry.getEnum("Dimension")) {
             registry._addEnumValuesInternal("Dimension", {{name, static_cast<std::uint64_t>(type->value)}},

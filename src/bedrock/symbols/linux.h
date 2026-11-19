@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 130> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 131> symbols = {{
     {"BlockState::StateListNode::mHead", 267362512},
     {"ChunkBlenderFactory::getOrCreateChunkBlender::cache_cap", 86840808},
     {"DBChunkStorage::_hasChunk::cache_cap", 225498426},
@@ -66,6 +66,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 130> symbo
     {"_ZN15CommandRegistry13addEnumValuesERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_6vectorIS6_NS4_IS6_EEEE", 168685872},
     {"_ZN15CommandRegistry13registerAliasENSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEES6_", 168698208},
     {"_ZN15CommandRegistry15registerCommandERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEEPKc22CommandPermissionLevel11CommandFlagSC_", 168689760},
+    {"_ZN15CommandRegistry22_addEnumValuesInternalERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_6vectorINS0_4pairIS6_mEENS4_ISB_EEEEN7Bedrock8typeid_tIS_EEMS_KFbPvRKNS_10ParseTokenERK13CommandOriginiRS6_RNS9_IS6_NS4_IS6_EEEEE", 168726720},
     {"_ZN15CommandRegistry24registerOverloadInternalERNS_9SignatureERNS_8OverloadE", 168702352},
     {"_ZNK15CommandRegistry14symbolToStringENS_6SymbolE", 168435408},
     {"_ZNK15CommandRegistry26serializeAvailableCommandsEv", 168761264},

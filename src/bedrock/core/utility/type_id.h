@@ -25,7 +25,17 @@ using TypeIdStorage = std::uint16_t;
 template <typename T>
 class typeid_t {  // NOLINT(*-identifier-naming)
 public:
+    // Endstone
+    constexpr typeid_t(TypeIdStorage id = 0) : id(id) {}
+    constexpr typeid_t(const typeid_t &rhs) : id(rhs.id) {}
+    typeid_t &operator=(const typeid_t &rhs)
+    {
+        id = rhs.id;
+        return *this;
+    }
+
     TypeIdStorage id;
 };
+BEDROCK_STATIC_ASSERT_SIZE(typeid_t<void>, 2, 2);
 
 }  // namespace Bedrock
