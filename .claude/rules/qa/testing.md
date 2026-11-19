@@ -40,6 +40,7 @@ paths:
 - Prove "nothing happened" with a barrier packet the client must receive, as `barrier()` in `scenarios/player_actors.py` does.
 - Observe events with `ctx.capture(EventClass, where, cancel=, mutate=)` and `ctx.release` it at the end; never register a listener in a test.
 - Keep scenario state that must survive `/reload` in `ctx.stash`, and keep harness setup idempotent.
+- Place a fixture that must survive `/reload` outside the scenario's plot; the reloaded driver restarts at plot 0 and clears it.
 - Drive player-triggered behaviour with `ctx.bot(name)` and `bot.call("dotted.method")` under a unique bot name; add the missing bot action rather than waiving a hard path.
 - Make bot changes mirror the real client's class and method names, handler chain and order, and prove a bot defect from the packet the bot sent against the real client; do not patch a symptom with a flag.
 - Find the bot action table in `endstone-client`'s `docs/DESIGN.md`; a pickup scenario needs the bot to send `TakeItemActorPacket`.

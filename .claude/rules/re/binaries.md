@@ -90,6 +90,7 @@ paths:
 - Take member names from the registration and offsets from the ctor; registration `lea` order is wire order, not always declaration order.
 - The Script API's custom-content name rule is cereal's `NamespaceConstraint` regex plus `Util::validateIdentifier`, not a character class.
 - `createPacket`'s `make_shared` gives the default-member map and the initial `SerializationMode`; a packet with a hand-written `write` branch starts at `SideBySide_LogOnMismatch` (1), not `CerealOnly`.
+- A packet from the `createPacket` factory carries the receive-side `handler_`; a packet BDS builds on the stack leaves it null.
 - `cerealizer<T>::bind` gives the wire field list.
 - The documented wire type gives the C++ enum width: a 1-byte enum is `uint8` and a 4-byte enum is `uvarint32`; confirm with the `cereal::internal::TypeSchema<T>` string.
 - The `make_shared` zero-init ends at the payload dsize with a trailing unaligned store; an odd end offset means the last member is 1 byte wide.
@@ -150,10 +151,13 @@ paths:
 - Read a `Bedrock::type_id<Ctx, T>` id at runtime, never from the source or a past build: ids are lazy function-local statics from a counter starting at 0, handed out in the order the context's first consumer asks, which changes between builds; build a `CommandParameterData` with that id, never a literal such as `{0}`.
 - Read a command parameter's grammar, packet and `createCommand` symbol as `enum_or_postfix_symbol`, else `chained_subcommand_symbol`, else `parse_rule->symbol`; `createCommand` runs `parse_override`, else `parse_rule->parse`, on the stored `signature.overloads`, so `registerOverloadInternal` on a copy changes nothing.
 - Never anchor a pattern on a hard-enum `ParseRuleFor<T>::instance`: it is `{null, 0}` on Windows and a return-0 stub on Linux; the parse comes from the enum's own function through `registerOverloadInternal`.
+- A quoted command word reaches parse as an Id token whose span keeps the quotes, so test the span's first byte to tell it was quoted.
 - Keep the basic-type `ParseRuleFor<T>::instance` entries as data: only `parse<std::string>` is public, the selector and position parses are ICF-folded on Windows, and `registerOverloadInternal` pointer-compares `parse_rule` with `ParseRuleFor<std::unique_ptr<Command>>::instance`.
 - Anchor a basic-type `CommandRegistry::ParseRuleFor<T>::instance` on its initializer's `mov dword [rip+instance+8], <Symbol>` (Windows, one leaf stub per type) or `+16` (Linux, one static initializer); the `CommandSelector<Actor>` and `CommandSelector<Player>` instances share `0x100008`, so include the neighbouring store.
 - Reach the `Bedrock::type_id<CommandRegistry, std::string>` id through `registerOverloadInternal`'s Enum-branch `cmp ax, word [rip+id]`; the other ids load in identical inlined blocks that no pattern isolates.
 - Search an aggregate literal as `movabs` immediates (`48 B8 imm64`), not as contiguous bytes in `.rdata`.
+- BDS's command parser predicts on a token's type before its enum value, so a keyword or enum beside an Id-class parameter at one position is unreachable for any word that lexes as an identifier.
+- `buildPredictTable` logs no conflict and the later entry overwrites a duplicate key; `buildRules` ends an overload at its first optional parameter and never skips it.
 
 ## Checking a resolved offset
 

@@ -33,6 +33,7 @@ paths:
 - Add no symbol for a read-only accessor, or for convenience over an existing reconstruction.
 - Patch code bytes only through a `BytePatch` entry in `hook::install()` with an expected-byte guard.
 - Do not ship verification-only scaffolding inside the runtime.
+- Do not rely on the vanilla command enums inside the `ServerInstance::initializeServer` detour: `MinecraftCommands::initCoreEnums` runs on the init `TaskGroup`, off the server thread, and is complete only by `onServerThreadStarted`.
 
 ## Hook context
 
@@ -64,4 +65,5 @@ paths:
 - Do not add packet plumbing to `EndstonePlayer`.
 - Model a packet handler on Paper's `PlayerConnection`: resolve the sender lazily, fire the events, then forward or drop.
 - Prefer splicing an Endstone class into BDS's object chain (`EndstoneBatchedNetworkPeer` in `core/network/`, spliced in `network_system.cpp` on `onNewIncomingConnection`) over hooking methods that run per packet.
+- Never free a Command from MinecraftCommands' compiled map: NPC actions and entity-event responses cache compileCommand results without limit.
 - Resolve the executable base from /proc/self/exe, never from the first parsed line of /proc/self/maps; named anonymous mappings such as [anon:mimalloc] parse as modules.

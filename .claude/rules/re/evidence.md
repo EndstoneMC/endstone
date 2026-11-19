@@ -13,6 +13,7 @@ paths:
 - Read a PDB type layout with `llvm-pdbutil pretty -classes -class-definitions=layout -include-types='^Name$'`, batching several types and budgeting minutes per run on a multi-GB PDB.
 - Take member offsets, `sizeof`, bodies of server-only enums, vtable contents and whether a function has an out-of-line body from the binary or PDB.
 - A public mangled name reveals a nested type that became global, a difference MSVC encodes and Itanium does not.
+- A private `CommandRegistry` helper can lack a Windows PDB public; take its name from the BDS headers.
 - Never use DbgHelp for type layouts; it resolves the name then fails every type query, so use it for addresses only.
 - Diff the `EndstoneMC/protocol-docs` branches (one per release) before opening a binary for packet work. A packet present there is cerealised.
 - Date a packet's cereal migration by decompiling its `write` in the old and new binaries; cereal display strings are present in both eras, so grepping for them proves nothing.

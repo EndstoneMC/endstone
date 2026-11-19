@@ -41,9 +41,14 @@ Ruff config is `pyproject.toml`.
 - The `endstone_stubs` CMake target regenerates them whenever `_python` relinks, and a stub that shows an old docstring means stubgen ran against a stale `_python`; commit the result.
 - Pass `-DENDSTONE_GENERATE_STUBS=OFF` in every build tree but one per checkout.
 - Put stub content with no pybind counterpart in `src/endstone/python/stubgen.pat`; patterns are `re.search`, so anchor each.
+- Bind a numeric default longer than 10 characters as `py::arg_v(name, value, "...")`; ruff's PYI054 turns it into `...` in the stub.
 - Annotations in `STAGED_SOURCES` are fully qualified.
 - Type a setter that accepts `None` and every `Nullable` return as `X | None`; registry `get()` returns `X | None`.
 - Port `src/endstone/python/stubgen.py` changes line for line from nanobind's `stubgen.py`, deviating only where griffe differs from live-object introspection.
 - Verify stubgen changes by regenerating against the installed `_python` with `PYTHONSAFEPATH=1` and diffing against the tracked `.pyi`.
 - Never use an editable install.
 - Keep files LF; CRLF makes ruff report every line on Windows.
+- Before binding a property on the native `Plugin`, check no Python-side plugin metadata attribute (`commands`, `permissions`, ...) uses the name; a subclass's class attribute shadows the native property.
+- Register every bound type before any signature that names it, not only bases before subclasses; otherwise stubgen fails on the raw C++ name.
+- Never give a trampoline an override whose name is bound as a property; `get_override` finds the property and recurses.
+- Add every class with a trampoline to the harness recorder's `DISPATCHED`; wrapping its bound method makes `get_override` find the wrapper and recurse.
