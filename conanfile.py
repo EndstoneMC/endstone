@@ -36,10 +36,6 @@ class EndstoneRecipe(ConanFile):
     def _min_cppstd(self):
         return 20
 
-    @property
-    def _with_devtools(self):
-        return self.settings.os == "Windows"
-
     def config_options(self):
         if self.settings.os == "Windows":
             del self.options.fPIC
@@ -81,10 +77,6 @@ class EndstoneRecipe(ConanFile):
             self.requires("libelf/0.8.13")
             self.requires("mimalloc/3.5.1")
 
-        if self._with_devtools:
-            self.requires("glfw/3.4")
-            self.requires("imgui/1.92.8-docking")
-
     def build_requirements(self):
         self.test_requires("gtest/1.17.0")
 
@@ -110,8 +102,6 @@ class EndstoneRecipe(ConanFile):
         tc = CMakeToolchain(self)
         if self.version:
             tc.cache_variables["ENDSTONE_VERSION_FULL"] = str(self.version)
-        if self._with_devtools:
-            tc.variables["ENDSTONE_ENABLE_DEVTOOLS"] = True
         sentry_bin = os.path.join(self.dependencies["sentry-native"].package_folder, "bin")
         tc.variables["SENTRY_NATIVE_BIN_DIR"] = sentry_bin.replace("\\", "/")
         if self.settings.os == "Linux":

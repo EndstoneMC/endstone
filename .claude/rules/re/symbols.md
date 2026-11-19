@@ -45,7 +45,7 @@ paths:
 - Use the full-DWARF Linux debug build of an older version to recover bodies of tiny header methods inlined in stripped builds.
 - Confirm a static-initialised data entry such as `ParseRuleFor<T>::instance` in the full-DWARF Linux database through the named `CommandRegistry::parse<T>` its initializer loads.
 - Delete an entry when its last consumer is gone: a live hook, a `BEDROCK_CALL` in a `src/bedrock` definition, or a `BEDROCK_VAR`.
-- Keep an entry used only by devtools; every entry must resolve on every build.
+- Make every entry resolve on every build.
 - Audit liveness against the runtime DLL's export table, never `ENDSTONE_HOOK` markers in headers.
 - When a function is inlined on one platform only and hooked, relocate the hook on that platform to the out-of-line caller and reconstruct the trigger condition.
 - Re-read a mutable BDS global before writing a symbol constant into it.
@@ -101,3 +101,5 @@ paths:
 - A changed `__PRETTY_FUNCTION__` return type confirms identity and marks the config's mangled name stale.
 - A rare `NonOwnerPointer<X>::_get()` instantiation identifies a function by what it touches.
 - Check an MSVC mangling on Linux with `clang++ --target=x86_64-pc-windows-msvc -nostdinc` over stub std templates, and read it back with `llvm-nm-22`.
+- Search a symbol's use by `BEDROCK_CTOR` and class-scope member pointers such as `&NameIdStore::contains` too, not only the qualified name.
+- Drop an entry only together with its `BEDROCK_CALL` definition in `src/bedrock`; keep the declaration.

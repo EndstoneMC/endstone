@@ -19,7 +19,6 @@
 #include <entt/locator/locator.hpp>
 #include <pybind11/embed.h>
 
-#include "endstone/core/devtools/devtools.h"
 #include "endstone/core/logger_factory.h"
 #include "endstone/runtime/hook.h"
 
@@ -40,12 +39,6 @@ ServerExitCode DedicatedServer::start(const std::string &session_id,
 
     // Release the GIL
     py::gil_scoped_release release{};
-
-#ifdef ENDSTONE_WITH_DEVTOOLS
-    // DevTools
-    std::thread thread(&endstone::core::devtools::render);
-    thread.detach();
-#endif
 
     // Start the dedicated server (call origin)
     entt::locator<DedicatedServer *>::emplace(this);

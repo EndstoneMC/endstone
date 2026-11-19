@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 147> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 146> symbols = {{
     {"Bedrock::type_id<CommandRegistry, std::string>::id", 265556960},
     {"BlockState::StateListNode::mHead", 267362512},
     {"ChunkBlenderFactory::getOrCreateChunkBlender::cache_cap", 86840808},
@@ -99,8 +99,6 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 147> symbo
     {"_ZN20CraftHandlerCrafting18_handleCraftActionERK31ItemStackRequestActionCraftBase", 211840112},
     // CraftHandlerEnchant
     {"_ZN19CraftHandlerEnchant18_handleCraftActionERK31ItemStackRequestActionCraftBase", 211849312},
-    // CraftingDataPacketPayload
-    {"_ZN25CraftingDataPacketPayload11fromRecipesERK7Recipesb", 143082000},
     // DedicatedServer
     {"_ZN15DedicatedServer5startERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKN7Bedrock19ActivationArgumentsE", 77018512},
     // Dimension

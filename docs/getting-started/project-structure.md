@@ -28,11 +28,6 @@ The [GitHub repository](https://github.com/EndstoneMC/endstone) contains the fol
     - These hooks are necessary because the original software is compiled into binary, and updates to Minecraft
       frequently break compatibility with existing code.
 
-- **Endstone DevTools** (`src/endstone_devtools`)
-    - This provides a Graphical User Interface (GUI) that allows advanced users to dump useful data from the vanilla
-      software for other purposes, such as third-party server software.
-    - It is currently enabled only on Windows and requires OpenGL functionality to be available on the system.
-
 ## Python Project
 
 Endstone is released as a Python package on PyPI, which encapsulates several utilities written in pure Python, in

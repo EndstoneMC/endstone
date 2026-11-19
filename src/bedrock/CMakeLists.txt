@@ -45,7 +45,6 @@ add_library(bedrock STATIC
         network/nethernet_server_locator.cpp
         network/network_identifier.cpp
         network/packet/types/world/actor/serialized_abilities_data.cpp
-        network/packet/crafting_data_packet.cpp
         network/packet/inventory_slot_packet.cpp
         network/network_system.cpp
         network/packet.cpp

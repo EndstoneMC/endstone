@@ -44,7 +44,6 @@
 #include "endstone/core/command/defaults/version_command.h"
 #include "endstone/core/command/minecraft_command_adapter.h"
 #include "endstone/core/command/minecraft_command_wrapper.h"
-#include "endstone/core/devtools/devtools_command.h"
 #include "endstone/core/permissions/default_permissions.h"
 #include "endstone/core/server.h"
 #include "endstone/event/command/unknown_command_event.h"
@@ -277,9 +276,6 @@ void EndstoneCommandMap::setDefaultCommands()
     registerCommand<SeedCommand>();
     registerCommand<StatusCommand>();
     registerCommand<VersionCommand>();
-#ifdef ENDSTONE_WITH_DEVTOOLS
-    registerCommand<DevToolsCommand>();
-#endif
 }
 
 void EndstoneCommandMap::setPluginNames()

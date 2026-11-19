@@ -957,20 +957,6 @@ extra = 0
 pattern = "55 41 56 56 57 53 48 83 EC 40 48 8D 6C 24 40 48 C7 45 F8 FE FF FF FF 4C 89 C7 49 89 D6 48 89 CB E8 ? ? ? ? 0F 57 C0 41 0F 11 06"
 
 [[signatures]]
-name = "?fromRecipes@CraftingDataPacketPayload@@SA?AU1@AEBVRecipes@@_N@Z"
-relative = false
-extra = 0
-# 1. find bytes "43 72 61 66 74 69 6E 67 44 61 74 61 50 61 63 6B 65 74 00" = "CraftingDataPacket\0" (unique)
-#    -> its code xref is getName@CraftingDataPacket (tiny virtual), whose address is a slot in the
-#    CraftingDataPacket vtable
-# 2. the vtable xrefs give the ctor and dtor only - this builder no longer touches them; it returns the
-#    payload by sret and never stores the vtable ptr
-# 3. instead reach it from the Recipes walk: it is the large function constructing the payload's 11
-#    vectors in sequence, tail-called from the CraftingDataPacket(CraftingDataPacketPayload) ctor
-# 4. decompile to confirm it is the builder and not that ctor - both take the payload type
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 44 88 85 ? ? ? ? 48 89 D6 48 89 CB"
-
-[[signatures]]
 name = "?start@DedicatedServer@@QEAA?AW4ServerExitCode@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVActivationArguments@Bedrock@@@Z"
 relative = false
 extra = 0

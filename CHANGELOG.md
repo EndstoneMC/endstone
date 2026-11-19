@@ -180,6 +180,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+- The devtools window and `/devtools` command, superseded by [bedrock-data](https://github.com/EndstoneMC/bedrock-data).
+
 #### Events
 
 - **BREAKING**: The deprecated `event.cancelled` property. Use `event.is_cancelled` or `event.cancel()`.

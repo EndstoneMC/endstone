@@ -258,8 +258,6 @@ endstone/
 │       │   └── bedrock_hooks/  # Hook files for BDS subsystems
 │       └── python/           # Python bindings via pybind11
 ├── endstone/                  # Python package (CLI, plugin loader, metrics)
-├── plugins/                   # First-party Python plugins
-│   └── devtools/             # Registry inspector (Dear ImGui)
 ├── tests/                     # Test files
 │   ├── bedrock/              # C++ tests for bedrock layer
 │   ├── plugin/               # Runtime test plugin (pip install -e tests/plugin)

@@ -17,7 +17,6 @@ paths:
 - Do not guard the build type with `if(NOT CMAKE_BUILD_TYPE)`; pass the type or pin it in a preset.
 - Pass the version to CMake as a cache variable (`ENDSTONE_VERSION_FULL`); the numeric version and `ENDSTONE_API_VERSION` come from `project(endstone VERSION ...)` in `include/CMakeLists.txt`, which equals the release version, and the wheel version comes from the tag via setuptools-scm.
 - Activate the Conan build environment in the shell before `cmake --build`; without it `ninja` reports `no work to do` and the toolchain is not found.
-- Take imgui backend sources from the Conan package folder (`imgui_PACKAGE_FOLDER_<CONFIG>`), never from vendored copies.
 - Run Conan from the repo root so `.conanrc` selects the project cache.
 - Never configure a sibling build directory such as `build-ninja/`; delete a stale tree and reconfigure it in place.
 - Cap builds at 16 jobs (`CMAKE_BUILD_PARALLEL_LEVEL=16`, `tools.build:jobs=16`) at below-normal priority, one build at a time.

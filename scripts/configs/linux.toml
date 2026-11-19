@@ -951,18 +951,6 @@ extra = 0
 pattern = "41 57 41 56 41 54 53 48 83 EC 18 49 89 D7 49 89 F4 48 89 FB 48 89 F7 E8 ? ? ? ? 0F 57 C0 0F 11 03"
 
 [[signatures]]
-name = "_ZN25CraftingDataPacketPayload11fromRecipesERK7Recipesb"
-relative = false
-extra = 0
-# 1. CraftingDataPacket's vtable is RTTI-named `_ZTV18CraftingDataPacket`
-# 2. its address point (`+ 0x10`) xrefs give the ctor and dtor only - this builder no longer touches the
-#    vtable; it returns the payload by sret
-# 3. instead reach it from the Recipes walk: it is the large function constructing the payload's 11
-#    vectors in sequence, tail-called from the CraftingDataPacket(CraftingDataPacketPayload) ctor
-# 4. decompile to confirm it is the builder and not that ctor - both take the payload type
-pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 89 94 24 ? ? ? ? 48 89 F3"
-
-[[signatures]]
 name = "_ZN15DedicatedServer5startERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKN7Bedrock19ActivationArgumentsE"
 relative = false
 extra = 0
