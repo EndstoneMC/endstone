@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <cstddef>
 #include <functional>
 #include <memory>
 #include <system_error>
@@ -22,8 +23,15 @@ namespace Bedrock::Threading {
 
 class AsyncBase : public std::enable_shared_from_this<AsyncBase> {
 public:
-    virtual ~AsyncBase() = 0;
-    virtual void getAsyncDiagnosticInfo() const = 0;
+    AsyncBase() = default;
+    virtual ~AsyncBase() = default;
+
+    struct DiagnosticInfo {
+        std::size_t pending_count;
+        std::size_t total_count;
+        bool has_pending_count;
+    };
+    virtual DiagnosticInfo getAsyncDiagnosticInfo() const { return {}; }
 };
 
 enum AsyncStatus : unsigned int {
@@ -35,7 +43,7 @@ enum AsyncStatus : unsigned int {
 
 class IAsyncInfo {
 public:
-    virtual ~IAsyncInfo() = 0;
+    virtual ~IAsyncInfo() = default;
     [[nodiscard]] virtual AsyncStatus getStatus() const = 0;
     [[nodiscard]] virtual std::error_code getError() const = 0;
     virtual void cancel() = 0;

@@ -16,6 +16,10 @@
 
 namespace NetherNet {
 
+enum ESessionError : unsigned int {
+    eSessionErrorNone = 0,
+};
+
 enum ESendType : unsigned int {
     eSendTypeUnreliable = 0,
     eSendTypeReliable = 1,

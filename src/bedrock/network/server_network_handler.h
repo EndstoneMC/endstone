@@ -48,6 +48,10 @@
 #include "bedrock/world/level/level_listener.h"
 #include "bedrock/world/level/player_connection_connector.h"
 
+namespace NetherNet {
+class TransportFactoryImpl;
+}
+
 class ServerNetworkHandler : public Bedrock::Threading::EnableQueueForMainThread,
                              public NetEventCallback,
                              public LevelListener,
@@ -87,6 +91,7 @@ private:
     friend class endstone::core::EndstoneServer;
     friend class NetworkConnection;
     friend class NetworkSystem;
+    friend class NetherNet::TransportFactoryImpl;
     ENDSTONE_HOOK virtual std::optional<PlayerAuthenticationInfo> _validateLoginPacket(const NetworkIdentifier &source,
                                                                                        const LoginPacket &packet);
     // TODO: do not hook this method, listen for packet and then try get from sub player lists

@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Removed
+
+- The `network.stun-servers` setting in `endstone.toml`. NetherNet servers now advertise the address players connect to.
+
+### Fixed
+
+- Fixed a NetherNet server on Linux refusing to start with its port in use when restarted right after stopping.
+- Fixed `ServerListPingEvent.address` being empty for a NetherNet server-list ping.
+- Fixed a cancelled `ServerListPingEvent` answering a NetherNet server-list ping with an error instead of not answering.
+
 ## [0.11.16] - 2026-11-16
 
 ### Added

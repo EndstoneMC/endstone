@@ -14,10 +14,23 @@
 
 #pragma once
 
+#include <string>
+
+#include "bedrock/deps/nethernet/network_id.h"
+
 namespace NetherNet {
 
+namespace SignalingEvents {
+struct MessageReceived {
+    NetherNet::NetworkID mFrom;
+    std::string mMessage;
+    std::string mMessageId;
+};
+}  // namespace SignalingEvents
+
 struct ISignalingEventHandler {
-    virtual ~ISignalingEventHandler();
+    virtual ~ISignalingEventHandler() = default;
+    virtual void OnSignalingEvent(const SignalingEvents::MessageReceived &) = 0;
 };
 
 struct ILanEventHandler {
