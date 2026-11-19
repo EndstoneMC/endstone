@@ -6,7 +6,7 @@ paths:
 # Testing
 
 - Put offline value types and pure logic in `tests/*.py` (pytest against the installed wheel) or `tests/*.cpp` (GTest `endstone_test` target); anything needing BDS goes in `tests/plugin`.
-- Run pytest as `.venv/bin/pytest` so it imports the wheel installed in the repo venv.
+- Run pytest as `.venv/bin/pytest` so it imports the wheel installed in the repo venv; `python -m pytest` puts the source tree's `endstone/` first and fails on `endstone._python`.
 - `endstone_test` does not link the runtime, so a test cannot use a `src/bedrock` `.cpp` containing `BEDROCK_CALL` code; test the inline or header-only parts.
 - Add each new GTest `.cpp` to the `add_executable(endstone_test ...)` list in `tests/CMakeLists.txt`.
 - Name GTest suites `<Thing>Test.<BehaviourSentence>`.

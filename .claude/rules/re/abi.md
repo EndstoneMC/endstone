@@ -37,3 +37,4 @@ paths:
 - Diff the old and new prologue's argument marshalling to catch an ABI change behind an unchanged mangled name: an sret shifts `this` from `rdi` to `rsi`, an extra xmm spill is a new float parameter, a reference parameter moves register.
 - MSVC gives entt's `compressed_pair<std::vector, empty>` 32 bytes, so an entt `dense_set` or `dense_map` is 72 bytes on Windows and 56 on Linux.
 - Check a by-value parameter's triviality in BDS, not only the return type's; a `lea r8,[tmp]` at a BDS call site means BDS passes it by invisible reference.
+- After making a reconstructed type non-trivial for calls, check the by-value uses of every struct that embeds it; they become non-trivial too.
