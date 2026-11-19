@@ -530,7 +530,6 @@ void EndstoneServer::loadPlugins()
 void EndstoneServer::enablePlugins(PluginLoadOrder type)
 {
     if (type == PluginLoadOrder::PostWorld) {
-        command_map_->setPluginNames();
         DefaultPermissions::registerCorePermissions();
         MinecraftDefaultPermissions::registerCorePermissions();
     }
@@ -736,8 +735,10 @@ void EndstoneServer::reload()
     getPluginManager().callEvent(event);
 
     // sync commands
-    for (const auto &player : getOnlinePlayers()) {
-        player->updateCommands();
+    if (!command_map_->flush()) {
+        for (const auto &player : getOnlinePlayers()) {
+            player->updateCommands();
+        }
     }
 }
 
@@ -1027,6 +1028,7 @@ void EndstoneServer::tick(std::uint64_t current_tick, const std::function<void()
         p.cast<EndstonePlayer>()->checkOpStatus();
         p.cast<EndstonePlayer>()->checkLevelChange();
     }
+    command_map_->flush();
     tick_pending_ = true;
 }
 

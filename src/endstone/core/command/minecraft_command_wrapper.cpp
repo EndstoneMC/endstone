@@ -70,6 +70,7 @@ bool MinecraftCommandWrapper::dispatch(const NotNull<CommandSender> &sender, con
         return false;
     }
 
+    EndstoneServer::getInstance().getCommandMap().flush();
     // compile command
     auto *command = minecraft_commands_.compileCommand(  //
         command_line, *command_origin, CurrentCmdVersion::Latest,

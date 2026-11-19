@@ -5,20 +5,40 @@ Classes relating to handling specialized non-chat player input.
 import collections.abc
 import typing
 
-from endstone import Server
+from endstone import Player, Server
+from endstone.actor import Actor
 from endstone.block import Block
+from endstone.brigadier import ArgumentType, LiteralArgumentBuilder, RequiredArgumentBuilder
 from endstone.lang import Translatable
+from endstone.level import Location
 from endstone.permissions import Permissible
+from endstone.util import Vector
 
 __all__ = [
+    "ActorArgumentType",
+    "ActorSelectorArgumentResolver",
+    "ArgumentTypes",
+    "BasicCommand",
     "BlockCommandSender",
+    "BlockPositionArgumentType",
+    "BlockPositionResolver",
     "Command",
     "CommandExecutor",
     "CommandMap",
     "CommandSender",
     "CommandSenderWrapper",
+    "CommandSourceStack",
+    "Commands",
     "ConsoleCommandSender",
+    "DimensionArgumentType",
+    "FinePositionArgumentType",
+    "FinePositionResolver",
+    "PlayerArgumentType",
+    "PlayerSelectorArgumentResolver",
     "ProxiedCommandSender",
+    "ResourceArgumentType",
+    "SoftEnum",
+    "SoftEnumArgumentType",
 ]
 
 class CommandSender(Permissible):
@@ -51,6 +71,102 @@ class CommandSender(Permissible):
     def name(self) -> str:
         """
         The name of this command sender.
+        """
+
+class CommandSourceStack:
+    """
+    The source of a command run through a Brigadier command tree, carrying who ran it and where.
+    """
+    @property
+    def sender(self) -> CommandSender:
+        """
+        The command sender that triggered the command.
+        """
+
+    @property
+    def executor(self) -> Actor | None:
+        """
+        The actor that executes the command, which differs from the sender after `/execute as`, or `None`.
+        """
+
+    @property
+    def location(self) -> Location:
+        """
+        A copy of the location where the command is executed.
+        """
+
+class PlayerSelectorArgumentResolver:
+    """
+    Resolves a player selector argument to the players it selects.
+    """
+    def resolve(self, source: CommandSourceStack) -> list[Player]:
+        """
+        Resolves the argument with the given command source stack.
+
+        Args:
+            source: The source of the command.
+
+        Returns:
+            The players the selector selects.
+
+        Raises:
+            CommandSyntaxException: If the argument takes one player and the selector selects none or more than one.
+            ValueError: If the source was not created by the server.
+        """
+
+class ActorSelectorArgumentResolver:
+    """
+    Resolves an actor selector argument to the actors it selects.
+    """
+    def resolve(self, source: CommandSourceStack) -> list[Actor]:
+        """
+        Resolves the argument with the given command source stack.
+
+        Args:
+            source: The source of the command.
+
+        Returns:
+            The actors the selector selects.
+
+        Raises:
+            CommandSyntaxException: If the argument takes one actor and the selector selects none or more than one.
+            ValueError: If the source was not created by the server.
+        """
+
+class BlockPositionResolver:
+    """
+    Resolves a block position argument, with relative and local coordinates taken from the source of the command.
+    """
+    def resolve(self, source: CommandSourceStack) -> Vector:
+        """
+        Resolves the argument with the given command source stack.
+
+        Args:
+            source: The source of the command.
+
+        Returns:
+            The block position.
+
+        Raises:
+            ValueError: If the source was not created by the server.
+        """
+
+class FinePositionResolver:
+    """
+    Resolves a fine position argument, with relative and local coordinates taken from the source of the command.
+    """
+    def resolve(self, source: CommandSourceStack) -> Vector:
+        """
+        Resolves the argument with the given command source stack.
+
+        Args:
+            source: The source of the command.
+
+        Returns:
+            The position.
+
+        Raises:
+            ValueError: If the source was not created by the server.
         """
 
 class BlockCommandSender(CommandSender):
@@ -217,6 +333,259 @@ class Command:
             `True` if the unregistration was successful, `False` otherwise.
         """
 
+class SoftEnum:
+    """
+    Represents a soft enum, a set of command completions that can change while the server runs.
+    """
+    @property
+    def name(self) -> str:
+        """
+        The identifier the client sees, unique across the server.
+        """
+
+    @property
+    def values(self) -> list[str]:
+        """
+        The completions this soft enum offers.
+        """
+
+    def set_values(self, values: list[str]) -> None:
+        """
+        Replaces the values of this soft enum and updates every client's completion at once.
+
+        Args:
+            values: The new values.
+
+        Raises:
+            ValueError: If this soft enum is read-only or a value is empty or holds whitespace.
+            RuntimeError: If the plugin that owned this soft enum has removed it.
+        """
+
+    def add_values(self, values: list[str]) -> None:
+        """
+        Adds values to this soft enum and updates every client's completion at once.
+
+        Args:
+            values: The values to add.
+
+        Raises:
+            ValueError: If this soft enum is read-only or a value is empty or holds whitespace.
+            RuntimeError: If the plugin that owned this soft enum has removed it.
+        """
+
+    def remove_values(self, values: list[str]) -> None:
+        """
+        Removes values from this soft enum and updates every client's completion at once.
+
+        Args:
+            values: The values to remove.
+
+        Raises:
+            ValueError: If this soft enum is read-only or a value is empty or holds whitespace.
+            RuntimeError: If the plugin that owned this soft enum has removed it.
+        """
+
+class BasicCommand:
+    """
+    A command that takes its arguments as words, registered through `Commands.register_command`.
+    """
+    def __init__(self) -> None: ...
+    def execute(self, source: CommandSourceStack, args: list[str]) -> None:
+        """
+        Executes the command with the given source and arguments.
+
+        A `CommandSyntaxException` raised here is sent to the sender as an error.
+
+        Args:
+            source: The source of the command.
+            args: The words typed after the label.
+        """
+
+    def can_use(self, sender: CommandSender) -> bool:
+        """
+        Checks whether a command sender can receive and run the root command.
+
+        Args:
+            sender: The command sender.
+
+        Returns:
+            `True` if the sender has `permission()` or no permission is set.
+        """
+
+    def permission(self) -> str | None:
+        """
+        Returns the permission for the root command used in `can_use` by default.
+
+        Returns:
+            The permission, or `None` if none is required.
+        """
+
+class SoftEnumArgumentType(ArgumentType):
+    """
+    An argument completed from a soft enum, whose value is the word typed.
+    """
+    @property
+    def name(self) -> str:
+        """
+        The name of the soft enum this argument completes from.
+        """
+
+class PlayerArgumentType(ArgumentType):
+    """
+    A player selector or a player name, resolved through a `PlayerSelectorArgumentResolver`.
+    """
+
+class ActorArgumentType(ArgumentType):
+    """
+    An actor selector or a player name, resolved through an `ActorSelectorArgumentResolver`.
+    """
+
+class BlockPositionArgumentType(ArgumentType):
+    """
+    A block position of three integer, relative or local coordinates, resolved through a `BlockPositionResolver`.
+    """
+
+class FinePositionArgumentType(ArgumentType):
+    """
+    A position of three decimal, relative or local coordinates, resolved through a `FinePositionResolver`.
+    """
+
+class DimensionArgumentType(ArgumentType):
+    """
+    A dimension of the level, completed from the server's dimension names, including those plugins create.
+    """
+
+class ResourceArgumentType(ArgumentType):
+    """
+    An entry of a registry, completed from the server's names for it.
+    """
+
+class ArgumentTypes:
+    """
+    The argument types Endstone adds to Brigadier's own.
+    """
+    @staticmethod
+    def player() -> PlayerArgumentType:
+        """
+        A selector or player name for exactly one player, resolved through a `PlayerSelectorArgumentResolver`.
+
+        Returns:
+            The argument type.
+        """
+
+    @staticmethod
+    def players() -> PlayerArgumentType:
+        """
+        A selector or player name for any number of players, resolved through a `PlayerSelectorArgumentResolver`.
+
+        Returns:
+            The argument type.
+        """
+
+    @staticmethod
+    def actor() -> ActorArgumentType:
+        """
+        A selector or player name for exactly one actor, resolved through an `ActorSelectorArgumentResolver`.
+
+        Returns:
+            The argument type.
+        """
+
+    @staticmethod
+    def actors() -> ActorArgumentType:
+        """
+        A selector or player name for any number of actors, resolved through an `ActorSelectorArgumentResolver`.
+
+        Returns:
+            The argument type.
+        """
+
+    @staticmethod
+    def block_position() -> BlockPositionArgumentType:
+        """
+        A block position, resolved through a `BlockPositionResolver`.
+
+        Returns:
+            The argument type.
+        """
+
+    @staticmethod
+    def fine_position() -> FinePositionArgumentType:
+        """
+        A fine position, resolved through a `FinePositionResolver`.
+
+        Returns:
+            The argument type.
+        """
+
+    @staticmethod
+    def dimension() -> DimensionArgumentType:
+        """
+        A dimension, whose value is a `Dimension`.
+
+        Returns:
+            The argument type.
+        """
+
+    @staticmethod
+    def resource(type: type) -> ResourceArgumentType:
+        """
+        An entry of a registry, whose value is an instance of the registry type.
+
+        Args:
+            type: The registry type, which is `BlockType`, `ItemType` or `ActorType`.
+
+        Returns:
+            The argument type.
+
+        Raises:
+            ValueError: If the type is not `BlockType`, `ItemType` or `ActorType`.
+        """
+
+    @staticmethod
+    def soft_enum(name: str) -> SoftEnumArgumentType:
+        """
+        An argument completed from a soft enum, whose value is the word typed as a string.
+
+        The server accepts any word, so the command checks the value itself. The name must be a registered soft enum.
+        Soft enums are named for their content in CamelCase, as the server names its own.
+
+        Args:
+            name: The name of a soft enum a plugin, Endstone or the server owns.
+
+        Returns:
+            The argument type.
+        """
+
+class Commands:
+    """
+    The registrar for a plugin's commands and soft enums.
+    """
+    @staticmethod
+    def literal(name: str) -> LiteralArgumentBuilder:
+        """
+        Creates a literal node builder, the keyword a command or a subcommand starts with.
+
+        Args:
+            name: The keyword.
+
+        Returns:
+            The builder.
+        """
+
+    @staticmethod
+    def argument(name: str, type: ArgumentType) -> RequiredArgumentBuilder:
+        """
+        Creates an argument node builder.
+
+        Args:
+            name: The name the command reads the argument back by.
+            type: The type of the argument.
+
+        Returns:
+            The builder.
+        """
+
 class CommandMap:
     """
     Represents a command map that manages all commands of the Server.
@@ -274,6 +643,19 @@ class CommandMap:
 
         Returns:
             The command with the specified name, `None` if a command with that label doesn't exist.
+        """
+
+    def get_soft_enum(self, name: str) -> SoftEnum | None:
+        """
+        Gets the soft enum registered to the specified name, whether a plugin, Endstone or the server owns it.
+
+        The mutators of a soft enum the server or Endstone owns raise `ValueError`.
+
+        Args:
+            name: The name of the soft enum to retrieve.
+
+        Returns:
+            The soft enum with the specified name, `None` if no soft enum has that name.
         """
 
 class CommandExecutor:

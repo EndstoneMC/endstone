@@ -29,6 +29,7 @@ __getattr__, __dir__, __all__ = lazy.attach(
             "ban",
             "block",
             "boss",
+            "brigadier",
             "command",
             "damage",
             "enchantments",

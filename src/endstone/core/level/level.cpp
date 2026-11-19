@@ -24,8 +24,6 @@
 #include "bedrock/network/packet/dimension_data_packet.h"
 #include "bedrock/network/packet_sender.h"
 #include "bedrock/platform/uuid.h"
-#include "bedrock/server/commands/command_registry.h"
-#include "bedrock/server/commands/minecraft_commands.h"
 #include "bedrock/world/level/dimension/dimension.h"
 #include "bedrock/world/level/dimension/dimension_definition_group.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
@@ -42,7 +40,6 @@
 #include "endstone/core/server.h"
 #include "endstone/event/level/dimension_load_event.h"
 #include "endstone/level/dimension.h"
-#include "endstone/player.h"
 #include "endstone/plugin/plugin_manager.h"
 
 namespace endstone::core {
@@ -170,14 +167,7 @@ Nullable<Dimension> EndstoneLevel::createDimension(const DimensionCreator &creat
         auto &pk = static_cast<DimensionDataPacket &>(*packet);
         pk.payload.dimension_definition_group = dimension_manager.getDimensionDefinitionGroup();
         level_.getPacketSender()->sendBroadcast(*packet);
-        auto &registry = server_.getCommandMap().getHandle().getRegistry();
-        if (const auto *dimension_enum = registry.getEnum("Dimension")) {
-            registry._addEnumValuesInternal("Dimension", {{name, static_cast<std::uint64_t>(type->value)}},
-                                            dimension_enum->type, dimension_enum->parse);
-            for (const auto &player : server_.getOnlinePlayers()) {
-                player->updateCommands();
-            }
-        }
+        server_.getCommandMap().addDimension(name, static_cast<std::uint64_t>(type->value));
     }
     const auto dimension = dimension_manager.getOrCreateDimension(name);
     if (!dimension.isSet()) {

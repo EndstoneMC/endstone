@@ -25,6 +25,7 @@
 #include <utility>
 #include <vector>
 
+#include "endstone/command/brigadier/commands.h"
 #include "endstone/command/command_executor.h"
 #include "endstone/logger.h"
 #include "endstone/permissions/permission.h"
@@ -127,6 +128,13 @@ public:
     }
 
     /**
+     * Gets the registrar for this plugin's commands and soft enums.
+     *
+     * @return the registrar of this plugin
+     */
+    [[nodiscard]] NotNull<Commands> getCommands() const { return commands_; }
+
+    /**
      * Returns the folder that the plugin data's files are located in.
      * The folder may not yet exist.
      *
@@ -196,6 +204,7 @@ private:
     Server *server_{nullptr};
     Logger *logger_{nullptr};
     std::filesystem::path data_folder_;
+    std::shared_ptr<Commands> commands_;
 };
 
 namespace detail {

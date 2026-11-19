@@ -199,6 +199,9 @@ In Endstone, there are two basic kinds of parameters:
 | **Mandatory** | This parameter must be provided               | `<name: type>` |
 | **Optional**  | This parameter is optional and can be omitted | `[name: type]` |
 
+An optional parameter followed by a mandatory one registers both forms: `/home [list] <name: str>` accepts
+`/home spawn` and `/home list spawn`. A usage can have at most 6 such optional parameters.
+
 Let's change our code to add an **optional** parameter `msg` with `message` type. Based on the table above, the syntax
 should be `[msg: message]`. Let's add it to our code.
 
@@ -331,3 +334,275 @@ followed by the parameter kind, name and type.
     In this example, the parameter is named `action` and has a **user-defined enum** type `HomeAction`. 
     When using the command, the user must select one of the specified action from the set: `add`, `list`, or `del`.
 
+
+The type of a parameter can also be the name of a [soft enum](#soft-enums), as in `<warp: WarpNames>`.
+
+## Register a command tree
+
+Usage strings describe a command as text. To describe it as a tree of literals and arguments, as Paper's Brigadier
+command API does, register it through `Commands`, the registrar every plugin owns. The usage-string commands above
+keep working, and nothing here replaces them.
+
+The registrar is `getCommands()` in C++. In Python its methods are on the plugin itself, as `register_command` and
+`register_soft_enum`. Register in `onEnable`, so that `/reload` registers again.
+
+Let's build `/greet`, which has a subcommand `/greet to <player>` and a free-form `/greet say <text>`.
+
+=== ":fontawesome-brands-python: Python"
+
+    ``` python title="src/endstone_my_plugin/my_plugin.py" linenums="1"
+    from endstone.brigadier import CommandContext, StringArgumentType
+    from endstone.command import Commands
+    from endstone.plugin import Plugin
+
+    class MyPlugin(Plugin):
+        api_version = "{{ git.short_tag[1:].rsplit('.', 1)[0] }}"
+
+        def on_enable(self) -> None:
+            node = (
+                Commands.literal("greet")
+                .then(
+                    Commands.literal("to").then(
+                        Commands.argument("name", StringArgumentType.word()).executes(self.greet_to)
+                    )
+                )
+                .then(
+                    Commands.literal("say")
+                    .requires(lambda source: source.sender.has_permission("my_plugin.command.greet.say"))
+                    .then(Commands.argument("text", StringArgumentType.greedy_string()).executes(self.greet_say))
+                )
+                .build()
+            )
+            self.register_command(node, "Greet someone.", ["hi"])
+
+        def greet_to(self, context: CommandContext) -> int:
+            name = context.get_argument("name")
+            context.source.sender.send_message(f"Hello, {name}!")
+            return 1
+
+        def greet_say(self, context: CommandContext) -> int:
+            context.source.sender.send_message(context.get_argument("text"))
+            return 1
+    ```
+
+=== ":simple-cplusplus: C++"
+
+    ``` c++ title="include/my_plugin.h" linenums="1"
+    #include <endstone/endstone.hpp>
+
+    class MyPlugin : public endstone::Plugin {
+    public:
+        void onEnable() override
+        {
+            using endstone::Commands;
+            using endstone::brigadier::StringArgumentType;
+
+            auto node =
+                Commands::literal("greet")
+                    .then(Commands::literal("to").then(
+                        Commands::argument("name", StringArgumentType::word())
+                            .executes([](const auto &context) {
+                                const auto &name = context.template getArgument<std::string>("name");
+                                context.getSource()->getSender()->sendMessage("Hello, " + name + "!");
+                                return 1;
+                            })))
+                    .then(Commands::literal("say")
+                              .requires_([](const endstone::CommandSource &source) {
+                                  return source->getSender()->hasPermission("my_plugin.command.greet.say");
+                              })
+                              .then(Commands::argument("text", StringArgumentType::greedyString())
+                                        .executes([](const auto &context) {
+                                            context.getSource()->getSender()->sendMessage(
+                                                context.template getArgument<std::string>("text"));
+                                            return 1;
+                                        })))
+                    .build();
+            getCommands()->registerCommand(node, "Greet someone.", {"hi"});
+        }
+
+        // ...
+    };
+    ```
+
+The pieces are:
+
+- `Commands.literal` starts a keyword and `Commands.argument` adds a named, typed argument.
+- `StringArgumentType` has three forms: `word` reads one word, `string` reads a word or a `"quoted phrase"`, and
+  `greedy_string` (`greedyString` in C++) reads everything to the end of the line.
+- `executes` runs a handler on the node, and a result above `0` counts as success. A node without a handler is only a
+  step towards one.
+- `requires` (`requires_` in C++, as `requires` is a C++ keyword) hides the node from players who fail it, and the
+  server checks it again when the command runs. The handler reads the sender through `source.sender`.
+- `register_command` returns the labels that registered, including the aliases and `plugin:label` forms. A label that
+  another command holds is skipped, and the command stays reachable as `plugin:label`.
+
+A keyword can sit beside an argument at the same position, as in Brigadier: `/warp list` runs the `list` keyword and
+`/warp spawn` runs `<name>`. A tree that Bedrock cannot express is refused when you register it, with
+`std::invalid_argument` in C++ and `ValueError` in Python, and the message names the clash, such as a string argument
+beside a player argument at the same position, or a keyword followed by more arguments beside a greedy string.
+
+## Soft enums
+
+A soft enum is a list of completions that the client suggests while a player types, and that you can change while the
+server runs. Create one through the registrar, and use it as an argument type.
+
+=== ":fontawesome-brands-python: Python"
+
+    ``` python title="src/endstone_my_plugin/my_plugin.py" linenums="1"
+    from endstone.brigadier import CommandContext
+    from endstone.command import ArgumentTypes, Commands
+    from endstone.plugin import Plugin
+
+    class MyPlugin(Plugin):
+        api_version = "{{ git.short_tag[1:].rsplit('.', 1)[0] }}"
+
+        def on_enable(self) -> None:
+            self.warps = self.register_soft_enum("WarpNames", ["spawn", "market"])
+            node = (
+                Commands.literal("warp")
+                .then(Commands.argument("name", ArgumentTypes.soft_enum("WarpNames")).executes(self.warp))
+                .build()
+            )
+            self.register_command(node, "Teleport to a warp.", ["w"])
+
+        def warp(self, context: CommandContext) -> int:
+            name = context.get_argument("name")
+            if name not in self.warps.values:
+                context.source.sender.send_error_message(f"Unknown warp: {name}")
+                return 0
+
+            # ...
+            return 1
+
+        def add_warp(self, name: str) -> None:
+            self.warps.add_values([name])
+    ```
+
+=== ":simple-cplusplus: C++"
+
+    ``` c++ title="include/my_plugin.h" linenums="1"
+    #include <endstone/endstone.hpp>
+
+    class MyPlugin : public endstone::Plugin {
+    public:
+        void onEnable() override
+        {
+            using endstone::ArgumentTypes;
+            using endstone::Commands;
+
+            warps_ = getCommands()->registerSoftEnum("WarpNames", {"spawn", "market"}).get();
+            auto node = Commands::literal("warp")
+                            .then(Commands::argument("name", ArgumentTypes::softEnum("WarpNames"))
+                                      .executes([this](const auto &context) {
+                                          const auto &name = context.template getArgument<std::string>("name");
+                                          const auto values = warps_->getValues();
+                                          if (std::find(values.begin(), values.end(), name) == values.end()) {
+                                              context.getSource()->getSender()->sendErrorMessage("Unknown warp: " + name);
+                                              return 0;
+                                          }
+
+                                          // ...
+                                          return 1;
+                                      }))
+                            .build();
+            getCommands()->registerCommand(node, "Teleport to a warp.", {"w"});
+        }
+
+        void addWarp(const std::string &name) { warps_->addValues({name}); }
+
+        // ...
+
+    private:
+        std::shared_ptr<endstone::SoftEnum> warps_;
+    };
+    ```
+
+- `setValues`, `addValues` and `removeValues` (`set_values`, `add_values`, `remove_values` in Python) update the
+  completions of every player at once, without resending the command list. They can be called from any thread.
+- A soft enum only completes. The server accepts any word a player types, so the handler has to validate it, as
+  `warp` does above.
+- The name is unique across the server and shows up in the client, so name it for its content in CamelCase, such as
+  `WarpNames`. A soft enum stays registered while its plugin is disabled and is removed on `/reload`.
+- Soft enums the server owns, such as `ScoreboardObjectives`, can be used as an argument type but cannot be changed.
+
+## Take arguments as words with BasicCommand
+
+If you only want the words the player typed, as `args` in `onCommand`, subclass `BasicCommand` and register it with a
+label. The client shows it as `/label <args: message>`.
+
+=== ":fontawesome-brands-python: Python"
+
+    ``` python title="src/endstone_my_plugin/my_plugin.py" linenums="1"
+    from endstone.command import BasicCommand, CommandSourceStack
+    from endstone.plugin import Plugin
+
+    class EchoCommand(BasicCommand):
+        def execute(self, source: CommandSourceStack, args: list[str]) -> None:
+            source.sender.send_message(" ".join(args))
+
+        def permission(self) -> str | None:
+            return "my_plugin.command.echo"
+
+    class MyPlugin(Plugin):
+        api_version = "{{ git.short_tag[1:].rsplit('.', 1)[0] }}"
+
+        def on_enable(self) -> None:
+            self.register_command("echo", "Repeat a message.", [], EchoCommand())
+    ```
+
+=== ":simple-cplusplus: C++"
+
+    ``` c++ title="include/my_plugin.h" linenums="1"
+    #include <endstone/endstone.hpp>
+
+    class EchoCommand : public endstone::BasicCommand {
+    public:
+        void execute(const endstone::CommandSource &source, const std::vector<std::string> &args) override
+        {
+            std::string message;
+            for (const auto &arg : args) {
+                message += arg + " ";
+            }
+            source->getSender()->sendMessage(message);
+        }
+
+        [[nodiscard]] std::optional<std::string> permission() const override { return "my_plugin.command.echo"; }
+    };
+
+    class MyPlugin : public endstone::Plugin {
+    public:
+        void onEnable() override
+        {
+            getCommands()->registerCommand("echo", "Repeat a message.", {}, std::make_shared<EchoCommand>());
+        }
+
+        // ...
+    };
+    ```
+
+`permission` is optional. A sender without it does not see the command and cannot run it. Throwing a
+`brigadier::CommandSyntaxException` from `execute` sends its message to the sender as an error.
+
+## Migrate usage strings to a tree
+
+| Usage            | Tree                                                      |
+|------------------|-----------------------------------------------------------|
+| `(a\|b)`         | two literals, `Commands.literal("a")` and `Commands.literal("b")` |
+| `[x: T]`         | an argument under a node that also `executes`             |
+| `<m: message>`   | `StringArgumentType.greedy_string()`                      |
+| `<w: str>`       | `StringArgumentType.word()`, or `string()` to allow quotes |
+| `<w: WarpNames>` | `ArgumentTypes.soft_enum("WarpNames")`                    |
+| `<n: int>`       | `IntegerArgumentType.integer()`, or `integer(1, 64)` to bound it |
+| `<x: float>`     | `DoubleArgumentType.double_arg()`, or `FloatArgumentType.float_arg()` |
+| `<b: bool>`      | `BoolArgumentType.bool()`                                 |
+| `<t: target>`    | `ArgumentTypes.actors()`, or `actor()` for exactly one    |
+| `<p: player>`    | `ArgumentTypes.players()`, or `player()` for exactly one  |
+| `<p: block_pos>` | `ArgumentTypes.block_position()`                          |
+| `<p: pos>`       | `ArgumentTypes.fine_position()`                           |
+
+A bounded number refuses a value outside its range with Brigadier's message, such as
+`Integer must not be more than 64, found 65`, before the command runs. In C++ the names are
+`IntegerArgumentType::integer`, `FloatArgumentType::floatArg`, `DoubleArgumentType::doubleArg` and
+`BoolArgumentType::bool_`, in `endstone::brigadier`.
+
+The `json` and `block_states` types have no tree argument yet. Until then, keep those in a usage string.

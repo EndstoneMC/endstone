@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 144> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 145> symbols = {{
     {"Bedrock::type_id<CommandRegistry, std::string>::id", 265556960},
     {"BlockState::StateListNode::mHead", 267362512},
     {"ChunkBlenderFactory::getOrCreateChunkBlender::cache_cap", 86840808},
@@ -73,6 +73,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 144> symbo
     {"_ZNK7Command3runERK13CommandOriginR13CommandOutput", 168438768},
     // CommandOriginLoader
     {"_ZN19CommandOriginLoader4loadERK11CompoundTagR11ServerLevel", 168506880},
+    // CommandPosition
+    {"_ZNK15CommandPosition11getPositionEiRK13CommandOriginRK4Vec3", 168455616},
     // CommandRegistry
     {"_ZN15CommandRegistry11addSoftEnumERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEENS0_6vectorIS6_NS4_IS6_EEEE", 168686992},
     {"_ZN15CommandRegistry13addEnumValuesERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_6vectorIS6_NS4_IS6_EEEE", 168685872},

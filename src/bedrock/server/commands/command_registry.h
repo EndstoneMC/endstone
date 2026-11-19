@@ -48,7 +48,6 @@ class CommandRunStats;
 namespace endstone::core {
 class CommandPermissions;
 class EndstoneCommandMap;
-class EndstoneLevel;
 class EndstonePlayer;
 class MinecraftCommandPermissions;
 }  // namespace endstone::core
@@ -434,7 +433,6 @@ public:
     // Endstone begins
     friend class endstone::core::CommandPermissions;
     friend class endstone::core::EndstoneCommandMap;
-    friend class endstone::core::EndstoneLevel;
     friend class endstone::core::EndstonePlayer;
     friend class endstone::core::MinecraftCommandPermissions;
     [[nodiscard]] std::string describe(const Signature &signature, const Overload &overload) const
@@ -455,12 +453,6 @@ public:
     template <typename CommandType>
     const Overload *registerOverload(const char *name, CommandVersion version,
                                      std::vector<CommandParameterData> params);
-
-    [[nodiscard]] const Enum *getEnum(const std::string &name) const
-    {
-        const auto it = enum_lookup_.find(name);
-        return it == enum_lookup_.end() ? nullptr : &enums_[it->second];
-    }
 
     template <typename T>
     static const ParamParseRule *getParseRule();

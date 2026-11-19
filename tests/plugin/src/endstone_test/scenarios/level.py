@@ -1,6 +1,8 @@
 import json
 import sys
+import uuid
 
+from endstone.command import Commands
 from endstone.event import DimensionLoadEvent
 from endstone.level import Dimension, DimensionCreator, Location
 
@@ -16,6 +18,7 @@ from endstone_test.scenarios.commands import available
 from endstone_test.scenarios.player_apis import join
 
 RUNTIME_REALM = "endstone_test:runtime_realm"
+FLUSH_REALM = "endstone_test:flush_realm"
 PERSIST_MARKER = "persist_realm.json"
 
 
@@ -131,6 +134,35 @@ async def create_dimension_at_runtime(ctx: Context) -> None:
         timeout=100,
         what=f"the block the player placed through execute in {RUNTIME_REALM}",
     )
+
+
+@scenario("level.runtime_dimension_survives_flush", budget=400)
+async def runtime_dimension_survives_flush(ctx: Context) -> None:
+    created = ctx.server.create_dimension(DimensionCreator(FLUSH_REALM))
+    assert created is not None, "create_dimension returned None after startup"
+    assert ctx.command(f"execute in {FLUSH_REALM} run say before").success
+    label = f"endstone_test_flush_{uuid.uuid4().hex[:8]}"
+    labels = ctx.plugin.register_command(
+        Commands.literal(label).executes(lambda context: 1).build(),
+        "Forces a command map flush.",
+        [],
+    )
+    assert label in labels, labels
+    assert ctx.command(label).success
+    result = ctx.command(f"execute in {FLUSH_REALM} run say after")
+    assert result.success, result.output
+    bot, player = await join(ctx, "LvFlushDim", op=True)
+    await ctx.ticks(20)
+    packet = await available(ctx, bot, player)
+    dimensions = next(
+        (
+            [packet["enum_values"][v] for v in e["values"]]
+            for e in packet["enums"]
+            if e["name"] == "Dimension"
+        ),
+        [],
+    )
+    assert dimensions.count(FLUSH_REALM) == 1, dimensions
 
 
 @scenario("level.create_dimension_reload_noop", budget=1500)

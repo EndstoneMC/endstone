@@ -15,8 +15,9 @@
 #include "endstone/core/permissions/default_permissions.h"
 
 #include <format>
+#include <string>
 
-#include "bedrock/server/server_instance.h"
+#include "endstone/core/command/command_map.h"
 
 namespace endstone::core {
 NotNull<Permission> DefaultPermissions::registerPermission(NotNull<Permission> perm)
@@ -76,16 +77,14 @@ NotNull<Permission> CommandPermissions::registerPermission(std::string_view name
                                                            std::string_view desc, PermissionDefault def,
                                                            const NotNull<Permission> &parent)
 {
-    const auto &server = EndstoneServer::getInstance();
-    const auto &registry = server.getServer().getMinecraft()->getCommands().getRegistry();
-    const auto &signature = *registry.findCommand(std::string(cmd));
-    if (signature.permission_level >= CommandPermissionLevel::Internal) {
+    const auto level = EndstoneServer::getInstance().getCommandMap().getPermissionLevel(std::string(cmd));
+    if (level >= CommandPermissionLevel::Internal) {
         def = PermissionDefault::False;
     }
-    else if (signature.permission_level >= CommandPermissionLevel::Host) {
+    else if (level >= CommandPermissionLevel::Host) {
         def = PermissionDefault::Console;
     }
-    else if (signature.permission_level > CommandPermissionLevel::Any) {
+    else if (level > CommandPermissionLevel::Any) {
         def = PermissionDefault::Operator;
     }
     return DefaultPermissions::registerPermission(name, desc, def, parent);
@@ -158,8 +157,7 @@ NotNull<Permission> MinecraftCommandPermissions::registerPermissions(const NotNu
     CommandPermissions::registerPermission(PREFIX + "tell", "tell",
                                            "Allows the user to privately message another player.", commands);
     const auto &server = EndstoneServer::getInstance();
-    const auto &registry = server.getServer().getMinecraft()->getCommands().getRegistry();
-    for (const auto &[name, signature] : registry.signatures_) {
+    for (const auto &name : server.getCommandMap().getVanillaCommandNames()) {
         auto command = server.getCommandMap().getCommand(name);
         if (!command) {
             server.getLogger().error("Unable to register permissions for command '{}' as it could not be found in the "
@@ -168,13 +166,12 @@ NotNull<Permission> MinecraftCommandPermissions::registerPermissions(const NotNu
             continue;
         }
         auto permissions = command->getPermissions();
-        auto perm = PREFIX + signature.name;
+        auto perm = PREFIX + name;
         if (permissions.size() != 1 || permissions.at(0) != perm) {
             continue;
         }
         CommandPermissions::registerPermission(
-            perm, signature.name,
-            std::format("Allows the user to use the /{} command provided by mojang.", signature.name), commands);
+            perm, name, std::format("Allows the user to use the /{} command provided by mojang.", name), commands);
     }
     commands->recalculatePermissibles();
     return commands;

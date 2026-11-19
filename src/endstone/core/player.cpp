@@ -17,8 +17,10 @@
 #include <RakPeerInterface.h>
 
 #include <algorithm>
+#include <cstddef>
 #include <cstdint>
 #include <memory>
+#include <optional>
 #include <stdexcept>
 #include <string>
 #include <string_view>
@@ -26,6 +28,7 @@
 #include <unordered_set>
 #include <utility>
 #include <variant>
+#include <vector>
 
 #include <magic_enum/magic_enum.hpp>
 #include <nlohmann/json.hpp>
@@ -62,6 +65,9 @@
 #include "endstone/core/ability.h"
 #include "endstone/core/base64.h"
 #include "endstone/core/block/block_actor_state.h"
+#include "endstone/core/command/command_source_stack.h"
+#include "endstone/core/command/commands.h"
+#include "endstone/core/command/compiler/command_compiler.h"
 #include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/form/form_codec.h"
 #include "endstone/core/game_mode.h"
@@ -98,6 +104,7 @@
 #include "endstone/form/action_form.h"
 #include "endstone/form/message_form.h"
 #include "endstone/plugin/plugin.h"
+#include "endstone/plugin/plugin_manager.h"
 
 namespace endstone::core {
 
@@ -802,7 +809,10 @@ void EndstonePlayer::updateCommands() const
         })) {
         return;
     }
-    const auto &command_map = server_.getCommandMap();
+    auto &command_map = server_.getCommandMap();
+    if (command_map.flush()) {
+        return;
+    }
     const auto &registry = command_map.getHandle().getRegistry();
     AvailableCommandsPacket packet = registry.serializeAvailableCommands();
 
@@ -811,6 +821,76 @@ void EndstonePlayer::updateCommands() const
         const auto &name = it->name;
         const auto command = command_map.getCommand(name);
         if (command && command->isRegistered() && command->testPermissionSilently(self())) {
+            if (const auto advertised = command_map.getAdvertised(name); advertised.size() == it->overloads.size()) {
+                decltype(it->overloads) shown;
+                for (std::size_t i = 0; i < advertised.size(); ++i) {
+                    if (advertised[i]) {
+                        shown.push_back(std::move(it->overloads[i]));
+                    }
+                }
+                it->overloads = std::move(shown);
+            }
+            Nullable<Plugin> owner;
+            if (command.is<TreeCommand>()) {
+                owner = server_.getPluginManager().getPlugin(command.cast<TreeCommand>()->getOwner());
+            }
+            if (const auto tree = command_map.getTree(name); tree && owner && owner->isEnabled()) {
+                const CommandSource source =
+                    std::make_shared<EndstoneCommandSourceStack>(self(), self().get(), getLocation());
+                decltype(it->overloads) kept;
+                std::vector<bool> truncated;
+                bool hidden = false;
+                for (auto &overload : it->overloads) {
+                    std::vector<std::string> names;
+                    for (const auto &param : overload.params) {
+                        names.push_back(param.name);
+                    }
+                    std::optional<std::size_t> usable;
+                    try {
+                        usable = CommandCompiler::findUsable(*tree, names, source);
+                    }
+                    catch (const std::exception &e) {
+                        server_.getLogger().error("Unhandled exception checking the requirements of command '{}': {}",
+                                                  name, e.what());
+                    }
+                    if (!usable) {
+                        hidden = true;
+                        break;
+                    }
+                    if (*usable < overload.params.size() && !overload.params[*usable].optional) {
+                        continue;
+                    }
+                    truncated.push_back(*usable < overload.params.size());
+                    overload.params.resize(*usable);
+                    kept.push_back(std::move(overload));
+                }
+                decltype(it->overloads) overloads;
+                for (std::size_t i = 0; i < kept.size() && !hidden; ++i) {
+                    const auto &shorter = kept[i].params;
+                    bool covered = false;
+                    for (std::size_t j = 0; j < kept.size() && truncated[i] && !covered; ++j) {
+                        const auto &longer = kept[j].params;
+                        if (j == i || longer.size() < shorter.size() ||
+                            (longer.size() == shorter.size() && truncated[j] && j > i)) {
+                            continue;
+                        }
+                        covered = std::equal(shorter.begin(), shorter.end(), longer.begin(),
+                                             [](const auto &a, const auto &b) {
+                                                 return a.name == b.name && a.parse_symbols == b.parse_symbols;
+                                             }) &&
+                                  std::all_of(longer.begin() + static_cast<std::ptrdiff_t>(shorter.size()),
+                                              longer.end(), [](const auto &param) { return param.optional; });
+                    }
+                    if (!covered) {
+                        overloads.push_back(kept[i]);
+                    }
+                }
+                if (hidden || overloads.empty()) {
+                    it = packet.payload.commands.erase(it);
+                    continue;
+                }
+                it->overloads = std::move(overloads);
+            }
             if (auto symbol = registry.findEnumValue(name); symbol.value() != 0) {
                 auto symbol_index = static_cast<std::uint32_t>(symbol.toIndex());
                 if (it->permission_level >= CommandPermissionLevel::Host) {

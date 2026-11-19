@@ -14,8 +14,13 @@
 
 #include "bedrock/server/commands/minecraft_commands.h"
 
+#include <exception>
+#include <functional>
 #include <optional>
 #include <string>
+#include <utility>
+
+#include <entt/locator/locator.hpp>
 
 #include "bedrock/world/actor/actor.h"
 #include "bedrock/world/actor/player/player.h"
@@ -30,9 +35,33 @@
 
 using endstone::core::EndstoneServer;
 
+Command *MinecraftCommands::compileCommand(HashedString const &command_str, CommandOrigin &origin,
+                                           CurrentCmdVersion command_version,
+                                           std::function<void(const std::string &)> on_parser_error)
+{
+    if (entt::locator<EndstoneServer>::has_value()) {
+        if (const auto &server = EndstoneServer::getInstance(); server.getEndstoneLevel()) {
+            try {
+                server.getCommandMap().flush();
+            }
+            catch (const std::exception &e) {
+                server.getLogger().error("Unable to update the command registry: {}", e.what());
+            }
+        }
+    }
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&MinecraftCommands::compileCommand, this, command_str, origin, command_version,
+                                       std::move(on_parser_error));
+}
+
 MCRESULT MinecraftCommands::executeCommand(CommandContext &ctx, bool suppress_output) const
 {
     const auto &server = EndstoneServer::getInstance();
+    try {
+        server.getCommandMap().flush();
+    }
+    catch (const std::exception &e) {
+        server.getLogger().error("Unable to update the command registry: {}", e.what());
+    }
     std::optional<endstone::NotNull<endstone::CommandSender>> sender;
     std::string command_line;
     switch (ctx.getOrigin().getOriginType()) {

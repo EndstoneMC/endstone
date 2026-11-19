@@ -14,8 +14,14 @@
 
 #pragma once
 
+#include <functional>
+#include <memory>
+#include <unordered_map>
+
 #include "bedrock/bedrock.h"
+#include "bedrock/core/string/string_hash.h"
 #include "bedrock/core/utility/mc_result.h"
+#include "bedrock/server/commands/command.h"
 #include "bedrock/server/commands/command_context.h"
 #include "bedrock/server/commands/command_output.h"
 #include "bedrock/server/commands/command_registry.h"
@@ -23,6 +29,10 @@
 class ILevel;
 class Minecraft;
 struct MinecraftCommandsArguments;
+
+namespace endstone::core {
+class EndstoneCommandMap;
+}  // namespace endstone::core
 
 class ICommandsContextProvider {
 public:
@@ -51,15 +61,20 @@ public:
     [[nodiscard]] CommandRegistry &getRegistry() const { return *registry_; }
 
     ENDSTONE_HOOK MCRESULT executeCommand(CommandContext &ctx, bool suppress_output) const;
-    Command *compileCommand(HashedString const &command_str, CommandOrigin &origin, CurrentCmdVersion command_version,
-                            std::function<void(const std::string &)> on_parser_error);
+    ENDSTONE_HOOK Command *compileCommand(HashedString const &command_str, CommandOrigin &origin,
+                                          CurrentCmdVersion command_version,
+                                          std::function<void(const std::string &)> on_parser_error);
 
     static CommandOutputType getOutputType(const CommandOrigin &origin);
 
 private:
+    friend class endstone::core::EndstoneCommandMap;  // Endstone
+
     ICommandsContextProvider &context_provider_;
     std::unique_ptr<CommandRegistry> registry_;
     std::unique_ptr<CommandOutputSender> output_sender_;
     CommandPermissionLevel operator_command_permission_level_{CommandPermissionLevel::Admin};
+    std::function<bool()> chat_permissions_callback_;
+    std::unordered_map<HashedString, std::unique_ptr<Command>> compiled_command_map_;
     // ...
 };

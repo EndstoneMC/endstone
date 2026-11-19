@@ -38,6 +38,7 @@ DISPATCHED = {
     "endstone._python.plugin.Plugin": ("on_load", "on_enable", "on_disable"),
     "endstone._python.plugin.PluginLoader": ("load_plugin", "load_plugins", "enable_plugin", "disable_plugin"),
     "endstone._python.command.Command": ("execute",),
+    "endstone._python.command.BasicCommand": ("execute", "can_use", "permission"),
     "endstone._python.command.CommandExecutor": ("on_command",),
     "endstone._python.map.MapRenderer": ("initialize", "render"),
     "endstone._python.metrics.CustomChart": ("get_chart_data",),

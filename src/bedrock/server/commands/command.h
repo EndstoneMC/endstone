@@ -19,16 +19,24 @@
 
 #include "bedrock/bedrock.h"
 #include "bedrock/core/math/vec3.h"
+#include "bedrock/forward.h"
 #include "bedrock/server/commands/command_output.h"
 #include "bedrock/server/commands/command_registry.h"
 
 namespace endstone::core {
+class BrigadierCommandAdapter;
 class MinecraftCommandWrapper;
-}
+}  // namespace endstone::core
 
 class CommandPosition {
 public:
+    CommandPosition()
+        : offset_(0.0F, 0.0F, 0.0F), relative_x_(true), relative_y_(true), relative_z_(true), local_(false)
+    {
+    }
     explicit CommandPosition(const Vec3 &);
+    [[nodiscard]] Vec3 getPosition(int version, const CommandOrigin &origin, const Vec3 &offset_from_base) const;
+    [[nodiscard]] BlockPos getBlockPos(int version, const CommandOrigin &origin, const Vec3 &offset_from_base) const;
 
 private:
     Vec3 offset_;      // +0
@@ -39,6 +47,8 @@ private:
 };
 
 class CommandPositionFloat : public CommandPosition {};
+BEDROCK_STATIC_ASSERT_SIZE(CommandPosition, 16, 16);
+BEDROCK_STATIC_ASSERT_SIZE(CommandPositionFloat, 16, 16);
 
 class RelativeFloat {
 public:
@@ -63,6 +73,7 @@ public:
     void run(CommandOrigin const &origin, CommandOutput &output) const;
 
 private:
+    friend class endstone::core::BrigadierCommandAdapter;  // Endstone
     friend class endstone::core::MinecraftCommandWrapper;
     int version_ = 0;
     const CommandRegistry *registry_{nullptr};                                    // +16

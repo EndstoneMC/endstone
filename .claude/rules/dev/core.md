@@ -25,7 +25,12 @@ paths:
 - Return a cancelled dropped item to its slot; patch a cancelled book edit only if the slot holds the predicted stack, clearing it before setting.
 - Suppress knockback and the invulnerability bypass for cancelled damage.
 - Build the command map at startup, before `STARTUP` plugins load.
-- Record a plugin command's enums only once registration succeeds, key them in lower case, and on unregister erase only the ones the plugin created.
+- Keep plugin commands in the command map's model; every change marks it dirty, and the server-thread flush restores the startup snapshot of the registry tables and replays the model through BDS's own calls. Never edit a single rule, enum value or alias in BDS's registry by hand after the snapshot; the startup pass that drops vanilla `/reload` and the cheat flags runs before it.
+- Read the registered commands (permissions, help, lists) from the command map's model or snapshot; until the next flush the live registry still holds the last commit.
+- Look vanilla commands up in the command map's snapshot tables, not in the live registry.
+- Match an Endstone header-only exception by `typeid(e).name()`, never by catch type; one thrown from the Python module or a plugin carries another `type_info`.
+- Expand each optional parameter of a legacy usage into its explicit forms, at most 6 optionals per usage, and refuse a usage beyond that or with two enums sharing a value at one position, naming the usage; block, entity_type, dimension and resource enums have no values at compile time, so a keyword sharing one of their values is captured at commit.
+- BDS picks the parameter type before the enum value, so compile a literal beside an Id-class argument (string, selector, soft enum, raw text, message), in a tree or an expanded usage, into one overload that captures the words, advertise every form in completion, and let Endstone's dispatcher resolve it, literal first as Brigadier does; resolving lists every word form an argument at that position could read among the overload's sources and checks completeness, since a capture copy alone lets BDS resolve to the shorter overload.
 - Make `PluginCommand::getExecutor()` return the set executor, else the owning plugin, else a null handle.
 - Keep a removed permission in the default lists; `removePermission` only erases it from the registry.
 - Store only weak references to plugins; `EndstonePluginManager` and the loaders are the sole strong owners.

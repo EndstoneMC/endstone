@@ -15,6 +15,18 @@
 #include "bedrock/server/commands/command.h"
 
 #include "bedrock/symbol.h"
+#include "bedrock/world/level/block_pos.h"
+
+Vec3 CommandPosition::getPosition(int version, const CommandOrigin &origin, const Vec3 &offset_from_base) const
+{
+    return BEDROCK_CALL(&CommandPosition::getPosition, this, version, origin, offset_from_base);
+}
+
+BlockPos CommandPosition::getBlockPos(int version, const CommandOrigin &origin, const Vec3 &offset_from_base) const
+{
+    const auto position = getPosition(version, origin, offset_from_base);
+    return {Vec3(position.x + 0.001F, position.y + 0.001F, position.z + 0.001F)};
+}
 
 RelativeFloat::RelativeFloat(float offset, bool relative) : offset_(offset), relative_(relative) {}
 
