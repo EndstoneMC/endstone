@@ -69,3 +69,4 @@ paths:
 - Match `class` vs `struct` on every forward declaration and alias to BDS's original.
 - Prune a forward declaration only when the type is gone from the reference and unused in `src/bedrock` and `src/endstone`; if it is still used, fix the usage.
 - Verify a header is self-contained with a one-line TU that includes it, compiled with clang-cl `/Zs` and the flags from a `FAILED:` build-log line, never the repo-root `compile_commands.json`.
+- Never check an offset as `sizeof(T) - sizeof(last member)`: an over-aligned `T` has tail padding, and a libc++ `std::function` member makes a class 16-aligned on Linux.

@@ -6,6 +6,8 @@ paths:
 # Testing
 
 - Put offline value types and pure logic in `tests/*.py` (pytest against the installed wheel) or `tests/*.cpp` (GTest `endstone_test` target); anything needing BDS goes in `tests/plugin`.
+- Run pytest as `.venv/bin/pytest` so it imports the wheel installed in the repo venv.
+- `endstone_test` does not link the runtime, so a test cannot use a `src/bedrock` `.cpp` containing `BEDROCK_CALL` code; test the inline or header-only parts.
 - Add each new GTest `.cpp` to the `add_executable(endstone_test ...)` list in `tests/CMakeLists.txt`.
 - Name GTest suites `<Thing>Test.<BehaviourSentence>`.
 - Keep `CppPluginLoaderTest.*` serialized through its `RESOURCE_LOCK`; every other GTest runs in parallel.
@@ -59,3 +61,6 @@ paths:
 - A dev venv loads every plugin installed in it as an entry point; for a clean run, and for Linux, `pip install endstone==<version>` in a `python` container pointed at the extracted BDS zip with a matching `version.txt`.
 - Verify reconstructed BDS read paths with the in-server `/test` pytest suite.
 - Keep human-eyes probes behind `/test <form|player|inv|spawn|map|block|sender>`; bare `/test` runs pytest.
+- A scenario that promises output byte-equal to release X captures its expected values from a build of X.
+- Check a log's mtime before trusting a grep of it while a background job will overwrite it; an old run's log passes early.
+- When overriding the bundled allocator for a live test, name the preloaded file so it contains malloc (libmimalloc-<variant>.so); endstone/cli/linux.py appends the bundled libmimalloc.so otherwise.

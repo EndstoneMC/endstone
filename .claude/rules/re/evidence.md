@@ -81,3 +81,4 @@ paths:
 - Cite a private source as "confirmed against the BDS headers", or as an IDA address plus the single decompiled line.
 - Without header access, derive names and layout from the binaries, a named older reference database, `EndstoneMC/protocol-docs` and `bedrock-protocol`. Record what you cannot confirm as unverified and ask a maintainer to confirm it against the headers before merge.
 - Use an older header snapshot only to look up a symbol removed in the current version, and name the snapshot branch when recording the result.
+- Take member names from the target minor's header branch, r26_u6 for 1.26.6x; an older branch can label a slot that was since renamed.

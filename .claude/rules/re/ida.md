@@ -23,6 +23,8 @@ Tool names below are the ida-pro plugin's `mcp__plugin_ida-pro_idalib__*` tools 
 - Do not wait on a target database still in auto-analysis; work in the reference database meanwhile.
 - Keep the old named database open beside the new unnamed one as the oracle, as two `idalib` sessions or two GUI instances via `list_instances` and `select_instance`.
 - Measure a worker's memory with `PrivateMemorySize`, never `WorkingSetSize`.
+- Keep RE scratch under `build/re/<task>/`; `build/re/scripts` is shared and other jobs overwrite it.
+- When the idalib MCP tools are not exposed, drive idalib from a plain Python script run with the ida-pro-mcp venv's python, `IDADIR` set to the IDA install and `idapro.open_database` on a scratch copy.
 
 ## Building databases
 
@@ -52,7 +54,9 @@ Tool names below are the ida-pro plugin's `mcp__plugin_ida-pro_idalib__*` tools 
 - Use `func_profile(include_lists:true)` to triage a candidate; `include_lists:false` gives only `string_ref_count`. It never confirms.
 - Check `get_bytes` before condemning an address `func_profile` calls "Not a function"; a tail-call thunk reads `48 89 D1 E9 ... CC`.
 - Check `ida_funcs.get_func(ea).start_ea == ea` before treating an address as a function.
+- On a database opened without auto-analysis, `decompile` returns `JUMPOUT` until code exists; create instructions over the one function's range and never call `enable_auto` or `auto_wait`, which start an hours-long whole-binary analysis.
 - `rename` every located helper to its mangled name in the target database as you go.
+- Capstone 5 reports `disp_size` 2 for a 66-prefixed instruction; take a displacement's width from ModRM instead, 4 for rip-relative or mod 2 and 1 for mod 1.
 
 ## Signatures
 
@@ -63,3 +67,7 @@ Tool names below are the ida-pro plugin's `mcp__plugin_ida-pro_idalib__*` tools 
 - When `make_signature` times out, hand-build it: `get_bytes` at the call site, assemble, then `find_bytes`.
 - Widen each `?` of a toml pattern to `??` before `find_bytes`; one match keeps the entry, zero or two mark it stale.
 - When every entry reads stale, run `get_bytes(VA, 16)` on one entry to confirm the bytes really changed before trusting the batch.
+- Run an idalib job server with `python -I` from a directory with no scratch scripts; a local `dis.py` shadows the stdlib and breaks `import idapro`.
+- `llvm-pdbutil pretty` needs DIA and does not work on Linux; read Windows layouts from the PDB-named `.i64`'s type library and class keys from the `V`/`U` letter in the PDB publics.
+- With no database for the target version, answer caller questions with the raw-binary helpers and a call index.
+- Borrow a PDB name from an older build only after byte-checking that RVA; the command-block region moved between 1.26.60.6 and 1.26.65.1.

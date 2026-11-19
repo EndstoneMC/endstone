@@ -6,6 +6,7 @@ paths:
 # Runtime Hooks
 
 - Declare every function hook in its `src/bedrock` header with `ENDSTONE_HOOK` and define the detour in `src/endstone/runtime/bedrock_hooks/<header name>.cpp`.
+- Hooking a function that `src/bedrock` defines with `BEDROCK_CALL` also deletes that body; the detour becomes the only definition.
 - Name a hook `.cpp` after the `src/bedrock` header whose hooks it implements, never after the feature; a feature that hooks two BDS classes gets two hook files.
 - Add each new hook `.cpp` to the explicit source list in `src/endstone/runtime/CMakeLists.txt`.
 - Do not write a name-lookup table for detours; the exported detour's mangled name must equal a key in `src/bedrock/symbols/<platform>.h`.
@@ -63,3 +64,4 @@ paths:
 - Do not add packet plumbing to `EndstonePlayer`.
 - Model a packet handler on Paper's `PlayerConnection`: resolve the sender lazily, fire the events, then forward or drop.
 - Prefer splicing an Endstone class into BDS's object chain (`EndstoneBatchedNetworkPeer` in `core/network/`, spliced in `network_system.cpp` on `onNewIncomingConnection`) over hooking methods that run per packet.
+- Resolve the executable base from /proc/self/exe, never from the first parsed line of /proc/self/maps; named anonymous mappings such as [anon:mimalloc] parse as modules.

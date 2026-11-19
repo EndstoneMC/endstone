@@ -43,6 +43,8 @@ paths:
 ## Member layout and sizes
 
 - Take class size from `operator new` at constructor call sites and from vector element stride.
+- Read an inlined constructor's `sizeof` and member stores from a `make_unique` site: the `operator new` immediate, then the stores.
+- Linux BDS allocates through an allocator object (`mov rax,[rip+g]; mov esi,SIZE; call [rax+0x10]`) and frees with `free@plt`; scan for that shape, not `operator new`, when sizing nodes there.
 - A `make_shared` `operator new` immediate is the control block plus `sizeof(T)`: 16 on MSVC, 24 on libc++.
 - `MinecraftPackets::createPacket` is a jump table indexed by packet id: `table[id]`, then `make_packet<T>`, then `operator new`.
 - Cross-check a Linux size with the sized `operator delete` in the D0 destructor.
@@ -74,6 +76,7 @@ paths:
 - If a hook already called the original with that `this` and returned, `this` is fine and the fault is a member offset.
 - A newly added `std::lock_guard` shows as inlined `_Mtx_lock` and `_Mtx_unlock`, an `INT_MAX-1` sentinel and `_Throw_Cpp_error(5/6)` and moves no member.
 - A vanished `__shared_ptr_emplace<T>` means nothing calls `make_shared<T>` any more, which usually pairs with a member changing from `shared_ptr<T>` to `unique_ptr<T>`.
+- Take a command parameter type's size from a command's `setup`: each `CommandParameterData` carries a 16-byte `[-1, param type, offset, set_offset]` constant beside its `ParseRuleFor<T>` `lea`, and the command factory's `operator new` immediate bounds the last member.
 
 ## Packets and cereal
 
@@ -85,6 +88,7 @@ paths:
 - Without a PDB, `getId`, `getName` and the mode stubs sit as a cluster beside the `"<Name>Packet"` literal on Linux; on Windows ICF folds the mode stubs elsewhere, at vftable slots 12 and 13.
 - A packet in a side-by-side mode keeps its hand-written `write`, which reads every member at its real offset with the cereal name in the adjacent register and covers PODs and raw pointers a dtor misses.
 - Take member names from the registration and offsets from the ctor; registration `lea` order is wire order, not always declaration order.
+- The Script API's custom-content name rule is cereal's `NamespaceConstraint` regex plus `Util::validateIdentifier`, not a character class.
 - `createPacket`'s `make_shared` gives the default-member map and the initial `SerializationMode`; a packet with a hand-written `write` branch starts at `SideBySide_LogOnMismatch` (1), not `CerealOnly`.
 - `cerealizer<T>::bind` gives the wire field list.
 - The documented wire type gives the C++ enum width: a 1-byte enum is `uint8` and a 4-byte enum is `uvarint32`; confirm with the `cereal::internal::TypeSchema<T>` string.
@@ -129,6 +133,7 @@ paths:
 - Without IDA, find the string in the new binary and scan executable sections for rip refs where `disp + offset_of_disp == target_rva - section_va - 4`, checking `-8` for a trailing imm32.
 - Map hits to functions through `.pdata`; the same identity finds direct `call rel32`, and an absolute 8-byte `.rdata` scan finds vtable slots.
 - On Linux the rip-ref identity is `(v32 + p) mod 2^32 == (target - 4) mod 2^32`; filter a preceding `E8` for callers.
+- When idalib is unavailable for a build, a rip-relative and `E8` call scan of the exe plus the PDB publics finds callers of a data global or function; validate the scan on a known global first, and expect a private function under its nearest public neighbour.
 - Prove a target by exhaustive constant intersection: scan 2-3 distinctive immediates as raw little-endian bytes across `.text` and require the same cardinality in both binaries with one member anchored.
 - Fingerprint a call graph by the multiset of its callees' `.pdata` extents.
 - A `.pdata` entry with `UNW_FLAG_CHAININFO` is a chunk; resolve it to its primary `RUNTIME_FUNCTION`.
@@ -142,6 +147,12 @@ paths:
 - Disambiguate a string mapping to several functions by name-independent tells: a code xref, caller and callee order, loop versus straight-line shape, and a vtable data xref.
 - Tag a recipe `- N xrefs` when its string is not a clean 1:1.
 - Try locate anchors in this order: direct string, a string-locatable neighbour, a magic constant, a packet vtable through its RTTI name, a vtable slot map, a data global through its initializer.
+- Read a `Bedrock::type_id<Ctx, T>` id at runtime, never from the source or a past build: ids are lazy function-local statics from a counter starting at 0, handed out in the order the context's first consumer asks, which changes between builds; build a `CommandParameterData` with that id, never a literal such as `{0}`.
+- Read a command parameter's grammar, packet and `createCommand` symbol as `enum_or_postfix_symbol`, else `chained_subcommand_symbol`, else `parse_rule->symbol`; `createCommand` runs `parse_override`, else `parse_rule->parse`, on the stored `signature.overloads`, so `registerOverloadInternal` on a copy changes nothing.
+- Never anchor a pattern on a hard-enum `ParseRuleFor<T>::instance`: it is `{null, 0}` on Windows and a return-0 stub on Linux; the parse comes from the enum's own function through `registerOverloadInternal`.
+- Anchor a basic-type `CommandRegistry::ParseRuleFor<T>::instance` on its initializer's `mov dword [rip+instance+8], <Symbol>` (Windows, one leaf stub per type) or `+16` (Linux, one static initializer); the `CommandSelector<Actor>` and `CommandSelector<Player>` instances share `0x100008`, so include the neighbouring store.
+- Reach the `Bedrock::type_id<CommandRegistry, std::string>` id through `registerOverloadInternal`'s Enum-branch `cmp ax, word [rip+id]`; the other ids load in identical inlined blocks that no pattern isolates.
+- Search an aggregate literal as `movabs` immediates (`48 B8 imm64`), not as contiguous bytes in `.rdata`.
 
 ## Checking a resolved offset
 
@@ -158,10 +169,13 @@ paths:
 - Verify a data global by section membership plus the reference population; globals have no `.pdata`, prologue, strings or alignment guarantee.
 - Sort resolved offsets by RVA and print `new - old` on a hotfix: insertions step up with RVA, a negative delta or flipped order marks a wrong match; PE sections are page-aligned, so a global's delta of 0 while code shifted is correct, and a reshuffled link order makes the bands a hint, never an arbiter.
 - Compare about 256 bytes at the new and old offset and require at least 90% byte equality; `.bss` data has no file content, so use section membership and delta.
+- On a build with no PDB, borrow the previous build's PDB name for a function at the same RVA only with at least 90% byte equality, checked per function.
 
 ## Notifications
 
 - A `dispatch<...>` instantiation is per-signature and normally has one caller; equal caller sets across versions prove an unmoved publish site.
 - Read the thin notifier, not the publisher.
+- A `Publisher<void(T&)>` with no named publish function is usually published through an ICF-folded `DispatchingPublisherBase::dispatch<X&>` named after an unrelated type; xref that dispatch and take the publisher's offset from the `lea rcx,[obj+publisher_offset]` just before the call, never from its connector getter.
 - Find the notifier's caller through the literal `tryChangeState(expected,desired)` pair to order against a state field.
 - BDS discards the CAS result and publishes outside the lock, so an Endstone-side `state >= X` gate is unsound.
+- On 1.26.65, FunctionManager::load inlines _processFunctionEntry (anchor "Function %s failed to load correctly with error(s):") and CommandResponseBase::_executeAction inlines _compileCommands (anchor "Command response could not compile commands").

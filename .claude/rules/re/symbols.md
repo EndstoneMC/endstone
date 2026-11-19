@@ -22,6 +22,7 @@ paths:
 - Resolve a Windows offset as section RVA plus symbol offset.
 - Shell out to `pdbtool` for PDB symbols.
 - Recover a renamed Windows symbol by grepping `pdbtool --quiet dump <pdb> psi` for `?<method>@<Class>@@`.
+- Convert the decimal offsets in `src/bedrock/symbols/<platform>.h` to hex with a tool, never by hand.
 
 ## Names
 
@@ -31,6 +32,7 @@ paths:
 - Never guess a mangled name or its access/virtual letter, and never grep PDB text for one as proof. Compile the reconstructed declaration with `clang-cl /c` (MSVC) or `clang++ --target=x86_64-unknown-linux-gnu` (Itanium) and read it back with `llvm-nm`.
 - Use a plain `Class::member` string as `name` for a data global or patch site, and read it with `BEDROCK_VAR`.
 - Update `name` to the new mangled name whenever a hooked or `BEDROCK_CALL` function's signature changes.
+- Treat the non-copy `CommandParameterData` constructors as inline: the 1.26.60 PDB has no public symbol for them.
 
 ## Entry lifecycle
 
@@ -41,6 +43,7 @@ paths:
 - A hook bound to a split or removed function shows a hooked return value that is never null, because a hidden-pointer `unique_ptr` return is read as the object.
 - Reimplement an inlined function in `src/bedrock` instead of leaving a missing symbol, only where Endstone already tracks the layout.
 - Use the full-DWARF Linux debug build of an older version to recover bodies of tiny header methods inlined in stripped builds.
+- Confirm a static-initialised data entry such as `ParseRuleFor<T>::instance` in the full-DWARF Linux database through the named `CommandRegistry::parse<T>` its initializer loads.
 - Delete an entry when its last consumer is gone: a live hook, a `BEDROCK_CALL` in a `src/bedrock` definition, or a `BEDROCK_VAR`.
 - Keep an entry used only by devtools; every entry must resolve on every build.
 - Audit liveness against the runtime DLL's export table, never `ENDSTONE_HOOK` markers in headers.
@@ -61,7 +64,7 @@ paths:
 - Cut a pattern from the function's `.pdata` `BeginAddress` (Linux FDE `initial_location`), never from a guessed prologue.
 - Wildcard exactly the displacement and immediate bytes reported by capstone's `insn.encoding`, keeping every opcode and ModRM byte.
 - Grow a pattern one instruction at a time until a whole-binary scan returns one match, strip trailing wildcards, then add one instruction past the minimal unique point so it ends on fixed bytes.
-- Treat `Ambiguous pattern for <name>` and `Offset 0x... is not divisible by 8` as hard failures; the second means a prologue pattern still carries `rip_relative` and `rip_offset`.
+- Treat `Ambiguous pattern for <name>` as a hard failure, and `Offset 0x... is not divisible by 8` as one for a function or global entry, where it means a prologue pattern still carries `rip_relative` and `rip_offset`; a byte-patch entry with `extra`, such as `DBChunkStorage::_hasChunk::cache_cap`, points inside an instruction and is expected to warn.
 - Pick the most survivable form: a unique `E8` call-site pattern at least a third shorter than the prologue, then a minimal unique prologue, then anything long.
 - Take a call site over an `xmm`-save prologue (`44 0F 29` runs) whenever it is unique.
 - Prefer an `E8` pattern with concrete anchor bytes after the call; avoid all-wildcard call chains, `E9`-then-`CC` padding and patterns spanning `CC` padding into the next prologue.
@@ -97,3 +100,4 @@ paths:
 - Treat an unfindable recipe step as drift, not as the function being gone.
 - A changed `__PRETTY_FUNCTION__` return type confirms identity and marks the config's mangled name stale.
 - A rare `NonOwnerPointer<X>::_get()` instantiation identifies a function by what it touches.
+- Check an MSVC mangling on Linux with `clang++ --target=x86_64-pc-windows-msvc -nostdinc` over stub std templates, and read it back with `llvm-nm-22`.

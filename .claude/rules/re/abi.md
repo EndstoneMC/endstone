@@ -28,9 +28,11 @@ paths:
 - `class` versus `struct` on a forward declaration or alias is invisible on Itanium but changes the MSVC mangled name.
 - Judge by-value parameter triviality on both ABIs: MSVC x64 looks only at the copy constructor, Itanium also at the move constructor and destructor.
 - Give a moved-out `brstd::move_only_function` or `copyable_function` returned from a hook a real move constructor; they move through `move_to` and copy through `copy_to`.
+- `brstd` function storage is `alignas(std::max_align_t)`, which is 8 on MSVC and 16 on Linux.
 - BDS patch releases within a minor line keep the same ABI, so a patch bump needs signature refreshes, not layout re-derivation; a minor bump does not.
 - A size delta is a net, so decompose it before reading its sign: `delta_win - delta_linux == 8*N` for N added `std::string`s.
 - A payload sub-object and flat members differ only on Linux and only for a payload with an 8-aligned member; MSVC measures the same, so its assert passes on a wrong model.
 - A later 8-aligned member absorbs the shift, so asserts pass while leading members sit 4 bytes low and a flat first member reads uninitialised padding.
 - A shortfall on one platform is head misalignment, an equal shortfall of 8 on both is a missing payload wrapper at the tail; confirm with one `-fdump-record-layouts` run per target.
 - Diff the old and new prologue's argument marshalling to catch an ABI change behind an unchanged mangled name: an sret shifts `this` from `rdi` to `rsi`, an extra xmm spill is a new float parameter, a reference parameter moves register.
+- MSVC gives entt's `compressed_pair<std::vector, empty>` 32 bytes, so an entt `dense_set` or `dense_map` is 72 bytes on Windows and 56 on Linux.
