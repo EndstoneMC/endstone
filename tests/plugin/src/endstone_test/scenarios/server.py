@@ -176,6 +176,44 @@ async def failed_usage_enum(ctx: Context) -> None:
     assert not any("EndstoneTestReusedEnum" in line and "already exists" in line for line in lines), lines
 
 
+class RecordingCommand(Command):
+    def __init__(self, name: str, usages: list[str]) -> None:
+        super().__init__(name, usages=usages)
+        self.calls: list[list[str]] = []
+
+    def execute(self, sender, args: list[str]) -> bool:
+        self.calls.append(list(args))
+        return True
+
+
+@scenario("command.registry_smoke")
+async def registry_smoke(ctx: Context) -> None:
+    command_map = ctx.server.command_map
+    command = ctx.stash.get("registry_smoke")
+    if command is None or command_map.get_command("endstone_test_smoke") is None:
+        command = RecordingCommand(
+            "endstone_test_smoke", ["/endstone_test_smoke <count: int> [note: message]"]
+        )
+        assert command_map.register_command(command)
+        ctx.stash["registry_smoke"] = command
+    command.calls.clear()
+    result = ctx.command("endstone_test_smoke 3 hello world")
+    assert result.success, result.output
+    assert command.calls == [["3", "hello world"]], command.calls
+
+    ctx.plugin.last_testoptmsg_args = None
+    result = ctx.command("testoptmsg some text")
+    assert result.success, result.output
+    assert ctx.plugin.last_testoptmsg_args == ["some text"], (
+        ctx.plugin.last_testoptmsg_args
+    )
+
+    result = ctx.command("testoptmsg2 a x note")
+    assert result.success, result.output
+    result = ctx.command("test form message_typo")
+    assert not result.success, result.output
+
+
 @scenario("broadcast.normal", covers={BroadcastMessageEvent: "normal"})
 async def broadcast_normal(ctx: Context) -> None:
     broadcast = ctx.capture(BroadcastMessageEvent)

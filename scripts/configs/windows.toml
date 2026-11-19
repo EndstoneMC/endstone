@@ -577,6 +577,306 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 49 89 D7 48 89 CF"
 
 [[signatures]]
+name = "?addSoftEnum@CommandRegistry@@QEAAHAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@3@@Z"
+relative = false
+extra = 0
+# 1. find bytes "55 70 64 61 74 65 53 6F 66 74 45 6E 75 6D 50 61 63 6B 65 74 00"
+#    = "UpdateSoftEnumPacket\0" (one match in the image, NUL-preceded); its only code xref is
+#    UpdateSoftEnumPacket::getName, a slot of the packet vftable
+# 2. xref the vftable: three CommandRegistry updaters sit side by side and each stores the packet type byte,
+#    `C6 45 4F 00` Add (addSoftEnumValues), `C6 45 2F 02` Set (setSoftEnumValues), `C6 45 4F 01` Remove
+#    (removeSoftEnumValues); they are look-alikes, so tell them apart by that byte only
+# 3. addSoftEnumValues has five callers; only addSoftEnum has `or esi, 4100000h` (the soft enum symbol flags)
+# 4. the pattern is addSoftEnum's call site in the CommandRegistry ctor followed by
+#    `nop; mov rax, [rbp+..]; cmp rax, 10h`; a regex scan of the whole .text finds it once
+# 5. if the flag immediate changes, take the addSoftEnumValues caller that MinecraftCommands::initCoreEnums and
+#    initCoreEnumsServer also call
+# 6. confirm against the named 1.26.32.2 database: addSoftEnum is 0x140b0f7f0, with `or esi, 4100000h` at 0x140b0fd06
+# call site in the CommandRegistry ctor
+pattern = "E8 ? ? ? ? 90 48 8B 85 ? ? ? ? 48 83 F8 10 44 8B A5 ? ? ? ? 72"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+name = "?addSoftEnumValues@CommandRegistry@@QEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@3@@Z"
+relative = false
+extra = 0
+# 1. find bytes "55 70 64 61 74 65 53 6F 66 74 45 6E 75 6D 50 61 63 6B 65 74 00"
+#    = "UpdateSoftEnumPacket\0" (one match in the image, NUL-preceded); its only code xref is
+#    UpdateSoftEnumPacket::getName, a slot of the packet vftable
+# 2. xref the vftable: three CommandRegistry updaters sit side by side and each stores the packet type byte,
+#    `C6 45 4F 00` Add (addSoftEnumValues), `C6 45 2F 02` Set (setSoftEnumValues), `C6 45 4F 01` Remove
+#    (removeSoftEnumValues); they are look-alikes, so tell them apart by that byte only
+# 3. the pattern is its call site in addSoftEnum, followed by `nop; and esi, 0E00FFFFFh`; a regex scan of the whole
+#    .text finds it once
+# 4. if no updater references the vftable, the packet ctor went out of line (as on 1.21.132.3 Linux, where the
+#    updaters call the templated UpdateSoftEnumPacket ctor); take that ctor's CommandRegistry callers instead
+# 5. confirm against the named 1.26.32.2 database: addSoftEnumValues is 0x140b230d0, storing type 0 and
+#    ??_7UpdateSoftEnumPacket@@6B@
+# call site in addSoftEnum
+pattern = "E8 ? ? ? ? 90 81 E6 FF FF 0F E0 E9"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+name = "?setSoftEnumValues@CommandRegistry@@QEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@3@@Z"
+relative = false
+extra = 0
+# 1. find bytes "55 70 64 61 74 65 53 6F 66 74 45 6E 75 6D 50 61 63 6B 65 74 00"
+#    = "UpdateSoftEnumPacket\0" (one match in the image, NUL-preceded); its only code xref is
+#    UpdateSoftEnumPacket::getName, a slot of the packet vftable
+# 2. xref the vftable: three CommandRegistry updaters sit side by side and each stores the packet type byte,
+#    `C6 45 4F 00` Add (addSoftEnumValues), `C6 45 2F 02` Set (setSoftEnumValues), `C6 45 4F 01` Remove
+#    (removeSoftEnumValues); they are look-alikes, so tell them apart by that byte only
+# 3. take the Set updater's prologue; a regex scan of the whole .text finds the pattern once
+# 4. if no updater references the vftable, the packet ctor went out of line (as on 1.21.132.3 Linux, where the
+#    updaters call the templated UpdateSoftEnumPacket ctor); take that ctor's CommandRegistry callers instead
+# 5. confirm against the named 1.26.32.2 database: setSoftEnumValues is 0x140b23330, storing type 2 and
+#    ??_7UpdateSoftEnumPacket@@6B@
+# function prologue
+pattern = "55 41 57 41 56 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 ? FE FF FF FF 4C 89 45 ? 48 89 D7 48 89 CE 48 8D 99"
+
+[[signatures]]
+name = "?removeSoftEnumValues@CommandRegistry@@QEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@3@@Z"
+relative = false
+extra = 0
+# 1. find bytes "55 70 64 61 74 65 53 6F 66 74 45 6E 75 6D 50 61 63 6B 65 74 00"
+#    = "UpdateSoftEnumPacket\0" (one match in the image, NUL-preceded); its only code xref is
+#    UpdateSoftEnumPacket::getName, a slot of the packet vftable
+# 2. xref the vftable: three CommandRegistry updaters sit side by side and each stores the packet type byte,
+#    `C6 45 4F 00` Add (addSoftEnumValues), `C6 45 2F 02` Set (setSoftEnumValues), `C6 45 4F 01` Remove
+#    (removeSoftEnumValues); they are look-alikes, so tell them apart by that byte only
+# 3. take the Remove updater's prologue; a regex scan of the whole .text finds the pattern once
+# 4. if no updater references the vftable, the packet ctor went out of line (as on 1.21.132.3 Linux, where the
+#    updaters call the templated UpdateSoftEnumPacket ctor); take that ctor's CommandRegistry callers instead
+# 5. confirm against the named 1.26.32.2 database: removeSoftEnumValues is 0x140b23740, storing type 1 and
+#    ??_7UpdateSoftEnumPacket@@6B@; the pattern also matches it once there
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 ? FE FF FF FF 4C 89 45 ? 48 89 D7 48 89 CE 48 8D 99 ? ? ? ? 48 89 D9"
+
+[[signatures]]
+name = "CommandRegistry::ParseRuleFor<std::string>::instance"
+relative = false
+extra = 0
+# 1. find bytes "48 8D 05 ? ? ? ? 48 89 05 ? ? ? ? C7 05 ? ? ? ? 38 00 10 00 C3"
+#    = `lea rax, [parse fn]; mov [rip+instance], rax; mov dword [rip+instance+8], 100038h; ret`, the leaf stub
+#    (no unwind data) that initialises CommandRegistry::ParseRuleFor<std::string>::instance; a regex scan of
+#    the whole .text finds it once
+# 2. the `mov [rip+instance], rax` target is the instance
+# 3. if the immediate is gone, a new parameter type has renumbered the symbols; re-read the symbol from the stub
+#    whose `lea rax` target is the matching CommandRegistry::parse<T> in the named database
+# 4. confirm against the named 1.26.32.2 database: stub 0x140aeb290 stores 100038h into
+#    ParseRuleFor<std::string>::instance (0x14bdd3448); the stubs keep the same order in 1.26.65.1
+# instance initializer stub
+pattern = "48 8D 05 ? ? ? ? 48 89 05 ? ? ? ? C7 05 ? ? ? ? 38 00 10 00 C3"
+rip_relative = true
+rip_offset = 10
+
+[[signatures]]
+name = "CommandRegistry::ParseRuleFor<int>::instance"
+relative = false
+extra = 0
+# 1. find bytes "48 8D 05 ? ? ? ? 48 89 05 ? ? ? ? C7 05 ? ? ? ? 01 00 10 00 C3"
+#    = `lea rax, [parse fn]; mov [rip+instance], rax; mov dword [rip+instance+8], 100001h; ret`, the leaf stub
+#    (no unwind data) that initialises CommandRegistry::ParseRuleFor<int>::instance; a regex scan of
+#    the whole .text finds it once
+# 2. the `mov [rip+instance], rax` target is the instance
+# 3. if the immediate is gone, a new parameter type has renumbered the symbols; re-read the symbol from the stub
+#    whose `lea rax` target is the matching CommandRegistry::parse<T> in the named database
+# 4. confirm against the named 1.26.32.2 database: stub 0x140aeb270 stores 100001h into
+#    ParseRuleFor<int>::instance (0x14bdd3438); the stubs keep the same order in 1.26.65.1
+# instance initializer stub
+pattern = "48 8D 05 ? ? ? ? 48 89 05 ? ? ? ? C7 05 ? ? ? ? 01 00 10 00 C3"
+rip_relative = true
+rip_offset = 10
+
+[[signatures]]
+name = "CommandRegistry::ParseRuleFor<float>::instance"
+relative = false
+extra = 0
+# 1. find bytes "48 8D 05 ? ? ? ? 48 89 05 ? ? ? ? C7 05 ? ? ? ? 03 00 10 00 C3"
+#    = `lea rax, [parse fn]; mov [rip+instance], rax; mov dword [rip+instance+8], 100003h; ret`, the leaf stub
+#    (no unwind data) that initialises CommandRegistry::ParseRuleFor<float>::instance; a regex scan of
+#    the whole .text finds it once
+# 2. the `mov [rip+instance], rax` target is the instance
+# 3. if the immediate is gone, a new parameter type has renumbered the symbols; re-read the symbol from the stub
+#    whose `lea rax` target is the matching CommandRegistry::parse<T> in the named database
+# 4. confirm against the named 1.26.32.2 database: stub 0x140aeb250 stores 100003h into
+#    ParseRuleFor<float>::instance (0x14bdd33d8); the stubs keep the same order in 1.26.65.1
+# instance initializer stub
+pattern = "48 8D 05 ? ? ? ? 48 89 05 ? ? ? ? C7 05 ? ? ? ? 03 00 10 00 C3"
+rip_relative = true
+rip_offset = 10
+
+[[signatures]]
+name = "CommandRegistry::ParseRuleFor<CommandMessage>::instance"
+relative = false
+extra = 0
+# 1. find bytes "48 8D 05 ? ? ? ? 48 89 05 ? ? ? ? C7 05 ? ? ? ? 44 00 10 00 C3"
+#    = `lea rax, [parse fn]; mov [rip+instance], rax; mov dword [rip+instance+8], 100044h; ret`, the leaf stub
+#    (no unwind data) that initialises CommandRegistry::ParseRuleFor<CommandMessage>::instance; a regex scan of
+#    the whole .text finds it once
+# 2. the `mov [rip+instance], rax` target is the instance
+# 3. if the immediate is gone, a new parameter type has renumbered the symbols; re-read the symbol from the stub
+#    whose `lea rax` target is the matching CommandRegistry::parse<T> in the named database
+# 4. confirm against the named 1.26.32.2 database: stub 0x140aeb410 stores 100044h into
+#    ParseRuleFor<CommandMessage>::instance (0x14bdd3308); the stubs keep the same order in 1.26.65.1
+# instance initializer stub
+pattern = "48 8D 05 ? ? ? ? 48 89 05 ? ? ? ? C7 05 ? ? ? ? 44 00 10 00 C3"
+rip_relative = true
+rip_offset = 10
+
+[[signatures]]
+name = "CommandRegistry::ParseRuleFor<CommandRawText>::instance"
+relative = false
+extra = 0
+# 1. find bytes "48 8D 05 ? ? ? ? 48 89 05 ? ? ? ? C7 05 ? ? ? ? 46 00 10 00 C3"
+#    = `lea rax, [parse fn]; mov [rip+instance], rax; mov dword [rip+instance+8], 100046h; ret`, the leaf stub
+#    (no unwind data) that initialises CommandRegistry::ParseRuleFor<CommandRawText>::instance; a regex scan of
+#    the whole .text finds it once
+# 2. the `mov [rip+instance], rax` target is the instance
+# 3. if the immediate is gone, a new parameter type has renumbered the symbols; re-read the symbol from the stub
+#    whose `lea rax` target is the matching CommandRegistry::parse<T> in the named database
+# 4. confirm against the named 1.26.32.2 database: stub 0x140aeb430 stores 100046h into
+#    ParseRuleFor<CommandRawText>::instance (0x14bdd3458); the stubs keep the same order in 1.26.65.1
+# instance initializer stub
+pattern = "48 8D 05 ? ? ? ? 48 89 05 ? ? ? ? C7 05 ? ? ? ? 46 00 10 00 C3"
+rip_relative = true
+rip_offset = 10
+
+[[signatures]]
+name = "CommandRegistry::ParseRuleFor<CommandSelector<Actor>>::instance"
+relative = false
+extra = 0
+# 1. find bytes "C7 05 ? ? ? ? 41 00 10 00 C3 CC CC CC CC CC CC CC 48 8D 05 ? ? ? ? 48 89 05 ? ? ? ? C7 05 ? ? ? ? 08 00 10 00 C3"
+#    = the tail of the ParseRuleFor<CommandPositionFloat> stub (`mov dword [..], 100041h; ret` and int3 padding)
+#    followed by the next stub, which stores symbol 100008h; a regex scan of the whole .text finds it once
+# 2. the CommandSelector<Actor> and CommandSelector<Player> stubs are byte-identical apart from their
+#    displacements and both store 100008h; only the neighbour tells them apart, 100041h (CommandPositionFloat) before
+#    this one and 10000Ah (WildcardCommandSelector<Actor>) before CommandSelector<Player>
+# 3. the second stub's `mov [rip+instance], rax` target is the instance
+# 4. if the stub order changes, pair each 100008h stub with its `lea rax` target, CommandRegistry::parse<
+#    CommandSelector<T>>, in the named database and re-pick the neighbour symbol
+# 5. confirm against the named 1.26.32.2 database: stub 0x140aeb390, after the CommandPositionFloat stub, stores into
+#    ParseRuleFor<CommandSelector<Actor>>::instance (0x14bdd32f0)
+# neighbouring instance initializer stubs
+pattern = "C7 05 ? ? ? ? 41 00 10 00 C3 CC CC CC CC CC CC CC 48 8D 05 ? ? ? ? 48 89 05 ? ? ? ? C7 05 ? ? ? ? 08 00 10 00 C3"
+rip_relative = true
+rip_offset = 28
+
+[[signatures]]
+name = "CommandRegistry::ParseRuleFor<CommandSelector<Player>>::instance"
+relative = false
+extra = 0
+# 1. find bytes "C7 05 ? ? ? ? 0A 00 10 00 C3 CC CC CC CC CC CC CC 48 8D 05 ? ? ? ? 48 89 05 ? ? ? ? C7 05 ? ? ? ? 08 00 10 00 C3"
+#    = the tail of the ParseRuleFor<WildcardCommandSelector<Actor>> stub (`mov dword [..], 10000Ah; ret` and int3 padding)
+#    followed by the next stub, which stores symbol 100008h; a regex scan of the whole .text finds it once
+# 2. the CommandSelector<Actor> and CommandSelector<Player> stubs are byte-identical apart from their
+#    displacements and both store 100008h; only the neighbour tells them apart, 10000Ah (WildcardCommandSelector<Actor>) before
+#    this one and 100041h (CommandPositionFloat) before CommandSelector<Actor>
+# 3. the second stub's `mov [rip+instance], rax` target is the instance
+# 4. if the stub order changes, pair each 100008h stub with its `lea rax` target, CommandRegistry::parse<
+#    CommandSelector<T>>, in the named database and re-pick the neighbour symbol
+# 5. confirm against the named 1.26.32.2 database: stub 0x140aeb3d0, after the WildcardCommandSelector<Actor> stub, stores into
+#    ParseRuleFor<CommandSelector<Player>>::instance (0x14bdd3408)
+# neighbouring instance initializer stubs
+pattern = "C7 05 ? ? ? ? 0A 00 10 00 C3 CC CC CC CC CC CC CC 48 8D 05 ? ? ? ? 48 89 05 ? ? ? ? C7 05 ? ? ? ? 08 00 10 00 C3"
+rip_relative = true
+rip_offset = 28
+
+[[signatures]]
+name = "CommandRegistry::ParseRuleFor<CommandPosition>::instance"
+relative = false
+extra = 0
+# 1. find bytes "48 8D 05 ? ? ? ? 48 89 05 ? ? ? ? C7 05 ? ? ? ? 40 00 10 00 C3"
+#    = `lea rax, [parse fn]; mov [rip+instance], rax; mov dword [rip+instance+8], 100040h; ret`, the leaf stub
+#    (no unwind data) that initialises CommandRegistry::ParseRuleFor<CommandPosition>::instance; a regex scan of
+#    the whole .text finds it once
+# 2. the `mov [rip+instance], rax` target is the instance
+# 3. if the immediate is gone, a new parameter type has renumbered the symbols; re-read the symbol from the stub
+#    whose `lea rax` target is the matching CommandRegistry::parse<T> in the named database
+# 4. confirm against the named 1.26.32.2 database: stub 0x140aeb350 stores 100040h into
+#    ParseRuleFor<CommandPosition>::instance (0x14bdd3330); the stubs keep the same order in 1.26.65.1
+# instance initializer stub
+pattern = "48 8D 05 ? ? ? ? 48 89 05 ? ? ? ? C7 05 ? ? ? ? 40 00 10 00 C3"
+rip_relative = true
+rip_offset = 10
+
+[[signatures]]
+name = "CommandRegistry::ParseRuleFor<CommandPositionFloat>::instance"
+relative = false
+extra = 0
+# 1. find bytes "48 8D 05 ? ? ? ? 48 89 05 ? ? ? ? C7 05 ? ? ? ? 41 00 10 00 C3"
+#    = `lea rax, [parse fn]; mov [rip+instance], rax; mov dword [rip+instance+8], 100041h; ret`, the leaf stub
+#    (no unwind data) that initialises CommandRegistry::ParseRuleFor<CommandPositionFloat>::instance; a regex scan of
+#    the whole .text finds it once
+# 2. the `mov [rip+instance], rax` target is the instance
+# 3. if the immediate is gone, a new parameter type has renumbered the symbols; re-read the symbol from the stub
+#    whose `lea rax` target is the matching CommandRegistry::parse<T> in the named database
+# 4. confirm against the named 1.26.32.2 database: stub 0x140aeb370 stores 100041h into
+#    ParseRuleFor<CommandPositionFloat>::instance (0x14bdd33a8); the stubs keep the same order in 1.26.65.1
+# instance initializer stub
+pattern = "48 8D 05 ? ? ? ? 48 89 05 ? ? ? ? C7 05 ? ? ? ? 41 00 10 00 C3"
+rip_relative = true
+rip_offset = 10
+
+[[signatures]]
+name = "CommandRegistry::ParseRuleFor<Json::Value>::instance"
+relative = false
+extra = 0
+# 1. find bytes "48 8D 05 ? ? ? ? 48 89 05 ? ? ? ? C7 05 ? ? ? ? 4A 00 10 00 C3"
+#    = `lea rax, [parse fn]; mov [rip+instance], rax; mov dword [rip+instance+8], 10004Ah; ret`, the leaf stub
+#    (no unwind data) that initialises CommandRegistry::ParseRuleFor<Json::Value>::instance; a regex scan of
+#    the whole .text finds it once
+# 2. the `mov [rip+instance], rax` target is the instance
+# 3. if the immediate is gone, a new parameter type has renumbered the symbols; re-read the symbol from the stub
+#    whose `lea rax` target is the matching CommandRegistry::parse<T> in the named database
+# 4. confirm against the named 1.26.32.2 database: stub 0x140aeb450 stores 10004Ah into
+#    ParseRuleFor<Json::Value>::instance (0x14bdd3420); the stubs keep the same order in 1.26.65.1
+# instance initializer stub
+pattern = "48 8D 05 ? ? ? ? 48 89 05 ? ? ? ? C7 05 ? ? ? ? 4A 00 10 00 C3"
+rip_relative = true
+rip_offset = 10
+
+[[signatures]]
+name = "Bedrock::type_id<CommandRegistry, std::string>::id"
+relative = false
+extra = 0
+# 1. locate registerOverloadInternal (see its entry) and find in it the bytes
+#    "66 3B 05 ? ? ? ? 0F 84 ? ? ? ? 8B 43 40 48 8B 8D ? ? ? ? 48 8B 89 E0 00 00 00 48 8D 04 C0"
+#    = `cmp ax, word [rip+id]; je` on the parameter's type_index, then the enums_ lookup that writes
+#    parse_override in the Enum branch; a regex scan of the whole .text finds it once
+# 2. the cmp's rip operand is the id
+# 3. the chained-subcommand branch makes the same comparison, and the id is also the sixth type_id the
+#    CommandRegistry ctor queries (GameType, bool, EquipmentSlot, int, float, std::string); use either if the
+#    enum-branch tail drifts
+# 4. confirm against the named 1.26.32.2 database: the pattern matches once there and resolves to the named
+#    type_id<CommandRegistry, std::string> id at 0x14bdb76d2
+# compare in registerOverloadInternal
+pattern = "66 3B 05 ? ? ? ? 0F 84 ? ? ? ? 8B 43 40 48 8B 8D ? ? ? ? 48 8B 89 E0 00 00 00 48 8D 04 C0"
+rip_relative = true
+rip_offset = 3
+
+[[signatures]]
+name = "?newResults@CommandSelectorBase@@IEBA?AV?$shared_ptr@V?$vector@PEAVActor@@V?$allocator@PEAVActor@@@std@@@std@@@std@@AEBVCommandOrigin@@@Z"
+relative = false
+extra = 0
+# 1. find bytes "63 6F 6D 6D 61 6E 64 73 2E 67 65 6E 65 72 69 63 2E 6E 6F 54 61 72 67 65 74 4D 61 74 63 68 00"
+#    = "commands.generic.noTargetMatch\0" (one match, NUL-preceded)
+# 2. its code xrefs lie in 52 functions, command executes with CommandSelector<T>::results inlined and the
+#    ICF-folded results body; 51 of them call one shared callee (~0xde0), newResults
+# 3. the pattern is its call site in the folded CommandSelector<T>::results, followed by
+#    `xorps xmm0, xmm0; movups [rsi], xmm0`; a regex scan of the whole .text finds it once
+# 4. if results stops being inlined (as on 1.21.132.3 Linux), the xref functions call CommandSelector<T>::results
+#    instead; take the first call in results
+# 5. confirm against the named 1.26.32.2 database: newResults is 0x140b2f170 (~0xdef), and 51 of the 52 xref
+#    functions call it there too
+# call site in the folded CommandSelector<T>::results
+pattern = "E8 ? ? ? ? 0F 57 C0 0F 11 06 48 8B 44 24 ? 48 85 C0 74 ? F0 FF 40 ? 48 8B 7C 24"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
 name = "?getActorName@CommandUtils@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVActor@@@Z"
 relative = false
 extra = 0

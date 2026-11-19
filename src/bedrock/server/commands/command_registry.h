@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <chrono>
 #include <cstddef>
 #include <cstdint>
 #include <format>
@@ -26,6 +27,9 @@
 #include <unordered_set>
 #include <utility>
 #include <vector>
+
+#include <entt/container/dense_map.hpp>
+#include <entt/container/dense_set.hpp>
 
 #include "bedrock/bedrock.h"
 #include "bedrock/core/utility/type_id.h"
@@ -92,6 +96,7 @@ private:
 public:
     void setSoftEnumValues(const std::string &enum_name, std::vector<std::string> values);
     void addSoftEnumValues(const std::string &enum_name, std::vector<std::string> values);
+    void removeSoftEnumValues(const std::string &enum_name, std::vector<std::string> values);
 
     static const int NonTerminalBit = 0x100000;
     static const int FirstNonTerminal = 0x100001;
@@ -221,7 +226,7 @@ public:
         static Symbol fromFactorizationIndex(size_t index);
         static Symbol fromPostfixIndex(size_t index);
         static Symbol fromEnumValueIndex(size_t index) { return {index | EnumValueBit}; }
-        static Symbol fromSoftEnumIndex(size_t index);
+        static Symbol fromSoftEnumIndex(size_t index) { return {index | SoftEnumBit | NonTerminalBit}; }
         static Symbol fromChainedSubcommandIndex(size_t index);
         static Symbol fromChainedSubcommandValueIndex(size_t index);
 
@@ -237,13 +242,23 @@ public:
         int value_ = 0;
     };
 
+    struct SymbolHasher {
+        std::size_t operator()(const Symbol &s) const;
+    };
+    struct SymbolPairHasher {
+        std::size_t operator()(const std::pair<Symbol, Symbol> &s) const;
+    };
+
     using NonTerminal = Symbol;
     using Terminal = Symbol;
     using SymbolVector = std::vector<Symbol>;
+    using SymbolSet = entt::dense_set<Symbol, SymbolHasher, std::equal_to<void>, std::allocator<Symbol>>;
+    BEDROCK_STATIC_ASSERT_SIZE(SymbolSet, 72, 56);
+    using ParseMap = std::map<Symbol, SymbolSet>;
 
     struct Overload {
         using AllocFunction = brstd::copyable_function<std::unique_ptr<Command>() const>;
-        Overload(const CommandVersion &version, AllocFunction alloc);
+        Overload(CommandVersion version, AllocFunction alloc);
 
         CommandVersion version;
         AllocFunction alloc;
@@ -252,24 +267,26 @@ public:
         bool is_chaining{false};
         SymbolVector params_symbol;
 
-        static_assert(sizeof(AllocFunction) == 64);
+        BEDROCK_STATIC_ASSERT_SIZE(AllocFunction, 64, 64);
     };
+    BEDROCK_STATIC_ASSERT_SIZE(Overload, 128, 144);
 
     struct Signature {
-        std::string name;                                       // +0
-        std::string description;                                // +32
-        std::vector<Overload> overloads;                        // +64
-        std::vector<std::uint32_t> chained_subcommand_indexes;  // +88
-        CommandPermissionLevel permission_level;                // +112
-        Symbol command_symbol;                                  // +116
-        Symbol command_alias_enum;                              // +120
-        CommandFlag flags;                                      // +124
-        int first_rule;                                         // +128
-        int first_factorization;                                // +132
-        int first_optional;                                     // +136
-        bool runnable;                                          // +140
-        std::size_t rule_counter;                               // +144
+        std::string name;
+        std::string description;
+        std::vector<Overload> overloads;
+        std::vector<std::uint32_t> chained_subcommand_indexes;
+        CommandPermissionLevel permission_level;
+        Symbol command_symbol;
+        Symbol command_alias_enum;
+        CommandFlag flags;
+        int first_rule;
+        int first_factorization;
+        int first_optional;
+        bool runnable;
+        std::size_t rule_counter;
     };
+    BEDROCK_STATIC_ASSERT_SIZE(Signature, 152, 136);
 
     struct ParseToken {
         std::unique_ptr<ParseToken> child;  // +0
@@ -281,35 +298,108 @@ public:
     };
     BEDROCK_STATIC_ASSERT_SIZE(CommandRegistry::ParseToken, 40, 40);
 
-    struct ParseRule;
-    struct OptionalParameterChain;
-    struct Factorization;
+    using ProcessFunction = std::function<ParseToken *(ParseToken &, Symbol)>;
+    struct ParseRule {
+        ParseRule(ParseRule &&) = default;
+        ParseRule &operator=(ParseRule &&) = default;
+        // Endstone begins
+        ParseRule() = default;
+        ParseRule(const ParseRule &) = default;
+        ParseRule &operator=(const ParseRule &) = default;
+        // Endstone ends
+
+        NonTerminal non_terminal;
+        ProcessFunction process;
+        SymbolVector derivation;
+        CommandVersion versions;
+    };
+    BEDROCK_STATIC_ASSERT_SIZE(ParseRule, 104, 96);
+
+    using RuleIndex = int;
+    struct OptionalParameterChain {
+        int parameter_count;
+        RuleIndex following_rule_index;
+        Symbol param_symbol;
+    };
+    BEDROCK_STATIC_ASSERT_SIZE(OptionalParameterChain, 12, 12);
+
+    struct Factorization {
+        Factorization(Factorization &&) = default;
+        Factorization &operator=(Factorization &&) = default;
+        // Endstone begins
+        Factorization() = default;
+        Factorization(const Factorization &) = default;
+        Factorization &operator=(const Factorization &) = default;
+        // Endstone ends
+
+        Terminal command_symbol;
+    };
+    BEDROCK_STATIC_ASSERT_SIZE(Factorization, 4, 4);
+
     using ParseFunction = bool (CommandRegistry::*)(void *, const ParseToken &, const CommandOrigin &, int,
                                                     std::string &, std::vector<std::string> &) const;
     struct ParamParseRule {
         ParseFunction parse;
         Symbol symbol;
     };
+    BEDROCK_STATIC_ASSERT_SIZE(ParamParseRule, 16, 24);
+
     template <typename T>
     struct ParseRuleFor {
         static const ParamParseRule instance;
     };
     struct Enum {
+        Enum(Enum &&) = default;
+        Enum &operator=(Enum &&) = default;
+        // Endstone begins
+        Enum() = default;
+        Enum(const Enum &) = default;
+        Enum &operator=(const Enum &) = default;
+        // Endstone ends
+
         std::string name;
         Bedrock::typeid_t<CommandRegistry> type;
         ParseFunction parse;
         std::vector<std::pair<std::uint64_t, std::uint64_t>> values;
     };
-    struct ChainedSubcommand;
+    BEDROCK_STATIC_ASSERT_SIZE(Enum, 72, 72);
+
+    struct ChainedSubcommand {
+        ChainedSubcommand(ChainedSubcommand &&) = default;
+        ChainedSubcommand &operator=(ChainedSubcommand &&) = default;
+        // Endstone begins
+        ChainedSubcommand() = default;
+        ChainedSubcommand(const ChainedSubcommand &) = default;
+        ChainedSubcommand &operator=(const ChainedSubcommand &) = default;
+        // Endstone ends
+
+        std::string name;
+        Bedrock::typeid_t<CommandRegistry> type;
+        ParseFunction parse;
+        std::vector<std::pair<std::uint64_t, std::uint32_t>> values;
+    };
+    BEDROCK_STATIC_ASSERT_SIZE(ChainedSubcommand, 72, 72);
+
     struct SoftEnum {
         std::string name;
         std::vector<std::string> values;
     };
+    BEDROCK_STATIC_ASSERT_SIZE(SoftEnum, 56, 48);
+
     struct ConstrainedValue {
+        ConstrainedValue(ConstrainedValue &&) = default;
+        ConstrainedValue &operator=(ConstrainedValue &&) = default;
+        // Endstone begins
+        ConstrainedValue() = default;
+        ConstrainedValue(const ConstrainedValue &) = default;
+        ConstrainedValue &operator=(const ConstrainedValue &) = default;
+        // Endstone ends
+
         Symbol value;
         Symbol enum_symbol;
         std::vector<unsigned char> constraints;
     };
+    BEDROCK_STATIC_ASSERT_SIZE(ConstrainedValue, 32, 32);
     struct ParamSymbols {
         Terminal x;              // +0
         Terminal y;              // +4
@@ -371,10 +461,26 @@ public:
         const auto it = enum_lookup_.find(name);
         return it == enum_lookup_.end() ? nullptr : &enums_[it->second];
     }
+
+    template <typename T>
+    static const ParamParseRule *getParseRule();
+
+    template <typename T>
+    static Bedrock::typeid_t<CommandRegistry> getTypeId();
     // Endstone ends
 
 private:
-    struct ParseTable;
+    using PredictTable = entt::dense_map<std::pair<Symbol, Symbol>, int, SymbolPairHasher, std::equal_to<void>,
+                                         std::allocator<std::pair<const std::pair<Symbol, Symbol>, int>>>;
+    BEDROCK_STATIC_ASSERT_SIZE(PredictTable, 72, 56);
+    struct ParseTable {
+        ParseMap first;
+        ParseMap follow;
+        PredictTable predict;
+        SymbolSet nullable_symbols;
+        std::chrono::steady_clock::duration build_duration;
+    };
+    BEDROCK_STATIC_ASSERT_SIZE(ParseTable, 184, 168);
 
     [[nodiscard]] const Signature *findCommand(const std::string &name) const;
     [[nodiscard]] NonTerminal findEnum(const std::string &name) const;
@@ -456,25 +562,37 @@ public:
           is_optional(is_optional)
     {
     }
-    CommandParameterData(Bedrock::typeid_t<CommandRegistry>, const ParamParseRule *, const char *, int, bool,
-                         CustomStorageGetFn, CustomStorageIsSetFn);
+    CommandParameterData(Bedrock::typeid_t<CommandRegistry> type_index, const ParamParseRule *parse_rule,
+                         const char *name, CommandParameterDataType param_type, const char *enum_name_or_postfix,
+                         int index, bool is_optional, CustomStorageGetFn get_fn, CustomStorageIsSetFn is_set_fn)
+        : type_index(type_index), parse_rule(parse_rule), name(name), enum_name_or_postfix(enum_name_or_postfix),
+          chained_subcommand(nullptr), param_type(param_type), offset(index), set_offset(index),
+          is_optional(is_optional), value_get_fn(get_fn), value_is_set_fn(is_set_fn)
+    {
+    }
 
-    Bedrock::typeid_t<CommandRegistry> type_index;                 // +0
-    const ParamParseRule *parse_rule;                              // +8
-    ParseFunction parse_override{nullptr};                         // +16
-    std::string name;                                              // +24
-    const char *enum_name_or_postfix;                              // +56
-    int enum_or_postfix_symbol{-1};                                // +64
-    const char *chained_subcommand;                                // +72
-    int chained_subcommand_symbol{-1};                             // +80
-    CommandParameterDataType param_type;                           // +84
-    int offset;                                                    // +88
-    int set_offset;                                                // +92
-    bool is_optional;                                              // +96
-    CommandParameterOption options{CommandParameterOption::None};  // +97
+    Bedrock::typeid_t<CommandRegistry> type_index;
+    const ParamParseRule *parse_rule;
+    ParseFunction parse_override{nullptr};
+    std::string name;
+    const char *enum_name_or_postfix;
+    int enum_or_postfix_symbol{-1};
+    const char *chained_subcommand;
+    int chained_subcommand_symbol{-1};
+    CommandParameterDataType param_type;
+    int offset;
+    int set_offset;
+    bool is_optional;
+    CommandParameterOption options{CommandParameterOption::None};
     CustomStorageGetFn value_get_fn{nullptr};
     CustomStorageIsSetFn value_is_set_fn{nullptr};
 };
+BEDROCK_STATIC_ASSERT_SIZE(CommandParameterData, 120, 120);
+
+inline CommandRegistry::Overload::Overload(CommandVersion version, AllocFunction alloc)
+    : version(version), alloc(std::move(alloc))
+{
+}
 
 template <typename CommandType>
 const CommandRegistry::Overload *CommandRegistry::registerOverload(const char *name, CommandVersion version,
@@ -485,13 +603,36 @@ const CommandRegistry::Overload *CommandRegistry::registerOverload(const char *n
         return nullptr;
     }
 
-    auto overload = Overload(version, &allocateCommand<CommandType>);
+    auto &overload = signature->overloads.emplace_back(version, &allocateCommand<CommandType>);
     overload.params = std::move(params);
-
-    signature->overloads.push_back(overload);
     registerOverloadInternal(*signature, overload);
-    return &signature->overloads.back();
+    return &overload;
 }
+
+// Endstone begins
+template <>
+const CommandRegistry::ParamParseRule *CommandRegistry::getParseRule<std::string>();
+template <>
+const CommandRegistry::ParamParseRule *CommandRegistry::getParseRule<int>();
+template <>
+const CommandRegistry::ParamParseRule *CommandRegistry::getParseRule<float>();
+template <>
+const CommandRegistry::ParamParseRule *CommandRegistry::getParseRule<CommandMessage>();
+template <>
+const CommandRegistry::ParamParseRule *CommandRegistry::getParseRule<CommandRawText>();
+template <>
+const CommandRegistry::ParamParseRule *CommandRegistry::getParseRule<CommandSelector<Actor>>();
+template <>
+const CommandRegistry::ParamParseRule *CommandRegistry::getParseRule<CommandSelector<Player>>();
+template <>
+const CommandRegistry::ParamParseRule *CommandRegistry::getParseRule<CommandPosition>();
+template <>
+const CommandRegistry::ParamParseRule *CommandRegistry::getParseRule<CommandPositionFloat>();
+template <>
+const CommandRegistry::ParamParseRule *CommandRegistry::getParseRule<Json::Value>();
+template <>
+Bedrock::typeid_t<CommandRegistry> CommandRegistry::getTypeId<std::string>();
+// Endstone ends
 
 template <>
 struct std::formatter<CommandRegistry::ParseToken> : std::formatter<std::string_view> {

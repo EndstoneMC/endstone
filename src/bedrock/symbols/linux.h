@@ -11,9 +11,20 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 131> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 147> symbols = {{
+    {"Bedrock::type_id<CommandRegistry, std::string>::id", 265556960},
     {"BlockState::StateListNode::mHead", 267362512},
     {"ChunkBlenderFactory::getOrCreateChunkBlender::cache_cap", 86840808},
+    {"CommandRegistry::ParseRuleFor<CommandMessage>::instance", 266597288},
+    {"CommandRegistry::ParseRuleFor<CommandPosition>::instance", 266597168},
+    {"CommandRegistry::ParseRuleFor<CommandPositionFloat>::instance", 266597120},
+    {"CommandRegistry::ParseRuleFor<CommandRawText>::instance", 266596976},
+    {"CommandRegistry::ParseRuleFor<CommandSelector<Actor>>::instance", 266597024},
+    {"CommandRegistry::ParseRuleFor<CommandSelector<Player>>::instance", 266597072},
+    {"CommandRegistry::ParseRuleFor<Json::Value>::instance", 266597264},
+    {"CommandRegistry::ParseRuleFor<float>::instance", 266597240},
+    {"CommandRegistry::ParseRuleFor<int>::instance", 266597048},
+    {"CommandRegistry::ParseRuleFor<std::string>::instance", 266597096},
     {"DBChunkStorage::_hasChunk::cache_cap", 225498426},
     {"Enchant::mEnchants", 267196192},
     {"LevelChunk::tickImpl::seed", 265504384},
@@ -63,13 +74,19 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 131> symbo
     // CommandOriginLoader
     {"_ZN19CommandOriginLoader4loadERK11CompoundTagR11ServerLevel", 168506880},
     // CommandRegistry
+    {"_ZN15CommandRegistry11addSoftEnumERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEENS0_6vectorIS6_NS4_IS6_EEEE", 168686992},
     {"_ZN15CommandRegistry13addEnumValuesERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_6vectorIS6_NS4_IS6_EEEE", 168685872},
     {"_ZN15CommandRegistry13registerAliasENSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEES6_", 168698208},
     {"_ZN15CommandRegistry15registerCommandERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEEPKc22CommandPermissionLevel11CommandFlagSC_", 168689760},
+    {"_ZN15CommandRegistry17addSoftEnumValuesERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEENS0_6vectorIS6_NS4_IS6_EEEE", 168734288},
+    {"_ZN15CommandRegistry17setSoftEnumValuesERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEENS0_6vectorIS6_NS4_IS6_EEEE", 168735360},
+    {"_ZN15CommandRegistry20removeSoftEnumValuesERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEENS0_6vectorIS6_NS4_IS6_EEEE", 168736192},
     {"_ZN15CommandRegistry22_addEnumValuesInternalERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_6vectorINS0_4pairIS6_mEENS4_ISB_EEEEN7Bedrock8typeid_tIS_EEMS_KFbPvRKNS_10ParseTokenERK13CommandOriginiRS6_RNS9_IS6_NS4_IS6_EEEEE", 168726720},
     {"_ZN15CommandRegistry24registerOverloadInternalERNS_9SignatureERNS_8OverloadE", 168702352},
     {"_ZNK15CommandRegistry14symbolToStringENS_6SymbolE", 168435408},
     {"_ZNK15CommandRegistry26serializeAvailableCommandsEv", 168761264},
+    // CommandSelectorBase
+    {"_ZNK19CommandSelectorBase10newResultsERK13CommandOrigin", 168776016},
     // CommandUtils
     {"_ZN12CommandUtils12getActorNameERK5Actor", 168454176},
     // ConsoleInputReader
