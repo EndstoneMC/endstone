@@ -28,6 +28,7 @@
 - Back-port only fixes with a visible effect on the release branch.
 - Check a back-port's prerequisite commits exist on the release branch, and leave the fix on the newer branch when the port needs new API, an ABI change or a different mechanism.
 - After each release merge the older branch forward, `Merge branch 'vX.Y' into vX.Z` with git's default subject, then commit `docs(changelog): drop entries already shipped in X.Y`.
+- After a `vX.Y` merge, diff the symbol tomls against the first parent and drop entries the newer line had deleted.
 
 ## Release lines
 
