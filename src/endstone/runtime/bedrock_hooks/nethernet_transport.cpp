@@ -14,10 +14,12 @@
 
 #include "bedrock/deps/nethernet/nethernet_transport.h"
 
+#include <cstdlib>
 #include <format>
 #include <memory>
 #include <optional>
 #include <string>
+#include <system_error>
 #include <utility>
 #include <variant>
 
@@ -30,7 +32,6 @@
 #include "bedrock/world/level/level.h"
 #include "endstone/core/game_mode.h"
 #include "endstone/core/level/level.h"
-#include "endstone/core/logger_factory.h"
 #include "endstone/core/network/http_signaling_server.h"
 #include "endstone/core/server.h"
 #include "endstone/event/server/server_list_ping_event.h"
@@ -100,8 +101,15 @@ NetherNet::INetherNetTransportInterface *NetherNet::TransportFactoryImpl::create
         });
     transport->SetSignalingInterface(signaling_server);
     if (const auto error = signaling_server->start()) {
-        endstone::core::LoggerFactory::getLogger("NetherNet")
-            .error("NetherNet could not listen on port {} for signaling: {}", port, error.message());
+        auto &logger = endstone::core::EndstoneServer::getInstance().getLogger();
+        if (error == std::errc::address_in_use) {
+            logger.error("Port [{}] may be in use by another process. Free up port and re-run program or adjust "
+                         "server.properties file to use alternate ports for server",
+                         port);
+            logger.error("Exiting program");
+            std::exit(1);
+        }
+        logger.error("NetherNet could not listen on port {} for signaling: {}", port, error.message());
         transport->SetSignalingInterface(nullptr);
         return transport;
     }

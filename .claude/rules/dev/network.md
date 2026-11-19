@@ -74,8 +74,8 @@ paths:
 - A NetherNet client's identity `cpk` must equal the key used in the login token; a mismatch gets Disconnect 46 (NotAuthenticated) after Login with no server log.
 - The server identity key is `keys/server_identity_key.pem` (P-384) and signs NetherNet assertions and the login ServerToClientHandshake JWT; when absent BDS generates an in-memory key per start and only `/serveridentity save` persists it.
 - iOS clients open TCP and send a TLS ClientHello, so put a TLS terminator in front of the signaling port; media still goes direct over UDP.
-- Keep the CLI signaling-port pre-flight check in `endstone/cli/base.py`; BDS logs "Server started" with no listener when the signaling bind fails.
-- On Linux a stopped server's FIN_WAIT sockets block rebinding of the signaling port for about 60 s; wait for the port before restarting.
+- When the signaling port is in use, `createTransportInterface` logs BDS's RakNet port-in-use sentence and "Exiting program", then calls `std::exit(1)` as BDS does; any other start failure is logged and the server runs without signaling. The CLI has no port pre-check.
+- The signaling acceptor sets `SO_REUSEADDR` on Linux, so a stopped server's lingering sockets never block a restart; only a live listener does.
 - Call virtuals through the object instead of hooking them, such as `INetherNetTransportInterface::SetRelayConfig`, and apply such calls in `setLevel`, never from `EndstoneServer::init`.
 - Hook `NetherNet::LanThreadManager::SendLanBroadcastResponse` for the LAN ping payload.
-- Under `transport=nethernet` the only ping is LAN discovery; `HttpSignalingServer` carries no MOTD or event.
+- Under `transport=nethernet` a ping is LAN discovery or a `GET /v1/join` to `EndstoneHttpSignalingServer`, which answers with the server info `ServerListPingEvent` fills.

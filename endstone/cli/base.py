@@ -7,7 +7,6 @@ import os
 import platform
 import re
 import shutil
-import socket
 import subprocess
 import sys
 import tempfile
@@ -230,41 +229,6 @@ class Bootstrap:
 
         return added
 
-
-    def _check_server_port(self) -> None:
-        """
-        Exits when the NetherNet signaling port is taken, which the Bedrock Dedicated Server does not report.
-        """
-        path = self.server_path / "server.properties"
-        if not path.exists():
-            return
-
-        with path.open("r", encoding="utf-8", newline="") as file:
-            props = _properties.load(file)
-
-        if props.get("transport") != "nethernet":
-            return
-
-        port = props.get_int("server-port", 19132)
-        host = props.get("server-ip", "").strip()
-        if host:
-            family = socket.AF_INET6 if ":" in host else socket.AF_INET
-            dualstack = False
-        else:
-            dualstack = socket.has_dualstack_ipv6()
-            family = socket.AF_INET6 if dualstack else socket.AF_INET
-
-        try:
-            socket.create_server((host, port), family=family, dualstack_ipv6=dualstack).close()
-        except OSError as e:
-            if e.errno != errno.EADDRINUSE:
-                return
-            self._logger.error(
-                f"Port [{port}] may be in use by another process. Free up port and re-run program or adjust "
-                "server.properties file to use alternate ports for server"
-            )
-            sys.exit(1)
-
     def _prepare(self) -> None:
         # ensure the plugin folder exists
         self.plugin_path.mkdir(parents=True, exist_ok=True)
@@ -414,7 +378,6 @@ class Bootstrap:
         self._install()
         self._validate()
         self._prepare()
-        self._check_server_port()
         return self._run()
 
     @property
