@@ -18,4 +18,5 @@ paths:
 - Reimplemented non-virtual bodies run for real; the virtual overrides stubbed with `unreachable()` are served by the real vtable.
 - Re-check lists and tables copied from BDS on every bump; they go stale without a compile error.
 - Never copy a BDS name table or its bound into a reimplementation; `CommandRegistry::symbolToString` reads static tables whose non-terminal bound grows between releases.
-- Keep a body that builds a packet on the stack as a symbol: MSVC may call the templated packet constructor out of line while Linux inlines it with the vtable.
+- Keep a body that builds a packet on the stack as a symbol, unless the packet is only handed to a sender; then build it with `MinecraftPackets::createPacket` and fill its payload, since the factory makes the same vtable and default payload and adds only the receive-side `handler_`.
+- Never take `HardNonTerminal` values from BDS's `symbolToString` name table; its order is not the enum's.

@@ -11,9 +11,20 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 131> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 144> symbols = {{
+    {"Bedrock::type_id<CommandRegistry, std::string>::id", 265556960},
     {"BlockState::StateListNode::mHead", 267362512},
     {"ChunkBlenderFactory::getOrCreateChunkBlender::cache_cap", 86840808},
+    {"CommandRegistry::ParseRuleFor<CommandMessage>::instance", 266597288},
+    {"CommandRegistry::ParseRuleFor<CommandPosition>::instance", 266597168},
+    {"CommandRegistry::ParseRuleFor<CommandPositionFloat>::instance", 266597120},
+    {"CommandRegistry::ParseRuleFor<CommandRawText>::instance", 266596976},
+    {"CommandRegistry::ParseRuleFor<CommandSelector<Actor>>::instance", 266597024},
+    {"CommandRegistry::ParseRuleFor<CommandSelector<Player>>::instance", 266597072},
+    {"CommandRegistry::ParseRuleFor<Json::Value>::instance", 266597264},
+    {"CommandRegistry::ParseRuleFor<float>::instance", 266597240},
+    {"CommandRegistry::ParseRuleFor<int>::instance", 266597048},
+    {"CommandRegistry::ParseRuleFor<std::string>::instance", 266597096},
     {"DBChunkStorage::_hasChunk::cache_cap", 225498426},
     {"Enchant::mEnchants", 267196192},
     {"LevelChunk::tickImpl::seed", 265504384},
@@ -63,13 +74,19 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 131> symbo
     // CommandOriginLoader
     {"_ZN19CommandOriginLoader4loadERK11CompoundTagR11ServerLevel", 168506880},
     // CommandRegistry
+    {"_ZN15CommandRegistry11addSoftEnumERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEENS0_6vectorIS6_NS4_IS6_EEEE", 168686992},
     {"_ZN15CommandRegistry13addEnumValuesERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_6vectorIS6_NS4_IS6_EEEE", 168685872},
     {"_ZN15CommandRegistry13registerAliasENSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEES6_", 168698208},
     {"_ZN15CommandRegistry15registerCommandERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEEPKc22CommandPermissionLevel11CommandFlagSC_", 168689760},
+    {"_ZN15CommandRegistry17addSoftEnumValuesERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEENS0_6vectorIS6_NS4_IS6_EEEE", 168734288},
+    {"_ZN15CommandRegistry17setSoftEnumValuesERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEENS0_6vectorIS6_NS4_IS6_EEEE", 168735360},
+    {"_ZN15CommandRegistry20removeSoftEnumValuesERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEENS0_6vectorIS6_NS4_IS6_EEEE", 168736192},
     {"_ZN15CommandRegistry22_addEnumValuesInternalERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_6vectorINS0_4pairIS6_mEENS4_ISB_EEEEN7Bedrock8typeid_tIS_EEMS_KFbPvRKNS_10ParseTokenERK13CommandOriginiRS6_RNS9_IS6_NS4_IS6_EEEEE", 168726720},
     {"_ZN15CommandRegistry24registerOverloadInternalERNS_9SignatureERNS_8OverloadE", 168702352},
     {"_ZNK15CommandRegistry14symbolToStringENS_6SymbolE", 168435408},
     {"_ZNK15CommandRegistry26serializeAvailableCommandsEv", 168761264},
+    // CommandSelectorBase
+    {"_ZNK19CommandSelectorBase10newResultsERK13CommandOrigin", 168776016},
     // CommandUtils
     {"_ZN12CommandUtils12getActorNameERK5Actor", 168454176},
     // ConsoleInputReader
@@ -82,8 +99,6 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 131> symbo
     {"_ZN20CraftHandlerCrafting18_handleCraftActionERK31ItemStackRequestActionCraftBase", 211840112},
     // CraftHandlerEnchant
     {"_ZN19CraftHandlerEnchant18_handleCraftActionERK31ItemStackRequestActionCraftBase", 211849312},
-    // CraftingDataPacketPayload
-    {"_ZN25CraftingDataPacketPayload11fromRecipesERK7Recipesb", 143082000},
     // DedicatedServer
     {"_ZN15DedicatedServer5startERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKN7Bedrock19ActivationArgumentsE", 77018512},
     // Dimension
@@ -155,7 +170,6 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 131> symbo
     {"_ZN9NetherNet20TransportFactoryImpl24createTransportInterfaceERKNS_9NetworkIDERKNS_22TransportConfigurationEPNS_37INetherNetTransportInterfaceCallbacksE", 229389648},
     // NetworkSystem
     {"_ZN13NetworkSystem23onNewIncomingConnectionERK17NetworkIdentifierONSt3__110shared_ptrI11NetworkPeerEENS3_8optionalI6WebKeyEE", 147989808},
-    {"_ZN13NetworkSystem4sendERK17NetworkIdentifierRK6Packet11SubClientId", 147887968},
     // PistonBlockActor
     {"_ZN16PistonBlockActor4tickER11BlockSource", 222128384},
     // Player
@@ -170,7 +184,6 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 131> symbo
     {"_ZN6Player4takeER5Actorii", 198087984},
     // PlayerLocationSender
     {"_ZN20PlayerLocationSender24_forEachClientPlayerPairERKNSt3__16vectorI13WeakEntityRefNS0_9allocatorIS2_EEEENS0_8functionIFvRK29UserEntityIdentifierComponentRK6PlayerSE_EEE", 215941344},
-    {"_ZNK20PlayerLocationSender25_shouldSendPositionPacketERK4Vec3RK13DimensionTypebRKNSt3__18optionalIS0_EERKNS_18PlayerLocationDataE", 215942576},
     // PlayerTickManager
     {"_ZN17PlayerTickManager23processPlayerNetworkingERK4Tick", 215652080},
     // PushableByEntityUtility

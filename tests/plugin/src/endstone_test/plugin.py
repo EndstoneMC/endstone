@@ -5,9 +5,11 @@ from endstone import Player
 from endstone.boss import BarColor, BarStyle, BossBar
 from endstone.command import Command, CommandSender
 from endstone.event import PlayerJoinEvent, event_handler
+from endstone.level import Dimension, DimensionCreator
 from endstone.plugin import Plugin
 
 from endstone_test.command_executor import TestCommandExecutor
+from endstone_test.dimensions import ENABLE_DIMENSION, STARTUP_DIMENSIONS
 from endstone_test.harness import api_recorder
 from endstone_test.harness.pytest_pass import run_pytest
 
@@ -84,12 +86,21 @@ class EndstoneTest(Plugin):
         self.extra_boss_bars: list[BossBar] = []
         self.boss_bar_ticks = 0
         self.driver = None
+        self.load_dimensions: dict[str, Dimension | None] = {}
+        self.enable_dimension: Dimension | None = None
 
     def on_load(self) -> None:
         self.logger.info("on_load is called!")
+        self.load_dimensions = {
+            dimension_id: self.server.create_dimension(DimensionCreator(dimension_id))
+            for dimension_id in STARTUP_DIMENSIONS
+        }
 
     def on_enable(self) -> None:
         self.logger.info("on_enable is called!")
+        self.enable_dimension = self.server.create_dimension(
+            DimensionCreator(ENABLE_DIMENSION)
+        )
         self.logger.info(f"protocol version: {self.server.protocol_version}")
 
         self.extra_boss_bars = [

@@ -42,6 +42,7 @@
 #include "endstone/core/scoreboard/scoreboard.h"
 #include "endstone/core/signal_handler.h"
 #include "endstone/core/type.h"
+#include "endstone/level/dimension_creator.h"
 #include "endstone/server.h"
 
 class RakNetConnector;
@@ -87,6 +88,7 @@ public:
     [[nodiscard]] NotNull<MetricsBase> createMetrics(const NotNull<Plugin> &plugin, int service_id) override;
 
     [[nodiscard]] Level &getLevel() const override;
+    Nullable<Dimension> createDimension(const DimensionCreator &creator) override;
     [[nodiscard]] std::vector<NotNull<Recipe>> getRecipes() const override;
     [[nodiscard]] EndstoneLevel *getEndstoneLevel() const;
 
@@ -189,6 +191,7 @@ private:
     [[nodiscard]] std::uint16_t getSignalingPort() const;
 
     ServerInstance *server_instance_{nullptr};
+    std::vector<DimensionCreator> pending_dimensions_;
     Logger &logger_;
     std::unique_ptr<CrashHandler> crash_handler_;
     std::unique_ptr<SignalHandler> signal_handler_;

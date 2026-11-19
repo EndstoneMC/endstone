@@ -15,6 +15,7 @@
 #include "endstone/core/server.h"
 
 #include <algorithm>
+#include <cctype>
 #include <chrono>
 #include <filesystem>
 #include <format>
@@ -87,6 +88,7 @@
 #include "endstone/event/server/broadcast_message_event.h"
 #include "endstone/event/server/map_initialize_event.h"
 #include "endstone/event/server/server_load_event.h"
+#include "endstone/level/dimension_creator.h"
 #include "endstone/plugin/plugin.h"
 #include "endstone/runtime/runtime.h"
 #include "endstone/util/format.h"
@@ -259,6 +261,10 @@ void EndstoneServer::setLevel(::Level &level)
     }
     level_ = std::make_unique<EndstoneLevel>(level);
     level_->loadDimensions();
+    for (const auto &creator : pending_dimensions_) {
+        (void)level_->createDimension(creator);
+    }
+    pending_dimensions_.clear();
     scoreboard_ = EndstoneScoreboard::create(level.getScoreboard());
     command_map_->attach();
     metrics_ = std::make_unique<Metrics>(*this, "endstone._metrics", "EndstoneMetrics", std::ref<Server>(*this));
@@ -586,6 +592,30 @@ Level &EndstoneServer::getLevel() const
         throw std::runtime_error("Level has not been loaded yet.");
     }
     return *level_;
+}
+
+Nullable<Dimension> EndstoneServer::createDimension(const DimensionCreator &creator)
+{
+    const auto id = creator.getId();
+    const auto name_space = id.getNamespace();
+    const auto key = id.getKey();
+    const std::string name{id};
+    std::string lowered_namespace{name_space};
+    std::ranges::transform(lowered_namespace, lowered_namespace.begin(),
+                           [](const unsigned char c) { return static_cast<char>(std::tolower(c)); });
+    Preconditions::checkState(isPrimaryThread(), "Custom dimension '{}' cannot be created asynchronously.", name);
+    Preconditions::checkArgument(!name_space.empty() && !key.empty() && key.find(':') == std::string_view::npos &&
+                                     lowered_namespace != DimensionId::Minecraft &&
+                                     name.find_first_of(" \t\n\r") == std::string::npos,
+                                 "Custom dimension '{}' has invalid characters.", name);
+    if (!level_) {
+        if (std::ranges::none_of(pending_dimensions_,
+                                 [&](const DimensionCreator &pending) { return pending.getId() == id; })) {
+            pending_dimensions_.push_back(creator);
+        }
+        return nullptr;
+    }
+    return level_->createDimension(creator);
 }
 
 std::vector<NotNull<Recipe>> EndstoneServer::getRecipes() const

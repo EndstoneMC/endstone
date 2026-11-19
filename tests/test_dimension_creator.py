@@ -1,7 +1,7 @@
 import pytest
 
-from endstone import Identifier
-from endstone.level import Dimension, DimensionCreator
+from endstone import Identifier, Server
+from endstone.level import Dimension, DimensionCreator, Level
 
 
 def test_construction_from_a_namespaced_string() -> None:
@@ -41,3 +41,16 @@ def test_id_is_read_only() -> None:
     creator = DimensionCreator("myplugin:void_realm")
     with pytest.raises(AttributeError):
         creator.id = "myplugin:other_realm"
+
+
+def test_server_creates_dimensions() -> None:
+    """Verify Server.create_dimension takes a creator and returns the dimension."""
+    assert callable(Server.create_dimension)
+    signature = Server.create_dimension.__doc__.splitlines()[0]
+    assert "creator" in signature
+    assert "Dimension" in signature.split("->")[1]
+
+
+def test_level_no_longer_creates_dimensions() -> None:
+    """Verify the unreleased Level.create_dimension is gone."""
+    assert not hasattr(Level, "create_dimension")

@@ -238,6 +238,7 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "lang/translatable.h"
 #include "level/chunk.h"
 #include "level/dimension.h"
+#include "level/dimension_creator.h"
 #include "level/level.h"
 #include "level/location.h"
 #include "logger.h"

@@ -34,6 +34,10 @@ public:
         return *this;
     }
 
+    bool operator==(const typeid_t &other) const { return id == other.id; }
+
+    bool operator<(const typeid_t &other) const { return id < other.id; }
+
     TypeIdStorage id;
 };
 BEDROCK_STATIC_ASSERT_SIZE(typeid_t<void>, 2, 2);

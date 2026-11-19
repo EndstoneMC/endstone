@@ -362,23 +362,6 @@ void init_level(py::module_ &m, py::classh<Level> &level, py::classh<Dimension> 
     Returns:
         The `Dimension` with the given id, or `None` if none exists.
 )doc")
-        .def("create_dimension", &Level::createDimension, py::arg("creator"), R"doc(
-    Creates a new custom dimension within this level.
-
-    Custom dimensions are empty (void) dimensions identified by a namespaced id, e.g. `myplugin:void_realm`;
-    populate them with blocks, structures or actors afterward.
-
-    The level remembers which id belongs to which name, so a dimension's terrain and actors survive a restart.
-    The registration itself does not: call this again on every startup to get the same dimension back.
-
-    If a dimension with the requested name already exists, that existing dimension is returned instead.
-
-    Args:
-        creator: The options to use when creating the dimension. An identifier or plain string is also accepted as the name.
-
-    Returns:
-        The newly created (or existing) `Dimension`, or `None` if it could not be created.
-)doc")
         .def_property_readonly("seed", &Level::getSeed, "The Seed for this level.")
         .def("is_game_rule", &Level::_isGameRule, py::arg("rule"), R"doc(
     Checks if a game rule exists.

@@ -33,3 +33,4 @@ paths:
 - Assume one shared network worker pool thread and serial decrypt per connection.
 - Dispatch `PacketSendEvent` inline at send time, never deferred.
 - On every bump re-check the async-pool wake-threshold write in `server_instance.cpp`: the field, both pool constructors storing `0.05F`, and `MinecraftWorkerPool::ASYNC` resolving.
+- Never call plugin code (`requires`, `suggests`, listeners) or destroy a plugin-held object while holding a core lock such as the command map's mutex; collect targets and move doomed objects into locals declared before the `lock_guard`, then call out or let them die after it releases, since a Python-derived object's deleter takes the GIL.

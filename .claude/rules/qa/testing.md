@@ -40,6 +40,7 @@ paths:
 - Prove "nothing happened" with a barrier packet the client must receive, as `barrier()` in `scenarios/player_actors.py` does.
 - Observe events with `ctx.capture(EventClass, where, cancel=, mutate=)` and `ctx.release` it at the end; never register a listener in a test.
 - Keep scenario state that must survive `/reload` in `ctx.stash`, and keep harness setup idempotent.
+- Place a fixture that must survive `/reload` outside the scenario's plot; the reloaded driver restarts at plot 0 and clears it.
 - Drive player-triggered behaviour with `ctx.bot(name)` and `bot.call("dotted.method")` under a unique bot name; add the missing bot action rather than waiving a hard path.
 - Make bot changes mirror the real client's class and method names, handler chain and order, and prove a bot defect from the packet the bot sent against the real client; do not patch a symptom with a flag.
 - Find the bot action table in `endstone-client`'s `docs/DESIGN.md`; a pickup scenario needs the bot to send `TakeItemActorPacket`.
@@ -64,3 +65,4 @@ paths:
 - A scenario that promises output byte-equal to release X captures its expected values from a build of X.
 - Check a log's mtime before trusting a grep of it while a background job will overwrite it; an old run's log passes early.
 - When overriding the bundled allocator for a live test, name the preloaded file so it contains malloc (libmimalloc-<variant>.so); endstone/cli/linux.py appends the bundled libmimalloc.so otherwise.
+- The harness hub opens in the test plugin's on_enable, so a dimension created in setLevel never shows up in hub.startup events; assert on the level's state instead.

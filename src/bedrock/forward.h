@@ -36,6 +36,7 @@ using AttributeMessageType = int64_t;
 // Classes
 class _TickPtr;  // NOLINT
 class ActionQueue;
+class Actor;
 class ActorAnimationControllerGroup;
 class ActorAnimationGroup;
 class ActorBlockSyncMessage;
@@ -96,7 +97,11 @@ class ChunkViewSource;
 class ClassroomModeNetworkHandler;
 class ClientLevel;
 class ClientNetworkSystem;
+class CommandMessage;
 class CommandOriginSystem;
+class CommandPosition;
+class CommandPositionFloat;
+class CommandRawText;
 class CompactionStatus;
 class ComplexInventoryTransaction;
 class ContainerBlockActorComponent {};
@@ -375,6 +380,9 @@ enum Type : int32_t;
 namespace Editor {
 class IEditorManager {};
 }  // namespace Editor
+namespace Json {
+class Value;
+}  // namespace Json
 namespace NetherNet {
 class IIdentityAssertionGenerator;
 }  // namespace NetherNet
@@ -437,6 +445,8 @@ public:
 };
 
 // Template Classes
+template <typename T>
+class CommandSelector;
 template <typename Type, typename... Args>
 class Factory;
 template <typename Type, typename... Args>

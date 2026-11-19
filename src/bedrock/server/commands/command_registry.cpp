@@ -19,7 +19,6 @@
 #include <sstream>
 #include <utility>
 
-#include "bedrock/network/packet/update_soft_enum_packet.h"
 #include "bedrock/server/commands/command.h"
 #include "bedrock/symbol.h"
 
@@ -51,7 +50,7 @@ CommandRegistry::NonTerminal CommandRegistry::findEnum(const std::string &name) 
     if (it == enum_lookup_.end()) {
         return Symbol{0};
     }
-    return Symbol::fromEnumValueIndex(it->second);
+    return Symbol::fromEnumIndex(it->second);
 }
 
 CommandRegistry::Terminal CommandRegistry::findEnumValue(const std::string &name) const
@@ -103,45 +102,24 @@ AvailableCommandsPacket CommandRegistry::serializeAvailableCommands() const
     return BEDROCK_CALL(&CommandRegistry::serializeAvailableCommands, this);
 }
 
+int CommandRegistry::addSoftEnum(const std::string &name, std::vector<std::string> values)
+{
+    return BEDROCK_CALL(&CommandRegistry::addSoftEnum, this, name, std::move(values));
+}
+
 void CommandRegistry::setSoftEnumValues(const std::string &enum_name, std::vector<std::string> values)
 {
-    const auto it = soft_enum_lookup_.find(enum_name);
-    if (it == soft_enum_lookup_.end()) {
-        return;
-    }
-
-    auto &soft_enum = soft_enums_.at(it->second);
-    soft_enum.values = values;
-
-    const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::UpdateSoftEnum);
-    const auto pk = std::static_pointer_cast<UpdateSoftEnumPacket>(packet);
-    pk->payload.enum_name = enum_name;
-    pk->payload.values = values;
-    pk->payload.type = SoftEnumUpdateType::Replace;
-    network_update_callback_(*pk);
+    BEDROCK_CALL(&CommandRegistry::setSoftEnumValues, this, enum_name, std::move(values));
 }
 
 void CommandRegistry::addSoftEnumValues(const std::string &enum_name, std::vector<std::string> values)
 {
-    const auto it = soft_enum_lookup_.find(enum_name);
-    if (it == soft_enum_lookup_.end()) {
-        return;
-    }
-
-    auto &soft_enum = soft_enums_.at(it->second);
-    soft_enum.values.insert(soft_enum.values.end(), values.begin(), values.end());
-
-    const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::UpdateSoftEnum);
-    const auto pk = std::static_pointer_cast<UpdateSoftEnumPacket>(packet);
-    pk->payload.enum_name = enum_name;
-    pk->payload.values = values;
-    pk->payload.type = SoftEnumUpdateType::Add;
-    network_update_callback_(*pk);
+    BEDROCK_CALL(&CommandRegistry::addSoftEnumValues, this, enum_name, std::move(values));
 }
 
-CommandRegistry::Overload::Overload(const CommandVersion &version, AllocFunction alloc)
-    : version(version), alloc(std::move(alloc))
+void CommandRegistry::removeSoftEnumValues(const std::string &enum_name, std::vector<std::string> values)
 {
+    BEDROCK_CALL(&CommandRegistry::removeSoftEnumValues, this, enum_name, std::move(values));
 }
 
 int CommandRegistry::addEnumValues(const std::string &name, const std::vector<std::string> &values)
@@ -154,4 +132,71 @@ CommandRegistry::Symbol CommandRegistry::_addEnumValuesInternal(
     Bedrock::typeid_t<CommandRegistry> type, const ParseFunction parse)
 {
     return BEDROCK_CALL(&CommandRegistry::_addEnumValuesInternal, this, name, values, type, parse);
+}
+
+template <>
+const CommandRegistry::ParamParseRule *CommandRegistry::getParseRule<std::string>()
+{
+    return BEDROCK_VAR(const ParamParseRule *, "CommandRegistry::ParseRuleFor<std::string>::instance");
+}
+
+template <>
+const CommandRegistry::ParamParseRule *CommandRegistry::getParseRule<int>()
+{
+    return BEDROCK_VAR(const ParamParseRule *, "CommandRegistry::ParseRuleFor<int>::instance");
+}
+
+template <>
+const CommandRegistry::ParamParseRule *CommandRegistry::getParseRule<float>()
+{
+    return BEDROCK_VAR(const ParamParseRule *, "CommandRegistry::ParseRuleFor<float>::instance");
+}
+
+template <>
+const CommandRegistry::ParamParseRule *CommandRegistry::getParseRule<CommandMessage>()
+{
+    return BEDROCK_VAR(const ParamParseRule *, "CommandRegistry::ParseRuleFor<CommandMessage>::instance");
+}
+
+template <>
+const CommandRegistry::ParamParseRule *CommandRegistry::getParseRule<CommandRawText>()
+{
+    return BEDROCK_VAR(const ParamParseRule *, "CommandRegistry::ParseRuleFor<CommandRawText>::instance");
+}
+
+template <>
+const CommandRegistry::ParamParseRule *CommandRegistry::getParseRule<CommandSelector<Actor>>()
+{
+    return BEDROCK_VAR(const ParamParseRule *, "CommandRegistry::ParseRuleFor<CommandSelector<Actor>>::instance");
+}
+
+template <>
+const CommandRegistry::ParamParseRule *CommandRegistry::getParseRule<CommandSelector<Player>>()
+{
+    return BEDROCK_VAR(const ParamParseRule *, "CommandRegistry::ParseRuleFor<CommandSelector<Player>>::instance");
+}
+
+template <>
+const CommandRegistry::ParamParseRule *CommandRegistry::getParseRule<CommandPosition>()
+{
+    return BEDROCK_VAR(const ParamParseRule *, "CommandRegistry::ParseRuleFor<CommandPosition>::instance");
+}
+
+template <>
+const CommandRegistry::ParamParseRule *CommandRegistry::getParseRule<CommandPositionFloat>()
+{
+    return BEDROCK_VAR(const ParamParseRule *, "CommandRegistry::ParseRuleFor<CommandPositionFloat>::instance");
+}
+
+template <>
+const CommandRegistry::ParamParseRule *CommandRegistry::getParseRule<Json::Value>()
+{
+    return BEDROCK_VAR(const ParamParseRule *, "CommandRegistry::ParseRuleFor<Json::Value>::instance");
+}
+
+template <>
+Bedrock::typeid_t<CommandRegistry> CommandRegistry::getTypeId<std::string>()
+{
+    return *BEDROCK_VAR(const Bedrock::typeid_t<CommandRegistry> *,
+                        "Bedrock::type_id<CommandRegistry, std::string>::id");
 }

@@ -21,6 +21,7 @@
 #include "bedrock/world/level/level.h"
 #include "endstone/actor/actor.h"
 #include "endstone/level/dimension.h"
+#include "endstone/level/dimension_creator.h"
 #include "endstone/level/level.h"
 
 namespace endstone::core {
@@ -40,7 +41,7 @@ public:
     [[nodiscard]] std::vector<NotNull<Recipe>> getRecipes() const override;
     [[nodiscard]] Nullable<Dimension> getDimension(DimensionId id) const override;
     [[nodiscard]] Nullable<Dimension> getDimension(DimensionType type) const;
-    [[nodiscard]] Nullable<Dimension> createDimension(const DimensionCreator &creator) override;
+    [[nodiscard]] Nullable<Dimension> createDimension(const DimensionCreator &creator);
     [[nodiscard]] std::int64_t getSeed() const override;
     [[nodiscard]] bool _isGameRule(Identifier<GameRule> rule) const override;
     [[nodiscard]] GameRuleValue _getGameRuleValue(Identifier<GameRule> rule) const override;

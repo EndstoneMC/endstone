@@ -11,9 +11,20 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 131> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 144> symbols = {{
+    {"Bedrock::type_id<CommandRegistry, std::string>::id", 223031474},
     {"BlockState::StateListNode::mHead", 223883584},
     {"ChunkBlenderFactory::getOrCreateChunkBlender::cache_cap", 140106330},
+    {"CommandRegistry::ParseRuleFor<CommandMessage>::instance", 223094152},
+    {"CommandRegistry::ParseRuleFor<CommandPosition>::instance", 223094256},
+    {"CommandRegistry::ParseRuleFor<CommandPositionFloat>::instance", 223094344},
+    {"CommandRegistry::ParseRuleFor<CommandRawText>::instance", 223094192},
+    {"CommandRegistry::ParseRuleFor<CommandSelector<Actor>>::instance", 223094168},
+    {"CommandRegistry::ParseRuleFor<CommandSelector<Player>>::instance", 223094232},
+    {"CommandRegistry::ParseRuleFor<Json::Value>::instance", 223094296},
+    {"CommandRegistry::ParseRuleFor<float>::instance", 223094320},
+    {"CommandRegistry::ParseRuleFor<int>::instance", 223094280},
+    {"CommandRegistry::ParseRuleFor<std::string>::instance", 223094216},
     {"DBChunkStorage::_hasChunk::cache_cap", 57747200},
     {"Enchant::mEnchants", 223570944},
     {"LevelChunk::tickImpl::seed", 221849432},
@@ -64,11 +75,17 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 131> symbo
     // CommandRegistry
     {"?_addEnumValuesInternal@CommandRegistry@@AEAA?AVSymbol@1@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV?$vector@U?$pair@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_K@std@@V?$allocator@U?$pair@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_K@std@@@2@@4@V?$typeid_t@VCommandRegistry@@@Bedrock@@P81@EBA_NPEAXAEBUParseToken@1@AEBVCommandOrigin@@HAEAV34@AEAV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@4@@Z@Z", 5487616},
     {"?addEnumValues@CommandRegistry@@QEAAHAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@3@@Z", 5430544},
+    {"?addSoftEnum@CommandRegistry@@QEAAHAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@3@@Z", 5430960},
+    {"?addSoftEnumValues@CommandRegistry@@QEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@3@@Z", 5495808},
     {"?registerAlias@CommandRegistry@@QEAAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z", 5450912},
     {"?registerCommand@CommandRegistry@@QEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PEBDW4CommandPermissionLevel@@UCommandFlag@@3@Z", 5438608},
     {"?registerOverloadInternal@CommandRegistry@@AEAAXAEAUSignature@1@AEAUOverload@1@@Z", 5455792},
+    {"?removeSoftEnumValues@CommandRegistry@@QEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@3@@Z", 5497424},
     {"?serializeAvailableCommands@CommandRegistry@@QEBA?AVAvailableCommandsPacket@@XZ", 5515392},
+    {"?setSoftEnumValues@CommandRegistry@@QEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@3@@Z", 5496432},
     {"?symbolToString@CommandRegistry@@AEBA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VSymbol@1@@Z", 5128240},
+    // CommandSelectorBase
+    {"?newResults@CommandSelectorBase@@IEBA?AV?$shared_ptr@V?$vector@PEAVActor@@V?$allocator@PEAVActor@@@std@@@std@@@std@@AEBVCommandOrigin@@@Z", 5539280},
     // CommandUtils
     {"?getActorName@CommandUtils@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVActor@@@Z", 5148672},
     // ConsoleInputReader
@@ -81,8 +98,6 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 131> symbo
     {"?_handleCraftAction@CraftHandlerCrafting@@MEAA?AW4ItemStackNetResult@@AEBVItemStackRequestActionCraftBase@@@Z", 76469760},
     // CraftHandlerEnchant
     {"?_handleCraftAction@CraftHandlerEnchant@@MEAA?AW4ItemStackNetResult@@AEBVItemStackRequestActionCraftBase@@@Z", 76480320},
-    // CraftingDataPacketPayload
-    {"?fromRecipes@CraftingDataPacketPayload@@SA?AU1@AEBVRecipes@@_N@Z", 64916912},
     // DedicatedServer
     {"?start@DedicatedServer@@QEAA?AW4ServerExitCode@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVActivationArguments@Bedrock@@@Z", 501392},
     // Dimension
@@ -154,7 +169,6 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 131> symbo
     {"?createTransportInterface@TransportFactoryImpl@NetherNet@@QEAAPEAVINetherNetTransportInterface@2@AEBUNetworkID@2@AEBUTransportConfiguration@2@PEAVINetherNetTransportInterfaceCallbacks@2@@Z", 121926992},
     // NetworkSystem
     {"?onNewIncomingConnection@NetworkSystem@@EEAA_NAEBVNetworkIdentifier@@$$QEAV?$shared_ptr@VNetworkPeer@@@std@@V?$optional@VWebKey@@@4@@Z", 12733808},
-    {"?send@NetworkSystem@@QEAAXAEBVNetworkIdentifier@@AEBVPacket@@W4SubClientId@@@Z", 12601200},
     // PistonBlockActor
     {"?tick@PistonBlockActor@@UEAAXAEAVBlockSource@@@Z", 77473552},
     // Player
@@ -169,7 +183,6 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 131> symbo
     {"?teleportTo@Player@@UEAAXAEBVVec3@@_NHH1@Z", 18070880},
     // PlayerLocationSender
     {"?_forEachClientPlayerPair@PlayerLocationSender@@AEAAXAEBV?$vector@VWeakEntityRef@@V?$allocator@VWeakEntityRef@@@std@@@std@@V?$function@$$A6AXAEBVUserEntityIdentifierComponent@@AEBVPlayer@@1@Z@3@@Z", 50994368},
-    {"?_shouldSendPositionPacket@PlayerLocationSender@@AEBA_NAEBVVec3@@AEBUDimensionType@@_NAEBV?$optional@VVec3@@@std@@AEBUPlayerLocationData@1@@Z", 50995072},
     // PlayerTickManager
     {"?processPlayerNetworking@PlayerTickManager@@QEAAXAEBUTick@@@Z", 51000560},
     // PushableByEntityUtility

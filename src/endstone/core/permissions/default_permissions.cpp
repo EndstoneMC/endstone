@@ -120,10 +120,6 @@ NotNull<Permission> CommandPermissions::registerPermissions(const NotNull<Permis
                        PermissionDefault::Operator, commands);
     registerPermission(PREFIX + "version", "version", "Allows the user to view the version of the server",
                        PermissionDefault::True, commands);
-#ifdef ENDSTONE_WITH_DEVTOOLS
-    registerPermission(PREFIX + "devtools", "devtools", "Allows the user to open the DevTools.",
-                       PermissionDefault::Console, commands);
-#endif
     commands->recalculatePermissibles();
     return commands;
 }

@@ -35,5 +35,6 @@ Formatting, naming and include order come from `.clang-format` and `.clang-tidy`
 - Keep `include/endstone/` header-only, with forward declarations, few includes and minimal inline bodies.
 - Guard the include of RakNet headers (`RakNetTypes.h`, `RakPeerInterface.h`, `SocketIncludes.h`) with `#ifdef _WIN32`, and `#ifndef`-guard `WIN32_LEAN_AND_MEAN` and `NOMINMAX` there; never define them globally.
 - Keep includes in `include/endstone/endstone.hpp` alphabetical; insert new entries, never reorder existing ones.
+- Qualify BDS types that share a name with an Endstone type (`::Actor`, `::Player`) inside `endstone::core`; `CommandSelector<Actor>` there picks `endstone::Actor`, compiles, and fails only at link.
 - Never range-for over a member of a temporary (`for (x : *f().member_)`); before C++23 the temporary dies before the body runs, so bind it to a local first.
 - Format with clang-format 20, the LLVM major CI installs (`uvx --from clang-format==20.1.8 clang-format`); newer majors reflow shipped code, and lines you did not touch stay as they are.

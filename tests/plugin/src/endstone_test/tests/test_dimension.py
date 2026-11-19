@@ -1,7 +1,10 @@
+import pytest
 from endstone import Server
 from endstone.level import Dimension, DimensionCreator
 
-CUSTOM_DIMENSION_ID = "endstone_test:custom_realm"
+from endstone_test.dimensions import CUSTOM_REALM
+
+CUSTOM_DIMENSION_ID = CUSTOM_REALM
 
 
 def test_dimension_constants() -> None:
@@ -71,57 +74,67 @@ def test_dimensions_list(server: Server) -> None:
     assert "minecraft:the_end" in dim_ids
 
 
-def test_create_dimension(server: Server) -> None:
-    """Test that a custom dimension is created and reports the requested id."""
-    dimension = server.level.create_dimension(DimensionCreator(CUSTOM_DIMENSION_ID))
+def test_startup_dimension_is_loaded(server: Server) -> None:
+    """Test that a dimension created in on_load is loaded and reports the requested id."""
+    dimension = server.level.get_dimension(CUSTOM_DIMENSION_ID)
     assert dimension is not None
     assert dimension.id == CUSTOM_DIMENSION_ID
     assert dimension.is_valid is True
     assert dimension.level is server.level
 
 
-def test_create_dimension_registers_it_on_the_level(server: Server) -> None:
-    """Test that a created dimension is retrievable and listed exactly once."""
+def test_startup_dimension_is_listed_once(server: Server) -> None:
+    """Test that a startup dimension is retrievable and listed exactly once."""
     level = server.level
-    level.create_dimension(DimensionCreator(CUSTOM_DIMENSION_ID))
-
-    assert level.get_dimension(CUSTOM_DIMENSION_ID) is not None
     listed = [dim for dim in level.dimensions if dim.id == CUSTOM_DIMENSION_ID]
     assert len(listed) == 1
 
 
-def test_create_dimension_is_idempotent(server: Server) -> None:
-    """Test that creating the same dimension twice returns it instead of adding another."""
+def test_create_dimension_for_a_registered_id_returns_it(server: Server) -> None:
+    """Test that creating a registered dimension again returns it without adding another."""
     level = server.level
-    first = level.create_dimension(DimensionCreator(CUSTOM_DIMENSION_ID))
     before = len(level.dimensions)
-
-    second = level.create_dimension(DimensionCreator(CUSTOM_DIMENSION_ID))
-    assert second is not None
-    assert second.id == first.id
+    existing = level.get_dimension(CUSTOM_DIMENSION_ID)
+    assert server.create_dimension(DimensionCreator(CUSTOM_DIMENSION_ID)) is existing
     assert len(level.dimensions) == before
 
 
 def test_create_dimension_accepts_an_id(server: Server) -> None:
     """Test that an id is accepted in place of a DimensionCreator."""
-    dimension = server.level.create_dimension(CUSTOM_DIMENSION_ID)
+    existing = server.level.get_dimension(CUSTOM_DIMENSION_ID)
+    assert server.create_dimension(CUSTOM_DIMENSION_ID) is existing
+
+
+@pytest.mark.parametrize(
+    "dimension_id",
+    [
+        "minecraft:void_realm",
+        "MINECRAFT:void_realm",
+        Dimension.OVERWORLD,
+        "endstone_test:Bad Realm",
+        "endstone_test:bad\trealm",
+        "endstone_test:",
+        ":realm",
+        "endstone_test:a:b",
+    ],
+)
+def test_create_dimension_rejects_an_invalid_id(
+    server: Server, dimension_id: str
+) -> None:
+    """Test that an id with a bad namespace or a forbidden character is refused."""
+    with pytest.raises(ValueError):
+        server.create_dimension(DimensionCreator(dimension_id))
+
+
+def test_create_dimension_accepts_an_uppercase_id(server: Server) -> None:
+    """Test that an uppercase id passes validation and creates a dimension."""
+    dimension = server.create_dimension(DimensionCreator("Endstone_Test:Upper_Realm"))
     assert dimension is not None
-    assert dimension.id == CUSTOM_DIMENSION_ID
+    assert str(dimension.id).lower() == "endstone_test:upper_realm"
 
 
-def test_create_dimension_returns_an_existing_vanilla_dimension(server: Server) -> None:
-    """Test that an existing dimension id yields that dimension rather than a new one."""
-    level = server.level
-    before = len(level.dimensions)
-
-    overworld = level.create_dimension(DimensionCreator(Dimension.OVERWORLD))
-    assert overworld is not None
-    assert overworld.id == Dimension.OVERWORLD
-    assert len(level.dimensions) == before
-
-
-def test_created_dimension_has_a_translation_key(server: Server) -> None:
+def test_startup_dimension_has_a_translation_key(server: Server) -> None:
     """Test that a custom dimension exposes a translation key."""
-    dimension = server.level.create_dimension(DimensionCreator(CUSTOM_DIMENSION_ID))
+    dimension = server.level.get_dimension(CUSTOM_DIMENSION_ID)
     assert isinstance(dimension.translation_key, str)
     assert len(dimension.translation_key) > 0
