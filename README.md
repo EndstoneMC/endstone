@@ -62,7 +62,7 @@ class MyPlugin(Plugin):
 ## Features
 
 - **High performance** - Major optimizations to chunk loading, terrain generation, networking, and more, all without
-  changing vanilla gameplay. Over 2x the TPS of vanilla BDS with 100 players online. See the [benchmarks](BENCHMARK.md).
+  changing vanilla gameplay. Over 2x the TPS of vanilla BDS with 100 players online.
 
 - **Cross-platform** - Runs natively on both Windows and Linux without emulation, making deployment flexible and
   straightforward.
