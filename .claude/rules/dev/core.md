@@ -40,3 +40,4 @@ paths:
 - Look up recipes by id verbatim, trying the `minecraft:`-composed id and then the bare key.
 - Never auto-activate behavior packs; activate resource packs by enumerating BDS's own repository in `loadResourcePacks()`.
 - Match Paper's control flow, ordering, return values, exceptions and cancel semantics when implementing behaviour, adapting only where Bedrock forces it, and add no helper Paper lacks.
+- Give every new `Server` pure virtual an override in `MockServer` in `tests/mocks.h`; without one the GTest binary does not build.

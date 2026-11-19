@@ -64,3 +64,4 @@ paths:
 - A scenario that promises output byte-equal to release X captures its expected values from a build of X.
 - Check a log's mtime before trusting a grep of it while a background job will overwrite it; an old run's log passes early.
 - When overriding the bundled allocator for a live test, name the preloaded file so it contains malloc (libmimalloc-<variant>.so); endstone/cli/linux.py appends the bundled libmimalloc.so otherwise.
+- The harness hub opens in the test plugin's on_enable, so a dimension created in setLevel never shows up in hub.startup events; assert on the level's state instead.

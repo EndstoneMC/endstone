@@ -509,6 +509,26 @@ void init_server(py::classh<Server> &server)
 )doc")
         .def_property_readonly("level", &Server::getLevel, py::return_value_policy::reference_internal,
                                "The server level.")
+        .def("create_dimension", &Server::createDimension, py::arg("creator"), R"doc(
+    Creates a custom dimension, or gets the dimension with the same id if one already exists.
+
+    Custom dimensions are empty (void) dimensions identified by a namespaced id, e.g. `myplugin:void_realm`. The
+    level remembers which id belongs to which name, so a dimension's terrain and actors survive a restart; call this
+    again on every startup to get the same dimension back.
+
+    Called before the level exists, such as from `Plugin.on_load`, the dimension is created once the level loads,
+    before POSTWORLD plugins are enabled, and this returns `None`.
+
+    Args:
+        creator: The options to use when creating the dimension. An identifier or plain string is also accepted as the id.
+
+    Returns:
+        The newly created or existing `Dimension`, or `None` if it is not created yet or could not be created.
+
+    Raises:
+        ValueError: If the id is invalid.
+        RuntimeError: If called off the server thread.
+)doc")
         .def_property_readonly("recipes", &Server::getRecipes, "The list of crafting recipes.")
         .def_property_readonly("online_players", &Server::getOnlinePlayers, "A list of all currently online players.")
         .def_property("max_players", &Server::getMaxPlayers, &Server::setMaxPlayers,

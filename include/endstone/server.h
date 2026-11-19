@@ -36,8 +36,8 @@
 #include "endstone/logger.h"
 #include "endstone/map/map_view.h"
 #include "endstone/message.h"
-#include "endstone/plugin/service_manager.h"
 #include "endstone/object.h"
+#include "endstone/plugin/service_manager.h"
 #include "endstone/scoreboard/scoreboard.h"
 #include "endstone/util/pointers.h"
 #include "endstone/util/uuid.h"
@@ -46,6 +46,7 @@ namespace endstone {
 
 class BlockType;
 class ConsoleCommandSender;
+class DimensionCreator;
 class Enchantment;
 class ItemFactory;
 class ItemType;
@@ -485,6 +486,23 @@ public:
      * @return a list of recipes
      */
     [[nodiscard]] virtual std::vector<NotNull<Recipe>> getRecipes() const = 0;
+
+    /**
+     * Creates a custom dimension, or gets the dimension with the same id if one already exists.
+     *
+     * Custom dimensions are empty (void) dimensions identified by a namespaced id, e.g. `myplugin:void_realm`. The
+     * level remembers which id belongs to which name, so a dimension's terrain and actors survive a restart; call this
+     * again on every startup to get the same dimension back.
+     * <p>
+     * Called before the level exists, such as from Plugin::onLoad, the dimension is created once the level loads,
+     * before PostWorld plugins are enabled, and this returns null.
+     *
+     * @param creator the options to use when creating the dimension
+     * @return the newly created or existing dimension, or null if it is not created yet or could not be created
+     * @throws std::invalid_argument if the id is invalid
+     * @throws std::runtime_error if called off the primary thread
+     */
+    virtual Nullable<Dimension> createDimension(const DimensionCreator &creator) = 0;
 
     /**
      * Used for all administrative messages, such as an operator using a command.

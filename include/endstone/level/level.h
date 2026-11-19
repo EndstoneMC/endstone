@@ -23,7 +23,6 @@
 #include "endstone/game_rule.h"
 #include "endstone/inventory/recipe.h"
 #include "endstone/level/dimension.h"
-#include "endstone/level/dimension_creator.h"
 
 namespace endstone {
 
@@ -77,23 +76,6 @@ public:
      * @return The Dimension with the given id, or null if none exists
      */
     [[nodiscard]] virtual Nullable<Dimension> getDimension(DimensionId id) const = 0;
-
-    /**
-     * Creates a new custom dimension within this level.
-     * <p>
-     * The dimension is created from the options described by the given DimensionCreator. Custom dimensions are
-     * empty (void) dimensions identified by a namespaced id, e.g. `myplugin:void_realm`; populate them with blocks,
-     * structures or actors afterward.
-     * <p>
-     * The level remembers which id belongs to which name, so a dimension's terrain and actors survive a restart. The
-     * registration itself does not: call this again on every startup to get the same dimension back.
-     * <p>
-     * If a dimension with the requested name already exists, that existing dimension is returned instead.
-     *
-     * @param creator the options to use when creating the dimension
-     * @return the newly created (or existing) Dimension, or null if it could not be created
-     */
-    [[nodiscard]] virtual Nullable<Dimension> createDimension(const DimensionCreator &creator) = 0;
 
     /**
      * Gets the Seed for this level.

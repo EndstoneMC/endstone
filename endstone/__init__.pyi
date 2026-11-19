@@ -15,7 +15,7 @@ from endstone.command import CommandMap, CommandSender, ConsoleCommandSender
 from endstone.form import ActionForm, MessageForm, ModalForm
 from endstone.inventory import Inventory, ItemFactory, PlayerInventory, Recipe
 from endstone.lang import Language, Translatable
-from endstone.level import Dimension, Level, Location
+from endstone.level import Dimension, DimensionCreator, Level, Location
 from endstone.map import MapView
 from endstone.plugin import Plugin, PluginCommand, PluginManager, ServiceManager
 from endstone.scheduler import Scheduler
@@ -231,6 +231,28 @@ class Server:
     def level(self) -> Level:
         """
         The server level.
+        """
+
+    def create_dimension(self, creator: DimensionCreator) -> Dimension | None:
+        """
+        Creates a custom dimension, or gets the dimension with the same id if one already exists.
+
+        Custom dimensions are empty (void) dimensions identified by a namespaced id, e.g. `myplugin:void_realm`. The
+        level remembers which id belongs to which name, so a dimension's terrain and actors survive a restart; call this
+        again on every startup to get the same dimension back.
+
+        Called before the level exists, such as from `Plugin.on_load`, the dimension is created once the level loads,
+        before POSTWORLD plugins are enabled, and this returns `None`.
+
+        Args:
+            creator: The options to use when creating the dimension. An identifier or plain string is also accepted as the id.
+
+        Returns:
+            The newly created or existing `Dimension`, or `None` if it is not created yet or could not be created.
+
+        Raises:
+            ValueError: If the id is invalid.
+            RuntimeError: If called off the server thread.
         """
 
     @property
