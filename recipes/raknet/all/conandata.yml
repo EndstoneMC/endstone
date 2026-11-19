@@ -23,6 +23,9 @@ patches:
     - patch_file: "patches/4.081-acknak-range-bound.patch"
       patch_description: "Bound ACK/NAK acknowledgement ranges (count, per-datagram total, reject 0xFFFFFF on NAK) so a malformed datagram cannot drive the reliability layer into a runaway loop; mirrors Mojang's BDS fix"
       patch_type: "security"
+    - patch_file: "patches/4.081-split-reassembly-by-index.patch"
+      patch_description: "Reassemble split packets from a table indexed by splitPacketIndex; reject inconsistent counts, unaligned middle fragments and duplicates, and cap split count, concurrent splits and held bytes per connection"
+      patch_type: "security"
   "4.081-mojang":
     - patch_file: "patches/4.081-fix-gettimeofday-include.patch"
       patch_description: "Fix malformed `#include < time.h >` (spaces inside angle brackets) that modern preprocessors reject."
@@ -41,6 +44,9 @@ patches:
       patch_type: "conan"
     - patch_file: "patches/4.081-acknak-range-bound.patch"
       patch_description: "Bound ACK/NAK acknowledgement ranges (count, per-datagram total, reject 0xFFFFFF on NAK) so a malformed datagram cannot drive the reliability layer into a runaway loop; mirrors Mojang's BDS fix"
+      patch_type: "security"
+    - patch_file: "patches/4.081-split-reassembly-by-index.patch"
+      patch_description: "Reassemble split packets from a table indexed by splitPacketIndex; reject inconsistent counts, unaligned middle fragments and duplicates, and cap split count, concurrent splits and held bytes per connection"
       patch_type: "security"
 
 mojang_vtable_patches:
