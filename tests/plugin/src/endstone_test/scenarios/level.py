@@ -4,6 +4,7 @@ from endstone.level import Dimension, DimensionCreator
 from endstone_test.harness import Context, scenario
 
 CUSTOM = "endstone_test:harness_realm"
+CUSTOM_DIMENSION_ID = "endstone_test:custom_realm"
 
 
 @scenario("level.dimension_load", covers={DimensionLoadEvent: "normal"}, budget=400)
@@ -28,3 +29,13 @@ async def dimension_load(ctx: Context) -> None:
     )
     assert load.count == 1, load.events
     assert ctx.level.get_dimension(CUSTOM) is not None
+
+
+@scenario("level.dimension_execute_in", budget=100)
+async def dimension_execute_in(ctx: Context) -> None:
+    dimension = ctx.level.create_dimension(CUSTOM_DIMENSION_ID)
+    assert dimension is not None, (
+        f"create_dimension returned None for {CUSTOM_DIMENSION_ID}"
+    )
+    result = ctx.command(f"execute in {CUSTOM_DIMENSION_ID} run say hello")
+    assert result.success, result.output

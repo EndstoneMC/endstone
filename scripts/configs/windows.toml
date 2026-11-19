@@ -488,6 +488,22 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 55 ? 44 0F 29 4D ? 44 0F 29 45 ? 0F 29 7D ? 0F 29 75 ? 48 C7 45 ? ? ? ? ? 4C 89 C7"
 
 [[signatures]]
+name = "?_addEnumValuesInternal@CommandRegistry@@AEAA?AVSymbol@1@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV?$vector@U?$pair@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_K@std@@V?$allocator@U?$pair@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_K@std@@@2@@4@V?$typeid_t@VCommandRegistry@@@Bedrock@@P81@EBA_NPEAXAEBUParseToken@1@AEBVCommandOrigin@@HAEAV34@AEAV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@4@@Z@Z"
+relative = false
+extra = 0
+# 1. find bytes "65 6E 75 6D 20 6E 61 6D 65 3A 20 3C 7B 7D 3E 00" = "enum name: <{}>\0" (unique; 4 xrefs)
+# 2. three xrefs sit in one large function (~0x7041) that inlines the addEnumValues<T> instantiations; take the
+#    fourth, a ~0x47b function with ~120 callers that formats the string into a ContentLogScope
+# 3. confirm it calls addSoftTerminal once per value and then the pair<u64,u64> overload, which does not
+#    reference the string and has `or edi, 300000h` right after its addEnumValuesToExisting call
+# 4. the pair<u64,u64> overload has a near-identical prologue without the xmm6 spill; `mov r13, r8` (4D 89 C5)
+#    here against its `mov r12, r8` (4D 89 C4); the pattern matches once in .text at 1.26.65
+# 5. `name` is BDS's private mangling (AEAA), matching the PDB public
+# 6. confirm vs the old named DB: 0x140b20d70 at 1.26.32.2, and the 1.26.60.6 PDB public at the same RVA
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 75 ? 48 C7 45 ? FE FF FF FF 4D 89 CE 4D 89 C5"
+
+[[signatures]]
 name = "?addEnumValues@CommandRegistry@@QEAAHAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@3@@Z"
 relative = false
 extra = 0

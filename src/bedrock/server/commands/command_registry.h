@@ -44,6 +44,7 @@ class CommandRunStats;
 namespace endstone::core {
 class CommandPermissions;
 class EndstoneCommandMap;
+class EndstoneLevel;
 class EndstonePlayer;
 class MinecraftCommandPermissions;
 }  // namespace endstone::core
@@ -343,6 +344,7 @@ public:
     // Endstone begins
     friend class endstone::core::CommandPermissions;
     friend class endstone::core::EndstoneCommandMap;
+    friend class endstone::core::EndstoneLevel;
     friend class endstone::core::EndstonePlayer;
     friend class endstone::core::MinecraftCommandPermissions;
     [[nodiscard]] std::string describe(const Signature &signature, const Overload &overload) const
@@ -363,6 +365,12 @@ public:
     template <typename CommandType>
     const Overload *registerOverload(const char *name, CommandVersion version,
                                      std::vector<CommandParameterData> params);
+
+    [[nodiscard]] const Enum *getEnum(const std::string &name) const
+    {
+        const auto it = enum_lookup_.find(name);
+        return it == enum_lookup_.end() ? nullptr : &enums_[it->second];
+    }
     // Endstone ends
 
 private:
@@ -383,6 +391,9 @@ private:
     [[nodiscard]] std::string describe(const Signature &command, const std::string &alias, const Overload &overload,
                                        unsigned int highlight, unsigned int *start, unsigned int *length) const;
     [[nodiscard]] std::string symbolToString(Symbol) const;
+    Symbol _addEnumValuesInternal(const std::string &name,
+                                  const std::vector<std::pair<std::string, std::uint64_t>> &values,
+                                  Bedrock::typeid_t<CommandRegistry> type, ParseFunction parse);
     void registerOverloadInternal(Signature &signature, Overload &overload);
 
     std::function<void(Packet const &)> network_update_callback_;                                // +0

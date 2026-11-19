@@ -507,6 +507,22 @@ rip_relative = true
 rip_offset = 1
 
 [[signatures]]
+name = "_ZN15CommandRegistry22_addEnumValuesInternalERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_6vectorINS0_4pairIS6_mEENS4_ISB_EEEEN7Bedrock8typeid_tIS_EEMS_KFbPvRKNS_10ParseTokenERK13CommandOriginiRS6_RNS9_IS6_NS4_IS6_EEEEE"
+relative = false
+extra = 0
+# 1. find bytes "65 6E 75 6D 20 6E 61 6D 65 3A 20 3C 7B 7D 3E 00" = "enum name: <{}>\0" (unique; 4 xrefs)
+# 2. three xrefs sit in one large function (~0x6f6f, one caller) that inlines the addEnumValues<T>
+#    instantiations; take the fourth, a ~0x530 function with ~120 callers that formats the string into a
+#    ContentLogScope
+# 3. confirm it calls addSoftTerminal once per value and then the pair<u64,u64> overload, which does not
+#    reference the string and has `or r15d, 300000h` right after its addEnumValuesToExisting call
+# 4. the pair<u64,u64> overload shares the push/sub prologue shape; the pattern matches once in .text at
+#    1.26.65 and at 1.26.60.6
+# 5. confirm vs the old named DB: 0x8058c10 in the 1.21.132.3 DWARF database
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 4C 89 84 24 ? ? ? ? 48 89 CB 48 89 74 24 ? 48 89 7C 24 ? 48 BD ? ? ? ? ? ? ? ? 0F B6 02"
+
+[[signatures]]
 name = "_ZN15CommandRegistry13addEnumValuesERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_6vectorIS6_NS4_IS6_EEEE"
 relative = false
 extra = 0
