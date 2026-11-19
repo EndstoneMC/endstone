@@ -21,6 +21,7 @@
 #include <libelf.h>
 #include <unistd.h>
 
+#include <filesystem>
 #include <format>
 #include <fstream>
 #include <string>
@@ -136,6 +137,11 @@ ModuleInfo get_module_info(const char *module_name)
         throw std::runtime_error("Failed to open /proc/self/maps");
     }
 
+    std::string executable_pathname;
+    if (module_name == nullptr) {
+        executable_pathname = std::filesystem::read_symlink("/proc/self/exe").string();
+    }
+
     for (std::string line; std::getline(file, line);) {
         MmapRegion region;
         int r = sscanf(line.c_str(), "%lx-%lx %4s %lx %10s %ld %s", &region.begin, &region.end, region.perms,
@@ -150,12 +156,13 @@ ModuleInfo get_module_info(const char *module_name)
             pathname = pathname.substr(pos + 1);
         }
 
-        if (module_name == nullptr || pathname == module_name) {
+        if (module_name == nullptr ? region.pathname == executable_pathname : pathname == module_name) {
             return {reinterpret_cast<void *>(region.begin), region.pathname};
         }
     }
 
-    throw std::runtime_error(std::format("Module {} not found in {}", module_name, "/proc/self/maps"));
+    throw std::runtime_error(std::format(
+        "Module {} not found in {}", module_name != nullptr ? module_name : executable_pathname, "/proc/self/maps"));
 }
 }  // namespace
 
