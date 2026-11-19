@@ -77,6 +77,7 @@ class BlockDefinitionGroup;
 class BlockEventDispatcher;
 class BlockGraphicsModeChangeContext;
 class BlockItem;
+class BlockPos;
 class BlockReducer;
 class BlockTickingQueue;
 class BodyControl;

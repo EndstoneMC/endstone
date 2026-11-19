@@ -882,6 +882,26 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 D4 49 89 F6 48 89 FB 48 8B 05 ? ? ? ? 48 8D 3D"
 
 [[signatures]]
+name = "_ZNK15CommandPosition11getPositionEiRK13CommandOriginRK4Vec3"
+relative = false
+extra = 0
+# 1. find bytes "31 33 43 6F 6D 6D 61 6E 64 4F 72 69 67 69 6E 00" = "13CommandOrigin\0", the typeinfo name of
+#    CommandOrigin; its typeinfo is referenced from the slot before the vtable's address point
+# 2. slot 31 from the address point is CommandOrigin::getExecutePosition (~0x158); it opens with `cmp esi, 0Ah;
+#    jge`, and the version >= 10 branch zeroes a stack Vec3 and calls getPosition with the CommandPositionFloat
+#    in rdi
+# 3. the slot moves when CommandOrigin gains virtuals (29 on 1.21.132.3, 31 on 1.26.65.1); re-find it by that
+#    `cmp esi, 0Ah` head and the getAttachPos call on the other branch
+# 4. the pattern is that call, followed by `movaps xmm4, xmm0; jmp` and the no-entity fallback's
+#    `movss xmm1, [rip+...]`; a regex scan of the whole .text finds it once
+# 5. confirm against the named 1.21.132.3 DWARF database: CommandOrigin::getExecutePosition (0x801e6d0) calls
+#    getPosition (0x80d1610, ~0x392), which calls Command::shouldUseCommandOriginRotation twice and cosf/sinf twice
+# call site in CommandOrigin::getExecutePosition
+pattern = "E8 ? ? ? ? 0F 28 E0 EB ? F3 0F 10 0D"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
 name = "_ZN12CommandUtils12getActorNameERK5Actor"
 relative = false
 extra = 0
@@ -954,10 +974,12 @@ rip_offset = 1
 name = "_ZN16DimensionManager20getOrCreateDimensionENSt3__117basic_string_viewIcNS0_11char_traitsIcEEEE"
 relative = false
 extra = 0
-# 1. find the string "T *Bedrock::NonOwnerPointer<IDimensionFactory>::_get() const [T = IDimensionFactory]"
-#    (unique); it has six data xrefs from exactly two functions - two in
-#    _registerCustomDimensionWithFactory and four here
-# 2. this is the larger of the pair (~0x706): it opens with `id = mDimensionNameIdStore->getId(name);
+# 1. locate _registerCustomDimensionWithFactory (see its entry); a few functions after it in .text sits the
+#    DimensionType overload of getOrCreateDimension: `cmp edx, 3` returns an empty WeakRef for Undefined, an
+#    id >= 0x10000 hits the `mov dword [0], 0xDEADC0DE` trap, then NameIdStore::getName and one call to this
+#    function, its only caller, which follows it directly; the overload's other xref is the tail `jmp` of the
+#    Level::getOrCreateDimension(DimensionType) virtual (a `_ZTV5Level` slot: `mov rax, [rsi+2F8h]; mov rsi, [rax+18h]; jmp`)
+# 2. this function (~0x524) opens with `id = mDimensionNameIdStore->getId(name);
 #    if (id == 0xFFFF) return {};`, looks the id up in mDimensionRegistry, and only then falls back to
 #    mDimensionFactory->create(name) / initializeDimension / registerDimension and fires
 #    mOnNewDimensionCreatedPublisher
@@ -971,10 +993,10 @@ pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? ? ? ? 49 89 F6 48 89 F
 name = "_ZN16DimensionManager35_registerCustomDimensionWithFactoryENSt3__117basic_string_viewIcNS0_11char_traitsIcEEEE13DimensionType"
 relative = false
 extra = 0
-# 1. find bytes "C0 FF FF FF 80 01 00 00 05 00 00 00 03 00 00 00" (unique) = the DimensionDefinition head
-#    {min y -64, height range 384, GeneratorType::Void, VanillaDimensions::Undefined} that a custom dimension is
-#    registered with
-# 2. its xrefs are inlined copies of DimensionManager::serverRegisterCustomDimension (the script custom dimension
+# 1. find the functions that build the custom-dimension DimensionDefinition head with two movabs immediates,
+#    "48 B8 C0 FF FF FF 80 01 00 00" {min y -64, height range 384} then "48 B8 05 00 00 00 03 00 00 00"
+#    {GeneratorType::Void, VanillaDimensions::Undefined}; the first one has three .text matches
+# 2. those three functions are inlined copies of DimensionManager::serverRegisterCustomDimension (the script custom dimension
 #    registry and the editor's custom dimension service); each copy calls, in order, NameIdStore::contains,
 #    NameIdStore::getOrCreateId, _registerDimensionWithDimensionDefinitionGroup and, when that returns true,
 #    _registerCustomDimensionWithFactory
@@ -986,10 +1008,10 @@ pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 48 83 FA ? 0F 83 ? ? ?
 name = "_ZN16DimensionManager46_registerDimensionWithDimensionDefinitionGroupENSt3__117basic_string_viewIcNS0_11char_traitsIcEEEERKN24DimensionDefinitionGroup19DimensionDefinitionE"
 relative = false
 extra = 0
-# 1. find bytes "C0 FF FF FF 80 01 00 00 05 00 00 00 03 00 00 00" (unique) = the DimensionDefinition head
-#    {min y -64, height range 384, GeneratorType::Void, VanillaDimensions::Undefined} that a custom dimension is
-#    registered with
-# 2. its xrefs are inlined copies of DimensionManager::serverRegisterCustomDimension (the script custom dimension
+# 1. find the functions that build the custom-dimension DimensionDefinition head with two movabs immediates,
+#    "48 B8 C0 FF FF FF 80 01 00 00" {min y -64, height range 384} then "48 B8 05 00 00 00 03 00 00 00"
+#    {GeneratorType::Void, VanillaDimensions::Undefined}; the first one has three .text matches
+# 2. those three functions are inlined copies of DimensionManager::serverRegisterCustomDimension (the script custom dimension
 #    registry and the editor's custom dimension service); each copy calls, in order, NameIdStore::contains,
 #    NameIdStore::getOrCreateId, _registerDimensionWithDimensionDefinitionGroup and, when that returns true,
 #    _registerCustomDimensionWithFactory
@@ -1002,10 +1024,10 @@ pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC 18 48 89 CB 49 89 F7 49 89 FE 
 name = "_ZNK4Util11NameIdStoreI15DimensionIdTypeE8containsENSt3__117basic_string_viewIcNS3_11char_traitsIcEEEE"
 relative = false
 extra = 0
-# 1. find bytes "C0 FF FF FF 80 01 00 00 05 00 00 00 03 00 00 00" (unique) = the DimensionDefinition head
-#    {min y -64, height range 384, GeneratorType::Void, VanillaDimensions::Undefined} that a custom dimension is
-#    registered with
-# 2. its xrefs are inlined copies of DimensionManager::serverRegisterCustomDimension (the script custom dimension
+# 1. find the functions that build the custom-dimension DimensionDefinition head with two movabs immediates,
+#    "48 B8 C0 FF FF FF 80 01 00 00" {min y -64, height range 384} then "48 B8 05 00 00 00 03 00 00 00"
+#    {GeneratorType::Void, VanillaDimensions::Undefined}; the first one has three .text matches
+# 2. those three functions are inlined copies of DimensionManager::serverRegisterCustomDimension (the script custom dimension
 #    registry and the editor's custom dimension service); each copy calls, in order, NameIdStore::contains,
 #    NameIdStore::getOrCreateId, _registerDimensionWithDimensionDefinitionGroup and, when that returns true,
 #    _registerCustomDimensionWithFactory
@@ -1020,10 +1042,10 @@ rip_offset = 1
 name = "_ZN4Util11NameIdStoreI15DimensionIdTypeE13getOrCreateIdENSt3__117basic_string_viewIcNS3_11char_traitsIcEEEE"
 relative = false
 extra = 0
-# 1. find bytes "C0 FF FF FF 80 01 00 00 05 00 00 00 03 00 00 00" (unique) = the DimensionDefinition head
-#    {min y -64, height range 384, GeneratorType::Void, VanillaDimensions::Undefined} that a custom dimension is
-#    registered with
-# 2. its xrefs are inlined copies of DimensionManager::serverRegisterCustomDimension (the script custom dimension
+# 1. find the functions that build the custom-dimension DimensionDefinition head with two movabs immediates,
+#    "48 B8 C0 FF FF FF 80 01 00 00" {min y -64, height range 384} then "48 B8 05 00 00 00 03 00 00 00"
+#    {GeneratorType::Void, VanillaDimensions::Undefined}; the first one has three .text matches
+# 2. those three functions are inlined copies of DimensionManager::serverRegisterCustomDimension (the script custom dimension
 #    registry and the editor's custom dimension service); each copy calls, in order, NameIdStore::contains,
 #    NameIdStore::getOrCreateId, _registerDimensionWithDimensionDefinitionGroup and, when that returns true,
 #    _registerCustomDimensionWithFactory

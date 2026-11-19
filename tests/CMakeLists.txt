@@ -15,8 +15,10 @@ add_executable(endstone_test
         bedrock/test_block_pos.cpp
         bedrock/test_check.cpp
         bedrock/test_command_registry.cpp
+        bedrock/test_command_selector.cpp
         bedrock/test_function_ref.cpp
         bedrock/test_hashed_string.cpp
+        bedrock/test_minecraft_commands.cpp
         bedrock/test_sem_version.cpp
         bedrock/test_spin_lock.cpp
         bedrock/test_static_optimized_string.cpp
