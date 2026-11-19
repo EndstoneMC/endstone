@@ -150,6 +150,7 @@ paths:
 - Read a `Bedrock::type_id<Ctx, T>` id at runtime, never from the source or a past build: ids are lazy function-local statics from a counter starting at 0, handed out in the order the context's first consumer asks, which changes between builds; build a `CommandParameterData` with that id, never a literal such as `{0}`.
 - Read a command parameter's grammar, packet and `createCommand` symbol as `enum_or_postfix_symbol`, else `chained_subcommand_symbol`, else `parse_rule->symbol`; `createCommand` runs `parse_override`, else `parse_rule->parse`, on the stored `signature.overloads`, so `registerOverloadInternal` on a copy changes nothing.
 - Never anchor a pattern on a hard-enum `ParseRuleFor<T>::instance`: it is `{null, 0}` on Windows and a return-0 stub on Linux; the parse comes from the enum's own function through `registerOverloadInternal`.
+- Keep the basic-type `ParseRuleFor<T>::instance` entries as data: only `parse<std::string>` is public, the selector and position parses are ICF-folded on Windows, and `registerOverloadInternal` pointer-compares `parse_rule` with `ParseRuleFor<std::unique_ptr<Command>>::instance`.
 - Anchor a basic-type `CommandRegistry::ParseRuleFor<T>::instance` on its initializer's `mov dword [rip+instance+8], <Symbol>` (Windows, one leaf stub per type) or `+16` (Linux, one static initializer); the `CommandSelector<Actor>` and `CommandSelector<Player>` instances share `0x100008`, so include the neighbouring store.
 - Reach the `Bedrock::type_id<CommandRegistry, std::string>` id through `registerOverloadInternal`'s Enum-branch `cmp ax, word [rip+id]`; the other ids load in identical inlined blocks that no pattern isolates.
 - Search an aggregate literal as `movabs` immediates (`48 B8 imm64`), not as contiguous bytes in `.rdata`.
@@ -179,4 +180,3 @@ paths:
 - Find the notifier's caller through the literal `tryChangeState(expected,desired)` pair to order against a state field.
 - BDS discards the CAS result and publishes outside the lock, so an Endstone-side `state >= X` gate is unsound.
 - On 1.26.65, FunctionManager::load inlines _processFunctionEntry (anchor "Function %s failed to load correctly with error(s):") and CommandResponseBase::_executeAction inlines _compileCommands (anchor "Command response could not compile commands").
-- `CommandRegistry::registerOverloadInternal` pointer-compares a parameter's rule against `ParseRuleFor<std::unique_ptr<Command>>::instance`.

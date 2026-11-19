@@ -17,5 +17,5 @@ paths:
 - When BDS returns void, compare state before and after the call to derive the Bukkit-style boolean.
 - Reimplemented non-virtual bodies run for real; the virtual overrides stubbed with `unreachable()` are served by the real vtable.
 - Re-check lists and tables copied from BDS on every bump; they go stale without a compile error.
-- Never copy `CommandRegistry::symbolToString`'s name tables; their bounds grow between builds.
-- A body that builds a packet on the stack cannot be rebuilt from table entries alone; keep it a symbol.
+- Never copy a BDS name table or its bound into a reimplementation; `CommandRegistry::symbolToString` reads static tables whose non-terminal bound grows between releases.
+- Keep a body that builds a packet on the stack as a symbol: MSVC may call the templated packet constructor out of line while Linux inlines it with the vtable.

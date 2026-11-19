@@ -11,10 +11,12 @@ Tool names below are the ida-pro plugin's `mcp__plugin_ida-pro_idalib__*` tools 
 
 - Load every idalib tool you need with one `ToolSearch` select call.
 - Share a database across subagents by attaching to its session; keep attached subagents read-only, and leave closing it to the lead.
+- Open one shared database per binary before dispatching parallel members; several private multi-GB loads at once exhaust swap.
 - Issue calls back-to-back once the database is open. On "No database bound", reopen and rebind, and check liveness with `idalib_current` or `idalib_list`.
 - Run `idalib_list` and read `idb_path` before every session to confirm which database is the target and which is the reference.
 - Attach to an existing session with `idalib_list` and `idalib_switch`, or the `database:` parameter. Never kill an idalib worker.
 - Move the unpacked `.id0`, `.id1`, `.id2`, `.nam` and `.til` files to a backup folder only when nothing holds the `.i64`. If it is still locked, use another database or ask.
+- Treat unpacked `.id0`, `.id1`, `.id2` and `.nam` files with no `.i64` and an `idat.log` not ending `[make_idb] saved; exiting.` as a dead build that idalib opens as "Database is empty"; rebuild it with `idat`.
 - When a worker may not be killed, copy the packed `.i64` to a scratch folder, open the copy and delete it afterwards.
 - Name the process holding the unpacked files with the Restart Manager API, and move them all or none.
 - Do not try to adopt a foreign worker; a second frontend sees 0 sessions.
@@ -55,6 +57,7 @@ Tool names below are the ida-pro plugin's `mcp__plugin_ida-pro_idalib__*` tools 
 - Check `get_bytes` before condemning an address `func_profile` calls "Not a function"; a tail-call thunk reads `48 89 D1 E9 ... CC`.
 - Check `ida_funcs.get_func(ea).start_ea == ea` before treating an address as a function.
 - On a database opened without auto-analysis, `decompile` returns `JUMPOUT` until code exists; create instructions over the one function's range and never call `enable_auto` or `auto_wait`, which start an hours-long whole-binary analysis.
+- When Hex-Rays reports "call analysis failed" on such a database at `_invoke_watson` calls or direct calls passing stack arguments, patch those calls to `nop` in a private copy only.
 - `rename` every located helper to its mangled name in the target database as you go.
 - Capstone 5 reports `disp_size` 2 for a 66-prefixed instruction; take a displacement's width from ModRM instead, 4 for rip-relative or mod 2 and 1 for mod 1.
 
@@ -71,6 +74,3 @@ Tool names below are the ida-pro plugin's `mcp__plugin_ida-pro_idalib__*` tools 
 - `llvm-pdbutil pretty` needs DIA and does not work on Linux; read Windows layouts from the PDB-named `.i64`'s type library and class keys from the `V`/`U` letter in the PDB publics.
 - With no database for the target version, answer caller questions with the raw-binary helpers and a call index.
 - Borrow a PDB name from an older build only after byte-checking that RVA; the command-block region moved between 1.26.60.6 and 1.26.65.1.
-- Treat an unpacked database set with no `.i64` and a log that stops early as a dead build; rebuild it with idat before opening it.
-- On a raw database, patch the `_invoke_watson` calls out in a private copy before Hex-Rays will decompile the function.
-- Open one shared database per binary before dispatching members; three private Windows loads at once fill swap.
