@@ -102,6 +102,13 @@ NetherNet::INetherNetTransportInterface *NetherNet::TransportFactoryImpl::create
     transport->SetSignalingInterface(signaling_server);
     if (const auto error = signaling_server->start()) {
         auto &logger = endstone::core::EndstoneServer::getInstance().getLogger();
+        if (error == std::errc::address_in_use) {
+            logger.error("Port [{}] may be in use by another process. Free up port and re-run program or adjust "
+                         "server.properties file to use alternate ports for server",
+                         port);
+            logger.error("Exiting program");
+            std::exit(1);
+        }
         logger.error("NetherNet could not listen on port {} for signaling: {}", port, error.message());
         transport->SetSignalingInterface(nullptr);
         return transport;
