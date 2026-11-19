@@ -8,7 +8,8 @@ import pathlib
 import typing
 
 from endstone import Logger, Server
-from endstone.command import Command, CommandExecutor
+from endstone.brigadier import LiteralCommandNode
+from endstone.command import BasicCommand, Command, CommandExecutor, SoftEnum
 from endstone.event import Event, EventPriority
 from endstone.permissions import Permissible, Permission, PermissionDefault, PermissionLevel
 
@@ -374,6 +375,64 @@ class Plugin:
         The name of the plugin.
 
         This is the bare name of the plugin and should be used for comparison.
+        """
+
+    @typing.overload
+    def register_command(self, node: LiteralCommandNode, description: str = "", aliases: list[str] = []) -> set[str]:
+        """
+        Registers a command tree, removed when this plugin is disabled.
+
+        The label is the root node's literal. A label or alias another command holds is skipped, and the command is still reachable as `plugin:label`.
+
+        Args:
+            node: The root node of the command.
+            description: A short description of the command.
+            aliases: The aliases of the command.
+
+        Returns:
+            The labels that were registered, including aliases and `plugin:label` forms.
+
+        Raises:
+            ValueError: If the tree cannot be written as a Bedrock command, naming the clash.
+            RuntimeError: If called off the server thread.
+        """
+
+    @typing.overload
+    def register_command(self, label: str, description: str, aliases: list[str], command: BasicCommand) -> set[str]:
+        """
+        Registers a command that takes its arguments as words, which the client shows as `/label <args: message>`.
+
+        Args:
+            label: The label of the command.
+            description: A short description of the command.
+            aliases: The aliases of the command.
+            command: The command.
+
+        Returns:
+            The labels that were registered, including aliases and `plugin:label` forms.
+
+        Raises:
+            ValueError: If the label is empty or holds whitespace.
+            RuntimeError: If called off the server thread.
+        """
+
+    def register_soft_enum(self, name: str, values: list[str] = []) -> SoftEnum:
+        """
+        Creates a soft enum owned by this plugin, removed with it when the plugin is disabled.
+
+        Registering a name this plugin already owns replaces its values and returns the same soft enum. The values can be
+        changed later from any thread through the returned `SoftEnum`.
+
+        Args:
+            name: The name the client sees.
+            values: The initial values.
+
+        Returns:
+            The soft enum.
+
+        Raises:
+            ValueError: If the name is empty or holds whitespace, a value is empty or holds whitespace, or the name belongs to the server or another plugin.
+            RuntimeError: If called off the server thread.
         """
 
     def get_command(self, name: str) -> PluginCommand | None:

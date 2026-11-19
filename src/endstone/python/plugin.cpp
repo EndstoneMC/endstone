@@ -189,6 +189,74 @@ void init_plugin(py::module &m)
 
     This is the bare name of the plugin and should be used for comparison.
 )doc")
+        .def(
+            "register_command",
+            [](const Plugin &self, const NotNull<brigadier::LiteralCommandNode<CommandSource>> &node,
+               std::string description, std::vector<std::string> aliases) {
+                return self.getCommands()->registerCommand(node, std::move(description), std::move(aliases));
+            },
+            py::arg("node"), py::arg("description") = "", py::arg("aliases") = std::vector<std::string>{}, R"doc(
+    Registers a command tree, removed when this plugin is disabled.
+
+    The label is the root node's literal. A label or alias another command holds is skipped, and the command is still reachable as `plugin:label`.
+
+    Args:
+        node: The root node of the command.
+        description: A short description of the command.
+        aliases: The aliases of the command.
+
+    Returns:
+        The labels that were registered, including aliases and `plugin:label` forms.
+
+    Raises:
+        ValueError: If the tree cannot be written as a Bedrock command, naming the clash.
+        RuntimeError: If called off the server thread.
+)doc")
+        .def(
+            "register_command",
+            [](const Plugin &self, std::string label, std::string description, std::vector<std::string> aliases,
+               NotNull<BasicCommand> command) {
+                return self.getCommands()->registerCommand(std::move(label), std::move(description), std::move(aliases),
+                                                           std::move(command));
+            },
+            py::arg("label"), py::arg("description"), py::arg("aliases"), py::arg("command"), R"doc(
+    Registers a command that takes its arguments as words, which the client shows as `/label <args: message>`.
+
+    Args:
+        label: The label of the command.
+        description: A short description of the command.
+        aliases: The aliases of the command.
+        command: The command.
+
+    Returns:
+        The labels that were registered, including aliases and `plugin:label` forms.
+
+    Raises:
+        ValueError: If the label is empty or holds whitespace.
+        RuntimeError: If called off the server thread.
+)doc")
+        .def(
+            "register_soft_enum",
+            [](const Plugin &self, std::string name, std::vector<std::string> values) {
+                return self.getCommands()->registerSoftEnum(std::move(name), std::move(values));
+            },
+            py::arg("name"), py::arg("values") = std::vector<std::string>{}, R"doc(
+    Creates a soft enum owned by this plugin, removed with it when the plugin is disabled.
+
+    Registering a name this plugin already owns replaces its values and returns the same soft enum. The values can be
+    changed later from any thread through the returned `SoftEnum`.
+
+    Args:
+        name: The name the client sees.
+        values: The initial values.
+
+    Returns:
+        The soft enum.
+
+    Raises:
+        ValueError: If the name is empty or holds whitespace, a value is empty or holds whitespace, or the name belongs to the server or another plugin.
+        RuntimeError: If called off the server thread.
+)doc")
         .def("get_command", &Plugin::getCommand, py::arg("name"), R"doc(
     Gets the command with the given name, specific to this plugin.
 

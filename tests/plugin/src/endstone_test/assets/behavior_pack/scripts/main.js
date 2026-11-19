@@ -1,4 +1,4 @@
-import { system, world } from "@minecraft/server";
+import { CommandPermissionLevel, CustomCommandStatus, system, world } from "@minecraft/server";
 
 const handlers = {
   // scriptevent endstone_test:setblock <x> <y> <z> <block>
@@ -13,4 +13,15 @@ const handlers = {
 
 system.afterEvents.scriptEventReceive.subscribe((event) => {
   handlers[event.id]?.(event.message.split(" "));
+});
+
+system.beforeEvents.startup.subscribe((event) => {
+  event.customCommandRegistry.registerCommand(
+    {
+      name: "endstone_test:scriptcmd",
+      description: "A command the endstone-test behavior pack registers",
+      permissionLevel: CommandPermissionLevel.Any,
+    },
+    () => ({ status: CustomCommandStatus.Success, message: "endstone-test scriptcmd ran" }),
+  );
 });

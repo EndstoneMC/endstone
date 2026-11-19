@@ -26,6 +26,7 @@
 namespace endstone {
 
 class Command;
+class SoftEnum;
 
 /**
  * Represents a command map that manages all commands of the Server.
@@ -98,5 +99,15 @@ public:
      * @return true if the command was registered under its own name, false if the name was already taken
      */
     virtual bool registerCommand(std::string fallback_prefix, NotNull<Command> command) = 0;
+
+    /**
+     * Gets the soft enum registered to the specified name, whether a plugin, Endstone or the server owns it.
+     *
+     * The mutators of a soft enum the server or Endstone owns throw std::invalid_argument.
+     *
+     * @param name Name of the soft enum to retrieve
+     * @return the soft enum with the specified name, a null handle if no soft enum has that name
+     */
+    [[nodiscard]] virtual Nullable<SoftEnum> getSoftEnum(std::string name) const = 0;
 };
 }  // namespace endstone

@@ -12,6 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <string>
+#include <variant>
+
 #include <gtest/gtest.h>
 
 #include "endstone/brigadier/dispatcher.h"
@@ -92,7 +95,7 @@ TEST_F(NodeParseTest, argumentParse)
     StringReader reader("abc def");
     node->parse(reader, context_builder_);
     ASSERT_TRUE(context_builder_.getArguments().contains("foo"));
-    EXPECT_EQ(context_builder_.getArguments().at("foo").getResult(), ArgumentValue(std::string("abc")));
+    EXPECT_EQ(std::get<std::string>(context_builder_.getArguments().at("foo").getResult()), "abc");
 }
 
 TEST_F(NodeParseTest, argumentUsage)

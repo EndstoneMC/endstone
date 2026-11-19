@@ -14,17 +14,8 @@
 
 #include "bedrock/server/commands/minecraft_commands.h"
 
-#include "bedrock/symbol.h"
 #include "bedrock/world/actor/actor.h"
 #include "bedrock/world/level/level.h"
-
-Command *MinecraftCommands::compileCommand(HashedString const &command_str, CommandOrigin &origin,
-                                           CurrentCmdVersion command_version,
-                                           std::function<void(const std::string &)> on_parser_error)
-{
-    return BEDROCK_CALL(&MinecraftCommands::compileCommand, this, command_str, origin, command_version,
-                        on_parser_error);
-}
 
 CommandOutputType MinecraftCommands::getOutputType(const CommandOrigin &origin)
 {

@@ -24,7 +24,7 @@ namespace endstone::core {
 VersionCommand::VersionCommand() : EndstoneCommand("version")
 {
     setDescription("Gets the version of this server including any plugins in use.");
-    setUsages("/version", "/version ()[plugin: PluginName]");
+    setUsages("/version", "/version [plugin: PluginNames]");
     setAliases("ver", "about");
     setPermissions("endstone.command.version");
 }

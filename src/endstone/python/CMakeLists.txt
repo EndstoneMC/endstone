@@ -11,6 +11,7 @@ pybind11_add_module(_python MODULE
         ban.cpp
         block.cpp
         boss.cpp
+        brigadier.cpp
         command.cpp
         damage.cpp
         enchantments.cpp

@@ -73,3 +73,30 @@ def test_construct_dict(cls):
     assert "Bob" in desc.authors
     assert "Charlie" not in desc.authors
     assert not desc.prefix
+
+
+# ==== commands metadata ====
+
+
+def test_build_commands_from_metadata(cls) -> None:
+    """Verify a plugin's commands metadata still builds Command objects the description lists."""
+    loader = importlib.import_module("endstone.plugin.plugin_loader")
+    commands = loader._build_commands(
+        {
+            "spark": {
+                "description": "Profile the server",
+                "usages": ["/spark (profiler|sampler)<module: SparkProfilerModule> [flags: message]"],
+                "aliases": ["sparkb"],
+                "permissions": ["spark.command"],
+            },
+            "ping": {},
+        }
+    )
+    desc = cls("test", "1.0.0", commands=commands)
+    built = {command.name: command for command in desc.commands}
+    assert sorted(built) == ["ping", "spark"]
+    assert built["spark"].description == "Profile the server"
+    assert built["spark"].usages == ["/spark (profiler|sampler)<module: SparkProfilerModule> [flags: message]"]
+    assert built["spark"].aliases == ["sparkb"]
+    assert built["spark"].permissions == ["spark.command"]
+    assert built["ping"].usages == ["/ping"]

@@ -101,6 +101,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `/restart` command (console-only) for gracefully restarting the server.
 - `ProxiedCommandSender`, the sender a command receives when run through `/execute`. Its `caller` typed the command and receives its output, its `callee` supplies the name and execution context, and permission checks resolve against the caller.
 - `Command.register_to()` and `Command.unregister_from()`, and `PluginManager.add_permission()`.
+- `Commands`, `ArgumentTypes` and `BasicCommand` for registering commands as a Brigadier tree with typed arguments, as in Paper.
+- `SoftEnum`, `Plugin.register_command`, `Plugin.register_soft_enum`, `ArgumentTypes.soft_enum` and `CommandMap.get_soft_enum` for command completions plugins can update at runtime, and soft enum names as usage types, as in `<warp: WarpNames>`.
+- `ArgumentTypes.player`, `players`, `actor`, `actors`, `block_position`, `fine_position`, `dimension` and `resource` for command arguments resolved against the command's source, as in Paper.
+- Command trees take `BoolArgumentType`, `IntegerArgumentType`, `FloatArgumentType` and `DoubleArgumentType` arguments, with Brigadier's range errors.
 
 #### API and types
 
@@ -146,6 +150,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **BREAKING**: Permission subscription lists hold their subscribers weakly, so a disconnected player drops out on their own. `PluginManager.get_permission_subscriptions()`, `get_default_perm_subscriptions()` and `Permission.permissibles` hand back sets of handles.
 - **BREAKING**: `Permissible.add_attachment()` raises `ValueError` for an empty permission name or a disabled plugin instead of returning `None`, and `Permission.add_parent()` raises when the permission was never registered.
 - **BREAKING**: `Permission.children` returns a live `PermissionMap` mapping instead of a `dict` copy, so editing it and calling `recalculate_permissibles()` takes effect. Code that needs a real `dict` must wrap it in `dict()`.
+
+#### Commands
+
+- A command usage with two enums sharing a value at one position, or with more than 6 optional parameters, is now refused with an error naming the usage instead of failing to parse for players.
+- The plugin name completion of `/version` is now a soft enum updated when plugins enable and disable.
 
 #### API changes
 
@@ -214,6 +223,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### API behaviour
 
+- Fixed plugin commands, aliases and their completions not being removed cleanly on `/reload`.
+- Fixed uppercase values in command usage enums not being accepted.
+- Fixed a command usage with an optional parameter before a required one rejecting the forms that skip the optional.
+- Fixed vanilla commands run through `dispatch` losing the spaces inside quoted arguments.
 - Fixed `WritableBookMeta::setPages()` and `addPage()` failing to compile when given strings in C++.
 - Fixed `PlayerBedLeaveEvent` only being called when a player pressed the leave button. It now also fires when morning comes, when the bed is broken or obstructed, and when the player is woken by anything else, and the `bed` block it reports is the bed being slept in rather than the respawn point.
 - Fixed every vanilla command failing when dispatched through a `CommandSenderWrapper`, which did not report its own type.

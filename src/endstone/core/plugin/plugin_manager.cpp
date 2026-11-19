@@ -30,6 +30,7 @@
 
 #include "endstone/command/command_map.h"
 #include "endstone/command/plugin_command.h"
+#include "endstone/core/command/commands.h"
 #include "endstone/core/logger_factory.h"
 #include "endstone/event/event.h"
 #include "endstone/event/event_handler.h"
@@ -170,6 +171,7 @@ void EndstonePluginManager::initPlugin(Plugin &plugin, PluginLoader &loader, con
     plugin.server_ = &server_;
     plugin.logger_ = &LoggerFactory::getLogger(prefix);
     plugin.data_folder_ = base_folder / plugin_name;
+    plugin.commands_ = std::make_shared<EndstoneCommands>(server_, plugin_name);
 }
 
 Nullable<Plugin> EndstonePluginManager::loadPlugin(std::string file)

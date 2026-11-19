@@ -14,8 +14,12 @@
 
 #include "endstone/core/command/command_usage_parser.h"
 
+#include <algorithm>
+#include <cctype>
 #include <format>
+#include <string_view>
 #include <utility>
+#include <vector>
 
 #include <boost/algorithm/string/join.hpp>
 
@@ -25,12 +29,23 @@ void generateNameAndType(std::string_view command_name, endstone::core::CommandU
     if (!parameter.is_enum) {
         return;
     }
+    for (auto &value : parameter.values) {
+        std::ranges::transform(value, value.begin(), [](unsigned char c) { return std::tolower(c); });
+    }
     parameter.name = boost::algorithm::join(parameter.values, "_");
-    parameter.type = command_name;
-    parameter.type[0] = std::toupper(static_cast<unsigned char>(parameter.type[0]));
-    for (auto value : parameter.values) {
-        value[0] = std::toupper(static_cast<unsigned char>(value[0]));
-        parameter.type.append(value);
+    parameter.type.clear();
+    std::vector<std::string_view> words{command_name};
+    words.insert(words.end(), parameter.values.begin(), parameter.values.end());
+    for (const auto word : words) {
+        bool upper = true;
+        for (const unsigned char c : word) {
+            if (std::isalnum(c) == 0) {
+                upper = true;
+                continue;
+            }
+            parameter.type += static_cast<char>(upper ? std::toupper(c) : c);
+            upper = false;
+        }
     }
 }
 }  // namespace

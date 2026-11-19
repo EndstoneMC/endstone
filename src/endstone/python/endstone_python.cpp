@@ -32,7 +32,7 @@ void init_ban(py::module_ &);
 void init_block(py::module_ &, py::classh<Block> &block);
 void init_boss(py::module_ &);
 void init_color_format(py::module_ &);
-void init_command(py::module &, py_class<CommandSender> &command_sender);
+void init_command(py::module &, py::module_ &m_brigadier, py_class<CommandSender> &command_sender);
 void init_damage(py::module_ &);
 void init_enchantments(py::module_ &);
 void init_event(py::module_ &, py::classh<Event, PyEvent> &event);
@@ -108,6 +108,7 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
     auto m_attribute = m.def_submodule("attribute", "Classes relevant to attributes.");
     auto m_ban = m.def_submodule("ban", "Classes relevant to bans.");
     auto m_block = m.def_submodule("block", "Classes relating to the blocks in a world, including special states.");
+    auto m_brigadier = m.def_submodule("brigadier", "Classes of Mojang's Brigadier command library.");
     auto m_boss =
         m.def_submodule("boss", "Classes relating to the boss bars that appear at the top of the player's screen.");
     auto m_command = m.def_submodule("command", "Classes relating to handling specialized non-chat player input.");
@@ -222,7 +223,7 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
     // init_actor first: it registers ActorType, which CreatureSpawner's signatures refer to
     init_actor(m_actor, actor, mob);
     init_block(m_block, block);
-    init_command(m_command, command_sender);
+    init_command(m_command, m_brigadier, command_sender);
     init_plugin(m_plugin);
     init_level(m_level, level, dimension, location);
     init_player(m, player);

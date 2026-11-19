@@ -15,12 +15,14 @@
 #pragma once
 
 #include <algorithm>
+#include <cstddef>
 #include <functional>
 #include <memory>
 #include <optional>
 #include <stdexcept>
 #include <string>
 #include <string_view>
+#include <type_traits>
 #include <unordered_map>
 #include <utility>
 #include <variant>
@@ -196,7 +198,10 @@ public:
         std::string message = "Argument '" + name + "' is defined as ";
         message += ARGUMENT_TYPE_NAMES[argument->second.getResult().index()];
         message += ", not ";
-        message += ARGUMENT_TYPE_NAMES[ArgumentValue(std::in_place_type<V>).index()];
+        constexpr auto expected = []<std::size_t... I>(std::index_sequence<I...>) {
+            return ((std::is_same_v<V, std::variant_alternative_t<I, ArgumentValue>> ? I : 0) + ...);
+        }(std::make_index_sequence<std::variant_size_v<ArgumentValue>>{});
+        message += ARGUMENT_TYPE_NAMES[expected];
         throw std::invalid_argument(message);
     }
 
@@ -210,7 +215,20 @@ public:
     [[nodiscard]] bool isForked() const { return forks_; }
 
 private:
-    static constexpr std::string_view ARGUMENT_TYPE_NAMES[] = {"bool", "int", "long", "float", "double", "string"};
+    static constexpr std::string_view ARGUMENT_TYPE_NAMES[] = {"bool",
+                                                               "int",
+                                                               "long",
+                                                               "float",
+                                                               "double",
+                                                               "string",
+                                                               "PlayerSelectorArgumentResolver",
+                                                               "ActorSelectorArgumentResolver",
+                                                               "BlockPositionResolver",
+                                                               "FinePositionResolver",
+                                                               "Dimension",
+                                                               "BlockType",
+                                                               "ItemType",
+                                                               "ActorType"};
 
     S source_;
     std::string input_;

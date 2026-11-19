@@ -137,11 +137,45 @@ private:
 };
 
 /**
+ * @see com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType
+ */
+class Dynamic2CommandExceptionType : public CommandExceptionType {
+public:
+    explicit Dynamic2CommandExceptionType(std::function<Message(const std::string &, const std::string &)> function)
+        : function_(std::move(function))
+    {
+    }
+
+    [[nodiscard]] CommandSyntaxException create(const std::string &a, const std::string &b) const
+    {
+        return {*this, function_(a, b)};
+    }
+
+    [[nodiscard]] CommandSyntaxException createWithContext(const StringReader &reader, const std::string &a,
+                                                           const std::string &b) const
+    {
+        return {*this, function_(a, b), reader.getString(), reader.getCursor()};
+    }
+
+private:
+    std::function<Message(const std::string &, const std::string &)> function_;
+};
+
+/**
  * @see com.mojang.brigadier.exceptions.BuiltInExceptions
  * @see com.mojang.brigadier.exceptions.BuiltInExceptionProvider
  */
 class BuiltInExceptions {
 public:
+    [[nodiscard]] const Dynamic2CommandExceptionType &doubleTooLow() const { return double_too_small_; }
+    [[nodiscard]] const Dynamic2CommandExceptionType &doubleTooHigh() const { return double_too_big_; }
+    [[nodiscard]] const Dynamic2CommandExceptionType &floatTooLow() const { return float_too_small_; }
+    [[nodiscard]] const Dynamic2CommandExceptionType &floatTooHigh() const { return float_too_big_; }
+    [[nodiscard]] const Dynamic2CommandExceptionType &integerTooLow() const { return integer_too_small_; }
+    [[nodiscard]] const Dynamic2CommandExceptionType &integerTooHigh() const { return integer_too_big_; }
+    [[nodiscard]] const Dynamic2CommandExceptionType &longTooLow() const { return long_too_small_; }
+    [[nodiscard]] const Dynamic2CommandExceptionType &longTooHigh() const { return long_too_big_; }
+
     [[nodiscard]] const DynamicCommandExceptionType &literalIncorrect() const { return literal_incorrect_; }
 
     [[nodiscard]] const SimpleCommandExceptionType &readerExpectedStartOfQuote() const
@@ -188,6 +222,30 @@ public:
     }
 
 private:
+    Dynamic2CommandExceptionType double_too_small_{[](const std::string &found, const std::string &min) {
+        return "Double must not be less than " + min + ", found " + found;
+    }};
+    Dynamic2CommandExceptionType double_too_big_{[](const std::string &found, const std::string &max) {
+        return "Double must not be more than " + max + ", found " + found;
+    }};
+    Dynamic2CommandExceptionType float_too_small_{[](const std::string &found, const std::string &min) {
+        return "Float must not be less than " + min + ", found " + found;
+    }};
+    Dynamic2CommandExceptionType float_too_big_{[](const std::string &found, const std::string &max) {
+        return "Float must not be more than " + max + ", found " + found;
+    }};
+    Dynamic2CommandExceptionType integer_too_small_{[](const std::string &found, const std::string &min) {
+        return "Integer must not be less than " + min + ", found " + found;
+    }};
+    Dynamic2CommandExceptionType integer_too_big_{[](const std::string &found, const std::string &max) {
+        return "Integer must not be more than " + max + ", found " + found;
+    }};
+    Dynamic2CommandExceptionType long_too_small_{[](const std::string &found, const std::string &min) {
+        return "Long must not be less than " + min + ", found " + found;
+    }};
+    Dynamic2CommandExceptionType long_too_big_{[](const std::string &found, const std::string &max) {
+        return "Long must not be more than " + max + ", found " + found;
+    }};
     DynamicCommandExceptionType literal_incorrect_{
         [](const std::string &expected) { return "Expected literal " + expected; }};
     SimpleCommandExceptionType reader_expected_start_of_quote_{"Expected quote to start a string"};
