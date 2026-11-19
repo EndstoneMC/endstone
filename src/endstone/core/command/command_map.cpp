@@ -187,7 +187,8 @@ std::optional<bool> EndstoneCommandMap::tryDispatch(const NotNull<CommandSender>
     if (!custom_commands_.contains(name)) {
         // This is a vanilla command
         try {
-            return command->execute(sender, std::vector(args.begin() + 1, args.end()));
+            return static_cast<const MinecraftCommandWrapper &>(*command).dispatch(
+                sender, name + command_line.substr(args[0].size()));
         }
         catch (const std::exception &e) {
             server_.getLogger().error("Unhandled exception executing '{}': {}", command_line, e.what());

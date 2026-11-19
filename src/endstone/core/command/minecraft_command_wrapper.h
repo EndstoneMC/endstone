@@ -26,6 +26,7 @@ public:
                                      const CommandRegistry::Signature &minecraft_command);
     [[nodiscard]] bool execute(const NotNull<CommandSender> &sender,
                                const std::vector<std::string> &args) const override;
+    [[nodiscard]] bool dispatch(const NotNull<CommandSender> &sender, const std::string &command_line) const;
 
     static std::unique_ptr<CommandOrigin> getCommandOrigin(const NotNull<CommandSender> &sender);
 

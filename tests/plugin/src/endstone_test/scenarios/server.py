@@ -31,6 +31,47 @@ async def unknown_dispatch(ctx: Context) -> None:
     assert result.errors == [] and result.messages == [], result.output
 
 
+@scenario("command.vanilla_quoted_args")
+async def vanilla_quoted_args(ctx: Context) -> None:
+    board = ctx.server.scoreboard
+    ctx.command("scoreboard objectives remove qa_quoted")
+    try:
+        result = ctx.command('scoreboard objectives add qa_quoted dummy "a  b"')
+        assert result.success, result.output
+        objective = board.get_objective("qa_quoted")
+        assert objective is not None, "the vanilla command did not run"
+        assert objective.display_name == "a  b", objective.display_name
+    finally:
+        ctx.command("scoreboard objectives remove qa_quoted")
+
+
+@scenario("command.vanilla_dispatch")
+async def vanilla_dispatch(ctx: Context) -> None:
+    board = ctx.server.scoreboard
+    ctx.command("scoreboard objectives remove qa_vanilla")
+    try:
+        assert ctx.command("/SCOREBOARD   objectives add qa_vanilla dummy").success
+        assert board.get_objective("qa_vanilla") is not None
+        assert ctx.command("scoreboard objectives remove qa_vanilla").success
+        assert ctx.command("/SCOREBOARD objectives add qa_vanilla dummy").success
+        assert board.get_objective("qa_vanilla") is not None
+
+        listed = ctx.command("scoreboard objectives list")
+        assert listed.success and not listed.errors, listed.output
+
+        bad = ctx.command("scoreboard objectives add qa_vanilla dummy")
+        assert not bad.success and bad.errors, bad.output
+
+        command = ctx.server.command_map.get_command("scoreboard")
+        assert command is not None
+        assert command.execute(
+            ctx.server.command_sender, ["objectives", "remove", "qa_vanilla"]
+        )
+        assert board.get_objective("qa_vanilla") is None
+    finally:
+        ctx.command("scoreboard objectives remove qa_vanilla")
+
+
 @scenario("command.unknown.console", covers={UnknownCommandEvent: "normal"})
 async def unknown_console(ctx: Context) -> None:
     unknown = ctx.capture(

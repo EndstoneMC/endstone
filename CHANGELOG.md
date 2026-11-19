@@ -229,6 +229,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed `ItemStack.set_item_meta()` accepting an item meta that belongs to a different kind of item.
 - Fixed assigning `ItemStack.type` leaving the item unchanged.
 - Fixed `Server.dispatch_command()` rejecting the sender a command received from `/execute` or a command block.
+- Fixed `Server.dispatch_command()` collapsing the spaces inside a quoted argument of a vanilla command.
 - Fixed `str()` on a `Vector` ending in a stray comma.
 - Fixed `Colors::BLACK` being a fully transparent red.
 - Fixed the server crashing when a plugin enabled at STARTUP used online players, maps, scoreboards or commands.

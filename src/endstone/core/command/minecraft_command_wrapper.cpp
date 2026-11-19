@@ -53,6 +53,13 @@ MinecraftCommandWrapper::MinecraftCommandWrapper(MinecraftCommands &minecraft_co
 
 bool MinecraftCommandWrapper::execute(const NotNull<CommandSender> &sender, const std::vector<std::string> &args) const
 {
+    std::vector command_parts = {"/" + getName()};
+    command_parts.insert(command_parts.end(), args.begin(), args.end());
+    return dispatch(sender, boost::algorithm::join(command_parts, " "));
+}
+
+bool MinecraftCommandWrapper::dispatch(const NotNull<CommandSender> &sender, const std::string &command_line) const
+{
     if (!testPermission(sender)) {
         return true;
     }
@@ -64,11 +71,8 @@ bool MinecraftCommandWrapper::execute(const NotNull<CommandSender> &sender, cons
     }
 
     // compile command
-    std::vector command_parts = {"/" + getName()};
-    command_parts.insert(command_parts.end(), args.begin(), args.end());
-    const auto full_command = boost::algorithm::join(command_parts, " ");
     auto *command = minecraft_commands_.compileCommand(  //
-        full_command, *command_origin, CurrentCmdVersion::Latest,
+        command_line, *command_origin, CurrentCmdVersion::Latest,
         [&sender](auto const &err) { sender->sendErrorMessage(err); });
 
     if (!command) {
