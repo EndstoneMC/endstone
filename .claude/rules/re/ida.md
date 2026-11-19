@@ -71,3 +71,6 @@ Tool names below are the ida-pro plugin's `mcp__plugin_ida-pro_idalib__*` tools 
 - `llvm-pdbutil pretty` needs DIA and does not work on Linux; read Windows layouts from the PDB-named `.i64`'s type library and class keys from the `V`/`U` letter in the PDB publics.
 - With no database for the target version, answer caller questions with the raw-binary helpers and a call index.
 - Borrow a PDB name from an older build only after byte-checking that RVA; the command-block region moved between 1.26.60.6 and 1.26.65.1.
+- Treat an unpacked database set with no `.i64` and a log that stops early as a dead build; rebuild it with idat before opening it.
+- On a raw database, patch the `_invoke_watson` calls out in a private copy before Hex-Rays will decompile the function.
+- Open one shared database per binary before dispatching members; three private Windows loads at once fill swap.

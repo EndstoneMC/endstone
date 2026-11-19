@@ -179,3 +179,4 @@ paths:
 - Find the notifier's caller through the literal `tryChangeState(expected,desired)` pair to order against a state field.
 - BDS discards the CAS result and publishes outside the lock, so an Endstone-side `state >= X` gate is unsound.
 - On 1.26.65, FunctionManager::load inlines _processFunctionEntry (anchor "Function %s failed to load correctly with error(s):") and CommandResponseBase::_executeAction inlines _compileCommands (anchor "Command response could not compile commands").
+- `CommandRegistry::registerOverloadInternal` pointer-compares a parameter's rule against `ParseRuleFor<std::unique_ptr<Command>>::instance`.
