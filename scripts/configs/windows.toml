@@ -293,17 +293,6 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 ? FE FF FF FF 4C 89 45 ? 48 8B 3A"
 
 [[signatures]]
-name = "?_shouldSendPositionPacket@PlayerLocationSender@@AEBA_NAEBVVec3@@AEBUDimensionType@@_NAEBV?$optional@VVec3@@@std@@AEBUPlayerLocationData@1@@Z"
-relative = false
-extra = 0
-# 1. the check-pairs functor _subTick passes to _forEachClientPlayerPair has a large _Do_call (impl vtable slot
-#    +0x10); the callee it calls twice with six arguments is _shouldSendPositionPacket
-# 2. confirm the body: it tests byte [arg6+0xC] == 1, compares the distance with the float at this+0x78, uses
-#    432.0 and 2304.0, and calls atan2f and fmodf
-# 3. confirm vs the old named DB
-pattern = "48 83 EC 78 44 0F 29 54 24 ? 44 0F 29 4C 24 ? 44 0F 29 44 24 ? 0F 29 7C 24 ? 0F 29 74 24 ? 48 8B 84 24 ? ? ? ?"
-
-[[signatures]]
 name = "?processPlayerNetworking@PlayerTickManager@@QEAAXAEBUTick@@@Z"
 relative = false
 extra = 0
@@ -1523,17 +1512,6 @@ extra = 0
 # 3. read the same slot in the new vtable -> Mob::knockback (ServerPlayer::knockback is a 5-byte thunk to it)
 # function prologue (grown to unique)
 pattern = "55 41 57 41 56 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 95 ? ? ? ?"
-
-[[signatures]]
-name = "?send@NetworkSystem@@QEAAXAEBVNetworkIdentifier@@AEBVPacket@@W4SubClientId@@@Z"
-relative = false
-extra = 0
-# 1. find bytes "48 65 61 64 65 72 20 44 61 74 61 00" = "Header Data\0" (a BinaryStream::writeString label;
-#    referenced here AND in NetworkSystem::sendToMultiple)
-# 2. tell them apart (name-independent): sendToMultiple loops over an id vector (back-edge); this one
-#    (send) is straight-line for a single id
-# 3. confirm by diffing both vs the old named DB
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 45 89 CD 4C 89 C6"
 
 [[signatures]]
 name = "?onNewIncomingConnection@NetworkSystem@@EEAA_NAEBVNetworkIdentifier@@$$QEAV?$shared_ptr@VNetworkPeer@@@std@@V?$optional@VWebKey@@@4@@Z"

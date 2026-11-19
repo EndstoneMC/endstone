@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 146> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 144> symbols = {{
     {"Bedrock::type_id<CommandRegistry, std::string>::id", 265556960},
     {"BlockState::StateListNode::mHead", 267362512},
     {"ChunkBlenderFactory::getOrCreateChunkBlender::cache_cap", 86840808},
@@ -170,7 +170,6 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 146> symbo
     {"_ZN9NetherNet20TransportFactoryImpl24createTransportInterfaceERKNS_9NetworkIDERKNS_22TransportConfigurationEPNS_37INetherNetTransportInterfaceCallbacksE", 229389648},
     // NetworkSystem
     {"_ZN13NetworkSystem23onNewIncomingConnectionERK17NetworkIdentifierONSt3__110shared_ptrI11NetworkPeerEENS3_8optionalI6WebKeyEE", 147989808},
-    {"_ZN13NetworkSystem4sendERK17NetworkIdentifierRK6Packet11SubClientId", 147887968},
     // PistonBlockActor
     {"_ZN16PistonBlockActor4tickER11BlockSource", 222128384},
     // Player
@@ -185,7 +184,6 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 146> symbo
     {"_ZN6Player4takeER5Actorii", 198087984},
     // PlayerLocationSender
     {"_ZN20PlayerLocationSender24_forEachClientPlayerPairERKNSt3__16vectorI13WeakEntityRefNS0_9allocatorIS2_EEEENS0_8functionIFvRK29UserEntityIdentifierComponentRK6PlayerSE_EEE", 215941344},
-    {"_ZNK20PlayerLocationSender25_shouldSendPositionPacketERK4Vec3RK13DimensionTypebRKNSt3__18optionalIS0_EERKNS_18PlayerLocationDataE", 215942576},
     // PlayerTickManager
     {"_ZN17PlayerTickManager23processPlayerNetworkingERK4Tick", 215652080},
     // PushableByEntityUtility

@@ -138,17 +138,6 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC 68 48 89 54 24 ? 4C 8B 26"
 
 [[signatures]]
-name = "_ZNK20PlayerLocationSender25_shouldSendPositionPacketERK4Vec3RK13DimensionTypebRKNSt3__18optionalIS0_EERKNS_18PlayerLocationDataE"
-relative = false
-extra = 0
-# 1. the checkPlayerPairsAndMaybeSendPackets __func's operator() (vtable slot 6) calls this twice
-# 2. confirm the body: there is no this; the caller loads the simulation distance (sender+0x78) into xmm0 and
-#    passes the dimension by value in esi. It starts with `cmp byte ptr [r8+0xC], 1` (the new data's position)
-#    and calls atan2f and fmodf through the PLT
-# 3. confirm vs the Windows twin
-pattern = "41 80 78 ? 01 75 ? 45 0F B6 48 ? 41 F6 D1"
-
-[[signatures]]
 name = "_ZN17PlayerTickManager23processPlayerNetworkingERK4Tick"
 relative = false
 extra = 0
@@ -1508,17 +1497,6 @@ extra = 0
 # 2. read knockback's slot index in `_ZTV6Player` in the old named DB and take the same slot in the new vtable
 # 3. confirm vs the old named DB (damps motion + applies knockback rules)
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 D7 0F 29 54 24 ? 0F 29 4C 24"
-
-[[signatures]]
-name = "_ZN13NetworkSystem4sendERK17NetworkIdentifierRK6Packet11SubClientId"
-relative = false
-extra = 0
-# 1. find bytes "48 65 61 64 65 72 20 44 61 74 61 00" = "Header Data\0" (a writeString label; referenced here
-#    AND in NetworkSystem::sendToMultiple)
-# 2. tell them apart: sendToMultiple loops over an id vector (back-edge); this one (send) is straight-line for
-#    a single id
-# 3. confirm by diffing both vs the old named DB
-pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC 38 89 CD 48 89 D3 49 89 F6 49 89 FF 48 8B 05"
 
 [[signatures]]
 name = "_ZN13NetworkSystem23onNewIncomingConnectionERK17NetworkIdentifierONSt3__110shared_ptrI11NetworkPeerEENS3_8optionalI6WebKeyEE"

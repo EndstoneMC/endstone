@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 146> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 144> symbols = {{
     {"Bedrock::type_id<CommandRegistry, std::string>::id", 223031474},
     {"BlockState::StateListNode::mHead", 223883584},
     {"ChunkBlenderFactory::getOrCreateChunkBlender::cache_cap", 140106330},
@@ -169,7 +169,6 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 146> symbo
     {"?createTransportInterface@TransportFactoryImpl@NetherNet@@QEAAPEAVINetherNetTransportInterface@2@AEBUNetworkID@2@AEBUTransportConfiguration@2@PEAVINetherNetTransportInterfaceCallbacks@2@@Z", 121926992},
     // NetworkSystem
     {"?onNewIncomingConnection@NetworkSystem@@EEAA_NAEBVNetworkIdentifier@@$$QEAV?$shared_ptr@VNetworkPeer@@@std@@V?$optional@VWebKey@@@4@@Z", 12733808},
-    {"?send@NetworkSystem@@QEAAXAEBVNetworkIdentifier@@AEBVPacket@@W4SubClientId@@@Z", 12601200},
     // PistonBlockActor
     {"?tick@PistonBlockActor@@UEAAXAEAVBlockSource@@@Z", 77473552},
     // Player
@@ -184,7 +183,6 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 146> symbo
     {"?teleportTo@Player@@UEAAXAEBVVec3@@_NHH1@Z", 18070880},
     // PlayerLocationSender
     {"?_forEachClientPlayerPair@PlayerLocationSender@@AEAAXAEBV?$vector@VWeakEntityRef@@V?$allocator@VWeakEntityRef@@@std@@@std@@V?$function@$$A6AXAEBVUserEntityIdentifierComponent@@AEBVPlayer@@1@Z@3@@Z", 50994368},
-    {"?_shouldSendPositionPacket@PlayerLocationSender@@AEBA_NAEBVVec3@@AEBUDimensionType@@_NAEBV?$optional@VVec3@@@std@@AEBUPlayerLocationData@1@@Z", 50995072},
     // PlayerTickManager
     {"?processPlayerNetworking@PlayerTickManager@@QEAAXAEBUTick@@@Z", 51000560},
     // PushableByEntityUtility
