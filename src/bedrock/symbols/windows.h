@@ -11,13 +11,15 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 81> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 83> symbols = {{
     {"BlockState::StateListNode::mHead", 223883584},
     {"ChunkBlenderFactory::getOrCreateChunkBlender::cache_cap", 140106330},
     {"DBChunkStorage::_hasChunk::cache_cap", 57747200},
     {"Enchant::mEnchants", 223570944},
     {"LevelChunk::tickImpl::seed", 221849432},
     {"MinecraftWorkerPool::ASYNC", 223117936},
+    {"endstone_onhit_cleanup", 4329440},
+    {"endstone_onhit_initialize", 26348016},
     // Actor
     {"?teleportTo@Actor@@UEAAXAEBVVec3@@_NHH1@Z", 3715600},
     // ActorFactory

@@ -18,7 +18,13 @@
 
 #include "endstone/runtime/hook.h"
 
-#ifdef __linux__
+#if defined(__linux__) || defined(_WIN32)
+
+#ifdef _WIN32
+#define ONHIT_EXPORT __declspec(dllexport)
+#else
+#define ONHIT_EXPORT __attribute__((visibility("default")))
+#endif
 
 namespace {
 struct OnHitChildren {
@@ -42,23 +48,29 @@ void reclaimChildren(void *record)
             continue;
         }
         auto **vtable = *reinterpret_cast<void ***>(child);
+#ifdef _WIN32
+        // MSVC scalar deleting destructor: RCX=this, RDX=1 deallocates the child.
+        reinterpret_cast<void (*)(void *, unsigned int)>(vtable[0])(child, 1);
+#else
         reinterpret_cast<void (*)(void *)>(vtable[1])(child);
+#endif
     }
 }
 }  // namespace
 
 // BDS otherwise discards the previous OnHit children when it resets end = begin.
-extern "C" __attribute__((visibility("default"))) std::uintptr_t endstone_onhit_initialize(void *record, void *actor)
+extern "C" ONHIT_EXPORT std::uintptr_t endstone_onhit_initialize(void *record, void *actor)
 {
     reclaimChildren(record);
     return ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&endstone_onhit_initialize, "endstone_onhit_initialize", record, actor);
 }
 
 // BDS destroys the pointer array but not the owned subcomponents.
-extern "C" __attribute__((visibility("default"))) std::uintptr_t endstone_onhit_cleanup(void *record)
+extern "C" ONHIT_EXPORT std::uintptr_t endstone_onhit_cleanup(void *record)
 {
     reclaimChildren(record);
     return ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&endstone_onhit_cleanup, "endstone_onhit_cleanup", record);
 }
 
+#undef ONHIT_EXPORT
 #endif

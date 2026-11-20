@@ -1085,3 +1085,22 @@ extra = 0
 #    returns impl+0x48 on a hit, and on a miss allocates 0x2b8 and runs the SimpleNetworkInterfaceImpl
 #    ctor with the configuration
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 83 EC ? 48 8D 6C 24 ? 48 C7 45 ? ? ? ? ? 4C 89 CB 4D 89 C7 48 89 D6"
+
+[[signatures]]
+name = "endstone_onhit_initialize"
+relative = false
+extra = 0
+# Windows BDS 1.26.65.1 PE VA 0x1419209F0 (image base 0x140000000).
+# ProjectileComponent initializer: Actor component setup calls this for existing
+# records too. It rewinds vector end at record+0x128 without deleting old children;
+# the factory then transfers new OnHit child pointers into that vector.
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC 18 01 00 00 48 8D AC 24 80 00 00 00 48 C7 85 90 00 00 00 FE FF FF FF 49 89 D6 48 89 CF"
+
+[[signatures]]
+name = "endstone_onhit_cleanup"
+relative = false
+extra = 0
+# Windows BDS 1.26.65.1 PE VA 0x140420FE0 (image base 0x140000000).
+# EnTT ProjectileComponent final record cleanup called on erase/clear/teardown.
+# It releases vector backing storage at record+0x120, not its child objects.
+pattern = "55 56 57 48 83 EC 30 48 8D 6C 24 30 48 C7 45 F8 FE FF FF FF 48 89 CE 48 8B 89 B0 02 00 00 48 85 C9 74 13 F0 FF 49 0C"
