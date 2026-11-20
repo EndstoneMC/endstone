@@ -974,3 +974,19 @@ extra = 0
 #    returns impl+0x48 on a hit, and on a miss allocates 648 and runs the SimpleNetworkInterfaceImpl
 #    ctor with the configuration
 pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC 58 48 89 4C 24 50 48 89"
+
+[[signatures]]
+name = "endstone_onhit_cleanup"
+relative = false
+extra = 0
+# 1.26.65.1: ProjectileComponent record cleanup at 0x7757D20.
+# The record's +0x120 child-pointer vector is freed without destroying its elements.
+pattern = "53 48 89 FB 48 8B BF A8 02 00 00 48 85 FF 74 05 E8"
+
+[[signatures]]
+name = "endstone_onhit_initialize"
+relative = false
+extra = 0
+# 1.26.65.1: ProjectileComponent initializer at 0x7143B40.
+# Reinitialization resets the OnHit vector end at 0x7143DE1 without deleting old children.
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC C8 00 00 00 49 89 F4 48 89 FB 48 8B 86 98 00 00 00 4C 8B A8 10 03 00 00"
