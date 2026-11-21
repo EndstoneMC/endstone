@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 81> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 83> symbols = {{
     {"BlockState::StateListNode::mHead", 267362512},
     {"ChunkBlenderFactory::getOrCreateChunkBlender::cache_cap", 86840808},
     {"DBChunkStorage::_hasChunk::cache_cap", 225498426},
@@ -119,6 +119,9 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 81> symbol
     {"_ZN6RakNet22RNS2_Windows_Linux_36027Send_Windows_Linux_360NoVDPEiPNS_19RNS2_SendParametersEPKcj", 230712352},
     // RakPeerHelper
     {"_ZN13RakPeerHelper11peerStartupEPN6RakNet16RakPeerInterfaceERK20ConnectionDefinitionNS_11PeerPurposeE", 147447504},
+    // ReconstructedOnHitRecord
+    {"_ZN24ReconstructedOnHitRecord10initializeEP5Actor", 118766400},
+    {"_ZN24ReconstructedOnHitRecord7cleanupEv", 125140256},
     // RepositoryFactory
     {"_ZNK17RepositoryFactory13createSourcesERK23IResourcePackRepository", 165137904},
     // SayCommand

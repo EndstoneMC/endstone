@@ -974,3 +974,32 @@ extra = 0
 #    returns impl+0x48 on a hit, and on a miss allocates 648 and runs the SimpleNetworkInterfaceImpl
 #    ctor with the configuration
 pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC 58 48 89 4C 24 50 48 89"
+
+[[signatures]]
+name = "_ZN24ReconstructedOnHitRecord7cleanupEv"
+relative = false
+extra = 0
+# 1. Start from the ProjectileComponent EnTT storage found through the Actor
+#    component lookup for key 0x94488499; follow erase, clear and teardown of its
+#    760-byte records to the one-record finalizer.
+# 2. The finalizer receives record in RDI, releases its other fields and frees
+#    the pointer-vector backing allocation at record+0x120 without destroying
+#    the child objects it contains.
+# 3. Locate the callee whose prologue reads record+0x2A8; distinguish it from
+#    nearby record move/copy helpers in the storage removal path. The pattern
+#    starts at the function entry.
+pattern = "53 48 89 FB 48 8B BF A8 02 00 00 48 85 FF 74 05 E8"
+
+[[signatures]]
+name = "_ZN24ReconstructedOnHitRecord10initializeEP5Actor"
+relative = false
+extra = 0
+# 1. In Actor component setup, find the EnTT lookup for ProjectileComponent
+#    key 0x94488499; it reuses or allocates records in 760-byte storage slots.
+# 2. Follow the call after obtaining the record (RDI=record, RSI=Actor).
+#    The callee reads Actor+0x98 -> config+0x310, rewinds the OnHit vector
+#    end at record+0x128 to begin at +0x120, then appends factory-made children.
+# 3. Match the callee's entry prologue; unlike the record finalizer above it
+#    takes two arguments and creates the replacement children. The pattern
+#    starts at the function entry.
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC C8 00 00 00 49 89 F4 48 89 FB 48 8B 86 98 00 00 00 4C 8B A8 10 03 00 00"
