@@ -18,8 +18,6 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 83> symbol
     {"Enchant::mEnchants", 267196192},
     {"LevelChunk::tickImpl::seed", 265504384},
     {"MinecraftWorkerPool::ASYNC", 267552272},
-    {"endstone_onhit_cleanup", 125140256},
-    {"endstone_onhit_initialize", 118766400},
     {"getI18n::result", 266202192},
     // Actor
     {"_ZN5Actor10teleportToERK4Vec3biib", 188387696},
@@ -121,6 +119,9 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 83> symbol
     {"_ZN6RakNet22RNS2_Windows_Linux_36027Send_Windows_Linux_360NoVDPEiPNS_19RNS2_SendParametersEPKcj", 230712352},
     // RakPeerHelper
     {"_ZN13RakPeerHelper11peerStartupEPN6RakNet16RakPeerInterfaceERK20ConnectionDefinitionNS_11PeerPurposeE", 147447504},
+    // ReconstructedOnHitRecord
+    {"_ZN24ReconstructedOnHitRecord10initializeEP5Actor", 118766400},
+    {"_ZN24ReconstructedOnHitRecord7cleanupEv", 125140256},
     // RepositoryFactory
     {"_ZNK17RepositoryFactory13createSourcesERK23IResourcePackRepository", 165137904},
     // SayCommand

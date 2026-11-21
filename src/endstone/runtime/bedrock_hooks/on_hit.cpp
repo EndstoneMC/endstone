@@ -1,4 +1,4 @@
-// Copyright (c) 2026, The Endstone Project. (https://endstone.dev) All Rights Reserved.
+// Copyright (c) 2024, The Endstone Project. (https://endstone.dev) All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,15 +16,8 @@
 #include <cstddef>
 #include <cstdint>
 
+#include "bedrock/entity/components/reconstructed_on_hit_record.h"
 #include "endstone/runtime/hook.h"
-
-#if defined(__linux__) || defined(_WIN32)
-
-#ifdef _WIN32
-#define ONHIT_EXPORT __declspec(dllexport)
-#else
-#define ONHIT_EXPORT __attribute__((visibility("default")))
-#endif
 
 namespace {
 struct OnHitChildren {
@@ -37,6 +30,7 @@ static_assert(sizeof(OnHitChildren) == 3 * sizeof(void *));
 
 void reclaimChildren(void *record)
 {
+    // OnHit child-pointer vector starts at record +0x120.
     auto &children = *reinterpret_cast<OnHitChildren *>(static_cast<std::byte *>(record) + 0x120);
     if (!children.begin) {
         return;
@@ -59,18 +53,15 @@ void reclaimChildren(void *record)
 }  // namespace
 
 // BDS otherwise discards the previous OnHit children when it resets end = begin.
-extern "C" ONHIT_EXPORT std::uintptr_t endstone_onhit_initialize(void *record, void *actor)
+std::uintptr_t ReconstructedOnHitRecord::initialize(Actor *actor)
 {
-    reclaimChildren(record);
-    return ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&endstone_onhit_initialize, "endstone_onhit_initialize", record, actor);
+    reclaimChildren(this);
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&ReconstructedOnHitRecord::initialize, this, actor);
 }
 
 // BDS destroys the pointer array but not the owned subcomponents.
-extern "C" ONHIT_EXPORT std::uintptr_t endstone_onhit_cleanup(void *record)
+std::uintptr_t ReconstructedOnHitRecord::cleanup()
 {
-    reclaimChildren(record);
-    return ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&endstone_onhit_cleanup, "endstone_onhit_cleanup", record);
+    reclaimChildren(this);
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&ReconstructedOnHitRecord::cleanup, this);
 }
-
-#undef ONHIT_EXPORT
-#endif

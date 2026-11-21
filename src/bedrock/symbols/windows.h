@@ -18,8 +18,6 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 83> symbol
     {"Enchant::mEnchants", 223570944},
     {"LevelChunk::tickImpl::seed", 221849432},
     {"MinecraftWorkerPool::ASYNC", 223117936},
-    {"endstone_onhit_cleanup", 4329440},
-    {"endstone_onhit_initialize", 26348016},
     // Actor
     {"?teleportTo@Actor@@UEAAXAEBVVec3@@_NHH1@Z", 3715600},
     // ActorFactory
@@ -120,6 +118,9 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 83> symbol
     {"?Send_Windows_Linux_360NoVDP@RNS2_Windows_Linux_360@RakNet@@KAHHPEAURNS2_SendParameters@2@PEBDI@Z", 56875536},
     // RakPeerHelper
     {"?peerStartup@RakPeerHelper@@QEAA?AW4StartupResult@RakNet@@PEAVRakPeerInterface@3@AEBUConnectionDefinition@@W4PeerPurpose@1@@Z", 11914480},
+    // ReconstructedOnHitRecord
+    {"?cleanup@ReconstructedOnHitRecord@@QEAA_KXZ", 4329440},
+    {"?initialize@ReconstructedOnHitRecord@@QEAA_KPEAVActor@@@Z", 26348016},
     // RepositoryFactory
     {"?createSources@RepositoryFactory@@UEBA?AV?$shared_ptr@VRepositorySources@@@std@@AEBVIResourcePackRepository@@@Z", 13989472},
     // SayCommand
