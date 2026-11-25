@@ -8,7 +8,7 @@ from importlib_resources import as_file, files
 
 from endstone._python.plugin import Plugin as _Plugin
 from endstone._python.plugin import PluginDescription
-from endstone.event import Event
+from endstone.event import Event, PacketReceiveEvent, PacketSendEvent
 
 
 class Plugin(_Plugin):
@@ -82,11 +82,26 @@ class Plugin(_Plugin):
                 continue
 
             event_cls = params[0].annotation
-            priority = getattr(func, "_priority")
-            ignore_cancelled = getattr(func, "_ignore_cancelled")
-            self.server.plugin_manager.register_event(
-                getattr(event_cls, "NAME", event_cls.__name__), func, priority, self, ignore_cancelled
-            )
+            priority = func._priority
+            ignore_cancelled = func._ignore_cancelled
+            packet_ids = getattr(func, "_packet_ids", None)
+            if packet_ids is not None and not issubclass(event_cls, (PacketReceiveEvent, PacketSendEvent)):
+                self.logger.error(f"Plugin {self.name} specified packet_ids for a non-packet event: {attr_name}")
+                continue
+
+            if packet_ids is None:
+                self.server.plugin_manager.register_event(
+                    getattr(event_cls, "NAME", event_cls.__name__), func, priority, self, ignore_cancelled
+                )
+            else:
+                self.server.plugin_manager.register_event(
+                    getattr(event_cls, "NAME", event_cls.__name__),
+                    func,
+                    priority,
+                    self,
+                    ignore_cancelled,
+                    packet_ids=list(packet_ids),
+                )
 
     @property
     def config(self) -> dict:

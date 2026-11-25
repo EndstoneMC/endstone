@@ -2,6 +2,7 @@
 Classes relating to handling triggered code executions.
 """
 
+import collections.abc
 import enum
 import typing
 
@@ -2000,5 +2001,9 @@ class WeatherChangeEvent(WeatherEvent, Cancellable):
         """
 
 def event_handler(
-    func=None, *, priority: EventPriority = EventPriority.NORMAL, ignore_cancelled: bool = False
+    func=None,
+    *,
+    priority: EventPriority = EventPriority.NORMAL,
+    ignore_cancelled: bool = False,
+    packet_ids: collections.abc.Iterable[int] | None = None,
 ) -> typing.Any: ...
