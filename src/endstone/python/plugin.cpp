@@ -14,6 +14,11 @@
 
 #include "endstone_python.h"
 
+#include <algorithm>
+
+#include "endstone/event/server/packet_receive_event.h"
+#include "endstone/event/server/packet_send_event.h"
+
 namespace py = pybind11;
 
 namespace endstone::python {
@@ -222,12 +227,36 @@ void init_plugin(py::module &m)
         .def(
             "register_event",
             [](PluginManager &self, std::string event, const std::function<void(Event *)> &executor,
-               EventPriority priority, Plugin &plugin, bool ignore_cancelled) {
+               EventPriority priority, Plugin &plugin, bool ignore_cancelled,
+               std::optional<std::vector<int>> packet_ids) {
+                if (!packet_ids) {
+                    self.registerEvent(
+                        std::move(event), [executor](Event &e) { executor(&e); }, priority, plugin, ignore_cancelled);
+                    return;
+                }
+
+                const bool is_receive = event == PacketReceiveEvent::NAME;
+                if (!is_receive && event != PacketSendEvent::NAME) {
+                    throw py::value_error("packet_ids is only supported for packet events");
+                }
+                std::ranges::sort(*packet_ids);
+                packet_ids->erase(std::unique(packet_ids->begin(), packet_ids->end()), packet_ids->end());
+                if (std::ranges::any_of(*packet_ids, [](int id) { return id < 0; })) {
+                    throw py::value_error("packet_ids must contain non-negative integers");
+                }
                 self.registerEvent(
-                    std::move(event), [executor](Event &e) { executor(&e); }, priority, plugin, ignore_cancelled);
+                    std::move(event),
+                    [executor, ids = std::move(*packet_ids), is_receive](Event &e) {
+                        const auto packet_id = is_receive ? static_cast<const PacketReceiveEvent &>(e).getPacketId()
+                                                          : static_cast<const PacketSendEvent &>(e).getPacketId();
+                        if (std::ranges::binary_search(ids, packet_id)) {
+                            executor(&e);
+                        }
+                    },
+                    priority, plugin, ignore_cancelled);
             },
             py::arg("name"), py::arg("executor"), py::arg("priority"), py::arg("plugin"), py::arg("ignore_cancelled"),
-            "Registers the given event")
+            py::arg("packet_ids") = py::none(), "Registers the given event")
         .def("get_permission", &PluginManager::getPermission, py::arg("name"), py::return_value_policy::reference,
              "Gets a Permission from its fully qualified name.")
         .def("remove_permission", py::overload_cast<Permission &>(&PluginManager::removePermission), py::arg("perm"),

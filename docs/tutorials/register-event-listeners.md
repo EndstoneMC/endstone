@@ -99,5 +99,21 @@ Now, we need to register our event handlers to the Endstone event system.
     };
     ```
 
+## Filter packet events by ID (Python)
+
+For `PacketReceiveEvent` and `PacketSendEvent`, the optional `packet_ids` argument registers a handler for
+specific packet IDs. The filtering takes place in C++ before the Python callback runs.
+
+```python
+from endstone.event import PacketReceiveEvent, event_handler
+
+@event_handler(packet_ids=[9])
+def on_text_packet(self, event: PacketReceiveEvent):
+    self.logger.info("Received a text packet")
+```
+
+Without `packet_ids`, the handler receives every packet as before. An empty list selects no packets. This option
+is only supported for packet events; other event types must not specify `packet_ids`.
+
 **:partying_face: And that's it!** Your plugin should now listen to and handle events when player joins.
 Remember, you can add as many methods as you want to listen to any event.

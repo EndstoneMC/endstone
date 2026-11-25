@@ -1,13 +1,27 @@
+import collections.abc
+
 import lazy_loader as lazy
 
 from endstone._python.event import EventPriority
 
 
-def event_handler(func=None, *, priority: EventPriority = EventPriority.NORMAL, ignore_cancelled: bool = False):
+def event_handler(
+    func=None,
+    *,
+    priority: EventPriority = EventPriority.NORMAL,
+    ignore_cancelled: bool = False,
+    packet_ids: collections.abc.Iterable[int] | None = None,
+):
+    if packet_ids is not None:
+        packet_ids = tuple(packet_ids)
+        if any(type(packet_id) is not int or packet_id < 0 for packet_id in packet_ids):
+            raise ValueError("packet_ids must contain non-negative integers")
+
     def decorator(f):
-        setattr(f, "_is_event_handler", True)
-        setattr(f, "_priority", priority)
-        setattr(f, "_ignore_cancelled", ignore_cancelled)
+        f._is_event_handler = True
+        f._priority = priority
+        f._ignore_cancelled = ignore_cancelled
+        f._packet_ids = packet_ids
         return f
 
     if func:

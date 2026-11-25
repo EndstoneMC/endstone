@@ -436,6 +436,7 @@ class PluginManager:
         priority: EventPriority,
         plugin: Plugin,
         ignore_cancelled: bool,
+        packet_ids: list[int] | None = None,
     ) -> None:
         """
         Registers the given event
